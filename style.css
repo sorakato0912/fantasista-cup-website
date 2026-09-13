@@ -2285,29 +2285,32 @@ body {
    ========================================================================== */
 [data-reveal] {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    /* 移動量とわずかな拡大の両方を付け、オープニング演出（ロゴのブラー→拡大）と
+       同じ「じわっと現れて定位置に収まる」感触を、控えめな範囲で踏襲する */
+    transform: translateY(44px) scale(0.96);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1s cubic-bezier(0.22, 1, 0.36, 1);
     transition-delay: var(--reveal-delay, 0s);
 }
 
 [data-reveal].is-revealed {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 /* ENTRY FLOWのステップ、TERMSの各項目は、一つずつ時間差でふわっと現れるようにする
-   （既存のナビメニュー展開演出 .nav-group:nth-of-type(n) と同じ考え方） */
+   （既存のナビメニュー展開演出 .nav-group:nth-of-type(n) と同じ考え方）。
+   間隔を広めにとり、「1つずつ」という動きがはっきり伝わるようにしている */
 .step-item[data-reveal]:nth-of-type(2),
-.terms-item[data-reveal]:nth-of-type(2) { transition-delay: 0.08s; }
+.terms-item[data-reveal]:nth-of-type(2) { transition-delay: 0.14s; }
 .step-item[data-reveal]:nth-of-type(3),
-.terms-item[data-reveal]:nth-of-type(3) { transition-delay: 0.16s; }
+.terms-item[data-reveal]:nth-of-type(3) { transition-delay: 0.28s; }
 .step-item[data-reveal]:nth-of-type(4),
-.terms-item[data-reveal]:nth-of-type(4) { transition-delay: 0.24s; }
+.terms-item[data-reveal]:nth-of-type(4) { transition-delay: 0.42s; }
 .step-item[data-reveal]:nth-of-type(5),
-.terms-item[data-reveal]:nth-of-type(5) { transition-delay: 0.32s; }
+.terms-item[data-reveal]:nth-of-type(5) { transition-delay: 0.56s; }
 .step-item[data-reveal]:nth-of-type(6),
-.terms-item[data-reveal]:nth-of-type(6) { transition-delay: 0.4s; }
+.terms-item[data-reveal]:nth-of-type(6) { transition-delay: 0.7s; }
 
 @media (prefers-reduced-motion: reduce) {
     [data-reveal] {
