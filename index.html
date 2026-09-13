@@ -1,0 +1,2365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 👑 SEO対策：title / meta description -->
+    <title>奈良県の11人制サッカー大会ならFantasista Cup</title>
+    <meta name="description" content="社会人・草サッカーチーム向けの11人制大会「Fantasista Cup」を奈良県で開催。競技性と楽しさの両立をコンセプトに、本気で盛り上がれる舞台を用意しています。参加チーム募集中です。">
+
+    <!-- 👑 Google Search Console 所有権確認用タグ（旧ドメイン fantasista-cup.netlify.app 用） -->
+    <meta name="google-site-verification" content="NaG1CsOhAkvqA2yUGtalt2Fjw0bN6QDO5IGluiKl8pA" />
+    <!-- 👑 Google Search Console 所有権確認用タグ（新ドメイン fantasista-cup.com 用） -->
+    <meta name="google-site-verification" content="WRekYfitwS2aUbYTG3SE5pnMyGY-LP0dE1inIKKh2ww" />
+
+    <!-- ==========================================
+       👑 ファビコン・アイコン限界最大化設定
+       ========================================== -->
+    <!-- 通常のブラウザタブ用 -->
+    <link rel="icon" href="rogo2.png" type="image/png" sizes="any">
+    <!-- スマホのホーム画面に追加された際の設定 -->
+    <link rel="apple-touch-icon" href="rogo2.png">
+
+    <!-- ==========================================
+       👑 OGP（SNSなどでシェアされた際の表示設定）
+       ========================================== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="奈良県の11人制サッカー大会ならFantasista Cup">
+    <meta property="og:description" content="社会人・草サッカーチーム向けの11人制大会「Fantasista Cup」を奈良県で開催。競技性と楽しさの両立をコンセプトに、本気で盛り上がれる舞台を用意しています。参加チーム募集中です。">
+    <meta property="og:image" content="rogo2.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="奈良県の11人制サッカー大会ならFantasista Cup">
+    <meta name="twitter:image" content="rogo2.png">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fontsから明朝体（Noto Serif JP）を読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 各種アイコン表示用に Font Awesomeを読み込み -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- 💡 タイトルのきらめき ＆ ナビバー ＆ スクロールバー・フォーム ＆ 👑【レイアウト固定】SNSロゴ -->
+    <style>
+        /* ナビバーの半透明化＋ぼかしは style.css の .navbar に統一済み */
+
+        /* リンクのベース位置調整 */
+        .nav-links li {
+            position: relative;
+        }
+
+        /* 目次が光ったとき（activeクラス）のデザイン。マウスを当てた時は控えめな別演出にして、
+           クリック後にマウスが留まったままスクロールしても2項目同時に光って見えないようにする */
+        .nav-links a.active {
+            color: #ffffff !important;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+        }
+        .nav-links a:hover {
+            color: #ffffff !important;
+        }
+
+        /* 背景に潜ませる「きらめくゴールドオーラ」の枠 */
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 115%;
+            height: 140%;
+            transform: translate(-50%, -50%) scaleX(0);
+            background: linear-gradient(90deg, 
+                rgba(212, 175, 55, 0) 0%, 
+                rgba(255, 223, 128, 0.7) 25%, 
+                rgba(170, 124, 17, 0.8) 50%, 
+                rgba(255, 223, 128, 0.7) 75%, 
+                rgba(212, 175, 55, 0) 100%
+            );
+            background-size: 200% auto;
+            z-index: -1;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+        }
+
+        /* きらめき背景のフワッと広がる演出は、現在地を示すactive時のみに限定（hoverでは一切出さない） */
+        .nav-links a.active::before {
+            transform: translate(-50%, -50%) scaleX(1);
+            opacity: 1;
+            animation: goldShine 2s linear infinite;
+        }
+
+        /* 下線も高級なゴールド単色にして光のラインとして演出 */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold-bright), var(--gold-dark));
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--gold-bright);
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        @keyframes goldShine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ==========================================
+           👑【修正】フォーム入力欄のサイズ・視認性大幅アップ
+           ========================================== */
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 18px;      /* 視認性と入力しやすさを極限まで高める大きな余白 */
+            font-size: 1.1rem;  /* 記入した文字がハッキリと見える最適なサイズ */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            color: var(--text-color);
+            font-family: inherit;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--gold-bright);
+            outline: none;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+        }
+
+        /* ==========================================
+           👑【レイアウト固定】SNSロゴ横並び強化設定
+           ========================================== */
+        .sns-flex-container {
+            display: flex !important;
+            flex-direction: row !important; /* 横並びを強制 */
+            flex-wrap: nowrap !important;   /* 絶対に改行させない */
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 20px !important;           /* 余白を確保 */
+            margin-top: 20px !important;
+            width: 100% !important;
+            min-width: 200px !important;
+        }
+
+        .sns-emblem {
+            display: inline-flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 84px !important;
+            height: 84px !important;
+            gap: 5px !important;
+            border-radius: 16px !important;
+            border: 2px solid var(--gold-dark) !important;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(245,247,250,0.4) 100%) !important;
+            box-shadow: 0 6px 15px rgba(10, 17, 40, 0.05), inset 0 0 10px rgba(212, 175, 55, 0.1) !important;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            text-decoration: none !important;
+            flex-shrink: 0 !important; /* 絶対に縮小させない */
+        }
+
+        .sns-emblem i {
+            font-size: 2.2rem !important;
+            background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-dark) 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            transition: transform 0.4s ease !important;
+        }
+
+        .sns-label {
+            font-size: 0.65rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+            color: var(--gold-dark) !important;
+        }
+
+        .sns-emblem:hover {
+            transform: scale(1.1) translateY(-3px) !important;
+            border-color: var(--gold-bright) !important;
+            box-shadow: 0 12px 24px rgba(170, 124, 17, 0.25) !important;
+            background: #ffffff !important;
+        }
+
+        .sns-emblem:hover i {
+            transform: rotate(5deg) !important;
+        }
+
+        /* 👑 SEO対策：スクリーンリーダー／クローラーのみに読ませる視覚的に隠すテキスト */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+
+    <!-- ==========================================
+       👑 SEO対策：構造化データ（JSON-LD / schema.org SportsEvent）
+       Fantasista Cupを親イベント、Vol.1〜Vol.3を subEvent として構造化。
+       Vol.3は2026-11-21開催が確定したため、日程反映済み（2026-08-29更新）。
+       ========================================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "name": "Fantasista Cup",
+      "sport": "サッカー",
+      "startDate": "2026-05-23T17:00:00+09:00",
+      "description": "Fantasista Cupは、奈良県橿原市を中心に開催される11人制エンジョイサッカー大会です。「競技の質とエンジョイの精神が融合する、新たなサッカー大会」をコンセプトに、大人が本気で楽しめる舞台を提供しています。",
+      "location": {
+        "@type": "Place",
+        "name": "橿原多目的運動公園（ヤタガラスフィールド）",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "奈良県",
+          "addressLocality": "橿原市",
+          "addressCountry": "JP"
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Fantasista Cup 運営事務局",
+        "email": "fantasista.cup.soccer@gmail.com",
+        "url": "https://fantasista-cup.com/"
+      },
+      "subEvent": [
+        {
+          "@type": "SportsEvent",
+          "name": "Fantasista Cup Vol.1",
+          "sport": "サッカー",
+          "startDate": "2026-05-23T17:00:00+09:00",
+          "endDate": "2026-05-23T21:00:00+09:00",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "location": {
+            "@type": "Place",
+            "name": "グリンフィールドかつらぎ",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "奈良県",
+              "addressCountry": "JP"
+            }
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "Fantasista Cup 運営事務局",
+            "url": "https://fantasista-cup.com/"
+          }
+        },
+        {
+          "@type": "SportsEvent",
+          "name": "Fantasista Cup Vol.2",
+          "sport": "サッカー",
+          "startDate": "2026-08-08T17:00:00+09:00",
+          "endDate": "2026-08-08T21:00:00+09:00",
+          "eventStatus": "https://schema.org/EventCancelled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "location": {
+            "@type": "Place",
+            "name": "橿原多目的運動公園（ヤタガラスフィールド）",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "奈良県",
+              "addressLocality": "橿原市",
+              "addressCountry": "JP"
+            }
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "Fantasista Cup 運営事務局",
+            "url": "https://fantasista-cup.com/"
+          }
+        },
+        {
+          "@type": "SportsEvent",
+          "name": "Fantasista Cup Vol.3",
+          "sport": "サッカー",
+          "startDate": "2026-11-21T17:00:00+09:00",
+          "endDate": "2026-11-21T21:00:00+09:00",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "location": {
+            "@type": "Place",
+            "name": "橿原多目的運動公園（ヤタガラスフィールド）",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "奈良県",
+              "addressLocality": "橿原市",
+              "addressCountry": "JP"
+            }
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "Fantasista Cup 運営事務局",
+            "url": "https://fantasista-cup.com/"
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+    <!-- 👑 オープニング演出：黒背景にrogo2.pngがボヤっと浮かび、ボヤっと消えて本文へ
+         ・直接アクセス／初回訪問時はフルの演出
+         ・Q&Aページなど他ページからの遷移で到着した場合は、短い演出に統一（2重に見えないようにする）
+         ・他ページへ移動する際も同じ演出を表示してから遷移する -->
+    <div id="introOverlay" class="intro-overlay">
+        <div class="intro-inner">
+            <img src="rogo.png" alt="Fantasista Cup ロゴ" class="intro-logo">
+        </div>
+    </div>
+    <script>
+        (function () {
+            var overlay = document.getElementById('introOverlay');
+            if (!overlay) return;
+            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (reduceMotion) {
+                overlay.classList.add('intro-done');
+            } else {
+                var isTransition = false;
+                try { isTransition = sessionStorage.getItem('fcPageTransition') === '1'; } catch (err) {}
+                try { sessionStorage.removeItem('fcPageTransition'); } catch (err) {}
+
+                document.documentElement.style.overflow = 'hidden';
+
+                if (isTransition) {
+                    // 他ページからの遷移で到着：すでに表示された状態から、短くフェードアウトするだけ
+                    var logo = overlay.querySelector('.intro-logo');
+                    overlay.classList.add('intro-quick');
+                    overlay.style.transition = 'none';
+                    if (logo) logo.style.transition = 'none';
+                    overlay.classList.add('intro-in');
+                    void overlay.offsetWidth; // 強制リフロー（transition:noneを確実に反映させる）
+                    overlay.style.transition = '';
+                    if (logo) logo.style.transition = '';
+                    setTimeout(function () {
+                        overlay.classList.add('intro-out');
+                    }, 200);
+                    setTimeout(function () {
+                        overlay.classList.add('intro-done');
+                        document.documentElement.style.overflow = '';
+                    }, 700);
+                } else {
+                    // 直接アクセス・初回訪問：フルのオープニング演出
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(function () {
+                            overlay.classList.add('intro-in');
+                        });
+                    });
+                    setTimeout(function () {
+                        overlay.classList.add('intro-out');
+                    }, 1700);
+                    setTimeout(function () {
+                        overlay.classList.add('intro-done');
+                        document.documentElement.style.overflow = '';
+                    }, 2700);
+                }
+            }
+
+            // 👑 他ページ（Q&Aなど）へ移動する際も同じ演出を表示してから遷移する
+            document.addEventListener('click', function (e) {
+                var link = e.target.closest('a[href]');
+                if (!link || link.target === '_blank') return;
+                var url;
+                try {
+                    url = new URL(link.href, window.location.href);
+                } catch (err) {
+                    return;
+                }
+                if (url.origin !== window.location.origin) return; // 外部リンクは対象外
+                if (url.pathname === window.location.pathname) return; // 同一ページ内アンカーは対象外
+                if (!/\.html$/i.test(url.pathname)) return; // htmlページ間の移動のみ対象
+                if (reduceMotion) return; // アニメーション低減設定時はそのまま遷移
+
+                e.preventDefault();
+                try { sessionStorage.setItem('fcPageTransition', '1'); } catch (err) {}
+                var targetHref = link.href;
+                overlay.classList.add('intro-quick');
+                // 一度「非表示（ぼやけ・透明）」の状態にリセットしてから、次のフレームで確実にフェードインさせる
+                overlay.classList.remove('intro-in', 'intro-out', 'intro-done');
+                void overlay.offsetWidth;
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        overlay.classList.add('intro-in');
+                    });
+                });
+                setTimeout(function () {
+                    window.location.href = targetHref;
+                }, 500);
+            });
+        })();
+    </script>
+
+    <!-- HERO SECTION -->
+    <header id="top" class="hero">
+        <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" poster="Vol.1優勝チーム.jpg">
+            <source src="Hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-sub">Fantasista Cup<span class="sr-only">（奈良県橿原市のサッカー大会）</span></p>
+            <h1 class="hero-title" data-i18n="hero.title">大人が純粋に<br class="br-sp">熱狂できる舞台を</h1>
+            <span class="sr-only">奈良県で開催する11人制エンジョイサッカー大会 Fantasista Cup</span>
+            <div class="gold-line"></div>
+            <a href="#entry" class="btn-gold" data-i18n="hero.cta">大会に参加する</a>
+        </div>
+    </header>
+    <script>
+        // 👑 スマホでHero動画のautoplayが失敗・途中停止した場合に再生を保証する
+        (function () {
+            var video = document.getElementById('heroVideo');
+            if (!video) return;
+
+            function tryPlay() {
+                var p = video.play();
+                if (p && typeof p.catch === 'function') {
+                    p.catch(function () {
+                        // ブラウザの自動再生ブロックにより失敗した場合、最初のユーザー操作で再試行する
+                        var resumeOnInteraction = function () {
+                            video.play().catch(function () {});
+                        };
+                        document.addEventListener('touchstart', resumeOnInteraction, { once: true, passive: true });
+                        document.addEventListener('click', resumeOnInteraction, { once: true });
+                    });
+                }
+            }
+
+            tryPlay();
+            video.addEventListener('loadeddata', tryPlay);
+            video.addEventListener('canplay', tryPlay);
+
+            // アプリ切り替え・スリープ復帰・戻る操作（bfcache）などでブラウザが動画を一時停止した場合に再生を再開する
+            document.addEventListener('visibilitychange', function () {
+                if (document.visibilityState === 'visible' && video.paused) tryPlay();
+            });
+            window.addEventListener('pageshow', function () {
+                if (video.paused) tryPlay();
+            });
+        })();
+    </script>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container" style="padding: 8px 24px; max-width: 1400px; gap: 20px;">
+            <div class="nav-brand">
+                <a href="#top" class="nav-logo" style="display: flex; align-items: center; gap: 14px; flex-shrink: 0;">
+                    <img src="rogo.png" alt="Fantasista Cup ロゴ" style="height: 64px; width: auto; object-fit: contain; display: block; flex-shrink: 0;">
+                    <span style="font-size: 1.4rem; letter-spacing: 0.08em; white-space: nowrap;">Fantasista Cup<span class="sr-only">（奈良県橿原市のサッカー大会）</span></span>
+                </a>
+            </div>
+            <div class="nav-actions">
+                <a href="https://www.instagram.com/fantasista.cup_nara/" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="大会公式LINE">
+                    <i class="fab fa-line"></i>
+                </a>
+                <button type="button" id="hamburgerBtn" class="hamburger-btn" aria-haspopup="true" aria-expanded="false" aria-controls="navOverlay" aria-label="メニューを開く">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 👑 ハンバーガーメニュー：全画面オーバーレイ -->
+    <div id="navOverlay" class="nav-overlay">
+        <button type="button" id="navLangToggle" class="nav-lang-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="navLangDropdown" aria-label="言語を選択">
+            <i class="fas fa-globe"></i>
+        </button>
+        <div id="navLangDropdown" class="nav-lang-dropdown" role="menu" aria-label="言語選択">
+            <button type="button" class="lang-option selected" data-lang="ja" role="menuitem"><span class="lang-flag" aria-hidden="true">🇯🇵</span><span>日本語</span></button>
+            <button type="button" class="lang-option" data-lang="en" role="menuitem"><span class="lang-flag" aria-hidden="true">🇺🇸</span><span>English</span></button>
+            <button type="button" class="lang-option" data-lang="it" role="menuitem"><span class="lang-flag" aria-hidden="true">🇮🇹</span><span>Italiano</span></button>
+            <button type="button" class="lang-option" data-lang="es" role="menuitem"><span class="lang-flag" aria-hidden="true">🇪🇸</span><span>Español</span></button>
+            <button type="button" class="lang-option" data-lang="ko" role="menuitem"><span class="lang-flag" aria-hidden="true">🇰🇷</span><span>한국어</span></button>
+            <button type="button" class="lang-option" data-lang="zh" role="menuitem"><span class="lang-flag" aria-hidden="true">🇨🇳</span><span>中文</span></button>
+        </div>
+        <button type="button" id="navOverlayClose" class="nav-overlay-close" aria-label="メニューを閉じる">
+            <i class="fas fa-xmark"></i>
+        </button>
+        <div class="nav-overlay-inner">
+            <div class="nav-group">
+                <p class="nav-group-title">大会について</p>
+                <ul class="nav-links">
+                    <li><a href="#concept">CONCEPT</a></li>
+                    <li><a href="#entry">ENTRY</a></li>
+                    <li><a href="#terms">TERMS</a></li>
+                    <li><a href="#sport-tabs">DISCIPLINES</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">大会記録</p>
+                <ul class="nav-links">
+                    <li><a href="blog.html">BLOG</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">採用・協賛</p>
+                <ul class="nav-links">
+                    <li><a href="staff.html">RECRUIT</a></li>
+                    <li><a href="sponsor.html">SPONSOR</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">サポート</p>
+                <ul class="nav-links">
+                    <li><a href="faq.html">Q&amp;A</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                    <li><a href="#info">INFORMATION</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 👑 ハンバーガーメニュー：開閉・スクロールロック・背景クリックとEscで閉じる
+        (function () {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const overlay = document.getElementById('navOverlay');
+            const closeBtn = document.getElementById('navOverlayClose');
+            const langToggle = document.getElementById('navLangToggle');
+            const langDropdown = document.getElementById('navLangDropdown');
+            if (!hamburgerBtn || !overlay) return;
+
+            function closeLangDropdown() {
+                if (!langToggle || !langDropdown) return;
+                langDropdown.classList.remove('open');
+                langToggle.classList.remove('active');
+                langToggle.setAttribute('aria-expanded', 'false');
+            }
+            window.closeNavLangDropdown = closeLangDropdown;
+
+            function openNavOverlay() {
+                overlay.classList.add('open');
+                hamburgerBtn.classList.add('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'true');
+                document.documentElement.classList.add('nav-overlay-lock');
+                document.body.classList.add('nav-overlay-lock');
+            }
+            function closeNavOverlay() {
+                overlay.classList.remove('open');
+                hamburgerBtn.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                document.documentElement.classList.remove('nav-overlay-lock');
+                document.body.classList.remove('nav-overlay-lock');
+                closeLangDropdown();
+            }
+            window.closeNavOverlay = closeNavOverlay; // 言語選択後などに外部からも閉じられるようにする
+
+            hamburgerBtn.addEventListener('click', () => {
+                if (overlay.classList.contains('open')) closeNavOverlay(); else openNavOverlay();
+            });
+            if (closeBtn) closeBtn.addEventListener('click', closeNavOverlay);
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeNavOverlay(); // 靄の背景部分をクリックしたら閉じる
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key !== 'Escape') return;
+                if (langDropdown && langDropdown.classList.contains('open')) {
+                    closeLangDropdown();
+                } else {
+                    closeNavOverlay();
+                }
+            });
+            overlay.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', closeNavOverlay);
+            });
+
+            // 👑 ✕アイコン隣の言語切り替えトグル：クリックで展開／外側クリックで閉じる
+            if (langToggle && langDropdown) {
+                langToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isOpen = langDropdown.classList.toggle('open');
+                    langToggle.classList.toggle('active', isOpen);
+                    langToggle.setAttribute('aria-expanded', String(isOpen));
+                });
+                document.addEventListener('click', (e) => {
+                    if (!langDropdown.classList.contains('open')) return;
+                    if (langDropdown.contains(e.target) || langToggle.contains(e.target)) return;
+                    closeLangDropdown();
+                });
+            }
+        })();
+    </script>
+
+    <main>
+        <!-- CONCEPT SECTION -->
+        <section id="concept" class="section">
+            <div class="container" data-reveal>
+                <h2 class="section-title">CONCEPT<span class="sr-only">｜大会コンセプト（奈良県サッカー大会）</span></h2>
+                <p class="concept-text" data-i18n="concept.text">
+                    Fantasista Cupは、<br class="br-sp">「競技の質とエンジョイの精神が<br class="br-sp">融合する、<br class="br-sp">新たなフットボール」を提供します。
+                </p>
+            </div>
+        </section>
+
+        <!-- ENTRY SECTION -->
+        <section id="entry" class="section">
+            <div class="container">
+                <h2 class="section-title">ENTRY<span class="sr-only">｜大会エントリー・お申し込み（奈良県サッカー大会）</span></h2>
+
+                <div class="luxury-frame">
+                    <!-- 👑 大会一覧の検索・絞り込み（PCは横一列、スマホは「大会を検索・絞り込む」ボタン→全画面オーバーレイ） -->
+                    <div class="entry-filter-bar" id="entryFilterBar">
+                        <button type="button" id="entryFilterClose" class="entry-filter-close" aria-label="閉じる">
+                            <i class="fas fa-xmark"></i>
+                        </button>
+                        <div class="entry-filter-field is-keyword">
+                            <label for="entryFilterKeyword">キーワード検索</label>
+                            <input type="text" id="entryFilterKeyword" placeholder="大会名・会場名">
+                        </div>
+                        <div class="entry-filter-field">
+                            <label for="entryFilterSport">スポーツで絞り込む</label>
+                            <select id="entryFilterSport">
+                                <option value="">すべてのスポーツ</option>
+                                <option value="サッカー">サッカー</option>
+                                <option value="フットサル">フットサル</option>
+                                <option value="ソサイチ">ソサイチ</option>
+                                <option value="PK大会">PK大会</option>
+                            </select>
+                        </div>
+                        <div class="entry-filter-field">
+                            <label for="entryFilterArea">エリアで絞り込む</label>
+                            <select id="entryFilterArea">
+                                <option value="">すべてのエリア</option>
+                                <option value="大阪府">大阪府</option>
+                                <option value="京都府">京都府</option>
+                                <option value="兵庫県">兵庫県</option>
+                                <option value="奈良県">奈良県</option>
+                                <option value="滋賀県">滋賀県</option>
+                                <option value="和歌山県">和歌山県</option>
+                            </select>
+                        </div>
+                        <div class="entry-filter-field entry-filter-date">
+                            <label>開催日で絞り込む</label>
+                            <div class="entry-filter-date-row">
+                                <input type="date" id="entryFilterDateFrom">
+                                <span>〜</span>
+                                <input type="date" id="entryFilterDateTo">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" id="entryFilterToggle" class="entry-filter-toggle">
+                        <span><i class="fas fa-magnifying-glass"></i> 大会を検索・絞り込む</span>
+                        <span id="entryFilterCount" class="entry-filter-count" style="display:none;"></span>
+                    </button>
+
+                    <!-- 👑 募集中の大会一覧をSupabaseから直接取得して表示（エントリーサイトと同じデータ） -->
+                    <div id="entryTournamentList" style="margin-bottom: 24px;">
+                        <p style="text-align: center; color: var(--text-faint);" data-i18n="entry.loadingText">読み込み中...</p>
+                    </div>
+
+                    <!-- 大会参加までの流れ（ステップタイムライン） -->
+                    <div class="entry-steps">
+                        <p class="entry-steps-eyebrow">ENTRY FLOW</p>
+                        <h3 class="sub-title" data-i18n="entry.steps.heading">大会参加までの流れ</h3>
+                        <div class="steps-timeline">
+                            <div class="step-item" data-reveal>
+                                <div class="step-marker"><i class="far fa-calendar"></i><span class="step-num">01</span></div>
+                                <div class="step-content">
+                                    <h4 class="step-title" data-i18n="entry.steps.s1.title">舞台を見定める</h4>
+                                    <p class="step-desc" data-i18n="entry.steps.s1.desc">奈良で開催中の大会情報をご確認ください。</p>
+                                </div>
+                            </div>
+                            <div class="step-item" data-reveal>
+                                <div class="step-marker"><i class="far fa-paper-plane"></i><span class="step-num">02</span></div>
+                                <div class="step-content">
+                                    <h4 class="step-title" data-i18n="entry.steps.s2.title">挑戦の意思を届ける</h4>
+                                    <p class="step-desc" data-i18n="entry.steps.s2.desc">エントリーサイトよりチーム情報をご登録ください。</p>
+                                </div>
+                            </div>
+                            <div class="step-item" data-reveal>
+                                <div class="step-marker"><i class="fab fa-line"></i><span class="step-num">03</span></div>
+                                <div class="step-content">
+                                    <h4 class="step-title" data-i18n="entry.steps.s3.title">公式LINEを追加する</h4>
+                                    <p class="step-desc" data-i18n="entry.steps.s3.desc">最新情報・大会当日の連絡はすべて公式LINEにてお届けします。</p>
+                                    <a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer" class="btn-action step-line-btn"><i class="fab fa-line"></i><span data-i18n="entry.steps.lineBtn">大会公式LINEを追加する</span></a>
+                                </div>
+                            </div>
+                            <div class="step-item" data-reveal>
+                                <div class="step-marker"><i class="far fa-envelope"></i><span class="step-num">04</span></div>
+                                <div class="step-content">
+                                    <h4 class="step-title" data-i18n="entry.steps.s4.title">招待状が届く</h4>
+                                    <p class="step-desc" data-i18n="entry.steps.s4.desc">運営事務局より、参加費・詳細のご案内を公式LINEにてお送りします。</p>
+                                </div>
+                            </div>
+                            <div class="step-item" data-reveal>
+                                <div class="step-marker"><i class="far fa-circle-check"></i><span class="step-num">05</span></div>
+                                <div class="step-content">
+                                    <h4 class="step-title" data-i18n="entry.steps.s5.title">出場権を確定させる</h4>
+                                    <p class="step-desc" data-i18n="entry.steps.s5.desc">指定期日までにお支払いを完了し、出場が確定します。</p>
+                                </div>
+                            </div>
+                            <div class="step-item" data-reveal>
+                                <div class="step-marker"><i class="fas fa-trophy"></i><span class="step-num">06</span></div>
+                                <div class="step-content">
+                                    <h4 class="step-title" data-i18n="entry.steps.s6.title">栄光をかけた一日へ</h4>
+                                    <p class="step-desc" data-i18n="entry.steps.s6.desc">当日、ピッチの上でお待ちしております。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; border-top: 1px dashed rgba(10, 17, 40, 0.15); padding-top: 24px;">
+                        <p style="color: #666; font-size: 0.95rem; line-height: 1.8;" data-i18n="entry.description">
+                            Googleアカウントでログインすると、マイページで申し込み状況の確認もできます。<br class="br-sp">
+                            お申し込みの前に、参加費・キャンセル規定など大会の詳細を必ず<a href="#terms">「TERMS」</a>にてご確認ください。
+                        </p>
+                        <div class="center-btn" style="margin-top: 18px;">
+                            <a href="https://fantasista-cup-admin.netlify.app/apply" target="_blank" rel="noopener noreferrer" class="btn-action-secondary" data-i18n="entry.openSiteBtn">
+                                エントリーサイト（大会一覧・マイページ）を開く
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TERMS SECTION（旧: RULESの後 → ENTRY直下へ移設） -->
+        <section id="terms" class="section">
+            <div class="container">
+                <h2 class="section-title">TERMS<span class="sr-only">｜利用規約・参加規定</span></h2>
+                <div class="luxury-frame">
+                    <div class="terms-container">
+                        <div class="terms-item" data-reveal>
+                            <h3 data-i18n="terms.1.title">1. 競技ルールおよび審判について</h3>
+                            <p data-i18n="terms.1.body">本大会は協会制定のサッカー、フットサル、ソサイチ競技規則に準じますが、大会独自のローカルルールを優先します。</p>
+                        </div>
+                        <div class="terms-item" data-reveal>
+                            <h3 data-i18n="terms.2.title">2. 事故・怪我の責任について</h3>
+                            <p data-i18n="terms.2.body">大会中の怪我、事故、盗難等の責任は負いかねます。</p>
+                        </div>
+                        <div class="terms-item" data-reveal>
+                            <h3 data-i18n="terms.3.title">3. 施設利用上の注意</h3>
+                            <p data-i18n="terms.3.body">施設規則を遵守してください。</p>
+                        </div>
+                        <div class="terms-item" data-reveal>
+                            <h3 data-i18n="terms.4.title">4. 写真・動画の使用について</h3>
+                            <p data-i18n="terms.4.body">大会中の写真・動画は、弊社の広報活動（SNS）に使用いたします。</p>
+                        </div>
+                        <div class="terms-item" data-reveal>
+                            <h3 data-i18n="terms.5.title">5. 自己責任について</h3>
+                            <p data-i18n="terms.5.body">プレー中に起きた事故、怪我、熱中症、死亡事故等に関しては全て自己責任となります。Fantasista Cupは一切の責任を負いかねます。</p>
+                        </div>
+                        <div class="terms-item" data-reveal>
+                            <h3 data-i18n="terms.6.title">6. キャンセル規定</h3>
+                            <p data-i18n="terms.6.body">・無料期間： 大会開催日「22日前12:00（昼）」まで。
+・料金全額（100%）発生： 上記の期限を過ぎた場合。
+※理由の如何（メンバー不足、怪我等）に関わらず、参加費全額を指定口座へのお振り込みにてお支払いいただきます。
+
+無断キャンセルが発生した場合、違約金（参加費全額）の即時請求を行います。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 競技別（SOCCER/FUTSAL/SOCIETY/PK）カルーセル：タブの定義はJS側のSPORT_TABS配列で一元管理しており、
+             将来の競技追加時はその配列に1件追加するだけで済む構造にしてある -->
+        <section id="sport-tabs" class="section sport-carousel-section">
+            <div class="container" data-reveal>
+                <h2 class="section-title">DISCIPLINES<span class="sr-only">｜競技別ラインナップ（サッカー・フットサル・ソサイチ・PK大会）</span></h2>
+                <div class="sport-carousel-frame" id="sportCarouselFrame">
+                    <div class="sport-tabs-nav" id="sportTabsNav" role="tablist" aria-label="競技を選択">
+                        <span class="sport-tab-indicator" id="sportTabIndicator"></span>
+                    </div>
+                    <div class="sport-panels" id="sportPanels"></div>
+                </div>
+            </div>
+        </section>
+
+        <!--
+        RULES SECTION（PK大会追加に伴うサイト再設計により削除。中身は各競技タブ内の
+        RULEプレースホルダーへ転記予定のため、コード上にコメントアウトで保持しておく。
+        HTMLコメントは入れ子にできないため、元コード中の内部コメント（勝ち点システム／
+        中間の飾り線／注意事項）は削除してある。
+
+        <section id="rules" class="section">
+            <div class="container">
+                <h2 class="section-title">RULES<span class="sr-only">｜大会ルール（11人制サッカー競技規則）</span></h2>
+                <div class="luxury-frame">
+                    <div class="rules-block">
+                        <h3 class="sub-title" data-i18n="rules.pointsTitle">勝ち点システム</h3>
+                        <ul class="points-list">
+                            <li><span class="condition" data-i18n="rules.point.win">規定時間での勝利</span><span class="points-value">3 <span class="unit" data-i18n="rules.point.unit">点</span></span></li>
+                            <li><span class="condition" data-i18n="rules.point.pkWin">PK戦での勝利</span><span class="points-value">2 <span class="unit" data-i18n="rules.point.unit">点</span></span></li>
+                            <li><span class="condition" data-i18n="rules.point.pkLose">PK戦での敗戦</span><span class="points-value">1 <span class="unit" data-i18n="rules.point.unit">点</span></span></li>
+                            <li><span class="condition" data-i18n="rules.point.lose">規定時間での敗戦</span><span class="points-value">0 <span class="unit" data-i18n="rules.point.unit">点</span></span></li>
+                        </ul>
+                    </div>
+
+                    <div class="rules-separator"></div>
+
+                    <div class="rules-block">
+                        <h3 class="sub-title" data-i18n="rules.warningTitle">注意事項</h3>
+                        <ul class="warning-list">
+                            <li><span class="warning-bullet">■</span><span class="warning-text" data-i18n="rules.warning1">レガース（すね当て）着用必須</span></li>
+                            <li><span class="warning-bullet">■</span><span class="warning-text" data-i18n="rules.warning2">激しいチャージ禁止</span></li>
+                            <li><span class="warning-bullet">■</span><span class="warning-text" data-i18n="rules.warning3">固定式スパイク着用可能</span></li>
+                            <li><span class="warning-bullet">■</span><span class="warning-text" data-i18n="rules.warning4">交代人数は1試合につき5名まで</span></li>
+                            <li><span class="warning-bullet">■</span><span class="warning-text" data-i18n="rules.warning5">試合時間は参加チーム数により<br class="br-sp">変更となる場合があります</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        -->
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="section">
+            <div class="container" data-reveal>
+                <h2 class="section-title">CONTACT<span class="sr-only">｜お問い合わせ・大会エントリー（奈良県サッカー大会）</span></h2>
+                <div class="luxury-frame">
+                    <div class="sns-flex-container">
+                        <a href="https://www.instagram.com/fantasista.cup_nara/" target="_blank" rel="noopener noreferrer" class="sns-emblem"><i class="fab fa-instagram"></i><span class="sns-label">Instagram</span></a>
+                        <a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer" class="sns-emblem"><i class="fab fa-line"></i><span class="sns-label" data-i18n="contact.lineLabel">大会公式LINE</span></a>
+                    </div>
+
+                    <!-- 👑 大会への申し込みはENTRYへ誘導し、CONTACTは問い合わせ専用であることを明示 -->
+                    <p class="contact-terms-notice" data-i18n="contact.entryRedirectNotice">大会への<strong>お申し込みは「<a href="#entry">ENTRY</a>」</strong>から承っております。こちらのフォームはお問い合わせ専用です。</p>
+
+                    <!-- Netlify用フォーム：リロードを防ぐためID（contactForm）を付与 -->
+                    <form name="contact" method="POST" data-netlify="true" class="contact-form" id="contactForm">
+                        <input type="hidden" name="form-name" value="contact">
+                        <div class="form-group">
+                            <label for="name" data-i18n="contact.repNameLabel">お名前</label>
+                            <input type="text" id="name" name="name" placeholder="例：山田 太郎" data-i18n-placeholder="contact.repNamePh" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="contact.emailLabel">メールアドレス</label>
+                            <input type="email" id="email" name="email" placeholder="例：example@email.com" data-i18n-placeholder="contact.emailPh" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" data-i18n="contact.phoneLabel">電話番号（任意）</label>
+                            <input type="tel" id="phone" name="phone" placeholder="例：090-1234-5678" data-i18n-placeholder="contact.phonePh">
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiry-type" data-i18n="contact.selectLabel">お問い合わせ内容</label>
+                            <select id="inquiry-type" name="inquiry-type" required>
+                                <option value="" disabled selected data-i18n="contact.selectPlaceholder">選択してください</option>
+                                <option value="大会について（ルール・日程など）" data-i18n="contact.inquiryGeneral">大会について（ルール・日程など）</option>
+                                <option value="参加費・お支払いについて" data-i18n="contact.inquiryPayment">参加費・お支払いについて</option>
+                                <option value="取材・協賛のご相談" data-i18n="contact.inquiryMedia">取材・協賛のご相談</option>
+                                <option value="その他" data-i18n="contact.inquiryOther">その他</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-i18n="contact.messageLabel">お問い合わせ詳細</label>
+                            <textarea id="message" name="message" rows="5" placeholder="ご記入ください" data-i18n-placeholder="contact.messagePh" required></textarea>
+                        </div>
+                        <div class="center-btn">
+                            <button type="submit" class="btn-submit" data-i18n="contact.submitBtn">送信する</button>
+                        </div>
+                    </form>
+
+                    <!-- 送信完了メッセージ領域（初期状態は非表示） -->
+                    <div id="successMessage" style="display: none; text-align: center; padding: 50px 20px;">
+                        <h2 id="successTitle" style="color: #aa7c11; font-size: 2rem; margin-bottom: 15px; letter-spacing: 0.05em;" data-i18n="contact.successTitle">送信されました。</h2>
+                        <p id="successBody" style="font-size: 1.1rem; color: var(--text-color); line-height: 1.8;" data-i18n="contact.successBody">お問い合わせありがとうございます。<br>内容を確認し、運営事務局よりご連絡いたします。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFORMATION SECTION -->
+        <section id="info" class="section">
+            <div class="container" data-reveal>
+                <h2 class="section-title">INFORMATION<span class="sr-only">｜運営者情報（Fantasista Cup 運営事務局）</span></h2>
+                <div class="info-list">
+                    <div class="info-row">
+                        <div class="info-label" data-i18n="info.orgLabel">団体名</div>
+                        <div class="info-value">Fantasista Cup 運営事務局</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label" data-i18n="info.repLabel">代表者</div>
+                        <div class="info-value">加藤 大空</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label" data-i18n="info.telLabel">電話番号</div>
+                        <div class="info-value">080-2548-1959</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Mail</div>
+                        <div class="info-value"><a href="mailto:fantasista.cup.soccer@gmail.com" style="color: var(--navy-dark); text-decoration: none;">fantasista.cup.soccer@gmail.com</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <ul class="footer-links">
+            <li><a href="#concept">CONCEPT</a></li>
+            <li><a href="#entry">ENTRY</a></li>
+            <li><a href="blog.html">BLOG</a></li>
+            <li><a href="#terms">TERMS</a></li>
+            <li><a href="#sport-tabs">DISCIPLINES</a></li>
+            <li><a href="staff.html">RECRUIT</a></li>
+            <li><a href="sponsor.html">SPONSOR</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+            <li><a href="#info">INFORMATION</a></li>
+            <li><a href="faq.html">Q&amp;A</a></li>
+        </ul>
+        <div class="footer-brand">
+            <img src="rogo.png" alt="Fantasista Cup ロゴ" class="footer-logo">
+            <p class="footer-org">Fantasista Cup<span class="sr-only">運営事務局（奈良県橿原市のサッカー大会）</span></p>
+        </div>
+        <p>&copy; 2026 Fantasista Cup All Rights Reserved.</p>
+        <p class="footer-legal-link"><a href="tokushoho.html">特定商取引法に基づく表記</a></p>
+    </footer>
+
+    <!-- 全スクリプト制御 -->
+    <script>
+        // アコーディオン（DISCIPLINESセクション内のARCHIVEなど、後からJSで動的追加される
+        // アコーディオンにも同じ開閉挙動を効かせられるよう、再実行可能な関数にしてある）
+        function setupAccordions(root) {
+            (root || document).querySelectorAll('.accordion-header').forEach(header => {
+                if (header.dataset.accordionBound === '1') return; // 二重登録防止
+                header.dataset.accordionBound = '1';
+                const item = header.parentElement;
+                const content = header.nextElementSibling;
+                if (item.classList.contains('active') && content) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+
+                header.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    if (isActive) {
+                        item.classList.remove('active');
+                        if (content) content.style.maxHeight = null;
+                    } else {
+                        item.classList.add('active');
+                        if (content) content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+        }
+        window.fcSetupAccordions = setupAccordions;
+        setupAccordions();
+
+        // 👑 ENTRYセクション：募集中の大会一覧をSupabaseから直接取得して表示
+        // （エントリーサイト https://fantasista-cup-admin.netlify.app と同じデータソース）
+        (function () {
+            const SUPABASE_URL = "https://hpxirfvkcspwrktjlraz.supabase.co";
+            const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhweGlyZnZrY3Nwd3JrdGpscmF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY5NzkxNjksImV4cCI6MjEwMjU1NTE2OX0.d_nA76uzMrrlTcVr9ZeiERHb8MNf7tij6rHRuuOVn7M";
+            const ENTRY_APP_BASE = "https://fantasista-cup-admin.netlify.app";
+
+            async function fetchOpenTournaments() {
+                const res = await fetch(
+                    SUPABASE_URL + "/rest/v1/tournaments?select=*&status=eq." + encodeURIComponent("募集中") + "&order=event_date.asc.nullslast",
+                    { headers: { apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + SUPABASE_ANON_KEY } }
+                );
+                if (!res.ok) throw new Error("failed to fetch tournaments");
+                return res.json();
+            }
+
+            // 大会一覧の検索・絞り込み条件を読み取る
+            function getEntryFilters() {
+                const byId = (id) => document.getElementById(id);
+                return {
+                    keyword: ((byId("entryFilterKeyword") || {}).value || "").trim().toLowerCase(),
+                    sport: (byId("entryFilterSport") || {}).value || "",
+                    area: (byId("entryFilterArea") || {}).value || "",
+                    dateFrom: (byId("entryFilterDateFrom") || {}).value || "",
+                    dateTo: (byId("entryFilterDateTo") || {}).value || ""
+                };
+            }
+
+            // 指定した1軸（skip）以外の条件だけで一致するかを判定する
+            // （他の絞り込み条件のもとで、そのプルダウンの各選択肢が該当0件になるかを調べるために使う）
+            function matchesEntryFiltersExcept(tournament, f, skip) {
+                if (skip !== "sport" && f.sport && tournament.sport_category !== f.sport) return false;
+                if (skip !== "area" && f.area && (tournament.venue_address || "").indexOf(f.area) === -1) return false;
+                if (skip !== "keyword" && f.keyword) {
+                    const haystack = ((tournament.name || "") + " " + (tournament.venue || "")).toLowerCase();
+                    if (haystack.indexOf(f.keyword) === -1) return false;
+                }
+                if (skip !== "date" && (f.dateFrom || f.dateTo)) {
+                    if (!tournament.event_date) return false;
+                    if (f.dateFrom && tournament.event_date < f.dateFrom) return false;
+                    if (f.dateTo && tournament.event_date > f.dateTo) return false;
+                }
+                return true;
+            }
+
+            function applyEntryFilters(list) {
+                const f = getEntryFilters();
+                return list.filter(({ tournament }) => matchesEntryFiltersExcept(tournament, f, null));
+            }
+
+            // 絞り込みボタンに、条件が設定されている数をバッジ表示する
+            function updateEntryFilterCount() {
+                const f = getEntryFilters();
+                const count = [f.keyword, f.sport, f.area, (f.dateFrom || f.dateTo)].filter(Boolean).length;
+                const badge = document.getElementById("entryFilterCount");
+                if (!badge) return;
+                if (count > 0) {
+                    badge.textContent = String(count);
+                    badge.style.display = "inline-flex";
+                } else {
+                    badge.style.display = "none";
+                }
+            }
+
+            // 他の条件のもとで該当0件になるプルダウンの選択肢を選択不可にする
+            function updateEntryFilterOptionAvailability() {
+                if (cachedTournaments === null) return;
+                const f = getEntryFilters();
+
+                const sportSelect = document.getElementById("entryFilterSport");
+                if (sportSelect) {
+                    const availableSports = {};
+                    cachedTournaments.forEach(function (item) {
+                        if (matchesEntryFiltersExcept(item.tournament, f, "sport")) {
+                            availableSports[item.tournament.sport_category] = true;
+                        }
+                    });
+                    [].slice.call(sportSelect.options).forEach(function (opt) {
+                        if (!opt.value) return; // 「すべてのスポーツ」は常に選択可
+                        opt.disabled = !availableSports[opt.value];
+                    });
+                }
+
+                const areaSelect = document.getElementById("entryFilterArea");
+                if (areaSelect) {
+                    const venueAddresses = cachedTournaments
+                        .filter(function (item) { return matchesEntryFiltersExcept(item.tournament, f, "area"); })
+                        .map(function (item) { return item.tournament.venue_address || ""; });
+                    [].slice.call(areaSelect.options).forEach(function (opt) {
+                        if (!opt.value) return; // 「すべてのエリア」は常に選択可
+                        opt.disabled = !venueAddresses.some(function (v) { return v.indexOf(opt.value) !== -1; });
+                    });
+                }
+            }
+
+            function setupEntryFilters() {
+                const bar = document.getElementById("entryFilterBar");
+                const toggle = document.getElementById("entryFilterToggle");
+                const closeBtn = document.getElementById("entryFilterClose");
+                if (!bar || !toggle || !closeBtn) return;
+
+                ["entryFilterKeyword", "entryFilterSport", "entryFilterArea", "entryFilterDateFrom", "entryFilterDateTo"].forEach(function (id) {
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    el.addEventListener("input", function () {
+                        updateEntryFilterCount();
+                        updateEntryFilterOptionAvailability();
+                        renderEntryList();
+                    });
+                });
+
+                toggle.addEventListener("click", function () {
+                    bar.classList.add("is-open");
+                });
+                closeBtn.addEventListener("click", function () {
+                    bar.classList.remove("is-open");
+                });
+            }
+
+            async function fetchRemaining(tournamentId) {
+                const res = await fetch(SUPABASE_URL + "/rest/v1/rpc/tournament_remaining_slots", {
+                    method: "POST",
+                    headers: {
+                        apikey: SUPABASE_ANON_KEY,
+                        Authorization: "Bearer " + SUPABASE_ANON_KEY,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ p_tournament_id: tournamentId })
+                });
+                if (!res.ok) return null;
+                return res.json();
+            }
+
+            // 現在の言語辞書から文言を取得（日本語の場合はfcDictがnullなのでfallbackを使う）
+            function t(key, fallback) {
+                return (window.fcDict && window.fcDict[key]) || fallback;
+            }
+
+            // 「5/23 17:00-21:00」のような表示形式。開始・終了時刻が未設定の場合は日付のみ表示する
+            function formatDateTime(dateStr, startTime, endTime) {
+                if (!dateStr) return t("entry.dateTBD", "開催日未定");
+                const parts = dateStr.split("-");
+                const md = parseInt(parts[1], 10) + "/" + parseInt(parts[2], 10);
+                if (startTime && endTime) {
+                    return md + " " + startTime.slice(0, 5) + "-" + endTime.slice(0, 5);
+                }
+                return md;
+            }
+
+            function renderCard(tournament, remaining) {
+                const isFull = remaining !== null && remaining <= 0;
+                const remainingHtml = remaining === null
+                    ? ""
+                    : '<p class="entry-card-remaining"><span class="num' + (isFull ? " full" : "") + '">' + t("entry.remainingPrefix", "残り") + ' ' + remaining + '</span><span class="unit"> / ' + tournament.capacity + ' ' + t("entry.teamsUnit", "チーム") + '</span></p>';
+
+                const wrap = document.createElement("div");
+                wrap.className = "entry-card";
+                wrap.innerHTML =
+                    '<div class="entry-card-info">' +
+                        '<p class="entry-card-date"></p>' +
+                        '<h3 class="entry-card-title"></h3>' +
+                        '<p class="entry-card-venue"></p>' +
+                    '</div>' +
+                    '<div class="entry-card-actions">' +
+                        remainingHtml +
+                        '<a href="' + ENTRY_APP_BASE + '/apply/' + tournament.id + '" target="_blank" rel="noopener noreferrer" class="btn-action">' + (isFull ? t("entry.waitlistBtn", "キャンセル待ちに申し込む") : t("entry.applyBtn", "この大会に申し込む")) + '</a>' +
+                    '</div>';
+
+                // 大会名・会場名はユーザー入力値のため、XSS対策としてtextContentで安全に挿入する
+                wrap.querySelector(".entry-card-date").textContent = formatDateTime(tournament.event_date, tournament.event_start_time, tournament.event_end_time);
+                wrap.querySelector(".entry-card-title").textContent = tournament.name;
+                wrap.querySelector(".entry-card-venue").textContent = tournament.venue || t("entry.venueTBD", "会場未定");
+
+                return wrap;
+            }
+
+            // 取得済みの大会データをキャッシュしておき、言語切り替え時は再取得せず再描画するだけにする
+            let cachedTournaments = null;
+
+            function renderEntryList() {
+                const listEl = document.getElementById("entryTournamentList");
+                if (!listEl || cachedTournaments === null) return;
+                if (cachedTournaments.length === 0) {
+                    listEl.innerHTML = '<p style="text-align:center; color:var(--text-faint);">' + t("entry.empty", "現在募集中の大会はありません。") + '</p>';
+                    return;
+                }
+                const filtered = applyEntryFilters(cachedTournaments);
+                if (filtered.length === 0) {
+                    listEl.innerHTML = '<p style="text-align:center; color:var(--text-faint);">条件に一致する大会が見つかりませんでした。</p>';
+                    return;
+                }
+                listEl.innerHTML = "";
+                filtered.forEach(({ tournament, remaining }) => {
+                    listEl.appendChild(renderCard(tournament, remaining));
+                });
+            }
+
+            async function loadEntryTournaments() {
+                const listEl = document.getElementById("entryTournamentList");
+                if (!listEl) return;
+                try {
+                    const tournaments = await fetchOpenTournaments();
+                    const results = [];
+                    for (const tournament of tournaments) {
+                        const remaining = await fetchRemaining(tournament.id);
+                        results.push({ tournament, remaining });
+                    }
+                    cachedTournaments = results;
+                    updateEntryFilterOptionAvailability();
+                    renderEntryList();
+                    if (typeof window.refreshSportTabPanels === "function") window.refreshSportTabPanels();
+                } catch (err) {
+                    // 取得に失敗しても、下にある「エントリーサイトを開く」ボタンは常に表示されているため、
+                    // ここでは読み込み中表示を静かに消すだけに留める
+                    cachedTournaments = [];
+                    listEl.innerHTML = "";
+                    if (typeof window.refreshSportTabPanels === "function") window.refreshSportTabPanels();
+                }
+            }
+
+            // ==========================================================================
+            // 👑 競技別（SOCCER/FUTSAL/SOCIETY/PK）カルーセル
+            // タブの定義は下のSPORT_TABS配列で一元管理しており、将来の競技追加時は
+            // この配列に1件追加するだけで済む（HTML側は空のコンテナのみで、中身は
+            // すべてこの配列からJSで組み立てる）。
+            // 大会カード自体はENTRY一覧と同じ cachedTournaments / renderCard() を
+            // そのまま再利用し、検索・絞り込みUIは表示せずスポーツ種別だけで固定絞り込みする。
+            // ==========================================================================
+            // PK大会のRULEカテゴリ（カテゴリ名・項目・順序は指定文言のまま）。
+            // 他競技のルールが確定した際も、同じ形の配列をtabに追加するだけで済む。
+            // SOCCERタブのARCHIVE（旧ARCHIVEセクションのVol.1／Vol.2をそのまま移設）。
+            // status: "completed" は優勝チーム・景品・写真を、"failed" は中止メッセージを表示する。
+            var SOCCER_ARCHIVE_VOLUMES = [
+                {
+                    vol: "Vol.1",
+                    status: "completed",
+                    championName: "El Mago City",
+                    awardsText: "3種から選べる「大和牛1.2kgセット」",
+                    photoSrc: "Vol.1優勝チーム.jpg",
+                    photoAlt: "Vol.1 優勝チーム El Mago City"
+                },
+                {
+                    vol: "Vol.2",
+                    status: "failed",
+                    failedMessage: "大会は中止・開催見送りとなりました。"
+                }
+            ];
+
+            var PK_RULE_CATEGORIES = [
+                {
+                    title: "エントリー・登録について",
+                    items: [
+                        "登録は1チーム5名となります。途中のメンバー変更はできません。",
+                        "競技中、審判よりメンバーの確認をさせていただく場合がございますので、メンバーの方は身分証明書（顔写真付き）を持参してください。",
+                        "同一の方が2チーム以上に参加することは禁止とさせていただきます。",
+                        "6名以上でエントリー頂いたチームも、試合ごとに5名を選出していただきます。サドンデスに突入した場合でも、選出した5名でその試合は続けていただきます。ゴールキーパーは必ず5名の中に含めていただきます。"
+                    ]
+                },
+                {
+                    title: "トーナメント・シードについて",
+                    items: [
+                        "参加チーム数によってトーナメントにシード枠を設けます。シード枠は申し込みが早い順に決定いたします。"
+                    ]
+                },
+                {
+                    title: "使用用具",
+                    items: [
+                        "少年用サッカーゴールを使用します。",
+                        "ボールは5号球を使用します。"
+                    ]
+                },
+                {
+                    title: "キック・判定ルール",
+                    items: [
+                        "本大会のPK戦は1本目からサドンデス方式で実施します。",
+                        "ゴールキーパーもキッカーを務めます。",
+                        "審判の合図から10秒以内にボールを蹴らなければPK失敗とします。",
+                        "ペナルティマーク上で静止していないボールを蹴った場合、PK失敗とします。",
+                        "キッカーは特定されなければなりません。",
+                        "キッカーはボールに2回以上触れた場合、失敗となります。",
+                        "延長戦（サドンデス継続）になった場合も、同じ順番で蹴らなければなりません。"
+                    ]
+                },
+                {
+                    title: "ゴールキーパーの反則",
+                    items: [
+                        "ゴールキーパーはキッカーが蹴るまで、どちらか片足がゴールラインを踏んでいなければ反則となります。",
+                        "ゴールキーパーに反則があった場合、またはゴールに入らなかった場合は、キッカーの蹴り直しとなります。"
+                    ]
+                },
+                {
+                    title: "出場人数について",
+                    items: [
+                        "試合予定時刻が早まるなど時間が変更となった場合でも、その時点で3名以上のメンバーが揃っていないと失格となります。",
+                        "1チーム3人以上いれば出場可能ですが、3人の場合は0-2、4人の場合は0-1の、負けている状態からのスタートとなります。"
+                    ]
+                },
+                {
+                    title: "試合終了について",
+                    items: [
+                        "勝敗が決まった時点で試合終了となります。",
+                        "ただし1回戦目に限り、勝敗が決していても5名全員が蹴り終えるまで続行します。"
+                    ]
+                }
+            ];
+
+            // SOCCERタブのRULE
+            var SOCCER_RULE_CATEGORIES = [
+                {
+                    title: "競技ルール",
+                    items: [
+                        "本大会は基本的に公式サッカールール（日本サッカー協会の競技規則）を適用します。",
+                        "交代枠は1試合につき5人までとします。",
+                        "大会独自のルールとして、通常の試合よりファウルの基準を厳しく適用します。",
+                        "大会中にレッドカードが提示された選手は、当該大会での以降の出場を禁止します。",
+                        "試合時間は参加チーム数により変動する場合があります。",
+                        "規定時間内に決着がつかない場合は、PK戦にて勝敗を決定します。"
+                    ]
+                },
+                {
+                    title: "勝ち点システム",
+                    items: [
+                        "規定時間での勝利：3点",
+                        "PK戦での勝利：2点",
+                        "PK戦での敗戦：1点",
+                        "規定時間での敗戦：0点"
+                    ]
+                }
+            ];
+
+            var SPORT_TABS = [
+                { id: "soccer", label: "SOCCER", type: "entry-list", sportCategory: "サッカー", archive: SOCCER_ARCHIVE_VOLUMES, ruleCategories: SOCCER_RULE_CATEGORIES },
+                { id: "futsal", label: "FUTSAL", type: "coming-soon" },
+                { id: "society", label: "SOCIETY", type: "coming-soon" },
+                { id: "pk", label: "PK", type: "entry-list", sportCategory: "PK大会", ruleCategories: PK_RULE_CATEGORIES }
+            ];
+
+            var SPORT_TAB_AUTO_MS = 3000;   // 各タブの自動停止時間
+            var SPORT_TAB_RESUME_MS = 6000; // 手動操作後、自動再生を再開するまでの待機時間
+
+            function renderSportPanelList(tabId, sportCategory) {
+                const listEl = document.getElementById("sportPanelList-" + tabId);
+                if (!listEl || cachedTournaments === null) return;
+                const filtered = cachedTournaments.filter(function (item) {
+                    return item.tournament.sport_category === sportCategory;
+                });
+                if (filtered.length === 0) {
+                    listEl.innerHTML = '<p class="sport-panel-empty">' + t("entry.empty", "現在募集中の大会はありません。") + '</p>';
+                    return;
+                }
+                listEl.innerHTML = "";
+                filtered.forEach(function (item) {
+                    listEl.appendChild(renderCard(item.tournament, item.remaining));
+                });
+            }
+
+            // ARCHIVEの1大会分（Vol.）のアコーディオン項目を組み立てる。
+            // 既存の.accordion-item/.accordion-header等のクラス名をそのまま使うことで、
+            // 開閉挙動（setupAccordions）や基本レイアウトCSSをそのまま再利用している。
+            function buildArchiveAccordionItem(vol) {
+                const item = document.createElement("div");
+                item.className = "accordion-item";
+
+                const header = document.createElement("div");
+                header.className = "accordion-header";
+                header.innerHTML =
+                    '<span class="vol-title">' + vol.vol + '</span>' +
+                    '<span class="badge ' + vol.status + '">' + (vol.status === "completed" ? "Result" : "Failed") + '</span>';
+                item.appendChild(header);
+
+                const content = document.createElement("div");
+                content.className = "accordion-content";
+                const contentInner = document.createElement("div");
+                contentInner.className = "accordion-content-inner sport-archive-content-inner";
+
+                if (vol.status === "completed") {
+                    contentInner.innerHTML =
+                        '<div class="sport-archive-highlight">' +
+                            '<h4 class="sport-archive-highlight-title">👑 CHAMPION</h4>' +
+                            '<p class="sport-archive-champion-name">' + vol.championName + '</p>' +
+                            '<h4 class="sport-archive-highlight-title">🎁 AWARDS</h4>' +
+                            '<p class="sport-archive-awards-desc">' + vol.awardsText + '</p>' +
+                        '</div>' +
+                        '<p class="sport-archive-photo-label">📷 TEAM PHOTO</p>' +
+                        '<div class="sport-archive-photo-frame"><img src="' + vol.photoSrc + '" alt="' + vol.photoAlt + '"></div>';
+                } else {
+                    contentInner.innerHTML = '<p class="sport-archive-failed-msg">' + vol.failedMessage + '</p>';
+                }
+
+                content.appendChild(contentInner);
+                item.appendChild(content);
+                return item;
+            }
+
+            // ARCHIVEブロックを1つ組み立てる（RULEセクションの直上に配置）。
+            // tab.archiveがあれば実データのアコーディオンを、なければ「Coming Soon…」を表示する。
+            function buildArchiveSection(tab) {
+                const archiveSection = document.createElement("div");
+                archiveSection.className = "sport-archive-section";
+
+                const archiveTitle = document.createElement("h3");
+                archiveTitle.className = "sport-rule-title";
+                archiveTitle.textContent = "ARCHIVE";
+                archiveSection.appendChild(archiveTitle);
+
+                if (tab.archive && tab.archive.length > 0) {
+                    const container = document.createElement("div");
+                    container.className = "accordion-container";
+                    tab.archive.forEach(function (vol) {
+                        container.appendChild(buildArchiveAccordionItem(vol));
+                    });
+                    archiveSection.appendChild(container);
+                } else {
+                    const placeholder = document.createElement("p");
+                    placeholder.className = "sport-rule-placeholder";
+                    placeholder.textContent = "Coming Soon…";
+                    archiveSection.appendChild(placeholder);
+                }
+
+                return archiveSection;
+            }
+
+            function buildSportTabs() {
+                const nav = document.getElementById("sportTabsNav");
+                const panelsRoot = document.getElementById("sportPanels");
+                const indicator = document.getElementById("sportTabIndicator");
+                if (!nav || !panelsRoot || !indicator) return null;
+
+                const buttons = [];
+                const panels = [];
+
+                SPORT_TABS.forEach(function (tab) {
+                    const btn = document.createElement("button");
+                    btn.type = "button";
+                    btn.className = "sport-tab-btn";
+                    btn.textContent = tab.label;
+                    btn.id = "sportTabBtn-" + tab.id;
+                    btn.setAttribute("role", "tab");
+                    btn.setAttribute("aria-selected", "false");
+                    btn.setAttribute("aria-controls", "sportPanel-" + tab.id);
+                    nav.insertBefore(btn, indicator);
+                    buttons.push(btn);
+
+                    const panel = document.createElement("div");
+                    panel.className = "sport-panel";
+                    panel.id = "sportPanel-" + tab.id;
+                    panel.setAttribute("role", "tabpanel");
+                    panel.setAttribute("aria-labelledby", btn.id);
+
+                    const inner = document.createElement("div");
+                    inner.className = "sport-panel-inner";
+
+                    if (tab.type === "entry-list") {
+                        const list = document.createElement("div");
+                        list.className = "sport-panel-list";
+                        list.id = "sportPanelList-" + tab.id;
+                        list.innerHTML = '<p class="sport-panel-loading">' + t("entry.loadingText", "読み込み中...") + '</p>';
+                        inner.appendChild(list);
+                    } else {
+                        const comingSoon = document.createElement("p");
+                        comingSoon.className = "sport-coming-soon";
+                        comingSoon.textContent = "Coming Soon…";
+                        inner.appendChild(comingSoon);
+                    }
+
+                    inner.appendChild(buildArchiveSection(tab));
+
+                    const ruleSection = document.createElement("div");
+                    ruleSection.className = "sport-rule-section";
+
+                    const ruleTitle = document.createElement("h3");
+                    ruleTitle.className = "sport-rule-title";
+                    ruleTitle.textContent = "RULE";
+                    ruleSection.appendChild(ruleTitle);
+
+                    if (tab.ruleCategories && tab.ruleCategories.length > 0) {
+                        // TERMSセクションの「固定高さ＋内部スクロール」枠（.terms-container）と
+                        // 同じ仕組みを踏襲したスクロールボックス（配色のみダーク背景向けに調整）
+                        const scrollBox = document.createElement("div");
+                        scrollBox.className = "sport-rule-scroll";
+                        tab.ruleCategories.forEach(function (category) {
+                            const categoryEl = document.createElement("div");
+                            categoryEl.className = "sport-rule-category";
+
+                            const categoryTitle = document.createElement("h4");
+                            categoryTitle.className = "sport-rule-category-title";
+                            categoryTitle.textContent = category.title;
+                            categoryEl.appendChild(categoryTitle);
+
+                            const list = document.createElement("ul");
+                            list.className = "sport-rule-list";
+                            category.items.forEach(function (itemText) {
+                                const li = document.createElement("li");
+                                const bullet = document.createElement("span");
+                                bullet.className = "sport-rule-bullet";
+                                bullet.textContent = "■";
+                                bullet.setAttribute("aria-hidden", "true");
+                                const text = document.createElement("span");
+                                text.className = "sport-rule-item-text";
+                                text.textContent = itemText;
+                                li.appendChild(bullet);
+                                li.appendChild(text);
+                                list.appendChild(li);
+                            });
+                            categoryEl.appendChild(list);
+                            scrollBox.appendChild(categoryEl);
+                        });
+                        ruleSection.appendChild(scrollBox);
+                    } else {
+                        const placeholder = document.createElement("p");
+                        placeholder.className = "sport-rule-placeholder";
+                        placeholder.textContent = "準備中です。大会ルールが決まり次第、こちらに掲載いたします。";
+                        ruleSection.appendChild(placeholder);
+                    }
+                    inner.appendChild(ruleSection);
+
+                    panel.appendChild(inner);
+                    panelsRoot.appendChild(panel);
+                    panels.push(panel);
+                });
+
+                return { buttons: buttons, panels: panels, indicator: indicator, panelsRoot: panelsRoot };
+            }
+
+            function setupSportCarousel() {
+                const refs = buildSportTabs();
+                if (!refs) return;
+                const buttons = refs.buttons;
+                const panels = refs.panels;
+                const indicator = refs.indicator;
+                const panelsRoot = refs.panelsRoot;
+                if (typeof window.fcSetupAccordions === "function") window.fcSetupAccordions(panelsRoot);
+                const sectionEl = document.getElementById("sport-tabs");
+                const transitionOverlayEl = document.getElementById("sportTransitionOverlay");
+                const reduceMotionMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+                let activeIndex = 0;
+                let autoTimer = null;
+                let resumeTimer = null;
+                let inView = !("IntersectionObserver" in window); // ObserverがなければCSS的には常時表示扱い
+
+                // タブ切り替え時に、画面全体にゴールドのオーバーレイ演出を一瞬走らせる
+                function triggerTransitionOverlay() {
+                    if (!transitionOverlayEl || reduceMotionMQ.matches) return;
+                    transitionOverlayEl.classList.remove("is-active");
+                    void transitionOverlayEl.offsetWidth; // 強制リフローでアニメーションを毎回リトリガーする
+                    transitionOverlayEl.classList.add("is-active");
+                }
+
+                function moveIndicator() {
+                    const btn = buttons[activeIndex];
+                    if (!indicator || !btn) return;
+                    indicator.style.width = btn.offsetWidth + "px";
+                    indicator.style.transform = "translateX(" + btn.offsetLeft + "px)";
+                }
+
+                function updateHeight() {
+                    const active = panels[activeIndex];
+                    if (!active || !panelsRoot) return;
+                    panelsRoot.style.height = active.scrollHeight + "px";
+                }
+
+                function renderPanelIfNeeded(index) {
+                    const tab = SPORT_TABS[index];
+                    if (tab.type !== "entry-list") return;
+                    renderSportPanelList(tab.id, tab.sportCategory);
+                }
+
+                function goToIndex(targetIndexRaw) {
+                    const len = SPORT_TABS.length;
+                    const targetIndex = ((targetIndexRaw % len) + len) % len;
+                    if (targetIndex === activeIndex) return;
+
+                    const diff = (targetIndex - activeIndex + len) % len;
+                    const forward = diff <= len / 2;
+
+                    triggerTransitionOverlay();
+
+                    const outgoing = panels[activeIndex];
+                    const incoming = panels[targetIndex];
+
+                    outgoing.classList.remove("active");
+                    outgoing.classList.add(forward ? "leave-forward" : "leave-back");
+
+                    incoming.classList.remove("leave-forward", "leave-back", "enter-back");
+                    if (!forward) incoming.classList.add("enter-back");
+
+                    // 1フレーム後にactiveへ切り替え、CSSトランジションを確実に発火させる
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(function () {
+                            incoming.classList.remove("enter-back");
+                            incoming.classList.add("active");
+                        });
+                    });
+
+                    window.setTimeout(function () {
+                        outgoing.classList.remove("leave-forward", "leave-back");
+                    }, 600);
+
+                    buttons[activeIndex].classList.remove("active");
+                    buttons[activeIndex].setAttribute("aria-selected", "false");
+                    buttons[targetIndex].classList.add("active");
+                    buttons[targetIndex].setAttribute("aria-selected", "true");
+
+                    activeIndex = targetIndex;
+                    moveIndicator();
+                    renderPanelIfNeeded(activeIndex);
+                    requestAnimationFrame(updateHeight);
+                }
+
+                function maybeStartAutoplay() {
+                    if (autoTimer) return;
+                    if (reduceMotionMQ.matches) return;
+                    if (!inView || document.hidden) return;
+                    autoTimer = window.setInterval(function () {
+                        goToIndex(activeIndex + 1);
+                    }, SPORT_TAB_AUTO_MS);
+                }
+
+                function stopAutoplay() {
+                    if (autoTimer) {
+                        window.clearInterval(autoTimer);
+                        autoTimer = null;
+                    }
+                }
+
+                function registerManualInteraction() {
+                    stopAutoplay();
+                    if (resumeTimer) window.clearTimeout(resumeTimer);
+                    resumeTimer = window.setTimeout(maybeStartAutoplay, SPORT_TAB_RESUME_MS);
+                }
+
+                buttons.forEach(function (btn, i) {
+                    btn.addEventListener("click", function () {
+                        registerManualInteraction();
+                        goToIndex(i);
+                    });
+                });
+
+                // スワイプ操作（タッチ）
+                let touchStartX = null;
+                panelsRoot.addEventListener("touchstart", function (e) {
+                    touchStartX = e.touches[0].clientX;
+                }, { passive: true });
+                panelsRoot.addEventListener("touchend", function (e) {
+                    if (touchStartX === null) return;
+                    const dx = e.changedTouches[0].clientX - touchStartX;
+                    touchStartX = null;
+                    if (Math.abs(dx) < 40) return;
+                    registerManualInteraction();
+                    goToIndex(activeIndex + (dx < 0 ? 1 : -1));
+                }, { passive: true });
+
+                window.addEventListener("resize", function () {
+                    moveIndicator();
+                    updateHeight();
+                });
+
+                if ("IntersectionObserver" in window && sectionEl) {
+                    const io = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            inView = entry.isIntersecting;
+                            if (inView) maybeStartAutoplay(); else stopAutoplay();
+                        });
+                    }, { threshold: 0.2 });
+                    io.observe(sectionEl);
+                }
+
+                document.addEventListener("visibilitychange", function () {
+                    if (document.hidden) stopAutoplay(); else maybeStartAutoplay();
+                });
+
+                // 初期表示（トランジションなしで即時表示）
+                panels[0].classList.add("active");
+                buttons[0].classList.add("active");
+                buttons[0].setAttribute("aria-selected", "true");
+                moveIndicator();
+                renderPanelIfNeeded(0);
+                requestAnimationFrame(updateHeight);
+                maybeStartAutoplay();
+
+                // データ取得完了・言語切り替え時に再描画できるよう公開
+                window.refreshSportTabPanels = function () {
+                    SPORT_TABS.forEach(function (tab) {
+                        if (tab.type === "entry-list") renderSportPanelList(tab.id, tab.sportCategory);
+                    });
+                    requestAnimationFrame(updateHeight);
+                };
+            }
+
+            // 言語切り替え時に再描画できるよう、グローバルに公開しておく
+            window.refreshEntryTournamentList = function () {
+                renderEntryList();
+                if (typeof window.refreshSportTabPanels === "function") window.refreshSportTabPanels();
+            };
+
+            window.addEventListener("DOMContentLoaded", function () {
+                setupEntryFilters();
+                setupSportCarousel();
+                loadEntryTournaments();
+            });
+        })();
+
+        // 👑【最重要修正】リロードと自動トップスクロールを完全に封じ込める送信プログラム
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // 何があってもまず最優先でページリロードをブロック
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            // 多重送信防止のためにボタンを一時的に「送信中...」にして無効化
+            const submitBtn = form.querySelector('.btn-submit');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerText = (window.fcDict && window.fcDict['contact.sending']) || "送信中...";
+            }
+
+            // Netlifyサーバーへ裏側でデータを通信
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                // 送信成功時：フォームを非表示にして「送信されました。」を表示
+                form.style.display = "none";
+                document.getElementById("successMessage").style.display = "block";
+            })
+            .catch(() => {
+                // ローカルPC環境などのテストでエラー（catch）になった場合でもリロードは絶対にさせない
+                // 制作確認用にその場で「送信されました。」の画面に綺麗に切り替えます
+                form.style.display = "none";
+                document.getElementById("successMessage").style.display = "block";
+            });
+        });
+
+        // スクロールスパイ（目次自動発光プログラム）
+        window.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const navbar = document.querySelector('.navbar');
+
+            // 👑 ナビバーの高さをCSS変数に反映し、アンカー着地位置とハイライト判定のズレを解消
+            function syncNavbarHeight() {
+                const navbarHeight = navbar ? navbar.offsetHeight : 110;
+                document.documentElement.style.setProperty('--navbar-height', navbarHeight + 'px');
+                return navbarHeight;
+            }
+
+            function scrollSpy() {
+                const navbarHeight = syncNavbarHeight();
+                const scrollPos = window.scrollY + navbarHeight + 1;
+                navLinks.forEach(link => link.classList.remove('active'));
+                sections.forEach(section => {
+                    if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+                        navLinks.forEach(link => {
+                            if (link.getAttribute('href') === `#${section.id}`) link.classList.add('active');
+                        });
+                    }
+                });
+            }
+
+            syncNavbarHeight();
+            window.addEventListener('scroll', scrollSpy);
+            window.addEventListener('resize', syncNavbarHeight);
+            scrollSpy();
+        });
+
+        // ==========================================
+        // 🌐 多言語切り替え機能
+        // ==========================================
+        (function () {
+            const translations = {
+                en: {
+                    'hero.title': 'A stage where adults<br class="br-sp"> can cheer with pure passion',
+                    'hero.cta': 'Join the Tournament',
+                    'concept.text': 'Fantasista Cup offers a new kind of<br class="br-sp"> soccer tournament, where competitive<br class="br-sp"> quality and the spirit of enjoyment<br class="br-sp"> come together.',
+                    'schedule.dateLabel': 'Date &amp; Time',
+                    'schedule.venueLabel': 'Venue',
+                    'schedule.giftLabel': 'Special Prizes',
+                    'schedule.vol1.date': 'May 23, 2026 (Sat) 17:00–21:00 【Completed】',
+                    'schedule.vol1.resultBtn': 'View Results &amp; Gallery',
+                    'schedule.vol2.date': 'August 8, 2026 (Sat) 17:00–21:00',
+                    'schedule.vol2.gift': '🎁 Coming soon (Nara\'s famous yakiniku dining vouchers, soccer shop gift cards, and more planned)',
+                    'schedule.vol3.countPrefix': 'Only',
+                    'schedule.vol3.countSuffix': ' / 5 spots remaining',
+                    'schedule.vol3.entryBtn': 'Enter This Tournament',
+                    'schedule.vol3.waitlistEntryBtn': 'Join the Waitlist',
+                    'schedule.vol3.full': 'Full',
+                    'archive.awardsDesc': 'Choice of 3 "Yamato Beef 1.2kg Set" prizes',
+                    'archive.vol2.failedMsg': 'The tournament was cancelled / postponed indefinitely.',
+                    'rules.pointsTitle': 'Points System',
+                    'rules.point.win': 'Win in Regulation Time',
+                    'rules.point.pkWin': 'Win via Penalty Shootout',
+                    'rules.point.pkLose': 'Loss via Penalty Shootout',
+                    'rules.point.lose': 'Loss in Regulation Time',
+                    'rules.point.unit': 'pts',
+                    'rules.warningTitle': 'Important Notes',
+                    'rules.warning1': 'Shin guards are mandatory',
+                    'rules.warning2': 'No aggressive/dangerous charging',
+                    'rules.warning3': 'Fixed (metal) studs are allowed',
+                    'rules.warning4': 'Up to 5 substitutions per match',
+                    'rules.warning5': 'Match duration may change<br class="br-sp"> depending on the number of participating teams',
+                    'terms.1.title': '1. Competition Rules and Officiating',
+                    'terms.1.body': 'This tournament follows the rules of the game established by the JFA (Japan Football Association), but the tournament\'s own local rules take priority.',
+                    'terms.2.title': '2. Liability for Accidents and Injuries',
+                    'terms.2.body': 'We are not liable for any injuries, accidents, theft, or other incidents occurring during the tournament.',
+                    'terms.3.title': '3. Facility Usage Guidelines',
+                    'terms.3.body': 'Please comply with the facility\'s rules.',
+                    'terms.4.title': '4. Use of Photos and Videos',
+                    'terms.4.body': 'Photos and videos taken during the tournament will be used for our promotional activities (social media).',
+                    'terms.5.title': '5. Personal Responsibility',
+                    'terms.5.body': 'Any accidents, injuries, heatstroke, or fatal incidents that occur during play are entirely the participant\'s own responsibility. Fantasista Cup accepts no liability whatsoever.',
+                    'terms.6.title': '6. Cancellation Policy',
+                    'terms.6.body': '・Free cancellation period: Until 12:00 (noon) 22 days before the tournament date.\n・Full charge (100%): If cancelled after the above deadline.\n※Regardless of the reason (lack of members, injury, etc.), the full participation fee must be paid via bank transfer to the designated account.\n\nIn the case of a no-show cancellation, we will immediately charge a penalty fee (the full participation fee).',
+                    'entry.loadingText': 'Loading...',
+                    'entry.description': 'Log in with your Google account to check your entry status on My Page.<br class="br-sp"> Before applying, please be sure to check the entry fee, cancellation policy, and other tournament details under <a href="#terms">"TERMS"</a>.',
+                    'entry.openSiteBtn': 'Open Entry Site (Tournaments &amp; My Page)',
+                    'entry.dateTBD': 'Date TBD',
+                    'entry.venueTBD': 'Venue TBD',
+                    'entry.remainingPrefix': 'Only',
+                    'entry.teamsUnit': 'spots left',
+                    'entry.applyBtn': 'Apply for This Tournament',
+                    'entry.waitlistBtn': 'Join the Waitlist',
+                    'entry.empty': 'There are no tournaments open for entry right now.',
+                    'entry.steps.heading': 'Steps to Enter the Tournament',
+                    'entry.steps.s1.title': 'Find Your Stage',
+                    'entry.steps.s1.desc': 'Check the tournaments currently open in Nara.',
+                    'entry.steps.s2.title': 'Send Your Challenge',
+                    'entry.steps.s2.desc': "Register your team's details on the entry site.",
+                    'entry.steps.s3.title': 'Add Our Official LINE',
+                    'entry.steps.s3.desc': 'All updates and day-of announcements are sent via our official LINE.',
+                    'entry.steps.lineBtn': 'Add Official LINE',
+                    'entry.steps.s4.title': 'Receive Your Invitation',
+                    'entry.steps.s4.desc': 'Our staff will send the entry fee and further details via LINE.',
+                    'entry.steps.s5.title': 'Secure Your Spot',
+                    'entry.steps.s5.desc': 'Complete payment by the deadline to confirm your entry.',
+                    'entry.steps.s6.title': 'Your Day of Glory',
+                    'entry.steps.s6.desc': "We'll be waiting for you on the pitch.",
+                    'contact.lineLabel': 'Official LINE',
+                    'contact.termsNotice': 'Before submitting, please make sure to check the tournament fees, cancellation policy, and other details under <a href="#terms">"TERMS"</a>.',
+                    'contact.entryRedirectNotice': 'To <strong>apply for a tournament, please use "<a href="#entry">ENTRY</a>"</strong>. This form is for general inquiries only.',
+                    'contact.teamNameLabel': 'Team Name',
+                    'contact.teamNamePh': 'e.g. Fantasista FC',
+                    'contact.repNameLabel': 'Name',
+                    'contact.repNamePh': 'e.g. Taro Yamada',
+                    'contact.phoneLabel': 'Phone Number (optional)',
+                    'contact.phonePh': 'e.g. 090-1234-5678',
+                    'contact.emailLabel': 'Email Address',
+                    'contact.emailPh': 'e.g. example@email.com',
+                    'contact.lineStatusLabel': 'Official LINE Status',
+                    'contact.lineStatusDone': 'Already added',
+                    'contact.lineStatusNotYet': 'Adding it now',
+                    'contact.lineStatusHint': '※A QR code will be shown after you submit.',
+                    'contact.pastLabel': 'Past Tournament Experience',
+                    'contact.pastFirst': 'First time entering',
+                    'contact.pastSecond': '2nd time',
+                    'contact.pastThirdPlus': '3rd time or more',
+                    'contact.selectLabel': 'Inquiry Type',
+                    'contact.inquiryGeneral': 'About the tournament (rules, schedule, etc.)',
+                    'contact.inquiryPayment': 'Entry fees &amp; payment',
+                    'contact.inquiryMedia': 'Media &amp; sponsorship inquiries',
+                    'contact.inquiryOther': 'Other',
+                    'contact.selectPlaceholder': 'Please select',
+                    'contact.selectVol1': 'Vol.1 (Completed)',
+                    'contact.selectVol2': 'Vol.2 (Cancelled)',
+                    'contact.selectVol3': 'Vol.3 (Scheduled for November)',
+                    'contact.selectVol3Waitlist': 'Vol.3 (Waitlist)',
+                    'contact.selectOther': 'Other (General questions about the tournament, etc.)',
+                    'contact.messageLabel': 'Message',
+                    'contact.messagePh': 'Please enter your message',
+                    'contact.paymentNotice': 'The entry fee can only be paid by a single bank transfer (cash). Transfer details will be sent to you via the official LINE.',
+                    'contact.submitBtn': 'Submit',
+                    'contact.sending': 'Sending...',
+                    'contact.successTitle': 'Message Sent',
+                    'contact.successBody': 'Thank you for your inquiry.<br>We will review the details and get back to you from our management office.',
+                    'contact.entrySuccessTitle': 'Your entry has been received.',
+                    'contact.entrySuccessBody': 'Payment details, schedule confirmation, and reminders before the tournament will all be sent via our official LINE.<br>If you haven\'t added it yet, please do so now.',
+                    'contact.waitlistSuccessTitle': 'You have been added to the waitlist.',
+                    'contact.waitlistSuccessBody': 'If a spot opens up, and the latest updates, will all be sent via our official LINE.<br>If you haven\'t added it yet, please do so now.',
+                    'contact.vol3LineGuideText': 'Payment details, schedule confirmation, and reminders before the tournament will all be sent via our official LINE. If you haven\'t added it yet, please do so now.',
+                    'contact.vol3LineGuideBtn': 'Add Official LINE Now',
+                    'info.orgLabel': 'Organization',
+                    'info.repLabel': 'Representative',
+                    'info.telLabel': 'Phone Number'
+                },
+                it: {
+                    'hero.title': 'Un palcoscenico dove gli adulti<br class="br-sp"> possono tifare con pura passione',
+                    'hero.cta': 'Partecipa al Torneo',
+                    'concept.text': 'Fantasista Cup offre un nuovo tipo<br class="br-sp"> di torneo di calcio, dove la qualità<br class="br-sp"> agonistica e lo spirito di divertimento<br class="br-sp"> si fondono insieme.',
+                    'schedule.dateLabel': 'Data e Ora',
+                    'schedule.venueLabel': 'Sede',
+                    'schedule.giftLabel': 'Premi Speciali',
+                    'schedule.vol1.date': '23 maggio 2026 (sab) 17:00–21:00 【Concluso】',
+                    'schedule.vol1.resultBtn': 'Vedi Risultati e Galleria',
+                    'schedule.vol2.date': '8 agosto 2026 (sab) 17:00–21:00',
+                    'schedule.vol2.gift': '🎁 Prossimamente (buoni pasto per yakiniku famosi di Nara, buoni regalo per negozi di calcio e altro in programma)',
+                    'schedule.vol3.countPrefix': 'Solo',
+                    'schedule.vol3.countSuffix': ' / 5 posti rimasti',
+                    'schedule.vol3.entryBtn': 'Iscriviti a questo Torneo',
+                    'schedule.vol3.waitlistEntryBtn': 'Iscriviti alla Lista d\'Attesa',
+                    'schedule.vol3.full': 'Completo',
+                    'archive.awardsDesc': 'Set di "Manzo Yamato da 1,2 kg" a scelta tra 3 tipi',
+                    'archive.vol2.failedMsg': 'Il torneo è stato annullato / rinviato a data da destinarsi.',
+                    'rules.pointsTitle': 'Sistema Punti',
+                    'rules.point.win': 'Vittoria nei Tempi Regolamentari',
+                    'rules.point.pkWin': 'Vittoria ai Rigori',
+                    'rules.point.pkLose': 'Sconfitta ai Rigori',
+                    'rules.point.lose': 'Sconfitta nei Tempi Regolamentari',
+                    'rules.point.unit': 'pt',
+                    'rules.warningTitle': 'Note Importanti',
+                    'rules.warning1': 'Parastinchi obbligatori',
+                    'rules.warning2': 'Vietati i contrasti violenti',
+                    'rules.warning3': 'Sono ammessi tacchetti fissi',
+                    'rules.warning4': 'Massimo 5 sostituzioni per partita',
+                    'rules.warning5': 'La durata delle partite può variare<br class="br-sp"> in base al numero di squadre partecipanti',
+                    'terms.1.title': '1. Regole di Gioco e Arbitraggio',
+                    'terms.1.body': 'Questo torneo segue le regole del gioco stabilite dalla JFA (Japan Football Association), ma le regole locali specifiche del torneo hanno la priorità.',
+                    'terms.2.title': '2. Responsabilità per Incidenti e Infortuni',
+                    'terms.2.body': 'Non siamo responsabili per infortuni, incidenti, furti o altri eventi che si verifichino durante il torneo.',
+                    'terms.3.title': '3. Norme per l\'Uso della Struttura',
+                    'terms.3.body': 'Si prega di rispettare il regolamento della struttura.',
+                    'terms.4.title': '4. Utilizzo di Foto e Video',
+                    'terms.4.body': 'Le foto e i video scattati durante il torneo saranno utilizzati per le nostre attività promozionali (social media).',
+                    'terms.5.title': '5. Responsabilità Personale',
+                    'terms.5.body': 'Qualsiasi incidente, infortunio, colpo di calore o incidente mortale che si verifichi durante il gioco è interamente responsabilità del partecipante. Fantasista Cup non si assume alcuna responsabilità.',
+                    'terms.6.title': '6. Politica di Cancellazione',
+                    'terms.6.body': '・Periodo di cancellazione gratuita: fino alle 12:00 (mezzogiorno) di 22 giorni prima della data del torneo.\n・Addebito completo (100%): in caso di cancellazione dopo la scadenza sopra indicata.\n※Indipendentemente dal motivo (mancanza di membri, infortunio, ecc.), la quota di partecipazione dovrà essere versata per intero tramite bonifico bancario sul conto indicato.\n\nIn caso di cancellazione senza preavviso, verrà addebitata immediatamente una penale (l\'intera quota di partecipazione).',
+                    'entry.loadingText': 'Caricamento...',
+                    'entry.description': 'Accedi con il tuo account Google per controllare lo stato delle tue iscrizioni nella My Page.<br class="br-sp"> Prima di iscriverti, verifica sempre la quota di partecipazione, la politica di cancellazione e gli altri dettagli nella sezione <a href="#terms">"TERMS"</a>.',
+                    'entry.openSiteBtn': 'Apri il sito di iscrizione (tornei e My Page)',
+                    'entry.dateTBD': 'Data da definire',
+                    'entry.venueTBD': 'Sede da definire',
+                    'entry.remainingPrefix': 'Solo',
+                    'entry.teamsUnit': 'posti rimasti',
+                    'entry.applyBtn': 'Iscriviti a questo torneo',
+                    'entry.waitlistBtn': 'Iscriviti alla lista d\'attesa',
+                    'entry.empty': 'Al momento non ci sono tornei aperti alle iscrizioni.',
+                    'entry.steps.heading': 'Come partecipare al torneo',
+                    'entry.steps.s1.title': 'Scegli il tuo palcoscenico',
+                    'entry.steps.s1.desc': 'Controlla i tornei attualmente aperti a Nara.',
+                    'entry.steps.s2.title': 'Invia la tua sfida',
+                    'entry.steps.s2.desc': 'Registra i dati della tua squadra sul sito di iscrizione.',
+                    'entry.steps.s3.title': 'Aggiungi il nostro LINE ufficiale',
+                    'entry.steps.s3.desc': "Tutti gli aggiornamenti e le comunicazioni del giorno dell'evento vengono inviati tramite il nostro LINE ufficiale.",
+                    'entry.steps.lineBtn': 'Aggiungi LINE ufficiale',
+                    'entry.steps.s4.title': 'Ricevi il tuo invito',
+                    'entry.steps.s4.desc': 'Il nostro staff ti invierà la quota di iscrizione e i dettagli via LINE.',
+                    'entry.steps.s5.title': 'Conferma la tua partecipazione',
+                    'entry.steps.s5.desc': 'Completa il pagamento entro la scadenza per confermare la tua iscrizione.',
+                    'entry.steps.s6.title': 'Il tuo giorno di gloria',
+                    'entry.steps.s6.desc': 'Ti aspettiamo in campo.',
+                    'contact.lineLabel': 'LINE Ufficiale',
+                    'contact.termsNotice': 'Prima di inviare, ti preghiamo di verificare la quota di partecipazione, la politica di cancellazione e gli altri dettagli nella sezione <a href="#terms">"TERMS"</a>.',
+                    'contact.entryRedirectNotice': 'Per <strong>iscriverti a un torneo, usa la sezione "<a href="#entry">ENTRY</a>"</strong>. Questo modulo è riservato alle richieste generali.',
+                    'contact.teamNameLabel': 'Nome della Squadra',
+                    'contact.teamNamePh': 'es. Fantasista FC',
+                    'contact.repNameLabel': 'Nome',
+                    'contact.repNamePh': 'es. Taro Yamada',
+                    'contact.phoneLabel': 'Telefono (facoltativo)',
+                    'contact.phonePh': 'es. 090-1234-5678',
+                    'contact.emailLabel': 'Indirizzo Email',
+                    'contact.emailPh': 'es. example@email.com',
+                    'contact.lineStatusLabel': 'Stato di Aggiunta del LINE Ufficiale',
+                    'contact.lineStatusDone': 'Già aggiunto',
+                    'contact.lineStatusNotYet': 'Lo aggiungo ora',
+                    'contact.lineStatusHint': '※Dopo l\'invio verrà mostrato un codice QR.',
+                    'contact.pastLabel': 'Partecipazione ai Tornei Passati',
+                    'contact.pastFirst': 'È la mia prima volta',
+                    'contact.pastSecond': '2ª volta',
+                    'contact.pastThirdPlus': '3ª volta o più',
+                    'contact.selectLabel': 'Tipo di Richiesta',
+                    'contact.inquiryGeneral': 'Sul torneo (regole, calendario, ecc.)',
+                    'contact.inquiryPayment': 'Quota di iscrizione e pagamento',
+                    'contact.inquiryMedia': 'Richieste stampa e sponsorizzazioni',
+                    'contact.inquiryOther': 'Altro',
+                    'contact.selectPlaceholder': 'Seleziona',
+                    'contact.selectVol1': 'Vol.1 (Concluso)',
+                    'contact.selectVol2': 'Vol.2 (Annullato)',
+                    'contact.selectVol3': 'Vol.3 (Previsto per Novembre)',
+                    'contact.selectVol3Waitlist': 'Vol.3 (Lista d\'attesa)',
+                    'contact.selectOther': 'Altro (Domande generali sul torneo, ecc.)',
+                    'contact.messageLabel': 'Messaggio',
+                    'contact.messagePh': 'Inserisci il tuo messaggio',
+                    'contact.paymentNotice': 'La quota di partecipazione può essere pagata solo tramite un unico bonifico bancario (in contanti). I dettagli per il bonifico saranno inviati tramite il LINE ufficiale.',
+                    'contact.submitBtn': 'Invia',
+                    'contact.sending': 'Invio in corso...',
+                    'contact.successTitle': 'Messaggio Inviato',
+                    'contact.successBody': 'Grazie per la tua richiesta.<br>Esamineremo i dettagli e ti risponderemo dal nostro ufficio organizzativo.',
+                    'contact.entrySuccessTitle': 'La tua iscrizione è stata ricevuta.',
+                    'contact.entrySuccessBody': 'I dettagli di pagamento, la conferma del programma e i promemoria prima del torneo saranno tutti inviati tramite il nostro LINE ufficiale.<br>Se non lo hai ancora aggiunto, fallo subito.',
+                    'contact.waitlistSuccessTitle': 'Sei stato aggiunto alla lista d\'attesa.',
+                    'contact.waitlistSuccessBody': 'Se si libera un posto, e gli ultimi aggiornamenti, saranno tutti inviati tramite il nostro LINE ufficiale.<br>Se non lo hai ancora aggiunto, fallo subito.',
+                    'contact.vol3LineGuideText': 'I dettagli di pagamento, la conferma del programma e i promemoria prima del torneo saranno tutti inviati tramite il nostro LINE ufficiale. Se non lo hai ancora aggiunto, fallo subito.',
+                    'contact.vol3LineGuideBtn': 'Aggiungi subito il LINE Ufficiale',
+                    'info.orgLabel': 'Organizzazione',
+                    'info.repLabel': 'Rappresentante',
+                    'info.telLabel': 'Numero di Telefono'
+                },
+                es: {
+                    'hero.title': 'Un escenario donde los adultos<br class="br-sp"> pueden vivir con pura pasión',
+                    'hero.cta': 'Únete al Torneo',
+                    'concept.text': 'Fantasista Cup ofrece un nuevo tipo<br class="br-sp"> de torneo de fútbol, donde la calidad<br class="br-sp"> competitiva y el espíritu de disfrute<br class="br-sp"> se fusionan.',
+                    'schedule.dateLabel': 'Fecha y Hora',
+                    'schedule.venueLabel': 'Sede',
+                    'schedule.giftLabel': 'Premios Especiales',
+                    'schedule.vol1.date': '23 de mayo de 2026 (sáb) 17:00–21:00 【Finalizado】',
+                    'schedule.vol1.resultBtn': 'Ver Resultados y Galería',
+                    'schedule.vol2.date': '8 de agosto de 2026 (sáb) 17:00–21:00',
+                    'schedule.vol2.gift': '🎁 Próximamente (vales de comida yakiniku famosos de Nara, tarjetas de regalo de tiendas de fútbol y más)',
+                    'schedule.vol3.countPrefix': 'Solo quedan',
+                    'schedule.vol3.countSuffix': ' / 5 plazas',
+                    'schedule.vol3.entryBtn': 'Inscribirse en este Torneo',
+                    'schedule.vol3.waitlistEntryBtn': 'Unirse a la Lista de Espera',
+                    'schedule.vol3.full': 'Completo',
+                    'archive.awardsDesc': 'Set de "Carne Yamato de 1,2 kg" a elegir entre 3 tipos',
+                    'archive.vol2.failedMsg': 'El torneo fue cancelado / pospuesto indefinidamente.',
+                    'rules.pointsTitle': 'Sistema de Puntos',
+                    'rules.point.win': 'Victoria en Tiempo Reglamentario',
+                    'rules.point.pkWin': 'Victoria en Tanda de Penaltis',
+                    'rules.point.pkLose': 'Derrota en Tanda de Penaltis',
+                    'rules.point.lose': 'Derrota en Tiempo Reglamentario',
+                    'rules.point.unit': 'pts',
+                    'rules.warningTitle': 'Notas Importantes',
+                    'rules.warning1': 'Espinilleras obligatorias',
+                    'rules.warning2': 'Prohibidas las entradas violentas',
+                    'rules.warning3': 'Se permiten tacos fijos',
+                    'rules.warning4': 'Máximo 5 sustituciones por partido',
+                    'rules.warning5': 'La duración del partido puede cambiar<br class="br-sp"> según el número de equipos participantes',
+                    'terms.1.title': '1. Reglas de Competición y Arbitraje',
+                    'terms.1.body': 'Este torneo sigue las reglas del juego establecidas por la JFA (Asociación Japonesa de Fútbol), pero las reglas locales propias del torneo tienen prioridad.',
+                    'terms.2.title': '2. Responsabilidad por Accidentes y Lesiones',
+                    'terms.2.body': 'No nos hacemos responsables de lesiones, accidentes, robos u otros incidentes ocurridos durante el torneo.',
+                    'terms.3.title': '3. Normas de Uso de las Instalaciones',
+                    'terms.3.body': 'Por favor, respete el reglamento de las instalaciones.',
+                    'terms.4.title': '4. Uso de Fotos y Vídeos',
+                    'terms.4.body': 'Las fotos y vídeos tomados durante el torneo se utilizarán para nuestras actividades promocionales (redes sociales).',
+                    'terms.5.title': '5. Responsabilidad Personal',
+                    'terms.5.body': 'Cualquier accidente, lesión, golpe de calor o incidente fatal que ocurra durante el juego es responsabilidad exclusiva del participante. Fantasista Cup no asume ninguna responsabilidad.',
+                    'terms.6.title': '6. Política de Cancelación',
+                    'terms.6.body': '・Período de cancelación gratuita: hasta las 12:00 (mediodía) 22 días antes de la fecha del torneo.\n・Cargo completo (100%): si se cancela después del plazo anterior.\n※Independientemente del motivo (falta de miembros, lesiones, etc.), la cuota de participación completa deberá pagarse mediante transferencia bancaria a la cuenta indicada.\n\nEn caso de cancelación sin previo aviso, se cobrará de inmediato una penalización (la cuota de participación completa).',
+                    'entry.loadingText': 'Cargando...',
+                    'entry.description': 'Inicia sesión con tu cuenta de Google para consultar el estado de tus inscripciones en My Page.<br class="br-sp"> Antes de inscribirte, revisa siempre la cuota de participación, la política de cancelación y otros detalles en <a href="#terms">"TERMS"</a>.',
+                    'entry.openSiteBtn': 'Abrir el sitio de inscripción (torneos y My Page)',
+                    'entry.dateTBD': 'Fecha por confirmar',
+                    'entry.venueTBD': 'Sede por confirmar',
+                    'entry.remainingPrefix': 'Solo',
+                    'entry.teamsUnit': 'plazas restantes',
+                    'entry.applyBtn': 'Inscribirse en este torneo',
+                    'entry.waitlistBtn': 'Unirse a la lista de espera',
+                    'entry.empty': 'Actualmente no hay torneos abiertos para inscripción.',
+                    'entry.steps.heading': 'Cómo inscribirte en el torneo',
+                    'entry.steps.s1.title': 'Elige tu escenario',
+                    'entry.steps.s1.desc': 'Consulta los torneos que se celebran actualmente en Nara.',
+                    'entry.steps.s2.title': 'Envía tu desafío',
+                    'entry.steps.s2.desc': 'Registra los datos de tu equipo en el sitio de inscripción.',
+                    'entry.steps.s3.title': 'Agrega nuestro LINE oficial',
+                    'entry.steps.s3.desc': 'Todas las novedades y avisos del día del torneo se envían por nuestro LINE oficial.',
+                    'entry.steps.lineBtn': 'Agregar LINE oficial',
+                    'entry.steps.s4.title': 'Recibe tu invitación',
+                    'entry.steps.s4.desc': 'Nuestro equipo te enviará la cuota de participación y los detalles por LINE.',
+                    'entry.steps.s5.title': 'Confirma tu participación',
+                    'entry.steps.s5.desc': 'Completa el pago antes de la fecha límite para confirmar tu inscripción.',
+                    'entry.steps.s6.title': 'Tu día de gloria',
+                    'entry.steps.s6.desc': 'Te esperamos en la cancha.',
+                    'contact.lineLabel': 'LINE Oficial',
+                    'contact.termsNotice': 'Antes de enviar, asegúrese de revisar la cuota de participación, la política de cancelación y otros detalles en <a href="#terms">"TERMS"</a>.',
+                    'contact.entryRedirectNotice': 'Para <strong>inscribirte en un torneo, utiliza "<a href="#entry">ENTRY</a>"</strong>. Este formulario es solo para consultas generales.',
+                    'contact.teamNameLabel': 'Nombre del Equipo',
+                    'contact.teamNamePh': 'ej. Fantasista FC',
+                    'contact.repNameLabel': 'Nombre',
+                    'contact.repNamePh': 'ej. Taro Yamada',
+                    'contact.phoneLabel': 'Teléfono (opcional)',
+                    'contact.phonePh': 'ej. 090-1234-5678',
+                    'contact.emailLabel': 'Correo Electrónico',
+                    'contact.emailPh': 'ej. example@email.com',
+                    'contact.lineStatusLabel': 'Estado de Adición del LINE Oficial',
+                    'contact.lineStatusDone': 'Ya añadido',
+                    'contact.lineStatusNotYet': 'Lo añado ahora',
+                    'contact.lineStatusHint': '※Se mostrará un código QR después del envío.',
+                    'contact.pastLabel': 'Experiencia en Torneos Anteriores',
+                    'contact.pastFirst': 'Es mi primera vez',
+                    'contact.pastSecond': '2ª vez',
+                    'contact.pastThirdPlus': '3ª vez o más',
+                    'contact.selectLabel': 'Tipo de Consulta',
+                    'contact.inquiryGeneral': 'Sobre el torneo (reglas, calendario, etc.)',
+                    'contact.inquiryPayment': 'Cuota de inscripción y pago',
+                    'contact.inquiryMedia': 'Consultas de prensa y patrocinio',
+                    'contact.inquiryOther': 'Otro',
+                    'contact.selectPlaceholder': 'Seleccione',
+                    'contact.selectVol1': 'Vol.1 (Finalizado)',
+                    'contact.selectVol2': 'Vol.2 (Cancelado)',
+                    'contact.selectVol3': 'Vol.3 (Previsto para Noviembre)',
+                    'contact.selectVol3Waitlist': 'Vol.3 (Lista de espera)',
+                    'contact.selectOther': 'Otro (Preguntas generales sobre el torneo, etc.)',
+                    'contact.messageLabel': 'Mensaje',
+                    'contact.messagePh': 'Ingrese su mensaje',
+                    'contact.paymentNotice': 'La cuota de participación solo se puede pagar mediante una única transferencia bancaria (en efectivo). Los datos de la cuenta se enviarán a través del LINE oficial.',
+                    'contact.submitBtn': 'Enviar',
+                    'contact.sending': 'Enviando...',
+                    'contact.successTitle': 'Mensaje Enviado',
+                    'contact.successBody': 'Gracias por su consulta.<br>Revisaremos los detalles y nos pondremos en contacto desde nuestra oficina de gestión.',
+                    'contact.entrySuccessTitle': 'Su inscripción ha sido recibida.',
+                    'contact.entrySuccessBody': 'Los datos de pago, la confirmación del calendario y los recordatorios antes del torneo se enviarán todos a través de nuestro LINE oficial.<br>Si aún no lo ha añadido, hágalo ahora.',
+                    'contact.waitlistSuccessTitle': 'Ha sido añadido a la lista de espera.',
+                    'contact.waitlistSuccessBody': 'Si se libera una plaza, y las últimas novedades, se enviarán todas a través de nuestro LINE oficial.<br>Si aún no lo ha añadido, hágalo ahora.',
+                    'contact.vol3LineGuideText': 'Los datos de pago, la confirmación del calendario y los recordatorios antes del torneo se enviarán todos a través de nuestro LINE oficial. Si aún no lo ha añadido, hágalo ahora.',
+                    'contact.vol3LineGuideBtn': 'Añadir el LINE Oficial ahora',
+                    'info.orgLabel': 'Organización',
+                    'info.repLabel': 'Representante',
+                    'info.telLabel': 'Número de Teléfono'
+                },
+                ko: {
+                    'hero.title': '어른들이 순수하게<br class="br-sp"> 열광할 수 있는 무대를',
+                    'hero.cta': '대회에 참가하기',
+                    'concept.text': 'Fantasista Cup는 경기의 질과<br class="br-sp"> 즐기는 정신이 융합하는,<br class="br-sp"> 새로운 축구 대회를 제공합니다.',
+                    'schedule.dateLabel': '일시',
+                    'schedule.venueLabel': '대회 장소',
+                    'schedule.giftLabel': '특별 경품',
+                    'schedule.vol1.date': '2026년 5월 23일(토) 17:00~21:00 【종료】',
+                    'schedule.vol1.resultBtn': '대회 결과·갤러리 보기',
+                    'schedule.vol2.date': '2026년 8월 8일(토) 17:00~21:00',
+                    'schedule.vol2.gift': '🎁 근일 공개（나라현 유명 야키니쿠 식사권, 축구용품점 상품권 등 예정）',
+                    'schedule.vol3.countPrefix': '잔여',
+                    'schedule.vol3.countSuffix': ' / 5팀',
+                    'schedule.vol3.entryBtn': '이 대회에 참가 신청하기',
+                    'schedule.vol3.waitlistEntryBtn': '대기 명단에 등록하기',
+                    'schedule.vol3.full': '마감',
+                    'archive.awardsDesc': '3종류 중 선택 가능한 「야마토규 1.2kg 세트」',
+                    'archive.vol2.failedMsg': '대회는 중지·개최 보류되었습니다.',
+                    'rules.pointsTitle': '승점 시스템',
+                    'rules.point.win': '정규 시간 내 승리',
+                    'rules.point.pkWin': '승부차기 승리',
+                    'rules.point.pkLose': '승부차기 패배',
+                    'rules.point.lose': '정규 시간 내 패배',
+                    'rules.point.unit': '점',
+                    'rules.warningTitle': '주의 사항',
+                    'rules.warning1': '레가스(정강이 보호대) 착용 필수',
+                    'rules.warning2': '격렬한 차지(몸싸움) 금지',
+                    'rules.warning3': '고정식 스터드(스파이크) 착용 가능',
+                    'rules.warning4': '교체 인원은 1경기당 5명까지',
+                    'rules.warning5': '경기 시간은 참가 팀 수에<br class="br-sp"> 따라 변경될 수 있습니다',
+                    'terms.1.title': '1. 경기 규칙 및 심판에 대하여',
+                    'terms.1.body': '본 대회는 JFA(일본축구협회) 제정 축구 경기 규칙에 준하되, 대회 자체 로컬 룰을 우선합니다.',
+                    'terms.2.title': '2. 사고·부상의 책임에 대하여',
+                    'terms.2.body': '대회 중 발생하는 부상, 사고, 도난 등에 대한 책임은 지지 않습니다.',
+                    'terms.3.title': '3. 시설 이용 시 주의사항',
+                    'terms.3.body': '시설 규칙을 준수해 주시기 바랍니다.',
+                    'terms.4.title': '4. 사진·영상 사용에 대하여',
+                    'terms.4.body': '대회 중 촬영된 사진·영상은 저희 홍보 활동(SNS)에 사용됩니다.',
+                    'terms.5.title': '5. 자기 책임에 대하여',
+                    'terms.5.body': '플레이 중 발생한 사고, 부상, 열사병, 사망 사고 등은 모두 본인 책임입니다. Fantasista Cup는 일체의 책임을 지지 않습니다.',
+                    'terms.6.title': '6. 취소 규정',
+                    'terms.6.body': '・무료 취소 기간: 대회 개최일 「22일 전 낮 12:00」까지.\n・참가비 전액(100%) 발생: 위 기한을 넘긴 경우.\n※사유(멤버 부족, 부상 등)를 불문하고, 참가비 전액을 지정 계좌로 입금하여 지불하셔야 합니다.\n\n무단 취소가 발생한 경우, 위약금(참가비 전액)을 즉시 청구합니다.',
+                    'entry.loadingText': '불러오는 중...',
+                    'entry.description': 'Google 계정으로 로그인하면 마이페이지에서 신청 현황을 확인할 수 있습니다.<br class="br-sp"> 신청 전에 참가비, 취소 규정 등 대회 상세 내용을 반드시 <a href="#terms">「TERMS」</a>에서 확인해 주세요.',
+                    'entry.openSiteBtn': '엔트리 사이트（대회 목록・마이페이지）열기',
+                    'entry.dateTBD': '일정 미정',
+                    'entry.venueTBD': '장소 미정',
+                    'entry.remainingPrefix': '남은',
+                    'entry.teamsUnit': '팀',
+                    'entry.applyBtn': '이 대회에 신청하기',
+                    'entry.waitlistBtn': '대기 명단에 등록하기',
+                    'entry.empty': '현재 모집 중인 대회가 없습니다.',
+                    'entry.steps.heading': '대회 참가 절차',
+                    'entry.steps.s1.title': '무대를 정하다',
+                    'entry.steps.s1.desc': '나라에서 개최 중인 대회 정보를 확인해 주세요.',
+                    'entry.steps.s2.title': '도전 의사를 전하다',
+                    'entry.steps.s2.desc': '엔트리 사이트에서 팀 정보를 등록해 주세요.',
+                    'entry.steps.s3.title': '공식 LINE 추가하기',
+                    'entry.steps.s3.desc': '최신 정보와 대회 당일 안내는 모두 공식 LINE으로 전달됩니다.',
+                    'entry.steps.lineBtn': '공식 LINE 추가하기',
+                    'entry.steps.s4.title': '초대장이 도착하다',
+                    'entry.steps.s4.desc': '운영사무국에서 참가비 및 상세 안내를 공식 LINE으로 보내드립니다.',
+                    'entry.steps.s5.title': '출전권을 확정하다',
+                    'entry.steps.s5.desc': '지정된 기한까지 결제를 완료하면 출전이 확정됩니다.',
+                    'entry.steps.s6.title': '영광을 건 하루로',
+                    'entry.steps.s6.desc': '경기 당일, 피치 위에서 기다리겠습니다.',
+                    'contact.lineLabel': '대회 공식 LINE',
+                    'contact.termsNotice': '신청 전에 참가비, 취소 규정 등 대회 상세 내용을 반드시 <a href="#terms">「TERMS」</a>에서 확인해 주시기 바랍니다.',
+                    'contact.entryRedirectNotice': '대회 <strong>신청은 「<a href="#entry">ENTRY</a>」</strong>에서 받고 있습니다. 이 양식은 문의 전용입니다.',
+                    'contact.teamNameLabel': '팀명',
+                    'contact.teamNamePh': '예: Fantasista FC',
+                    'contact.repNameLabel': '성함',
+                    'contact.repNamePh': '예: 홍길동',
+                    'contact.phoneLabel': '전화번호（선택）',
+                    'contact.phonePh': '예: 090-1234-5678',
+                    'contact.emailLabel': '이메일 주소',
+                    'contact.emailPh': '예: example@email.com',
+                    'contact.lineStatusLabel': '대회 공식 LINE 추가 상태',
+                    'contact.lineStatusDone': '추가 완료',
+                    'contact.lineStatusNotYet': '지금 추가하기',
+                    'contact.lineStatusHint': '※제출 후 QR 코드가 표시됩니다.',
+                    'contact.pastLabel': '과거 대회 참가 경험',
+                    'contact.pastFirst': '이번이 처음',
+                    'contact.pastSecond': '2번째',
+                    'contact.pastThirdPlus': '3번째 이상',
+                    'contact.selectLabel': '문의 내용',
+                    'contact.inquiryGeneral': '대회 정보（규칙・일정 등）',
+                    'contact.inquiryPayment': '참가비・결제 관련',
+                    'contact.inquiryMedia': '취재・협찬 문의',
+                    'contact.inquiryOther': '기타',
+                    'contact.selectPlaceholder': '선택해 주세요',
+                    'contact.selectVol1': 'Vol.1（종료）',
+                    'contact.selectVol2': 'Vol.2（중지）',
+                    'contact.selectVol3': 'Vol.3（11월 개최 예정）',
+                    'contact.selectVol3Waitlist': 'Vol.3（대기 명단 등록）',
+                    'contact.selectOther': '기타（대회 전반에 관한 질문 등）',
+                    'contact.messageLabel': '문의 상세 내용',
+                    'contact.messagePh': '내용을 입력해 주세요',
+                    'contact.paymentNotice': '참가비는 지정 계좌로의 일괄 계좌이체（현금）만 가능합니다. 입금 계좌는 추후 대회 공식 LINE으로 안내해 드립니다.',
+                    'contact.submitBtn': '보내기',
+                    'contact.sending': '전송 중...',
+                    'contact.successTitle': '전송되었습니다',
+                    'contact.successBody': '문의해 주셔서 감사합니다.<br>내용을 확인한 후 운영사무국에서 연락드리겠습니다.',
+                    'contact.entrySuccessTitle': '엔트리가 접수되었습니다.',
+                    'contact.entrySuccessBody': '참가비 입금 안내・일정 확정・대회 직전 리마인드는 모두 대회 공식 LINE으로 보내드립니다.<br>아직 추가하지 않으신 분은 지금 바로 추가해 주세요.',
+                    'contact.waitlistSuccessTitle': '대기 명단 등록이 접수되었습니다.',
+                    'contact.waitlistSuccessBody': '자리가 나는 경우의 안내와 최신 정보는 모두 대회 공식 LINE으로 보내드립니다.<br>아직 추가하지 않으신 분은 지금 바로 추가해 주세요.',
+                    'contact.vol3LineGuideText': '참가비 입금 안내・일정 확정・대회 직전 리마인드는 모두 대회 공식 LINE으로 보내드립니다. 아직 추가하지 않으신 분은 지금 바로 추가해 주세요.',
+                    'contact.vol3LineGuideBtn': '지금 바로 대회 공식 LINE 추가하기',
+                    'info.orgLabel': '단체명',
+                    'info.repLabel': '대표자',
+                    'info.telLabel': '전화번호'
+                },
+                zh: {
+                    'hero.title': '让成年人纯粹<br class="br-sp"> 热血沸腾的舞台',
+                    'hero.cta': '参加大会',
+                    'concept.text': 'Fantasista Cup 致力于打造<br class="br-sp"> 「竞技品质与享受精神融合」<br class="br-sp"> 的全新足球赛事。',
+                    'schedule.dateLabel': '日期与时间',
+                    'schedule.venueLabel': '比赛场地',
+                    'schedule.giftLabel': '特别奖品',
+                    'schedule.vol1.date': '2026年5月23日（周六）17:00～21:00【已结束】',
+                    'schedule.vol1.resultBtn': '查看比赛结果与相册',
+                    'schedule.vol2.date': '2026年8月8日（周六）17:00～21:00',
+                    'schedule.vol2.gift': '🎁 近期公开（预计包含奈良知名烤肉餐券、足球用品店礼券等）',
+                    'schedule.vol3.countPrefix': '仅剩',
+                    'schedule.vol3.countSuffix': ' / 5 个名额',
+                    'schedule.vol3.entryBtn': '报名参加本届赛事',
+                    'schedule.vol3.waitlistEntryBtn': '登记候补名单',
+                    'schedule.vol3.full': '已满',
+                    'archive.awardsDesc': '可从3种中任选的「大和牛1.2kg礼盒」',
+                    'archive.vol2.failedMsg': '本届赛事已中止／取消举办。',
+                    'rules.pointsTitle': '积分系统',
+                    'rules.point.win': '常规时间内获胜',
+                    'rules.point.pkWin': '点球大战获胜',
+                    'rules.point.pkLose': '点球大战落败',
+                    'rules.point.lose': '常规时间内落败',
+                    'rules.point.unit': '分',
+                    'rules.warningTitle': '注意事项',
+                    'rules.warning1': '必须佩戴护腿板',
+                    'rules.warning2': '禁止激烈冲撞',
+                    'rules.warning3': '允许穿着固定钉鞋',
+                    'rules.warning4': '每场比赛最多可换人5名',
+                    'rules.warning5': '比赛时间可能会<br class="br-sp"> 根据参赛队伍数量而变动',
+                    'terms.1.title': '1. 关于比赛规则与裁判',
+                    'terms.1.body': '本赛事参照日本足球协会（JFA）制定的比赛规则，但赛事自定的本地规则优先适用。',
+                    'terms.2.title': '2. 关于事故与伤害责任',
+                    'terms.2.body': '对于赛事期间发生的受伤、事故、失窃等情况，主办方概不负责。',
+                    'terms.3.title': '3. 场地使用注意事项',
+                    'terms.3.body': '请遵守场地相关规定。',
+                    'terms.4.title': '4. 关于照片与视频的使用',
+                    'terms.4.body': '赛事期间拍摄的照片与视频将用于本公司的宣传活动（社交媒体）。',
+                    'terms.5.title': '5. 关于自我责任',
+                    'terms.5.body': '比赛过程中发生的事故、受伤、中暑、死亡事故等，一律由参与者自行负责。Fantasista Cup 概不承担任何责任。',
+                    'terms.6.title': '6. 取消规定',
+                    'terms.6.body': '・免费取消期限：赛事举办日「前22天中午12:00」之前。\n・全额收费（100%）：超过上述期限取消的情况。\n※无论理由为何（人数不足、受伤等），均须将参赛费全额汇入指定账户。\n\n如发生无故取消（未告知缺席），将立即收取违约金（参赛费全额）。',
+                    'entry.loadingText': '加载中...',
+                    'entry.description': '使用Google账号登录后，可在个人中心查看报名状态。<br class="br-sp"> 报名前，请务必在<a href="#terms">「TERMS」</a>中确认参赛费用、取消规定等赛事详情。',
+                    'entry.openSiteBtn': '打开报名网站（赛事列表・个人中心）',
+                    'entry.dateTBD': '日期待定',
+                    'entry.venueTBD': '场地待定',
+                    'entry.remainingPrefix': '剩余',
+                    'entry.teamsUnit': '队',
+                    'entry.applyBtn': '报名参加本赛事',
+                    'entry.waitlistBtn': '登记候补名单',
+                    'entry.empty': '目前没有正在招募的赛事。',
+                    'entry.steps.heading': '参赛流程',
+                    'entry.steps.s1.title': '锁定舞台',
+                    'entry.steps.s1.desc': '请查看奈良县正在举办的赛事信息。',
+                    'entry.steps.s2.title': '传递挑战之心',
+                    'entry.steps.s2.desc': '请在报名网站登记球队信息。',
+                    'entry.steps.s3.title': '添加官方LINE',
+                    'entry.steps.s3.desc': '最新信息及比赛当天的联络将全部通过官方LINE发送。',
+                    'entry.steps.lineBtn': '添加官方LINE',
+                    'entry.steps.s4.title': '收到邀请函',
+                    'entry.steps.s4.desc': '运营事务局将通过官方LINE发送参赛费及详细信息。',
+                    'entry.steps.s5.title': '确定出赛资格',
+                    'entry.steps.s5.desc': '请在指定日期前完成付款，即可确定出赛资格。',
+                    'entry.steps.s6.title': '奔赴荣耀的一天',
+                    'entry.steps.s6.desc': '比赛当天，我们在球场恭候您的到来。',
+                    'contact.lineLabel': '赛事官方LINE',
+                    'contact.termsNotice': '提交前，请务必在<a href="#terms">「TERMS」</a>中确认参赛费用、取消规定等赛事详情。',
+                    'contact.entryRedirectNotice': '赛事<strong>报名请通过「<a href="#entry">ENTRY</a>」</strong>办理。此表单仅用于一般咨询。',
+                    'contact.teamNameLabel': '队伍名称',
+                    'contact.teamNamePh': '例：Fantasista FC',
+                    'contact.repNameLabel': '姓名',
+                    'contact.repNamePh': '例：山田 太郎',
+                    'contact.phoneLabel': '电话号码（选填）',
+                    'contact.phonePh': '例：090-1234-5678',
+                    'contact.emailLabel': '电子邮箱',
+                    'contact.emailPh': '例：example@email.com',
+                    'contact.lineStatusLabel': '赛事官方LINE添加状态',
+                    'contact.lineStatusDone': '已添加',
+                    'contact.lineStatusNotYet': '现在添加',
+                    'contact.lineStatusHint': '※提交后将显示二维码。',
+                    'contact.pastLabel': '过往赛事参赛经历',
+                    'contact.pastFirst': '这是第一次',
+                    'contact.pastSecond': '第2次',
+                    'contact.pastThirdPlus': '第3次及以上',
+                    'contact.selectLabel': '咨询内容',
+                    'contact.inquiryGeneral': '关于赛事（规则・日程等）',
+                    'contact.inquiryPayment': '关于参赛费用・付款',
+                    'contact.inquiryMedia': '采访・赞助咨询',
+                    'contact.inquiryOther': '其他',
+                    'contact.selectPlaceholder': '请选择',
+                    'contact.selectVol1': 'Vol.1（已结束）',
+                    'contact.selectVol2': 'Vol.2（已中止）',
+                    'contact.selectVol3': 'Vol.3（预计11月举办）',
+                    'contact.selectVol3Waitlist': 'Vol.3（候补名单登记）',
+                    'contact.selectOther': '其他（关于赛事的一般咨询等）',
+                    'contact.messageLabel': '咨询详情',
+                    'contact.messagePh': '请填写内容',
+                    'contact.paymentNotice': '参赛费仅支持一次性银行转账（现金）支付。汇款账户信息将通过赛事官方LINE另行通知。',
+                    'contact.submitBtn': '提交',
+                    'contact.sending': '发送中...',
+                    'contact.successTitle': '已发送',
+                    'contact.successBody': '感谢您的咨询。<br>我们将核实内容后，由运营事务局与您联系。',
+                    'contact.entrySuccessTitle': '您的报名已受理。',
+                    'contact.entrySuccessBody': '参赛费汇款账户通知、赛程确认、赛前提醒，均将通过赛事官方LINE发送。<br>尚未添加的用户，请立即添加。',
+                    'contact.waitlistSuccessTitle': '您已登记为候补名单。',
+                    'contact.waitlistSuccessBody': '名额空出时的通知及最新消息，均将通过赛事官方LINE发送。<br>尚未添加的用户，请立即添加。',
+                    'contact.vol3LineGuideText': '参赛费汇款账户通知、赛程确认、赛前提醒，均将通过赛事官方LINE发送。尚未添加的用户，请立即添加。',
+                    'contact.vol3LineGuideBtn': '立即添加赛事官方LINE',
+                    'info.orgLabel': '团体名称',
+                    'info.repLabel': '代表人',
+                    'info.telLabel': '电话号码'
+                }
+            };
+
+            const options = document.querySelectorAll('.lang-option');
+            if (!options.length) return;
+
+            // 元の日本語テキストを保持しておき、「日本語」選択時に復元できるようにする
+            const originalHTML = new Map();
+            document.querySelectorAll('[data-i18n]').forEach(el => originalHTML.set(el, el.innerHTML));
+            const originalPlaceholder = new Map();
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => originalPlaceholder.set(el, el.getAttribute('placeholder')));
+
+            function applyLanguage(lang) {
+                if (lang === 'ja') {
+                    originalHTML.forEach((html, el) => { el.innerHTML = html; });
+                    originalPlaceholder.forEach((ph, el) => { el.setAttribute('placeholder', ph); });
+                    window.fcDict = null;
+                } else {
+                    const dict = translations[lang];
+                    if (!dict) return;
+                    document.querySelectorAll('[data-i18n]').forEach(el => {
+                        const key = el.getAttribute('data-i18n');
+                        if (dict[key] !== undefined) el.innerHTML = dict[key];
+                    });
+                    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                        const key = el.getAttribute('data-i18n-placeholder');
+                        if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+                    });
+                    window.fcDict = dict;
+                }
+                document.documentElement.lang = lang;
+                options.forEach(btn => btn.classList.toggle('selected', btn.dataset.lang === lang));
+                try { localStorage.setItem('fc_lang', lang); } catch (err) {}
+                // 👑 ENTRYセクションの大会カードはJSで動的生成しているため、data-i18nの
+                // 自動置換の対象外。言語切り替え時に現在のfcDictで再描画させる
+                if (typeof window.refreshEntryTournamentList === 'function') {
+                    window.refreshEntryTournamentList();
+                }
+            }
+
+            options.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    applyLanguage(btn.dataset.lang);
+                    if (typeof window.closeNavLangDropdown === 'function') window.closeNavLangDropdown();
+                });
+            });
+
+            let savedLang = 'ja';
+            try { savedLang = localStorage.getItem('fc_lang') || 'ja'; } catch (err) {}
+            if (savedLang !== 'ja') applyLanguage(savedLang);
+        })();
+    </script>
+
+    <!-- 👑 DISCIPLINESカルーセルのタブ切り替え時に画面全体へ一瞬走らせるゴールドの光の演出。
+         position:fixedでbody直下に置き、.sport-carousel-frameのoverflow:hiddenの影響を受けないようにしてある -->
+    <div class="sport-transition-overlay" id="sportTransitionOverlay" aria-hidden="true"></div>
+
+    <!-- 👑 スクロールで各セクションがふわっと浮かび上がる演出（data-reveal属性の要素が対象） -->
+    <script src="scroll-reveal.js"></script>
+</body>
+</html>

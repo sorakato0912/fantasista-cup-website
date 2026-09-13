@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 👑 SEO対策：title / meta description -->
+    <title>スタッフ募集｜奈良のサッカー大会ならFantasista Cup</title>
+    <meta name="description" content="奈良県で開催する11人制サッカー大会「Fantasista Cup」の運営スタッフ募集ページです。レフェリー・事務作業スタッフをアルバイト雇用で募集しています。関西圏（奈良・大阪・京都・兵庫）にお住まいの方、ぜひご応募ください。">
+
+    <!-- ==========================================
+       👑 ファビコン・アイコン限界最大化設定
+       ========================================== -->
+    <link rel="icon" href="rogo2.png" type="image/png" sizes="any">
+    <link rel="apple-touch-icon" href="rogo2.png">
+
+    <!-- ==========================================
+       👑 OGP（SNSなどでシェアされた際の表示設定）
+       ========================================== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="スタッフ募集｜奈良のサッカー大会ならFantasista Cup">
+    <meta property="og:description" content="奈良県で開催する11人制サッカー大会「Fantasista Cup」の運営スタッフ募集ページです。レフェリー・事務作業スタッフをアルバイト雇用で募集しています。">
+    <meta property="og:image" content="rogo2.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="スタッフ募集｜奈良のサッカー大会ならFantasista Cup">
+    <meta name="twitter:image" content="rogo2.png">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fontsから明朝体（Noto Serif JP）を読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 各種アイコン表示用に Font Awesomeを読み込み -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- 💡 ナビバー演出（index.htmlと共通） -->
+    <style>
+        /* ナビバーの半透明化＋ぼかしは style.css の .navbar に統一済み */
+        .nav-links li { position: relative; }
+        .nav-links a.active, .nav-links a.current {
+            color: #ffffff !important;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+        }
+        .nav-links a:hover { color: #ffffff !important; }
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 115%; height: 140%;
+            transform: translate(-50%, -50%) scaleX(0);
+            background: linear-gradient(90deg,
+                rgba(212, 175, 55, 0) 0%,
+                rgba(255, 223, 128, 0.7) 25%,
+                rgba(170, 124, 17, 0.8) 50%,
+                rgba(255, 223, 128, 0.7) 75%,
+                rgba(212, 175, 55, 0) 100%
+            );
+            background-size: 200% auto;
+            z-index: -1;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+        }
+        .nav-links a.current::before {
+            transform: translate(-50%, -50%) scaleX(1);
+            opacity: 1;
+            animation: goldShine 2s linear infinite;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, var(--gold-bright), var(--gold-dark));
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--gold-bright);
+        }
+        .nav-links a.current::after { width: 100%; }
+        @keyframes goldShine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        .sr-only {
+            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+            overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+        }
+        .page-header {
+            background-color: var(--navy-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 70px 20px 55px;
+        }
+        .page-header .section-title { color: var(--white); }
+        .page-header p {
+            max-width: 560px;
+            margin: 18px auto 0;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.8;
+        }
+        @media screen and (max-width: 1024px) {
+            .page-header { padding: 50px 18px 40px; }
+        }
+    </style>
+
+    <!-- ==========================================
+       👑 SEO対策：構造化データ（JSON-LD / schema.org JobPosting）
+       ========================================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "JobPosting",
+      "title": "サッカー大会運営スタッフ（レフェリー・事務）",
+      "description": "サッカー・ソサイチ・フットサル大会のレフェリー業務、および簡単なPC事務作業をお願いするアルバイトスタッフを募集しています。",
+      "hiringOrganization": {
+        "@type": "Organization",
+        "name": "Fantasista Cup 運営事務局",
+        "sameAs": "https://fantasista-cup.netlify.app/"
+      },
+      "employmentType": "PART_TIME",
+      "jobLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "奈良県",
+          "addressCountry": "JP"
+        }
+      },
+      "baseSalary": {
+        "@type": "MonetaryAmount",
+        "currency": "JPY",
+        "value": {
+          "@type": "QuantitativeValue",
+          "minValue": 1500,
+          "maxValue": 1750,
+          "unitText": "HOUR"
+        }
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <!-- 👑 オープニング演出：index.htmlと共通のrogo.png演出 -->
+    <div id="introOverlay" class="intro-overlay">
+        <div class="intro-inner">
+            <img src="rogo.png" alt="Fantasista Cup ロゴ" class="intro-logo">
+        </div>
+    </div>
+    <script>
+        (function () {
+            var overlay = document.getElementById('introOverlay');
+            if (!overlay) return;
+            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (reduceMotion) {
+                overlay.classList.add('intro-done');
+            } else {
+                var isTransition = false;
+                try { isTransition = sessionStorage.getItem('fcPageTransition') === '1'; } catch (err) {}
+                try { sessionStorage.removeItem('fcPageTransition'); } catch (err) {}
+
+                document.documentElement.style.overflow = 'hidden';
+
+                if (isTransition) {
+                    var logo = overlay.querySelector('.intro-logo');
+                    overlay.classList.add('intro-quick');
+                    overlay.style.transition = 'none';
+                    if (logo) logo.style.transition = 'none';
+                    overlay.classList.add('intro-in');
+                    void overlay.offsetWidth;
+                    overlay.style.transition = '';
+                    if (logo) logo.style.transition = '';
+                    setTimeout(function () { overlay.classList.add('intro-out'); }, 200);
+                    setTimeout(function () {
+                        overlay.classList.add('intro-done');
+                        document.documentElement.style.overflow = '';
+                    }, 700);
+                } else {
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(function () { overlay.classList.add('intro-in'); });
+                    });
+                    setTimeout(function () { overlay.classList.add('intro-out'); }, 1700);
+                    setTimeout(function () {
+                        overlay.classList.add('intro-done');
+                        document.documentElement.style.overflow = '';
+                    }, 2700);
+                }
+            }
+
+            document.addEventListener('click', function (e) {
+                var link = e.target.closest('a[href]');
+                if (!link || link.target === '_blank') return;
+                var url;
+                try { url = new URL(link.href, window.location.href); } catch (err) { return; }
+                if (url.origin !== window.location.origin) return;
+                if (url.pathname === window.location.pathname) return;
+                if (!/\.html$/i.test(url.pathname)) return;
+                if (reduceMotion) return;
+
+                e.preventDefault();
+                try { sessionStorage.setItem('fcPageTransition', '1'); } catch (err) {}
+                var targetHref = link.href;
+                overlay.classList.add('intro-quick');
+                overlay.classList.remove('intro-in', 'intro-out', 'intro-done');
+                void overlay.offsetWidth;
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () { overlay.classList.add('intro-in'); });
+                });
+                setTimeout(function () { window.location.href = targetHref; }, 500);
+            });
+        })();
+    </script>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container" style="padding: 8px 24px; max-width: 1400px; gap: 20px;">
+            <div class="nav-brand">
+                <a href="index.html" class="nav-logo" style="display: flex; align-items: center; gap: 14px; flex-shrink: 0;">
+                    <img src="rogo.png" alt="Fantasista Cup ロゴ" style="height: 64px; width: auto; object-fit: contain; display: block; flex-shrink: 0;">
+                    <span style="font-size: 1.4rem; letter-spacing: 0.08em; white-space: nowrap;">Fantasista Cup<span class="sr-only">（奈良県橿原市のサッカー大会）</span></span>
+                </a>
+            </div>
+            <div class="nav-actions">
+                <a href="https://www.instagram.com/fantasista.cup_nara/" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="大会公式LINE">
+                    <i class="fab fa-line"></i>
+                </a>
+                <button type="button" id="hamburgerBtn" class="hamburger-btn" aria-haspopup="true" aria-expanded="false" aria-controls="navOverlay" aria-label="メニューを開く">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 👑 ハンバーガーメニュー：全画面オーバーレイ -->
+    <div id="navOverlay" class="nav-overlay">
+        <button type="button" id="navOverlayClose" class="nav-overlay-close" aria-label="メニューを閉じる">
+            <i class="fas fa-xmark"></i>
+        </button>
+        <div class="nav-overlay-inner">
+            <div class="nav-group">
+                <p class="nav-group-title">大会について</p>
+                <ul class="nav-links">
+                    <li><a href="index.html#concept">CONCEPT</a></li>
+                    <li><a href="index.html#entry">ENTRY</a></li>
+                    <li><a href="index.html#terms">TERMS</a></li>
+                    <li><a href="index.html#sport-tabs">DISCIPLINES</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">大会記録</p>
+                <ul class="nav-links">
+                    <li><a href="blog.html">BLOG</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">採用・協賛</p>
+                <ul class="nav-links">
+                    <li><a href="staff.html" class="current">RECRUIT</a></li>
+                    <li><a href="sponsor.html">SPONSOR</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">サポート</p>
+                <ul class="nav-links">
+                    <li><a href="faq.html">Q&amp;A</a></li>
+                    <li><a href="index.html#contact">CONTACT</a></li>
+                    <li><a href="index.html#info">INFORMATION</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const overlay = document.getElementById('navOverlay');
+            const closeBtn = document.getElementById('navOverlayClose');
+            if (!hamburgerBtn || !overlay) return;
+
+            function openNavOverlay() {
+                overlay.classList.add('open');
+                hamburgerBtn.classList.add('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'true');
+                document.documentElement.classList.add('nav-overlay-lock');
+                document.body.classList.add('nav-overlay-lock');
+            }
+            function closeNavOverlay() {
+                overlay.classList.remove('open');
+                hamburgerBtn.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                document.documentElement.classList.remove('nav-overlay-lock');
+                document.body.classList.remove('nav-overlay-lock');
+            }
+            window.closeNavOverlay = closeNavOverlay;
+
+            hamburgerBtn.addEventListener('click', () => {
+                if (overlay.classList.contains('open')) closeNavOverlay(); else openNavOverlay();
+            });
+            if (closeBtn) closeBtn.addEventListener('click', closeNavOverlay);
+            overlay.addEventListener('click', (e) => { if (e.target === overlay) closeNavOverlay(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNavOverlay(); });
+            overlay.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', closeNavOverlay);
+            });
+        })();
+    </script>
+
+    <main>
+        <!-- PAGE HEADER -->
+        <div class="page-header">
+            <h1 class="section-title">STAFF<span class="sr-only">｜スタッフ募集（Fantasista Cup 運営スタッフ アルバイト）</span></h1>
+            <p>Fantasista Cupでは、一緒に大会を盛り上げてくれる運営スタッフを募集しています。<br>フットボールが好きな方、ぜひお気軽にご応募ください。</p>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="luxury-frame">
+
+                    <!-- エリア -->
+                    <div class="rules-block">
+                        <h2 class="sub-title icon-title"><i class="fas fa-map-location-dot"></i>エリア</h2>
+                        <p style="text-align: center;">関西圏内（奈良県を中心に大阪府・京都府・兵庫県）</p>
+                    </div>
+
+                    <div class="rules-separator"></div>
+
+                    <!-- 業務内容 -->
+                    <div class="rules-block">
+                        <h2 class="sub-title icon-title"><i class="fas fa-clipboard-list"></i>業務内容</h2>
+                        <ul class="warning-list">
+                            <li><span class="warning-bullet">■</span><span class="warning-text">サッカー・ソサイチ・フットサル大会のレフェリー</span></li>
+                            <li><span class="warning-bullet">■</span><span class="warning-text">簡単なPCを使った事務作業</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="rules-separator"></div>
+
+                    <!-- 雇用形態 -->
+                    <div class="rules-block">
+                        <h2 class="sub-title icon-title"><i class="fas fa-id-badge"></i>雇用形態</h2>
+                        <p style="text-align: center;">アルバイト雇用</p>
+                    </div>
+
+                    <div class="rules-separator"></div>
+
+                    <!-- 応募条件 -->
+                    <div class="rules-block">
+                        <h2 class="sub-title icon-title"><i class="fas fa-circle-check"></i>応募条件</h2>
+                        <ul class="warning-list">
+                            <li><span class="warning-bullet">■</span><span class="warning-text">フットボールが大好きな方</span></li>
+                            <li><span class="warning-bullet">■</span><span class="warning-text">年齢・学歴不問</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="rules-separator"></div>
+
+                    <!-- 歓迎 -->
+                    <div class="rules-block">
+                        <h2 class="sub-title icon-title"><i class="fas fa-star"></i>歓迎</h2>
+                        <ul class="warning-list">
+                            <li><span class="warning-bullet">■</span><span class="warning-text">コミュニケーション能力に自信のある方</span></li>
+                            <li><span class="warning-bullet">■</span><span class="warning-text">スタートアップの事業に興味がある人</span></li>
+                            <li><span class="warning-bullet">■</span><span class="warning-text">友達との応募大歓迎</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="rules-separator"></div>
+
+                    <!-- 給与・待遇 -->
+                    <div class="rules-block">
+                        <h2 class="sub-title icon-title"><i class="fas fa-sack-dollar"></i>給与・待遇</h2>
+                        <ul class="warning-list">
+                            <li><span class="warning-bullet">■</span><span class="warning-text">時給1,500円〜1,750円（研修期間は1,100円）</span></li>
+                            <li><span class="warning-bullet">■</span><span class="warning-text">交通費1,000円まで支給</span></li>
+                            <li><span class="warning-bullet">■</span><span class="warning-text">希望シフト制</span></li>
+                            <li><span class="warning-bullet">■</span><span class="warning-text">定期的なスタッフ内のご飯会</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="rules-separator"></div>
+
+                    <!-- 面接時の注意事項 -->
+                    <div class="rules-block">
+                        <h2 class="sub-title icon-title"><i class="fas fa-video"></i>面接時の注意事項</h2>
+                        <ul class="warning-list">
+                            <li><span class="warning-bullet">■</span><span class="warning-text">オンラインでの面談になります</span></li>
+                            <li><span class="warning-bullet">■</span><span class="warning-text">履歴書のご準備をお願いいたします</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="rules-separator"></div>
+
+                    <!-- 応募方法（エントリーフォーム） -->
+                    <div class="rules-block" id="staff-entry">
+                        <h2 class="sub-title icon-title"><i class="fas fa-paper-plane"></i>応募方法</h2>
+                        <p style="text-align: center; margin-bottom: 30px;">下記フォームに必要事項をご入力のうえ送信してください。<br class="br-sp">内容を確認のうえ、オンライン面談についてご連絡いたします。</p>
+
+                        <form name="staff-entry" method="POST" data-netlify="true" class="contact-form" id="staffEntryForm">
+                            <input type="hidden" name="form-name" value="staff-entry">
+                            <div class="form-group">
+                                <label for="staff-name">お名前</label>
+                                <input type="text" id="staff-name" name="name" placeholder="例：山田 太郎" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="staff-email">メールアドレス</label>
+                                <input type="email" id="staff-email" name="email" placeholder="例：example@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="staff-phone">電話番号</label>
+                                <input type="tel" id="staff-phone" name="phone" placeholder="例：090-1234-5678" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="staff-area">お住まいのエリア</label>
+                                <input type="text" id="staff-area" name="area" placeholder="例：奈良県奈良市">
+                            </div>
+                            <div class="form-group">
+                                <label for="staff-message">自己PR・応募動機</label>
+                                <textarea id="staff-message" name="message" rows="5" placeholder="ご自由にご記入ください"></textarea>
+                            </div>
+                            <div class="center-btn">
+                                <button type="submit" class="btn-submit">応募する</button>
+                            </div>
+                        </form>
+
+                        <div id="staffSuccessMessage" style="display: none; text-align: center; padding: 50px 20px;">
+                            <h2 style="color: #aa7c11; font-size: 2rem; margin-bottom: 15px; letter-spacing: 0.05em;">ご応募ありがとうございます。</h2>
+                            <p style="font-size: 1.1rem; color: var(--text-color); line-height: 1.8;">内容を確認のうえ、オンライン面談についてご連絡いたします。<br>お手数ですが履歴書のご準備をお願いいたします。</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <ul class="footer-links">
+            <li><a href="index.html#concept">CONCEPT</a></li>
+            <li><a href="index.html#entry">ENTRY</a></li>
+            <li><a href="blog.html">BLOG</a></li>
+            <li><a href="index.html#terms">TERMS</a></li>
+            <li><a href="index.html#sport-tabs">DISCIPLINES</a></li>
+            <li><a href="staff.html">RECRUIT</a></li>
+            <li><a href="sponsor.html">SPONSOR</a></li>
+            <li><a href="index.html#contact">CONTACT</a></li>
+            <li><a href="index.html#info">INFORMATION</a></li>
+            <li><a href="faq.html">Q&amp;A</a></li>
+        </ul>
+        <div class="footer-brand">
+            <img src="rogo.png" alt="Fantasista Cup ロゴ" class="footer-logo">
+            <p class="footer-org">Fantasista Cup<span class="sr-only">運営事務局（奈良県橿原市のサッカー大会）</span></p>
+        </div>
+        <p>&copy; 2026 Fantasista Cup All Rights Reserved.</p>
+        <p class="footer-legal-link"><a href="tokushoho.html">特定商取引法に基づく表記</a></p>
+    </footer>
+
+    <!-- 全スクリプト制御 -->
+    <script>
+        // 👑【最重要修正】リロードと自動トップスクロールを完全に封じ込める送信プログラム
+        document.getElementById('staffEntryForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            const submitBtn = form.querySelector('.btn-submit');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerText = "送信中...";
+            }
+
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                form.style.display = "none";
+                document.getElementById("staffSuccessMessage").style.display = "block";
+            })
+            .catch(() => {
+                form.style.display = "none";
+                document.getElementById("staffSuccessMessage").style.display = "block";
+            });
+        });
+    </script>
+</body>
+</html>

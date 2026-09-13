@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 👑 SEO対策：title / meta description -->
+    <title>よくある質問（Q&amp;A）｜奈良のサッカー大会ならFantasista Cup</title>
+    <meta name="description" content="奈良県で開催する11人制サッカー大会「Fantasista Cup」のよくある質問ページです。参加方法・持ち物・ルール・キャンセル規定・安全に関する注意事項などをまとめています。">
+
+    <!-- ==========================================
+       👑 ファビコン・アイコン限界最大化設定
+       ========================================== -->
+    <link rel="icon" href="rogo2.png" type="image/png" sizes="any">
+    <link rel="apple-touch-icon" href="rogo2.png">
+
+    <!-- ==========================================
+       👑 OGP（SNSなどでシェアされた際の表示設定）
+       ========================================== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="よくある質問（Q&amp;A）｜奈良のサッカー大会ならFantasista Cup">
+    <meta property="og:description" content="奈良県で開催する11人制サッカー大会「Fantasista Cup」のよくある質問ページです。参加方法・持ち物・ルール・キャンセル規定・安全に関する注意事項などをまとめています。">
+    <meta property="og:image" content="rogo2.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="よくある質問（Q&amp;A）｜奈良のサッカー大会ならFantasista Cup">
+    <meta name="twitter:image" content="rogo2.png">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fontsから明朝体（Noto Serif JP）を読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 各種アイコン表示用に Font Awesomeを読み込み -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- 💡 ナビバー演出（index.htmlと共通） -->
+    <style>
+        /* ナビバーの半透明化＋ぼかしは style.css の .navbar に統一済み */
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a.active,
+        .nav-links a.current {
+            color: #ffffff !important;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+        }
+        .nav-links a:hover {
+            color: #ffffff !important;
+        }
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 115%;
+            height: 140%;
+            transform: translate(-50%, -50%) scaleX(0);
+            background: linear-gradient(90deg,
+                rgba(212, 175, 55, 0) 0%,
+                rgba(255, 223, 128, 0.7) 25%,
+                rgba(170, 124, 17, 0.8) 50%,
+                rgba(255, 223, 128, 0.7) 75%,
+                rgba(212, 175, 55, 0) 100%
+            );
+            background-size: 200% auto;
+            z-index: -1;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+        }
+        .nav-links a.current::before {
+            transform: translate(-50%, -50%) scaleX(1);
+            opacity: 1;
+            animation: goldShine 2s linear infinite;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold-bright), var(--gold-dark));
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--gold-bright);
+        }
+        .nav-links a.current::after {
+            width: 100%;
+        }
+        @keyframes goldShine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* 👑 スクリーンリーダー／クローラーのみに読ませる視覚的に隠すテキスト */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ページ上部の見出しエリア（Heroの代わり） */
+        .page-header {
+            background-color: var(--navy-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 70px 20px 55px;
+        }
+        .page-header .section-title {
+            color: var(--white);
+        }
+        .page-header p {
+            max-width: 560px;
+            margin: 18px auto 0;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.8;
+        }
+
+        /* 大会公式LINEへの導線（ページ上部） */
+        .faq-line-cta {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 28px;
+            padding: 13px 30px;
+            background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-dark) 100%);
+            color: var(--white) !important;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35), 0 0 0 4px rgba(212, 175, 55, 0.08);
+            animation: faqLineGlow 2.6s ease-in-out infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .faq-line-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(212, 175, 55, 0.5), 0 0 0 4px rgba(212, 175, 55, 0.12);
+        }
+        .faq-line-cta i {
+            font-size: 1.3rem;
+        }
+        @keyframes faqLineGlow {
+            0%, 100% { box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35), 0 0 0 4px rgba(212, 175, 55, 0.08); }
+            50% { box-shadow: 0 4px 22px rgba(212, 175, 55, 0.55), 0 0 0 7px rgba(212, 175, 55, 0.05); }
+        }
+
+        /* 目次（CATEGORY）：枠・影・背景は .luxury-frame を再利用し、ここでは配置とpaddingのみ調整 */
+        .faq-toc {
+            max-width: 820px;
+            margin: 0 auto 40px;
+            padding: 30px 25px 26px;
+        }
+        .faq-toc-label {
+            text-align: center;
+            color: var(--gold-dark);
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 0.35em;
+            margin-bottom: 20px;
+        }
+        .faq-toc-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+        }
+        .faq-toc-list a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 84px;
+            padding: 14px 10px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            background-color: var(--gray-bg);
+            color: var(--navy-dark);
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 0.02em;
+            line-height: 1.4;
+            transition: all 0.3s ease;
+        }
+        .faq-toc-list a i {
+            color: var(--gold-dark);
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        .faq-toc-list a:hover {
+            background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-dark) 100%);
+            border-color: var(--gold-bright);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+            transform: translateY(-1px);
+        }
+        .faq-toc-list a:hover i {
+            color: var(--white);
+        }
+        .faq-toc-list a.faq-toc-safety {
+            border-color: rgba(160, 26, 26, 0.4);
+        }
+        .faq-toc-list a.faq-toc-safety i {
+            color: #a01a1a;
+        }
+        .faq-toc-list a.faq-toc-safety:hover {
+            background: linear-gradient(135deg, #b32323 0%, #7a1414 100%);
+            border-color: #a01a1a;
+            box-shadow: 0 4px 14px rgba(160, 26, 26, 0.35);
+        }
+        .faq-toc-list a.faq-toc-safety:hover i {
+            color: var(--white);
+        }
+        .rules-block[id] {
+            scroll-margin-top: calc(var(--navbar-height, 110px) + 28px);
+        }
+        @media screen and (max-width: 1024px) {
+            .faq-toc {
+                padding: 24px 16px 20px;
+            }
+            .faq-toc-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .faq-toc-list a {
+                font-size: 0.75rem;
+                min-height: 74px;
+                padding: 10px 8px;
+            }
+        }
+
+        /* カテゴリ見出し */
+        .faq-category-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+        .faq-category-title i {
+            color: var(--gold-dark);
+        }
+
+        /* 「安全・保険について」だけ視覚的に強調する警告ボックス */
+        .faq-safety-box {
+            border: 2px solid #a01a1a;
+            background-color: rgba(160, 26, 26, 0.05);
+            padding: 30px 20px;
+            margin: 0 -5px;
+        }
+        .faq-safety-box .faq-category-title {
+            color: #a01a1a;
+        }
+        .faq-safety-box .faq-category-title i {
+            color: #a01a1a;
+        }
+        .faq-safety-box .accordion-item {
+            border-color: rgba(160, 26, 26, 0.3);
+        }
+        .faq-safety-box .accordion-header {
+            background-color: rgba(160, 26, 26, 0.06);
+        }
+        .faq-safety-box .accordion-header:hover {
+            background-color: rgba(160, 26, 26, 0.12);
+        }
+
+        /* 本文中のリンク */
+        .accordion-content-inner a,
+        .faq-safety-box a {
+            color: var(--gold-dark);
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* レスポンシブ：スマホでの見出し・余白調整 */
+        @media screen and (max-width: 1024px) {
+            .page-header {
+                padding: 50px 18px 40px;
+            }
+            .faq-category-title {
+                flex-direction: column;
+                gap: 4px;
+            }
+            .faq-safety-box {
+                padding: 22px 14px;
+                margin: 0;
+            }
+        }
+    </style>
+
+    <!-- ==========================================
+       👑 SEO対策：構造化データ（JSON-LD / schema.org FAQPage）
+       ========================================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "個人でも参加できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fantasista Cupは基本的にチーム単位でのご参加となります。個人でのご参加をご希望の場合は、お手数ですが大会公式LINEにてお問い合わせください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "参加費はいくらですか？支払い方法は？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "参加費（金額・お支払い方法）については、お手数ですが大会公式LINEにてお問い合わせください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "キャンセルはできますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大会開催日の22日前12:00（昼）までは無料でキャンセル可能です。それ以降のキャンセルは、理由の如何（メンバー不足、怪我等）にかかわらず、参加費全額をお支払いいただきます。無断キャンセルの場合は違約金（参加費全額）を即時請求いたします。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "当日の持ち物は？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "すね当て（レガース）の着用が必須です。飲み物、ユニフォーム（ゼッケンがあれば尚可）をご持参ください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "スパイクの指定はありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "固定式スパイクをご使用いただけます。トレーニングシューズや、ポイント（HG）タイプのスパイクもご使用いただけます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "交代人数に制限はありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1試合につき5名までとなります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "どんな競技規則で行われますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "本大会はJFA制定のサッカー競技規則に準じますが、大会独自のローカルルールを優先します。お手数ですが大会公式LINEにてお問い合わせください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "試合時間はどれくらいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "試合時間は参加チーム数により変更となる場合があります。お手数ですが大会公式LINEにてお問い合わせください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "勝ち点のルールは？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "規定時間での勝利は3点、PK戦での勝利は2点、PK戦での敗戦は1点、規定時間での敗戦は0点です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "雨天の場合は中止になりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "天候による開催可否は、大会前日〜当日に公式LINEにて随時ご案内いたします。前日20時頃を目安に判断し、中止の場合は速やかにご連絡いたします。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "駐車場はありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "会場ごとに駐車場の有無・台数が異なります。お手数ですが大会公式LINEにてお問い合わせください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "怪我や事故が起きた場合の対応は？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大会中の怪我、事故、盗難等について、運営側は責任を負いかねます。プレー中の事故、怪我、熱中症、死亡事故等に関しては、参加者の自己責任となります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "大会中の写真や動画はどう使われますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大会中に撮影された写真・動画は、弊社の広報活動（SNS等）に使用いたします。"
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+    <!-- 👑 オープニング演出：index.htmlと共通のrogo.png演出
+         ・直接アクセス／初回訪問時はフルの演出
+         ・他ページからの遷移で到着した場合は、短い演出に統一（2重に見えないようにする）
+         ・他ページへ移動する際も同じ演出を表示してから遷移する -->
+    <div id="introOverlay" class="intro-overlay">
+        <div class="intro-inner">
+            <img src="rogo.png" alt="Fantasista Cup ロゴ" class="intro-logo">
+        </div>
+    </div>
+    <script>
+        (function () {
+            var overlay = document.getElementById('introOverlay');
+            if (!overlay) return;
+            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (reduceMotion) {
+                overlay.classList.add('intro-done');
+            } else {
+                var isTransition = false;
+                try { isTransition = sessionStorage.getItem('fcPageTransition') === '1'; } catch (err) {}
+                try { sessionStorage.removeItem('fcPageTransition'); } catch (err) {}
+
+                document.documentElement.style.overflow = 'hidden';
+
+                if (isTransition) {
+                    // 他ページからの遷移で到着：すでに表示された状態から、短くフェードアウトするだけ
+                    var logo = overlay.querySelector('.intro-logo');
+                    overlay.classList.add('intro-quick');
+                    overlay.style.transition = 'none';
+                    if (logo) logo.style.transition = 'none';
+                    overlay.classList.add('intro-in');
+                    void overlay.offsetWidth; // 強制リフロー（transition:noneを確実に反映させる）
+                    overlay.style.transition = '';
+                    if (logo) logo.style.transition = '';
+                    setTimeout(function () {
+                        overlay.classList.add('intro-out');
+                    }, 200);
+                    setTimeout(function () {
+                        overlay.classList.add('intro-done');
+                        document.documentElement.style.overflow = '';
+                    }, 700);
+                } else {
+                    // 直接アクセス・初回訪問：フルのオープニング演出
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(function () {
+                            overlay.classList.add('intro-in');
+                        });
+                    });
+                    setTimeout(function () {
+                        overlay.classList.add('intro-out');
+                    }, 1700);
+                    setTimeout(function () {
+                        overlay.classList.add('intro-done');
+                        document.documentElement.style.overflow = '';
+                    }, 2700);
+                }
+            }
+
+            // 👑 他ページ（トップページなど）へ移動する際も同じ演出を表示してから遷移する
+            document.addEventListener('click', function (e) {
+                var link = e.target.closest('a[href]');
+                if (!link || link.target === '_blank') return;
+                var url;
+                try {
+                    url = new URL(link.href, window.location.href);
+                } catch (err) {
+                    return;
+                }
+                if (url.origin !== window.location.origin) return; // 外部リンクは対象外
+                if (url.pathname === window.location.pathname) return; // 同一ページ内アンカーは対象外
+                if (!/\.html$/i.test(url.pathname)) return; // htmlページ間の移動のみ対象
+                if (reduceMotion) return; // アニメーション低減設定時はそのまま遷移
+
+                e.preventDefault();
+                try { sessionStorage.setItem('fcPageTransition', '1'); } catch (err) {}
+                var targetHref = link.href;
+                overlay.classList.add('intro-quick');
+                // 一度「非表示（ぼやけ・透明）」の状態にリセットしてから、次のフレームで確実にフェードインさせる
+                overlay.classList.remove('intro-in', 'intro-out', 'intro-done');
+                void overlay.offsetWidth;
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        overlay.classList.add('intro-in');
+                    });
+                });
+                setTimeout(function () {
+                    window.location.href = targetHref;
+                }, 500);
+            });
+        })();
+    </script>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container" style="padding: 8px 24px; max-width: 1400px; gap: 20px;">
+            <div class="nav-brand">
+                <a href="index.html" class="nav-logo" style="display: flex; align-items: center; gap: 14px; flex-shrink: 0;">
+                    <img src="rogo.png" alt="Fantasista Cup ロゴ" style="height: 64px; width: auto; object-fit: contain; display: block; flex-shrink: 0;">
+                    <span style="font-size: 1.4rem; letter-spacing: 0.08em; white-space: nowrap;">Fantasista Cup<span class="sr-only">（奈良県橿原市のサッカー大会）</span></span>
+                </a>
+            </div>
+            <div class="nav-actions">
+                <a href="https://www.instagram.com/fantasista.cup_nara/" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="大会公式LINE">
+                    <i class="fab fa-line"></i>
+                </a>
+                <button type="button" id="hamburgerBtn" class="hamburger-btn" aria-haspopup="true" aria-expanded="false" aria-controls="navOverlay" aria-label="メニューを開く">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 👑 ハンバーガーメニュー：全画面オーバーレイ -->
+    <div id="navOverlay" class="nav-overlay">
+        <button type="button" id="navOverlayClose" class="nav-overlay-close" aria-label="メニューを閉じる">
+            <i class="fas fa-xmark"></i>
+        </button>
+        <div class="nav-overlay-inner">
+            <div class="nav-group">
+                <p class="nav-group-title">大会について</p>
+                <ul class="nav-links">
+                    <li><a href="index.html#concept">CONCEPT</a></li>
+                    <li><a href="index.html#entry">ENTRY</a></li>
+                    <li><a href="index.html#terms">TERMS</a></li>
+                    <li><a href="index.html#sport-tabs">DISCIPLINES</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">大会記録</p>
+                <ul class="nav-links">
+                    <li><a href="blog.html">BLOG</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">採用・協賛</p>
+                <ul class="nav-links">
+                    <li><a href="staff.html">RECRUIT</a></li>
+                    <li><a href="sponsor.html">SPONSOR</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">サポート</p>
+                <ul class="nav-links">
+                    <li><a href="faq.html" class="current">Q&amp;A</a></li>
+                    <li><a href="index.html#contact">CONTACT</a></li>
+                    <li><a href="index.html#info">INFORMATION</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 👑 ハンバーガーメニュー：開閉・スクロールロック・背景クリックとEscで閉じる
+        (function () {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const overlay = document.getElementById('navOverlay');
+            const closeBtn = document.getElementById('navOverlayClose');
+            if (!hamburgerBtn || !overlay) return;
+
+            function openNavOverlay() {
+                overlay.classList.add('open');
+                hamburgerBtn.classList.add('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'true');
+                document.documentElement.classList.add('nav-overlay-lock');
+                document.body.classList.add('nav-overlay-lock');
+            }
+            function closeNavOverlay() {
+                overlay.classList.remove('open');
+                hamburgerBtn.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                document.documentElement.classList.remove('nav-overlay-lock');
+                document.body.classList.remove('nav-overlay-lock');
+            }
+            window.closeNavOverlay = closeNavOverlay;
+
+            hamburgerBtn.addEventListener('click', () => {
+                if (overlay.classList.contains('open')) closeNavOverlay(); else openNavOverlay();
+            });
+            if (closeBtn) closeBtn.addEventListener('click', closeNavOverlay);
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeNavOverlay();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeNavOverlay();
+            });
+            overlay.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', closeNavOverlay);
+            });
+        })();
+    </script>
+
+    <main>
+        <!-- PAGE HEADER -->
+        <div class="page-header">
+            <h1 class="section-title">Q&amp;A<span class="sr-only">｜よくある質問（奈良県サッカー大会 Fantasista Cup）</span></h1>
+            <p>Fantasista Cupに関するよくある質問をまとめています。<br>ここに載っていないご不明な点は、<a href="index.html#contact" style="color: var(--gold-bright);">CONTACTページ</a>よりお気軽にお問い合わせください。</p>
+            <div>
+                <a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer" class="faq-line-cta">
+                    <i class="fab fa-line"></i>
+                    <span>大会公式LINEで質問する</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Q&A SECTION -->
+        <section id="faq" class="section">
+            <div class="container">
+
+                <!-- 目次 -->
+                <div class="luxury-frame faq-toc">
+                    <p class="faq-toc-label">CATEGORY</p>
+                    <nav class="faq-toc-list" aria-label="Q&amp;Aカテゴリ目次">
+                        <a href="#faq-participation"><i class="fas fa-futbol"></i>大会参加について</a>
+                        <a href="#faq-items"><i class="fas fa-shirt"></i>持ち物・服装について</a>
+                        <a href="#faq-rules"><i class="fas fa-whistle"></i>ルール・進行について</a>
+                        <a href="#faq-weather"><i class="fas fa-cloud-sun-rain"></i>天候・会場について</a>
+                        <a href="#faq-safety" class="faq-toc-safety"><i class="fas fa-triangle-exclamation"></i>安全・保険について</a>
+                        <a href="#faq-photo"><i class="fas fa-camera"></i>写真・肖像権について</a>
+                    </nav>
+                </div>
+
+                <div class="luxury-frame">
+
+                    <!-- カテゴリ1：大会参加について -->
+                    <div class="rules-block" id="faq-participation">
+                        <h2 class="sub-title faq-category-title"><i class="fas fa-futbol"></i>大会参加について</h2>
+                        <div class="accordion-container">
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="vol-title">個人でも参加できますか？</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>Fantasista Cupは基本的にチーム単位でのご参加となります。個人でのご参加をご希望の場合は、お手数ですが<a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer">大会公式LINE</a>にてお問い合わせください。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="vol-title">参加費はいくらですか？支払い方法は？</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>参加費（金額・お支払い方法）については、お手数ですが<a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer">大会公式LINE</a>にてお問い合わせください。お申し込みは<a href="index.html#contact">CONTACT</a>フォームから承っています。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="vol-title">キャンセルはできますか？</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>大会開催日の22日前12:00（昼）までは無料でキャンセル可能です。それ以降のキャンセルは、理由の如何（メンバー不足、怪我等）にかかわらず、参加費全額をお支払いいただきます。無断キャンセルの場合は違約金（参加費全額）を即時請求いたします。詳しくは<a href="index.html#terms">TERMS（キャンセル規定）</a>をご確認ください。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rules-separator"></div>
+
+                    <!-- カテゴリ2：当日の持ち物・服装について -->
+                    <div class="rules-block" id="faq-items">
+                        <h2 class="sub-title faq-category-title"><i class="fas fa-shirt"></i>当日の持ち物・服装について</h2>
+                        <div class="accordion-container">
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="vol-title">当日の持ち物は？</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>すね当て（レガース）の着用が必須です。飲み物、ユニフォーム（ゼッケンがあれば尚可）をご持参ください。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="vol-title">スパイクの指定はありますか？</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>固定式スパイクをご使用いただけます。トレーニングシューズや、ポイント（HG）タイプのスパイクもご使用いただけます。詳しくは<a href="index.html#sport-tabs">DISCIPLINES</a>もご確認ください。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="vol-title">交代人数に制限はありますか？</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>1試合につき5名までとなります。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rules-separator"></div>
+
+                    <!-- カテゴリ3：ルール・進行について -->
+                    <div class="rules-block" id="faq-rules">
+                        <h2 class="sub-title faq-category-title"><i class="fas fa-whistle"></i>ルール・進行について</h2>
+                        <div class="accordion-container">
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="vol-title">どんな競技規則で行われますか？</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>本大会はJFA制定のサッカー競技規則に準じますが、大会独自のローカルルールを優先します。詳細は<a href="index.html#terms">TERMS</a>、または<a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer">大会公式LINE</a>にてお問い合わせください。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="vol-title">試合時間はどれくらいですか？</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>試合時間は参加チーム数により変更となる場合があります。お手数ですが<a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer">大会公式LINE</a>にてお問い合わせください。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="vol-title">勝ち点のルールは？</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>規定時間での勝利は3点、PK戦での勝利は2点、PK戦での敗戦は1点、規定時間での敗戦は0点です。詳しくは<a href="index.html#sport-tabs">DISCIPLINES</a>をご覧ください。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rules-separator"></div>
+
+                    <!-- カテゴリ4：天候・会場について -->
+                    <div class="rules-block" id="faq-weather">
+                        <h2 class="sub-title faq-category-title"><i class="fas fa-cloud-sun-rain"></i>天候・会場について</h2>
+                        <div class="accordion-container">
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="vol-title">雨天の場合は中止になりますか？</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>天候による開催可否は、大会前日〜当日に<a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer">公式LINE</a>にて随時ご案内いたします。前日20時頃を目安に判断し、中止の場合は速やかにご連絡いたします。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="vol-title">駐車場はありますか？</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>会場ごとに駐車場の有無・台数が異なります。お手数ですが<a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer">大会公式LINE</a>にてお問い合わせください。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rules-separator"></div>
+
+                    <!-- カテゴリ5：安全・保険について（重要のため強調表示） -->
+                    <div class="rules-block faq-safety-box" id="faq-safety">
+                        <h2 class="sub-title faq-category-title"><i class="fas fa-triangle-exclamation"></i>安全・保険について（必ずご確認ください）</h2>
+                        <div class="accordion-container">
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="vol-title">怪我や事故が起きた場合の対応は？</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>大会中の怪我、事故、盗難等について、運営側は責任を負いかねます。プレー中の事故、怪我、熱中症、死亡事故等に関しては、参加者の自己責任となります。あらかじめ<a href="index.html#terms">TERMS</a>の内容をご確認のうえ、お申し込みください。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rules-separator"></div>
+
+                    <!-- カテゴリ6：写真・肖像権について -->
+                    <div class="rules-block" id="faq-photo">
+                        <h2 class="sub-title faq-category-title"><i class="fas fa-camera"></i>写真・肖像権について</h2>
+                        <div class="accordion-container">
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="vol-title">大会中の写真や動画はどう使われますか？</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>大会中に撮影された写真・動画は、弊社の広報活動（SNS等）に使用いたします。詳しくは<a href="index.html#terms">TERMS</a>をご確認ください。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="line-guide-box" style="max-width: 650px; margin: 45px auto 0; text-align: center;">
+                    <p><i class="fab fa-line" style="color: var(--gold-dark); margin-right: 6px;"></i>ここで解決しなかったご質問は、大会公式LINEにて直接お問い合わせください。</p>
+                    <a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer" class="btn-action line-guide-btn">
+                        <i class="fab fa-line"></i>
+                        大会公式LINEへ
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <ul class="footer-links">
+            <li><a href="index.html#concept">CONCEPT</a></li>
+            <li><a href="index.html#entry">ENTRY</a></li>
+            <li><a href="blog.html">BLOG</a></li>
+            <li><a href="index.html#terms">TERMS</a></li>
+            <li><a href="index.html#sport-tabs">DISCIPLINES</a></li>
+            <li><a href="staff.html">RECRUIT</a></li>
+            <li><a href="sponsor.html">SPONSOR</a></li>
+            <li><a href="index.html#contact">CONTACT</a></li>
+            <li><a href="index.html#info">INFORMATION</a></li>
+            <li><a href="faq.html">Q&amp;A</a></li>
+        </ul>
+        <div class="footer-brand">
+            <img src="rogo.png" alt="Fantasista Cup ロゴ" class="footer-logo">
+            <p class="footer-org">Fantasista Cup<span class="sr-only">運営事務局（奈良県橿原市のサッカー大会）</span></p>
+        </div>
+        <p>&copy; 2026 Fantasista Cup All Rights Reserved.</p>
+        <p class="footer-legal-link"><a href="tokushoho.html">特定商取引法に基づく表記</a></p>
+    </footer>
+
+    <!-- 全スクリプト制御 -->
+    <script>
+        // アコーディオン（index.htmlと同じ挙動）
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            const item = header.parentElement;
+            const content = header.nextElementSibling;
+            if (item.classList.contains('active') && content) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+            header.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                if (isActive) {
+                    item.classList.remove('active');
+                    if (content) content.style.maxHeight = null;
+                } else {
+                    item.classList.add('active');
+                    if (content) content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

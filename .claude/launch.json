@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "fantasista-cup-static",
+      "url": "http://localhost:8813",
+      "port": 8813
+    },
+    {
+      "name": "fantasista-cup-admin-dev",
+      "url": "http://localhost:3000",
+      "port": 3000
+    }
+  ]
+}

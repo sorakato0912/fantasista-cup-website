@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 👑 SEO対策：title / meta description -->
+    <title>特定商取引法に基づく表記｜Fantasista Cup</title>
+    <meta name="description" content="Fantasista Cup（奈良県で開催する11人制サッカー大会）の特定商取引法に基づく表記ページです。">
+
+    <!-- ==========================================
+       👑 ファビコン・アイコン限界最大化設定
+       ========================================== -->
+    <link rel="icon" href="rogo2.png" type="image/png" sizes="any">
+    <link rel="apple-touch-icon" href="rogo2.png">
+
+    <!-- ==========================================
+       👑 OGP（SNSなどでシェアされた際の表示設定）
+       ========================================== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="特定商取引法に基づく表記｜Fantasista Cup">
+    <meta property="og:description" content="Fantasista Cup（奈良県で開催する11人制サッカー大会）の特定商取引法に基づく表記ページです。">
+    <meta property="og:image" content="rogo2.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="特定商取引法に基づく表記｜Fantasista Cup">
+    <meta name="twitter:image" content="rogo2.png">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fontsから明朝体（Noto Serif JP）を読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 各種アイコン表示用に Font Awesomeを読み込み -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- 💡 ナビバー演出（index.html・faq.htmlと共通） -->
+    <style>
+        /* ナビバーの半透明化＋ぼかしは style.css の .navbar に統一済み */
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a.active,
+        .nav-links a.current {
+            color: #ffffff !important;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+        }
+        .nav-links a:hover {
+            color: #ffffff !important;
+        }
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 115%;
+            height: 140%;
+            transform: translate(-50%, -50%) scaleX(0);
+            background: linear-gradient(90deg,
+                rgba(212, 175, 55, 0) 0%,
+                rgba(255, 223, 128, 0.7) 25%,
+                rgba(170, 124, 17, 0.8) 50%,
+                rgba(255, 223, 128, 0.7) 75%,
+                rgba(212, 175, 55, 0) 100%
+            );
+            background-size: 200% auto;
+            z-index: -1;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+        }
+        .nav-links a.current::before {
+            transform: translate(-50%, -50%) scaleX(1);
+            opacity: 1;
+            animation: goldShine 2s linear infinite;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold-bright), var(--gold-dark));
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--gold-bright);
+        }
+        .nav-links a.current::after {
+            width: 100%;
+        }
+        @keyframes goldShine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* 👑 スクリーンリーダー／クローラーのみに読ませる視覚的に隠すテキスト */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ページ上部の見出しエリア（Heroの代わり） */
+        .page-header {
+            background-color: var(--navy-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 70px 20px 55px;
+        }
+        .page-header .section-title {
+            color: var(--white);
+        }
+        .page-header p {
+            max-width: 560px;
+            margin: 18px auto 0;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.8;
+        }
+
+        /* 特定商取引法ページ専用：項目リスト */
+        .legal-list {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .legal-row {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 20px;
+            padding: 26px 0;
+            border-bottom: 1px solid rgba(10, 17, 40, 0.08);
+        }
+        .legal-row:first-child {
+            padding-top: 4px;
+        }
+        .legal-row:last-child {
+            border-bottom: none;
+            padding-bottom: 4px;
+        }
+        .legal-label {
+            color: var(--gold-dark);
+            font-weight: bold;
+            letter-spacing: 0.08em;
+        }
+        .legal-value {
+            color: var(--text-color);
+            line-height: 1.9;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .page-header {
+                padding: 50px 18px 40px;
+            }
+            .legal-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                padding: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 👑 オープニング演出：index.html・faq.htmlと共通のrogo.png演出
+         ・直接アクセス／初回訪問時はフルの演出
+         ・他ページからの遷移で到着した場合は、短い演出に統一（2重に見えないようにする）
+         ・他ページへ移動する際も同じ演出を表示してから遷移する -->
+    <div id="introOverlay" class="intro-overlay">
+        <div class="intro-inner">
+            <img src="rogo.png" alt="Fantasista Cup ロゴ" class="intro-logo">
+        </div>
+    </div>
+    <script>
+        (function () {
+            var overlay = document.getElementById('introOverlay');
+            if (!overlay) return;
+            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (reduceMotion) {
+                overlay.classList.add('intro-done');
+            } else {
+                var isTransition = false;
+                try { isTransition = sessionStorage.getItem('fcPageTransition') === '1'; } catch (err) {}
+                try { sessionStorage.removeItem('fcPageTransition'); } catch (err) {}
+
+                document.documentElement.style.overflow = 'hidden';
+
+                if (isTransition) {
+                    var logo = overlay.querySelector('.intro-logo');
+                    overlay.classList.add('intro-quick');
+                    overlay.style.transition = 'none';
+                    if (logo) logo.style.transition = 'none';
+                    overlay.classList.add('intro-in');
+                    void overlay.offsetWidth;
+                    overlay.style.transition = '';
+                    if (logo) logo.style.transition = '';
+                    setTimeout(function () {
+                        overlay.classList.add('intro-out');
+                    }, 200);
+                    setTimeout(function () {
+                        overlay.classList.add('intro-done');
+                        document.documentElement.style.overflow = '';
+                    }, 700);
+                } else {
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(function () {
+                            overlay.classList.add('intro-in');
+                        });
+                    });
+                    setTimeout(function () {
+                        overlay.classList.add('intro-out');
+                    }, 1700);
+                    setTimeout(function () {
+                        overlay.classList.add('intro-done');
+                        document.documentElement.style.overflow = '';
+                    }, 2700);
+                }
+            }
+
+            document.addEventListener('click', function (e) {
+                var link = e.target.closest('a[href]');
+                if (!link || link.target === '_blank') return;
+                var url;
+                try {
+                    url = new URL(link.href, window.location.href);
+                } catch (err) {
+                    return;
+                }
+                if (url.origin !== window.location.origin) return;
+                if (url.pathname === window.location.pathname) return;
+                if (!/\.html$/i.test(url.pathname)) return;
+                if (reduceMotion) return;
+
+                e.preventDefault();
+                try { sessionStorage.setItem('fcPageTransition', '1'); } catch (err) {}
+                var targetHref = link.href;
+                overlay.classList.add('intro-quick');
+                overlay.classList.remove('intro-in', 'intro-out', 'intro-done');
+                void overlay.offsetWidth;
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        overlay.classList.add('intro-in');
+                    });
+                });
+                setTimeout(function () {
+                    window.location.href = targetHref;
+                }, 500);
+            });
+        })();
+    </script>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container" style="padding: 8px 24px; max-width: 1400px; gap: 20px;">
+            <div class="nav-brand">
+                <a href="index.html" class="nav-logo" style="display: flex; align-items: center; gap: 14px; flex-shrink: 0;">
+                    <img src="rogo.png" alt="Fantasista Cup ロゴ" style="height: 64px; width: auto; object-fit: contain; display: block; flex-shrink: 0;">
+                    <span style="font-size: 1.4rem; letter-spacing: 0.08em; white-space: nowrap;">Fantasista Cup<span class="sr-only">（奈良県橿原市のサッカー大会）</span></span>
+                </a>
+            </div>
+            <div class="nav-actions">
+                <a href="https://www.instagram.com/fantasista.cup_nara/" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="大会公式LINE">
+                    <i class="fab fa-line"></i>
+                </a>
+                <button type="button" id="hamburgerBtn" class="hamburger-btn" aria-haspopup="true" aria-expanded="false" aria-controls="navOverlay" aria-label="メニューを開く">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 👑 ハンバーガーメニュー：全画面オーバーレイ -->
+    <div id="navOverlay" class="nav-overlay">
+        <button type="button" id="navOverlayClose" class="nav-overlay-close" aria-label="メニューを閉じる">
+            <i class="fas fa-xmark"></i>
+        </button>
+        <div class="nav-overlay-inner">
+            <div class="nav-group">
+                <p class="nav-group-title">大会について</p>
+                <ul class="nav-links">
+                    <li><a href="index.html#concept">CONCEPT</a></li>
+                    <li><a href="index.html#entry">ENTRY</a></li>
+                    <li><a href="index.html#terms">TERMS</a></li>
+                    <li><a href="index.html#sport-tabs">DISCIPLINES</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">大会記録</p>
+                <ul class="nav-links">
+                    <li><a href="blog.html">BLOG</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">採用・協賛</p>
+                <ul class="nav-links">
+                    <li><a href="staff.html">RECRUIT</a></li>
+                    <li><a href="sponsor.html">SPONSOR</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">サポート</p>
+                <ul class="nav-links">
+                    <li><a href="faq.html">Q&amp;A</a></li>
+                    <li><a href="index.html#contact">CONTACT</a></li>
+                    <li><a href="index.html#info">INFORMATION</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 👑 ハンバーガーメニュー：開閉・スクロールロック・背景クリックとEscで閉じる
+        (function () {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const overlay = document.getElementById('navOverlay');
+            const closeBtn = document.getElementById('navOverlayClose');
+            if (!hamburgerBtn || !overlay) return;
+
+            function openNavOverlay() {
+                overlay.classList.add('open');
+                hamburgerBtn.classList.add('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'true');
+                document.documentElement.classList.add('nav-overlay-lock');
+                document.body.classList.add('nav-overlay-lock');
+            }
+            function closeNavOverlay() {
+                overlay.classList.remove('open');
+                hamburgerBtn.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                document.documentElement.classList.remove('nav-overlay-lock');
+                document.body.classList.remove('nav-overlay-lock');
+            }
+            window.closeNavOverlay = closeNavOverlay;
+
+            hamburgerBtn.addEventListener('click', () => {
+                if (overlay.classList.contains('open')) closeNavOverlay(); else openNavOverlay();
+            });
+            if (closeBtn) closeBtn.addEventListener('click', closeNavOverlay);
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeNavOverlay();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeNavOverlay();
+            });
+            overlay.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', closeNavOverlay);
+            });
+        })();
+    </script>
+
+    <main>
+        <!-- PAGE HEADER -->
+        <div class="page-header">
+            <h1 class="section-title">特定商取引法に基づく表記<span class="sr-only">（Fantasista Cup 奈良県サッカー大会）</span></h1>
+            <p>Fantasista Cupの運営に関する特定商取引法に基づく表記です。<br>ご不明な点は<a href="index.html#contact" style="color: var(--gold-bright);">CONTACTページ</a>よりお問い合わせください。</p>
+        </div>
+
+        <!-- LEGAL SECTION -->
+        <section id="tokushoho" class="section">
+            <div class="container">
+                <div class="luxury-frame">
+                    <div class="legal-list">
+                        <div class="legal-row">
+                            <div class="legal-label">事業者名</div>
+                            <div class="legal-value">Fantasista Cup 運営事務局（運営責任者：加藤 大空）</div>
+                        </div>
+                        <div class="legal-row">
+                            <div class="legal-label">所在地</div>
+                            <div class="legal-value">請求があった場合には、遅滞なく開示いたします。</div>
+                        </div>
+                        <div class="legal-row">
+                            <div class="legal-label">電話番号</div>
+                            <div class="legal-value">080-2548-1959</div>
+                        </div>
+                        <div class="legal-row">
+                            <div class="legal-label">メールアドレス</div>
+                            <div class="legal-value">fantasista.cup.soccer@gmail.com</div>
+                        </div>
+                        <div class="legal-row">
+                            <div class="legal-label">販売価格</div>
+                            <div class="legal-value">参加費：大会ごとに設定し、エントリー時に個別にご案内いたします。</div>
+                        </div>
+                        <div class="legal-row">
+                            <div class="legal-label">商品代金以外の必要料金</div>
+                            <div class="legal-value">現地支払いの場合、手数料として+1,000円</div>
+                        </div>
+                        <div class="legal-row">
+                            <div class="legal-label">お支払い方法</div>
+                            <div class="legal-value">・銀行振込<br>・現地支払い（現金のみ、手数料+1,000円）</div>
+                        </div>
+                        <div class="legal-row">
+                            <div class="legal-label">お支払い時期</div>
+                            <div class="legal-value">大会開催日の約1か月前に振込案内を送付。案内送付後1週間以内にお支払いください。</div>
+                        </div>
+                        <div class="legal-row">
+                            <div class="legal-label">引渡し時期</div>
+                            <div class="legal-value">大会当日、会場にてご参加いただけます。</div>
+                        </div>
+                        <div class="legal-row">
+                            <div class="legal-label">返品・キャンセルについて</div>
+                            <div class="legal-value">
+                                ・大会開催日の22日前12:00（昼）までは無料でキャンセル可能です。<br>
+                                ・それ以降のキャンセルは、理由の如何にかかわらず、参加費全額をキャンセル料として申し受けます。<br>
+                                ・無断キャンセルの場合も同様に、参加費全額を即時請求いたします。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <ul class="footer-links">
+            <li><a href="index.html#concept">CONCEPT</a></li>
+            <li><a href="index.html#entry">ENTRY</a></li>
+            <li><a href="blog.html">BLOG</a></li>
+            <li><a href="index.html#terms">TERMS</a></li>
+            <li><a href="index.html#sport-tabs">DISCIPLINES</a></li>
+            <li><a href="staff.html">RECRUIT</a></li>
+            <li><a href="sponsor.html">SPONSOR</a></li>
+            <li><a href="index.html#contact">CONTACT</a></li>
+            <li><a href="index.html#info">INFORMATION</a></li>
+            <li><a href="faq.html">Q&amp;A</a></li>
+        </ul>
+        <div class="footer-brand">
+            <img src="rogo.png" alt="Fantasista Cup ロゴ" class="footer-logo">
+            <p class="footer-org">Fantasista Cup<span class="sr-only">運営事務局（奈良県橿原市のサッカー大会）</span></p>
+        </div>
+        <p>&copy; 2026 Fantasista Cup All Rights Reserved.</p>
+        <p class="footer-legal-link"><a href="tokushoho.html">特定商取引法に基づく表記</a></p>
+    </footer>
+</body>
+</html>

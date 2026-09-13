@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 👑 SEO対策：title / meta description -->
+    <title>Fantasista Cup Vol.1 大会レポート｜奈良のサッカー大会 Fantasista Cup</title>
+    <meta name="description" content="2026年5月23日、奈良県で開催されたFantasista Cup第1回大会のレポート。初代CHAMPION「El Mago City」や参加チームの紹介、Vol.3開催決定のお知らせなど。">
+
+    <!-- ==========================================
+       👑 ファビコン・アイコン限界最大化設定
+       ========================================== -->
+    <link rel="icon" href="rogo2.png" type="image/png" sizes="any">
+    <link rel="apple-touch-icon" href="rogo2.png">
+
+    <!-- ==========================================
+       👑 OGP（SNSなどでシェアされた際の表示設定）
+       ========================================== -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Fantasista Cup Vol.1 大会レポート｜奈良のサッカー大会、初代王者は「El Mago City」">
+    <meta property="og:description" content="2026年5月23日、奈良県で開催されたFantasista Cup第1回大会のレポート。初代CHAMPION「El Mago City」や参加チームの紹介、Vol.3開催決定のお知らせなど。">
+    <meta property="og:image" content="Vol.1優勝チーム.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fantasista Cup Vol.1 大会レポート｜奈良のサッカー大会、初代王者は「El Mago City」">
+    <meta name="twitter:image" content="Vol.1優勝チーム.jpg">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fontsから明朝体（Noto Serif JP）を読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 各種アイコン表示用に Font Awesomeを読み込み -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- 💡 ナビバー演出（index.html・faq.html・tokushoho.html・blog.htmlと共通） -->
+    <style>
+        /* ナビバーの半透明化＋ぼかしは style.css の .navbar に統一済み */
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a.active,
+        .nav-links a.current {
+            color: #ffffff !important;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+        }
+        .nav-links a:hover {
+            color: #ffffff !important;
+        }
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 115%;
+            height: 140%;
+            transform: translate(-50%, -50%) scaleX(0);
+            background: linear-gradient(90deg,
+                rgba(212, 175, 55, 0) 0%,
+                rgba(255, 223, 128, 0.7) 25%,
+                rgba(170, 124, 17, 0.8) 50%,
+                rgba(255, 223, 128, 0.7) 75%,
+                rgba(212, 175, 55, 0) 100%
+            );
+            background-size: 200% auto;
+            z-index: -1;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+        }
+        .nav-links a.current::before {
+            transform: translate(-50%, -50%) scaleX(1);
+            opacity: 1;
+            animation: goldShine 2s linear infinite;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold-bright), var(--gold-dark));
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--gold-bright);
+        }
+        .nav-links a.current::after {
+            width: 100%;
+        }
+        @keyframes goldShine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* 👑 スクリーンリーダー／クローラーのみに読ませる視覚的に隠すテキスト */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ページ上部の見出しエリア（Heroの代わり） */
+        .page-header {
+            background-color: var(--navy-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 70px 20px 55px;
+        }
+        .page-header .blog-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .page-header .blog-back:hover {
+            color: var(--gold-bright);
+        }
+        .page-header .blog-date {
+            color: var(--gold-bright);
+            font-size: 0.85rem;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            margin-bottom: 14px;
+        }
+        .page-header h1.article-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.6;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        /* 記事本文 */
+        .article-body {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .article-body > p {
+            font-size: 1rem;
+            line-height: 2;
+            color: var(--text-color);
+            margin-bottom: 28px;
+        }
+        .article-body h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            color: var(--navy-dark);
+            border-bottom: 2px solid var(--gold-bright);
+            padding-bottom: 12px;
+            margin: 44px 0 20px;
+        }
+        .article-body h2:first-child {
+            margin-top: 0;
+        }
+        .article-body .article-section p {
+            font-size: 1rem;
+            line-height: 2;
+            color: var(--text-color);
+            margin-bottom: 16px;
+        }
+        .article-body .article-section ul {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+        .article-body .article-section ul li {
+            position: relative;
+            padding-left: 22px;
+            line-height: 2;
+            color: var(--text-color);
+        }
+        .article-body .article-section ul li::before {
+            content: '\25A0';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--gold-bright);
+            font-size: 0.7em;
+            line-height: 2.4;
+        }
+        .article-body .sns-tag {
+            color: var(--gold-dark);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .article-body .sns-tag:hover {
+            text-decoration: underline;
+        }
+        .article-photo {
+            margin: 0 0 28px;
+            border: 1px solid rgba(10, 17, 40, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .article-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .article-photo-caption {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: -18px 0 30px;
+        }
+        .article-cta {
+            margin-top: 50px;
+            padding: 35px 25px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.03) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .article-cta p {
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--navy-dark);
+        }
+
+        @media screen and (max-width: 1024px) {
+            .page-header {
+                padding: 50px 18px 40px;
+            }
+            .page-header h1.article-title {
+                font-size: 1.4rem;
+            }
+            .article-body h2 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+
+    <!-- ==========================================
+       👑 SEO対策：構造化データ（JSON-LD / schema.org Article）
+       ========================================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Fantasista Cup Vol.1 大会レポート｜奈良のサッカー大会、初代王者は「El Mago City」",
+      "datePublished": "2026-05-23",
+      "author": {
+        "@type": "Organization",
+        "name": "Fantasista Cup 運営事務局"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Fantasista Cup 運営事務局"
+      },
+      "image": "Vol.1優勝チーム.jpg",
+      "description": "2026年5月23日、奈良県で開催されたFantasista Cup第1回大会のレポート。初代CHAMPION「El Mago City」や参加チームの紹介、Vol.3開催決定のお知らせなど。"
+    }
+    </script>
+</head>
+<body>
+
+    <!-- 👑 オープニング演出：他ページと共通のrogo.png演出 -->
+    <div id="introOverlay" class="intro-overlay">
+        <div class="intro-inner">
+            <img src="rogo.png" alt="Fantasista Cup ロゴ" class="intro-logo">
+        </div>
+    </div>
+    <script>
+        (function () {
+            var overlay = document.getElementById('introOverlay');
+            if (!overlay) return;
+            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (reduceMotion) {
+                overlay.classList.add('intro-done');
+            } else {
+                var isTransition = false;
+                try { isTransition = sessionStorage.getItem('fcPageTransition') === '1'; } catch (err) {}
+                try { sessionStorage.removeItem('fcPageTransition'); } catch (err) {}
+
+                document.documentElement.style.overflow = 'hidden';
+
+                if (isTransition) {
+                    var logo = overlay.querySelector('.intro-logo');
+                    overlay.classList.add('intro-quick');
+                    overlay.style.transition = 'none';
+                    if (logo) logo.style.transition = 'none';
+                    overlay.classList.add('intro-in');
+                    void overlay.offsetWidth;
+                    overlay.style.transition = '';
+                    if (logo) logo.style.transition = '';
+                    setTimeout(function () {
+                        overlay.classList.add('intro-out');
+                    }, 200);
+                    setTimeout(function () {
+                        overlay.classList.add('intro-done');
+                        document.documentElement.style.overflow = '';
+                    }, 700);
+                } else {
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(function () {
+                            overlay.classList.add('intro-in');
+                        });
+                    });
+                    setTimeout(function () {
+                        overlay.classList.add('intro-out');
+                    }, 1700);
+                    setTimeout(function () {
+                        overlay.classList.add('intro-done');
+                        document.documentElement.style.overflow = '';
+                    }, 2700);
+                }
+            }
+
+            document.addEventListener('click', function (e) {
+                var link = e.target.closest('a[href]');
+                if (!link || link.target === '_blank') return;
+                var url;
+                try {
+                    url = new URL(link.href, window.location.href);
+                } catch (err) {
+                    return;
+                }
+                if (url.origin !== window.location.origin) return;
+                if (url.pathname === window.location.pathname) return;
+                if (!/\.html$/i.test(url.pathname)) return;
+                if (reduceMotion) return;
+
+                e.preventDefault();
+                try { sessionStorage.setItem('fcPageTransition', '1'); } catch (err) {}
+                var targetHref = link.href;
+                overlay.classList.add('intro-quick');
+                overlay.classList.remove('intro-in', 'intro-out', 'intro-done');
+                void overlay.offsetWidth;
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        overlay.classList.add('intro-in');
+                    });
+                });
+                setTimeout(function () {
+                    window.location.href = targetHref;
+                }, 500);
+            });
+        })();
+    </script>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container" style="padding: 8px 24px; max-width: 1400px; gap: 20px;">
+            <div class="nav-brand">
+                <a href="index.html" class="nav-logo" style="display: flex; align-items: center; gap: 14px; flex-shrink: 0;">
+                    <img src="rogo.png" alt="Fantasista Cup ロゴ" style="height: 64px; width: auto; object-fit: contain; display: block; flex-shrink: 0;">
+                    <span style="font-size: 1.4rem; letter-spacing: 0.08em; white-space: nowrap;">Fantasista Cup<span class="sr-only">（奈良県橿原市のサッカー大会）</span></span>
+                </a>
+            </div>
+            <div class="nav-actions">
+                <a href="https://www.instagram.com/fantasista.cup_nara/" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="大会公式LINE">
+                    <i class="fab fa-line"></i>
+                </a>
+                <button type="button" id="hamburgerBtn" class="hamburger-btn" aria-haspopup="true" aria-expanded="false" aria-controls="navOverlay" aria-label="メニューを開く">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 👑 ハンバーガーメニュー：全画面オーバーレイ -->
+    <div id="navOverlay" class="nav-overlay">
+        <button type="button" id="navOverlayClose" class="nav-overlay-close" aria-label="メニューを閉じる">
+            <i class="fas fa-xmark"></i>
+        </button>
+        <div class="nav-overlay-inner">
+            <div class="nav-group">
+                <p class="nav-group-title">大会について</p>
+                <ul class="nav-links">
+                    <li><a href="index.html#concept">CONCEPT</a></li>
+                    <li><a href="index.html#entry">ENTRY</a></li>
+                    <li><a href="index.html#terms">TERMS</a></li>
+                    <li><a href="index.html#sport-tabs">DISCIPLINES</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">大会記録</p>
+                <ul class="nav-links">
+                    <li><a href="blog.html" class="current">BLOG</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">採用・協賛</p>
+                <ul class="nav-links">
+                    <li><a href="staff.html">RECRUIT</a></li>
+                    <li><a href="sponsor.html">SPONSOR</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">サポート</p>
+                <ul class="nav-links">
+                    <li><a href="faq.html">Q&amp;A</a></li>
+                    <li><a href="index.html#contact">CONTACT</a></li>
+                    <li><a href="index.html#info">INFORMATION</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 👑 ハンバーガーメニュー：開閉・スクロールロック・背景クリックとEscで閉じる
+        (function () {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const overlay = document.getElementById('navOverlay');
+            const closeBtn = document.getElementById('navOverlayClose');
+            if (!hamburgerBtn || !overlay) return;
+
+            function openNavOverlay() {
+                overlay.classList.add('open');
+                hamburgerBtn.classList.add('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'true');
+                document.documentElement.classList.add('nav-overlay-lock');
+                document.body.classList.add('nav-overlay-lock');
+            }
+            function closeNavOverlay() {
+                overlay.classList.remove('open');
+                hamburgerBtn.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                document.documentElement.classList.remove('nav-overlay-lock');
+                document.body.classList.remove('nav-overlay-lock');
+            }
+            window.closeNavOverlay = closeNavOverlay;
+
+            hamburgerBtn.addEventListener('click', () => {
+                if (overlay.classList.contains('open')) closeNavOverlay(); else openNavOverlay();
+            });
+            if (closeBtn) closeBtn.addEventListener('click', closeNavOverlay);
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeNavOverlay();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeNavOverlay();
+            });
+            overlay.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', closeNavOverlay);
+            });
+        })();
+    </script>
+
+    <main>
+        <!-- PAGE HEADER -->
+        <div class="page-header">
+            <a href="blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> BLOG一覧へ戻る</a>
+            <p class="blog-date">2026.05.23</p>
+            <h1 class="article-title">Fantasista Cup Vol.1 大会レポート｜奈良のサッカー大会、初代王者は「El Mago City」</h1>
+        </div>
+
+        <!-- ARTICLE SECTION -->
+        <section class="section">
+            <div class="container">
+                <div class="article-body">
+
+                    <p>2026年5月23日（土）17:00〜20:00、奈良県で開催された「Fantasista Cup」の記念すべき第1回大会が、大盛況のうちに幕を閉じました。ご参戦いただいたすべてのフットボーラーの皆様に、改めて心より感謝申し上げます。</p>
+
+                    <h2>👑 初代CHAMPION：El Mago City</h2>
+                    <div class="article-section">
+                        <p>栄えある初代王者の座を掴み取ったのは「El Mago City」（Instagram: <a href="https://www.instagram.com/el_mago_city_1016/" target="_blank" rel="noopener noreferrer" class="sns-tag">@el_mago_city_1016</a>）。圧倒的なクオリティのサッカーで、見事メインプライズを獲得しました。</p>
+                    </div>
+
+                    <div class="article-photo">
+                        <img src="Vol.1優勝チーム.jpg" alt="Fantasista Cup Vol.1 優勝チーム El Mago City">
+                    </div>
+                    <p class="article-photo-caption">📷 初代CHAMPION「El Mago City」</p>
+
+                    <h2>🤝 SPECIAL PARTNER：肉匠 たけ田 様</h2>
+                    <div class="article-section">
+                        <p>第1回大会のメインスポンサーとして、肉匠たけ田様（<a href="https://www.instagram.com/29showtakeda/" target="_blank" rel="noopener noreferrer" class="sns-tag">@29showtakeda</a>）にご協賛いただきました。優勝チームには「最高級大和牛1.2kg」という、プレミアムな舞台にふさわしい極上の景品が贈られました。心より御礼申し上げます。</p>
+                    </div>
+
+                    <h2>🎌 CONTENDERS（参加チーム紹介）</h2>
+                    <div class="article-section">
+                        <p>熱いゲームでピッチを沸かせてくれたのは、以下の素晴らしいチームの皆様です（順不同）。</p>
+                        <ul>
+                            <li>モナリFC（<a href="https://www.instagram.com/monari_fc/" target="_blank" rel="noopener noreferrer" class="sns-tag">@monari_fc</a>）</li>
+                            <li>FCかんきも（<a href="https://www.instagram.com/fc_kankimo/" target="_blank" rel="noopener noreferrer" class="sns-tag">@fc_kankimo</a>）</li>
+                            <li>シグナルFC（<a href="https://www.instagram.com/tokyo_ultras_tonaki/" target="_blank" rel="noopener noreferrer" class="sns-tag">@tokyo_ultras_tonaki</a>）</li>
+                        </ul>
+                    </div>
+
+                    <p>大人が本気で熱狂し、互いにリスペクトし合える——そんな最高のクオリティが、このピッチには確かにありました。</p>
+
+                    <h2>次なる舞台、Vol.3開催決定</h2>
+                    <div class="article-section">
+                        <p>そして、伝説は次なるステージへ。「Fantasista Cup Vol.3」の開催が正式に決定しました。</p>
+                        <ul>
+                            <li>開催時期：2026年11月予定</li>
+                            <li>日時・会場：決定次第、公式サイトおよび公式LINEにてお知らせいたします</li>
+                        </ul>
+                    </div>
+
+                    <p>初代王者に挑む挑戦者、そして防衛に挑む王者——奈良でサッカーに本気で向き合いたいすべてのチームの参戦をお待ちしています。最新情報は見逃さないよう、ぜひ大会公式LINEにご登録ください。</p>
+
+                    <div class="article-cta">
+                        <p>エントリー・最新情報はこちらから</p>
+                        <a href="index.html#contact" class="btn-action">CONTACTページへ</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <ul class="footer-links">
+            <li><a href="index.html#concept">CONCEPT</a></li>
+            <li><a href="index.html#entry">ENTRY</a></li>
+            <li><a href="blog.html">BLOG</a></li>
+            <li><a href="index.html#terms">TERMS</a></li>
+            <li><a href="index.html#sport-tabs">DISCIPLINES</a></li>
+            <li><a href="staff.html">RECRUIT</a></li>
+            <li><a href="sponsor.html">SPONSOR</a></li>
+            <li><a href="index.html#contact">CONTACT</a></li>
+            <li><a href="index.html#info">INFORMATION</a></li>
+            <li><a href="faq.html">Q&amp;A</a></li>
+        </ul>
+        <div class="footer-brand">
+            <img src="rogo.png" alt="Fantasista Cup ロゴ" class="footer-logo">
+            <p class="footer-org">Fantasista Cup<span class="sr-only">運営事務局（奈良県橿原市のサッカー大会）</span></p>
+        </div>
+        <p>&copy; 2026 Fantasista Cup All Rights Reserved.</p>
+        <p class="footer-legal-link"><a href="tokushoho.html">特定商取引法に基づく表記</a></p>
+    </footer>
+</body>
+</html>
