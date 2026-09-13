@@ -17,13 +17,15 @@
 
     function update() {
         const y = window.scrollY;
-        const t1 = (Math.sin(y / 900) + 1) / 2;
-        const t2 = (Math.cos(y / 1300) + 1) / 2;
+        // 割る数を小さくする＝短いスクロール量で往復が進む＝動きが速く感じられる。
+        // 掛ける幅（振れ幅）を広げる＝画面内での移動距離そのものが大きくなる。
+        const t1 = (Math.sin(y / 480) + 1) / 2;
+        const t2 = (Math.cos(y / 620) + 1) / 2;
 
-        glow.style.setProperty('--gx1', (15 + t1 * 25) + '%');
-        glow.style.setProperty('--gy1', (10 + t2 * 30) + '%');
-        glow.style.setProperty('--gx2', (65 + t2 * 25) + '%');
-        glow.style.setProperty('--gy2', (55 + t1 * 35) + '%');
+        glow.style.setProperty('--gx1', (5 + t1 * 55) + '%');
+        glow.style.setProperty('--gy1', (0 + t2 * 55) + '%');
+        glow.style.setProperty('--gx2', (45 + t2 * 55) + '%');
+        glow.style.setProperty('--gy2', (45 + t1 * 55) + '%');
 
         ticking = false;
     }

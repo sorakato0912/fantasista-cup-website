@@ -1899,18 +1899,15 @@ body {
     pointer-events: none;
 }
 
-/* 👑 このセクションだけ背景がアイボリー→ネイビーに切り替わるため、上下の境目が
-   くっきり出ないよう、境界をぼかして馴染ませる（TERMS→DISCIPLINES、
-   DISCIPLINES→CONTACTの継ぎ目）。ハードエッジのグラデーションに強いぼかしを
-   かけて、なだらかな移行帯として見せている */
+/* 👑 このセクションの下端（DISCIPLINES→CONTACTの継ぎ目）だけ、アイボリーとの
+   境目がくっきり出ないようぼかして馴染ませる。上端（TERMS→DISCIPLINES）は
+   あえてぼかさず、はっきり切り替わる形に戻してある */
 .sport-carousel-section::after {
     content: '';
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-        linear-gradient(to bottom, var(--ivory) 0%, rgba(255, 253, 246, 0) 14%),
-        linear-gradient(to top, var(--ivory) 0%, rgba(255, 253, 246, 0) 14%);
+    background: linear-gradient(to top, var(--ivory) 0%, rgba(255, 253, 246, 0) 14%);
     filter: blur(36px);
 }
 
@@ -2306,8 +2303,8 @@ body {
     z-index: -1;
     pointer-events: none;
     background:
-        radial-gradient(ellipse 55% 45% at var(--gx1, 20%) var(--gy1, 15%), rgba(212, 175, 55, 0.16), transparent 65%),
-        radial-gradient(ellipse 50% 42% at var(--gx2, 80%) var(--gy2, 80%), rgba(212, 175, 55, 0.13), transparent 65%);
+        radial-gradient(ellipse 65% 55% at var(--gx1, 15%) var(--gy1, 10%), rgba(212, 175, 55, 0.24), transparent 65%),
+        radial-gradient(ellipse 60% 52% at var(--gx2, 85%) var(--gy2, 90%), rgba(212, 175, 55, 0.2), transparent 65%);
 }
 
 @media (prefers-reduced-motion: reduce) {
