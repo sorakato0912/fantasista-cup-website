@@ -1,6 +1,8 @@
-// 👑 スクロールに合わせて要素をふわっと浮かび上がらせる演出。
-// data-reveal 属性を付けた要素だけを対象にする。一度表示された要素は監視を外し、
-// スクロールを行き来するたびに点滅（再フェード）しないようにしている。
+// 👑 スクロールに合わせて、セクション全体に「モヤ（ぼかし）」がかかったり
+// 晴れたりする演出。data-reveal 属性を付けた要素だけを対象にする。
+// 一度きりの表示ではなく、画面内にあるかどうかを常に監視して is-revealed を
+// 付け外しするので、下にスクロールしたときも、上に戻したときも、その都度
+// モヤがかかる／晴れるを繰り返す。
 // prefers-reduced-motion（アニメーション低減設定）の場合は、演出なしで即座に表示する。
 (function () {
     const targets = document.querySelectorAll('[data-reveal]');
@@ -17,10 +19,7 @@
 
     const io = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-revealed');
-                io.unobserve(entry.target);
-            }
+            entry.target.classList.toggle('is-revealed', entry.isIntersecting);
         });
     }, {
         threshold: 0.15,
