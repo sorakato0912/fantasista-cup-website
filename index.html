@@ -323,6 +323,10 @@
 </head>
 <body>
 
+    <!-- 👑 ページ全体に1つだけ敷く背景の靄。セクションごとではなく、スクロール量に応じて
+         ページ全体でなめらかに動く（scroll-reveal.js） -->
+    <div class="page-glow" aria-hidden="true"></div>
+
     <!-- 👑 オープニング演出：黒背景にrogo2.pngがボヤっと浮かび、ボヤっと消えて本文へ
          ・直接アクセス／初回訪問時はフルの演出
          ・Q&Aページなど他ページからの遷移で到着した場合は、短い演出に統一（2重に見えないようにする）
@@ -612,7 +616,6 @@
     <main>
         <!-- CONCEPT SECTION -->
         <section id="concept" class="section">
-            <div class="section-glow" data-reveal aria-hidden="true"></div>
             <div class="container">
                 <h2 class="section-title">CONCEPT<span class="sr-only">｜大会コンセプト（奈良県サッカー大会）</span></h2>
                 <p class="concept-text" data-i18n="concept.text">
@@ -623,7 +626,6 @@
 
         <!-- ENTRY SECTION -->
         <section id="entry" class="section">
-            <div class="section-glow" data-reveal aria-hidden="true"></div>
             <div class="container">
                 <h2 class="section-title">ENTRY<span class="sr-only">｜大会エントリー・お申し込み（奈良県サッカー大会）</span></h2>
 
@@ -746,7 +748,6 @@
 
         <!-- TERMS SECTION（旧: RULESの後 → ENTRY直下へ移設） -->
         <section id="terms" class="section">
-            <div class="section-glow" data-reveal aria-hidden="true"></div>
             <div class="container">
                 <h2 class="section-title">TERMS<span class="sr-only">｜利用規約・参加規定</span></h2>
                 <div class="luxury-frame">
@@ -787,7 +788,6 @@
         <!-- 競技別（SOCCER/FUTSAL/SOCIETY/PK）カルーセル：タブの定義はJS側のSPORT_TABS配列で一元管理しており、
              将来の競技追加時はその配列に1件追加するだけで済む構造にしてある -->
         <section id="sport-tabs" class="section sport-carousel-section">
-            <div class="section-glow" data-reveal aria-hidden="true"></div>
             <div class="container">
                 <h2 class="section-title">DISCIPLINES<span class="sr-only">｜競技別ラインナップ（サッカー・フットサル・ソサイチ・PK大会）</span></h2>
                 <div class="sport-carousel-frame" id="sportCarouselFrame">
@@ -838,7 +838,6 @@
 
         <!-- CONTACT SECTION -->
         <section id="contact" class="section">
-            <div class="section-glow" data-reveal aria-hidden="true"></div>
             <div class="container">
                 <h2 class="section-title">CONTACT<span class="sr-only">｜お問い合わせ・大会エントリー（奈良県サッカー大会）</span></h2>
                 <div class="luxury-frame">
@@ -895,7 +894,6 @@
 
         <!-- INFORMATION SECTION -->
         <section id="info" class="section">
-            <div class="section-glow" data-reveal aria-hidden="true"></div>
             <div class="container">
                 <h2 class="section-title">INFORMATION<span class="sr-only">｜運営者情報（Fantasista Cup 運営事務局）</span></h2>
                 <div class="info-list">
@@ -2365,7 +2363,7 @@
          position:fixedでbody直下に置き、.sport-carousel-frameのoverflow:hiddenの影響を受けないようにしてある -->
     <div class="sport-transition-overlay" id="sportTransitionOverlay" aria-hidden="true"></div>
 
-    <!-- 👑 スクロールで各セクションがふわっと浮かび上がる演出（data-reveal属性の要素が対象） -->
+    <!-- 👑 ページ全体の背景の靄（.page-glow）をスクロール量に応じて動かす演出 -->
     <script src="scroll-reveal.js"></script>
 </body>
 </html>

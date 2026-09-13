@@ -2294,42 +2294,24 @@ body {
 }
 
 /* ==========================================================================
-   🌫️ スクロール連動の背景モヤ演出
+   🌫️ スクロール連動の背景モヤ演出（ページ全体で1つ、セクション単位には分けない）
    テキストや個々のアイコンには一切アニメーションを付けない（常に完全表示）。
-   その代わり、各セクションの「背景」にゴールドの靄（グラデーション）を敷き、
-   セクションが画面内にあるかどうかで、その靄だけがフワッと現れたり消えたり
-   する。data-reveal は本文コンテンツではなく、この背景専用の .section-glow
-   要素にだけ付ける。JSがIntersectionObserverで画面内にあるかどうかを常に
-   監視し、is-revealed クラスを付け外しする（scroll-reveal.js）ため、
-   下スクロールでも上スクロールに戻したときでも、その都度靄が現れ直す。
+   ページに1つだけ .page-glow を固定配置し、スクロール量に応じてなめらかに
+   位置を動かす（scroll-reveal.js）。セクションごとに現れたり消えたりする
+   「ブロック」ではなく、ページ全体を通じて一続きに漂う靄として見せる。
    ========================================================================== */
-.section {
-    position: relative;
-}
-
-.section > .container {
-    position: relative;
-    z-index: 1;
-}
-
-.section-glow {
-    position: absolute;
+.page-glow {
+    position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
-    opacity: 0;
-    transition: opacity 1.6s ease;
     background:
-        radial-gradient(ellipse 60% 50% at 20% 15%, rgba(212, 175, 55, 0.18), transparent 70%),
-        radial-gradient(ellipse 55% 45% at 82% 85%, rgba(212, 175, 55, 0.14), transparent 70%);
-}
-
-.section-glow.is-revealed {
-    opacity: 1;
+        radial-gradient(ellipse 55% 45% at var(--gx1, 20%) var(--gy1, 15%), rgba(212, 175, 55, 0.16), transparent 65%),
+        radial-gradient(ellipse 50% 42% at var(--gx2, 80%) var(--gy2, 80%), rgba(212, 175, 55, 0.13), transparent 65%);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .section-glow {
-        transition: none;
+    .page-glow {
+        display: none;
     }
 }
