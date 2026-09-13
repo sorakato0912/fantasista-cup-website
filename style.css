@@ -1899,18 +1899,6 @@ body {
     pointer-events: none;
 }
 
-/* 👑 このセクションの下端（DISCIPLINES→CONTACTの継ぎ目）だけ、アイボリーとの
-   境目がくっきり出ないようぼかして馴染ませる。上端（TERMS→DISCIPLINES）は
-   あえてぼかさず、はっきり切り替わる形に戻してある */
-.sport-carousel-section::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(to top, var(--ivory) 0%, rgba(255, 253, 246, 0) 14%);
-    filter: blur(36px);
-}
-
 /* このセクションだけ見出し文字色を上書き（ネイビー背景の上でも読めるようアイボリーに） */
 #sport-tabs .section-title {
     color: var(--ivory);
@@ -2303,8 +2291,8 @@ body {
     z-index: -1;
     pointer-events: none;
     background:
-        radial-gradient(ellipse 65% 55% at var(--gx1, 15%) var(--gy1, 10%), rgba(212, 175, 55, 0.24), transparent 65%),
-        radial-gradient(ellipse 60% 52% at var(--gx2, 85%) var(--gy2, 90%), rgba(212, 175, 55, 0.2), transparent 65%);
+        radial-gradient(ellipse 65% 55% at var(--gx1, 15%) var(--gy1, 10%), rgba(212, 175, 55, 0.13), transparent 65%),
+        radial-gradient(ellipse 60% 52% at var(--gx2, 85%) var(--gy2, 90%), rgba(212, 175, 55, 0.1), transparent 65%);
 }
 
 @media (prefers-reduced-motion: reduce) {
