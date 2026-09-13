@@ -1899,6 +1899,21 @@ body {
     pointer-events: none;
 }
 
+/* 👑 このセクションだけ背景がアイボリー→ネイビーに切り替わるため、上下の境目が
+   くっきり出ないよう、境界をぼかして馴染ませる（TERMS→DISCIPLINES、
+   DISCIPLINES→CONTACTの継ぎ目）。ハードエッジのグラデーションに強いぼかしを
+   かけて、なだらかな移行帯として見せている */
+.sport-carousel-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(to bottom, var(--ivory) 0%, rgba(255, 253, 246, 0) 14%),
+        linear-gradient(to top, var(--ivory) 0%, rgba(255, 253, 246, 0) 14%);
+    filter: blur(36px);
+}
+
 /* このセクションだけ見出し文字色を上書き（ネイビー背景の上でも読めるようアイボリーに） */
 #sport-tabs .section-title {
     color: var(--ivory);
@@ -2279,30 +2294,42 @@ body {
 }
 
 /* ==========================================================================
-   🌫️ スクロール連動の「モヤ（ぼかし）→ クリア」演出
-   テキストや個々のアイコンを動かすのではなく、セクション全体にオーバーレイの
-   ような靄がかかった状態からピントが合うように現れる、雰囲気重視の効果。
-   data-reveal 属性を付けた要素だけが対象。JSがIntersectionObserverで
-   画面内にあるかどうかを常に監視し、is-revealed クラスを付け外しする
-   （scroll-reveal.js）。一度きりではなく、下スクロールでも上スクロールに
-   戻したときでも、その都度モヤがかかったり晴れたりする。
+   🌫️ スクロール連動の背景モヤ演出
+   テキストや個々のアイコンには一切アニメーションを付けない（常に完全表示）。
+   その代わり、各セクションの「背景」にゴールドの靄（グラデーション）を敷き、
+   セクションが画面内にあるかどうかで、その靄だけがフワッと現れたり消えたり
+   する。data-reveal は本文コンテンツではなく、この背景専用の .section-glow
+   要素にだけ付ける。JSがIntersectionObserverで画面内にあるかどうかを常に
+   監視し、is-revealed クラスを付け外しする（scroll-reveal.js）ため、
+   下スクロールでも上スクロールに戻したときでも、その都度靄が現れ直す。
    ========================================================================== */
-[data-reveal] {
-    opacity: 0.2;
-    filter: blur(14px);
-    transition: opacity 1.1s ease, filter 1.1s ease;
-    will-change: opacity, filter;
+.section {
+    position: relative;
 }
 
-[data-reveal].is-revealed {
+.section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.section-glow {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.6s ease;
+    background:
+        radial-gradient(ellipse 60% 50% at 20% 15%, rgba(212, 175, 55, 0.18), transparent 70%),
+        radial-gradient(ellipse 55% 45% at 82% 85%, rgba(212, 175, 55, 0.14), transparent 70%);
+}
+
+.section-glow.is-revealed {
     opacity: 1;
-    filter: blur(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    [data-reveal] {
-        opacity: 1;
-        filter: none;
+    .section-glow {
         transition: none;
     }
 }
