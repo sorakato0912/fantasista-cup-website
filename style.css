@@ -273,6 +273,22 @@ body {
     transition: background-color 0.4s ease, box-shadow 0.4s ease;
 }
 
+/* 👑 スマホでは position: sticky が効かず、下スクロールでナビバーが消えてしまう
+   端末があるため（body の overflow-x: hidden が原因）、スマホ幅だけ position: fixed
+   に切り替えて、PCと同じく常時ページ最上部に表示させる。fixedにすると通常の
+   流れから外れる分、その高さぶんだけ本文側に余白を足して詰まりを防ぐ */
+@media screen and (max-width: 700px) {
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    body {
+        padding-top: var(--navbar-height, 90px);
+    }
+}
+
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -489,6 +505,15 @@ body {
     padding: 9px 0;
     font-size: 1.2rem;
     letter-spacing: 0.1em;
+}
+
+/* 英語表記の下に添える、小さめの日本語サブタイトル */
+.nav-link-sub {
+    display: block;
+    margin-top: 3px;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.45);
 }
 
 /* 言語切り替えトグル（✕ボタンの隣に設置、同一サイズ） */
