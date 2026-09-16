@@ -737,7 +737,7 @@
                             お申し込みの前に、参加費・キャンセル規定など大会の詳細を必ず<a href="#terms">「TERMS」</a>にてご確認ください。
                         </p>
                         <div class="center-btn" style="margin-top: 18px;">
-                            <a href="https://fantasista-cup-admin.netlify.app/apply" target="_blank" rel="noopener noreferrer" class="btn-action-secondary" data-i18n="entry.openSiteBtn">
+                            <a href="https://entry.fantasista-cup.com/home" target="_blank" rel="noopener noreferrer" class="btn-action-secondary" data-i18n="entry.openSiteBtn">
                                 エントリーサイト（大会一覧・マイページ）を開く
                             </a>
                         </div>
@@ -970,11 +970,11 @@
         setupAccordions();
 
         // 👑 ENTRYセクション：募集中の大会一覧をSupabaseから直接取得して表示
-        // （エントリーサイト https://fantasista-cup-admin.netlify.app と同じデータソース）
+        // （エントリーサイト https://entry.fantasista-cup.com と同じデータソース）
         (function () {
             const SUPABASE_URL = "https://hpxirfvkcspwrktjlraz.supabase.co";
             const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhweGlyZnZrY3Nwd3JrdGpscmF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY5NzkxNjksImV4cCI6MjEwMjU1NTE2OX0.d_nA76uzMrrlTcVr9ZeiERHb8MNf7tij6rHRuuOVn7M";
-            const ENTRY_APP_BASE = "https://fantasista-cup-admin.netlify.app";
+            const ENTRY_APP_BASE = "https://entry.fantasista-cup.com";
 
             async function fetchOpenTournaments() {
                 const res = await fetch(
