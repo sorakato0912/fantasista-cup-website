@@ -22,7 +22,9 @@
       "Bash(curl -s -o /dev/null -w \"blog-vol1:%{http_code}\\\\n\" http://localhost:8813/blog-vol1-report.html)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8813/blog.html)",
       "Bash(curl -s http://localhost:8813/sitemap.xml)",
-      "Bash(curl -s http://localhost:8813/robots.txt)"
+      "Bash(curl -s http://localhost:8813/robots.txt)",
+      "Bash(git push origin *)",
+      "Bash(git push -u origin *)"
     ]
   }
 }
