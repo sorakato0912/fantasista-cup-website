@@ -79,7 +79,10 @@ function renderBlocks(blocks) {
       closeSection();
       html += '                    <div class="article-cta">\n';
       html += `                        <p>${esc(block.label)}</p>\n`;
-      html += `                        <a href="${esc(block.href)}" class="btn-action">${esc(block.text)}</a>\n`;
+      html += '                        <div class="article-cta-buttons">\n';
+      html += '                            <a href="https://entry.fantasista-cup.com/home" target="_blank" rel="noopener noreferrer" class="btn-action">エントリーサイトを見る</a>\n';
+      html += `                            <a href="${esc(block.href)}" class="btn-action-secondary">${esc(block.text)}</a>\n`;
+      html += '                        </div>\n';
       html += '                        <div style="margin-top: 18px;">\n';
       html += '                            <a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer" class="faq-line-cta" style="margin-top: 0;">\n';
       html += '                                <i class="fab fa-line"></i>\n';
@@ -332,6 +335,13 @@ const reportHtml = `<!DOCTYPE html>
             margin-bottom: 20px;
             font-weight: bold;
             color: var(--navy-dark);
+        }
+        .article-cta-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
         }
 
         /* 大会公式LINEへの導線（faq.htmlと共通デザイン） */

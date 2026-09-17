@@ -225,6 +225,13 @@
             font-weight: bold;
             color: var(--navy-dark);
         }
+        .article-cta-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
 
         /* 大会公式LINEへの導線（faq.htmlと共通デザイン） */
         .faq-line-cta {
@@ -537,7 +544,10 @@
 
                     <div class="article-cta">
                         <p>エントリー・最新情報はこちらから</p>
-                        <a href="index.html#contact" class="btn-action">CONTACTページへ</a>
+                        <div class="article-cta-buttons">
+                            <a href="https://entry.fantasista-cup.com/home" target="_blank" rel="noopener noreferrer" class="btn-action">エントリーサイトを見る</a>
+                            <a href="index.html#contact" class="btn-action-secondary">CONTACTページへ</a>
+                        </div>
                         <div style="margin-top: 18px;">
                             <a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer" class="faq-line-cta" style="margin-top: 0;">
                                 <i class="fab fa-line"></i>
