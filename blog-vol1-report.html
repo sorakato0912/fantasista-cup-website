@@ -225,6 +225,24 @@
             font-weight: bold;
             color: var(--navy-dark);
         }
+        .article-back-bottom {
+            display: block;
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(10, 17, 40, 0.1);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .article-back-bottom i {
+            margin-right: 6px;
+        }
+        .article-back-bottom:hover {
+            color: var(--gold-dark);
+        }
         .article-cta-buttons {
             display: flex;
             justify-content: center;
@@ -508,7 +526,6 @@
     <main>
         <!-- PAGE HEADER -->
         <div class="page-header">
-            <a href="blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> BLOG一覧へ戻る</a>
             <p class="blog-date">2026.05.23</p>
             <h1 class="article-title">Fantasista Cup Vol.1 大会レポート｜奈良のサッカー大会、初代王者は「El Mago City」</h1>
         </div>
@@ -561,7 +578,7 @@
                     <div class="article-cta">
                         <p>エントリー・最新情報はこちらから</p>
                         <div class="article-cta-buttons">
-                            <a href="https://entry.fantasista-cup.com/home" target="_blank" rel="noopener noreferrer" class="btn-action">エントリーサイトを見る</a>
+                            <a href="https://entry.fantasista-cup.com/home" target="_blank" rel="noopener noreferrer" class="btn-action-white">大会一覧を見る</a>
                             <a href="index.html#contact" class="btn-action-white">CONTACTページへ</a>
                         </div>
                         <div style="margin-top: 18px;">
@@ -571,6 +588,8 @@
                             </a>
                         </div>
                     </div>
+
+                    <a href="blog.html" class="article-back-bottom"><i class="fas fa-arrow-left"></i>BLOG一覧へ戻る</a>
 
                 </div>
             </div>

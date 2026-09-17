@@ -80,7 +80,7 @@ function renderBlocks(blocks) {
       html += '                    <div class="article-cta">\n';
       html += `                        <p>${esc(block.label)}</p>\n`;
       html += '                        <div class="article-cta-buttons">\n';
-      html += '                            <a href="https://entry.fantasista-cup.com/home" target="_blank" rel="noopener noreferrer" class="btn-action">エントリーサイトを見る</a>\n';
+      html += '                            <a href="https://entry.fantasista-cup.com/home" target="_blank" rel="noopener noreferrer" class="btn-action-white">大会一覧を見る</a>\n';
       html += `                            <a href="${esc(block.href)}" class="btn-action-white">${esc(block.text)}</a>\n`;
       html += '                        </div>\n';
       html += '                        <div style="margin-top: 18px;">\n';
@@ -359,6 +359,24 @@ const reportHtml = `<!DOCTYPE html>
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(10, 17, 40, 0.15);
         }
+        .article-back-bottom {
+            display: block;
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(10, 17, 40, 0.1);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .article-back-bottom i {
+            margin-right: 6px;
+        }
+        .article-back-bottom:hover {
+            color: var(--gold-dark);
+        }
 
         /* 大会公式LINEへの導線（faq.htmlと共通デザイン） */
         .faq-line-cta {
@@ -604,7 +622,6 @@ const reportHtml = `<!DOCTYPE html>
     <main>
         <!-- PAGE HEADER -->
         <div class="page-header">
-            <a href="blog.html" class="blog-back"><i class="fas fa-arrow-left"></i> BLOG一覧へ戻る</a>
             <p class="blog-date">${esc(data.dateDisplay)}</p>
             <h1 class="article-title">${esc(data.pageTitle)}</h1>
         </div>
@@ -614,6 +631,8 @@ const reportHtml = `<!DOCTYPE html>
             <div class="container">
                 <div class="article-body">
 ${articleBodyHtml}
+                    <a href="blog.html" class="article-back-bottom"><i class="fas fa-arrow-left"></i>BLOG一覧へ戻る</a>
+
                 </div>
             </div>
         </section>
