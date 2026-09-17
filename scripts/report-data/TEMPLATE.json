@@ -1,0 +1,31 @@
+{
+  "_comment": "このファイルをコピーして voLX.json などの名前で保存し、内容を埋めてから `node scripts/generate-report.mjs scripts/report-data/volX.json` を実行してください。",
+  "volume": "Vol.X",
+  "slug": "blog-volX-report",
+  "dateISO": "2026-01-01",
+  "dateDisplay": "2026.01.01",
+  "pageTitle": "Fantasista Cup Vol.X 大会レポート｜奈良のサッカー大会、王者は「◯◯」",
+  "metaDescription": "2026年1月1日、奈良県で開催されたFantasista Cup第X回大会のレポート。王者「◯◯」や参加チームの紹介など。",
+  "ogImage": "Vol.X優勝チーム.jpg",
+  "ogImageAlt": "Fantasista Cup Vol.X 優勝チーム ◯◯",
+  "cardExcerpt": "一覧カードに表示する短い紹介文（2〜3文）。",
+  "blocks": [
+    { "type": "p", "text": "冒頭の一文。開催日時・盛況ぶりへの感謝など。" },
+
+    { "type": "h2", "text": "👑 CHAMPION：◯◯" },
+    { "type": "p", "text": "栄えある王者の座を掴み取ったのは「◯◯」。" },
+    { "type": "photo", "src": "Vol.X優勝チーム.jpg", "alt": "Fantasista Cup Vol.X 優勝チーム ◯◯", "caption": "📷 CHAMPION「◯◯」" },
+
+    { "type": "h2", "text": "🤝 SPECIAL PARTNER：◯◯ 様" },
+    { "type": "p", "text": "協賛への御礼と景品の紹介。" },
+
+    { "type": "h2", "text": "🎌 CONTENDERS（参加チーム紹介）" },
+    { "type": "p", "text": "熱いゲームでピッチを沸かせてくれたのは、以下のチームの皆様です（順不同）。" },
+    { "type": "list", "items": [ { "text": "チームA" }, { "text": "チームB" } ] },
+
+    { "type": "h2", "text": "次なる舞台" },
+    { "type": "p", "text": "次回大会の開催予定について。" },
+
+    { "type": "cta", "label": "エントリー・最新情報はこちらから", "text": "CONTACTページへ", "href": "index.html#contact" }
+  ]
+}
