@@ -24,7 +24,12 @@
       "Bash(curl -s http://localhost:8813/sitemap.xml)",
       "Bash(curl -s http://localhost:8813/robots.txt)",
       "Bash(git push origin *)",
-      "Bash(git push -u origin *)"
+      "Bash(git push -u origin *)",
+      "Bash(git push -u origin *)",
+           "Bash(security find-generic-password -a \"fantasista-netlify\" -s \"netlify-api-token\" -w)",
+           "Bash(npx --yes netlify-cli@latest deploy *)",
+           "Bash(npx netlify-cli deploy *)",
+           "Bash(netlify deploy *)"
     ]
   }
 }

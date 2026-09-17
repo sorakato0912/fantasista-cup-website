@@ -80,6 +80,12 @@ function renderBlocks(blocks) {
       html += '                    <div class="article-cta">\n';
       html += `                        <p>${esc(block.label)}</p>\n`;
       html += `                        <a href="${esc(block.href)}" class="btn-action">${esc(block.text)}</a>\n`;
+      html += '                        <div style="margin-top: 18px;">\n';
+      html += '                            <a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer" class="faq-line-cta" style="margin-top: 0;">\n';
+      html += '                                <i class="fab fa-line"></i>\n';
+      html += '                                <span>大会公式LINEを友だち追加</span>\n';
+      html += '                            </a>\n';
+      html += '                        </div>\n';
       html += '                    </div>\n';
     }
   }
@@ -326,6 +332,36 @@ const reportHtml = `<!DOCTYPE html>
             margin-bottom: 20px;
             font-weight: bold;
             color: var(--navy-dark);
+        }
+
+        /* 大会公式LINEへの導線（faq.htmlと共通デザイン） */
+        .faq-line-cta {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 28px;
+            padding: 13px 30px;
+            background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-dark) 100%);
+            color: var(--white) !important;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35), 0 0 0 4px rgba(212, 175, 55, 0.08);
+            animation: faqLineGlow 2.6s ease-in-out infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .faq-line-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(212, 175, 55, 0.5), 0 0 0 4px rgba(212, 175, 55, 0.12);
+        }
+        .faq-line-cta i {
+            font-size: 1.3rem;
+        }
+        @keyframes faqLineGlow {
+            0%, 100% { box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35), 0 0 0 4px rgba(212, 175, 55, 0.08); }
+            50% { box-shadow: 0 4px 22px rgba(212, 175, 55, 0.55), 0 0 0 7px rgba(212, 175, 55, 0.05); }
         }
 
         @media screen and (max-width: 1024px) {
