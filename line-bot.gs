@@ -63,32 +63,59 @@ var WELCOME_MESSAGES = [
   '大会の様子はInstagramでも発信中です👉 https://www.instagram.com/fantasista.cup_nara/\n公式サイトはこちら👉 https://fantasista-cup.netlify.app/'
 ];
 
+// 👑 デバッグ用：実行数のログ画面が使えない時に、URLへアクセスするだけで
+//    最後の実行結果を確認できるようにする。 https://.../exec?debug=fc2026log で閲覧可能
+function doGet(e) {
+  if (e && e.parameter && e.parameter.debug === 'fc2026log') {
+    var log = PropertiesService.getScriptProperties().getProperty('LAST_DEBUG_LOG') || '(まだログがありません)';
+    return ContentService.createTextOutput(log);
+  }
+  return ContentService.createTextOutput('OK');
+}
+
+function saveDebugLog(text) {
+  var stamped = new Date().toISOString() + '\n' + text;
+  PropertiesService.getScriptProperties().setProperty('LAST_DEBUG_LOG', stamped);
+  Logger.log(stamped);
+}
+
 function doPost(e) {
-  var body = e.postData.contents;
+  try {
+    var body = e.postData.contents;
+    var json = JSON.parse(body);
+    var events = json.events || [];
 
-  // 👑 Webhookの送信元がLINEであることを署名で検証（なりすまし防止）
-  var channelSecret = PropertiesService.getScriptProperties().getProperty('LINE_CHANNEL_SECRET');
-  var signature = e.parameter['X-Line-Signature']; // GASの制約上ヘッダーは直接読めないため、検証したい場合はdoPost(e)のheadersではなくこちらで代替
-  // ※ GASはリクエストヘッダーを直接取得できないため、厳密な署名検証が必要な場合は
-  //    別途プロキシ（Cloudflare Workers等）を挟む構成にしてください。ここでは簡易実装とします。
-
-  var json = JSON.parse(body);
-  var events = json.events || [];
-
-  events.forEach(function (event) {
-    if (event.type === 'follow') {
-      // 👑 replyではなくpushを使う： LINE公式アカウント管理画面の「あいさつメッセージ」機能が
-      //    友だち追加時にreplyTokenを先に使ってしまい、こちらのreplyが失敗することがあるため
-      pushMessages(event.source.userId, WELCOME_MESSAGES);
+    if (events.length === 0) {
+      saveDebugLog('doPost呼び出しあり。ただしevents配列が空でした。\nbody=' + body);
     }
-  });
 
-  return ContentService.createTextOutput(JSON.stringify({ status: 'ok' }))
-    .setMimeType(ContentService.MimeType.JSON);
+    events.forEach(function (event) {
+      if (event.type === 'follow') {
+        // 👑 replyではなくpushを使う： LINE公式アカウント管理画面の「あいさつメッセージ」機能が
+        //    友だち追加時にreplyTokenを先に使ってしまい、こちらのreplyが失敗することがあるため
+        pushMessages(event.source.userId, WELCOME_MESSAGES);
+      } else {
+        saveDebugLog('follow以外のイベントを受信: ' + event.type);
+      }
+    });
+
+    return ContentService.createTextOutput(JSON.stringify({ status: 'ok' }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    saveDebugLog('doPostで例外発生: ' + err.message + '\n' + err.stack);
+    return ContentService.createTextOutput(JSON.stringify({ status: 'error' }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
 }
 
 function pushMessages(userId, texts) {
   var token = PropertiesService.getScriptProperties().getProperty('LINE_CHANNEL_ACCESS_TOKEN');
+
+  if (!token) {
+    saveDebugLog('LINE_CHANNEL_ACCESS_TOKEN がスクリプトプロパティに設定されていません。');
+    return;
+  }
+
   var messages = texts.map(function (text) {
     return { type: 'text', text: text };
   });
@@ -100,7 +127,7 @@ function pushMessages(userId, texts) {
     payload: JSON.stringify({ to: userId, messages: messages }),
     muteHttpExceptions: true
   });
-  Logger.log('push result: ' + res.getResponseCode() + ' ' + res.getContentText());
+  saveDebugLog('push実行: userId=' + userId + '\nstatus=' + res.getResponseCode() + '\nbody=' + res.getContentText());
 }
 
 /**
