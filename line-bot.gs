@@ -77,7 +77,9 @@ function doPost(e) {
 
   events.forEach(function (event) {
     if (event.type === 'follow') {
-      replyMessages(event.replyToken, WELCOME_MESSAGES);
+      // 👑 replyではなくpushを使う： LINE公式アカウント管理画面の「あいさつメッセージ」機能が
+      //    友だち追加時にreplyTokenを先に使ってしまい、こちらのreplyが失敗することがあるため
+      pushMessages(event.source.userId, WELCOME_MESSAGES);
     }
   });
 
@@ -85,19 +87,20 @@ function doPost(e) {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-function replyMessages(replyToken, texts) {
+function pushMessages(userId, texts) {
   var token = PropertiesService.getScriptProperties().getProperty('LINE_CHANNEL_ACCESS_TOKEN');
   var messages = texts.map(function (text) {
     return { type: 'text', text: text };
   });
 
-  UrlFetchApp.fetch('https://api.line.me/v2/bot/message/reply', {
+  var res = UrlFetchApp.fetch('https://api.line.me/v2/bot/message/push', {
     method: 'post',
     contentType: 'application/json',
     headers: { Authorization: 'Bearer ' + token },
-    payload: JSON.stringify({ replyToken: replyToken, messages: messages }),
+    payload: JSON.stringify({ to: userId, messages: messages }),
     muteHttpExceptions: true
   });
+  Logger.log('push result: ' + res.getResponseCode() + ' ' + res.getContentText());
 }
 
 /**
