@@ -220,7 +220,7 @@
     <!-- ==========================================
        👑 SEO対策：構造化データ（JSON-LD / schema.org SportsEvent）
        Fantasista Cupを親イベント、Vol.1〜Vol.3を subEvent として構造化。
-       Vol.3は2026-11-21開催が確定したため、日程反映済み（2026-08-29更新）。
+       Vol.3は2026-11-14開催・ヤタガラスフィールドで確定（2026-10-08更新）。
        ========================================== -->
     <script type="application/ld+json">
     {
@@ -297,14 +297,15 @@
         {
           "@type": "SportsEvent",
           "name": "Fantasista Cup Vol.3",
-          "sport": "サッカー",
-          "startDate": "2026-11-21T17:00:00+09:00",
-          "endDate": "2026-11-21T21:00:00+09:00",
+          "sport": "Soccer",
+          "startDate": "2026-11-14T18:00:00+09:00",
+          "endDate": "2026-11-14T21:00:00+09:00",
           "eventStatus": "https://schema.org/EventScheduled",
           "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "description": "奈良県橿原市・ヤタガラスフィールド（人工芝・ナイター照明）で開催する社会人向け11人制サッカー大会。最大6チーム。",
           "location": {
             "@type": "Place",
-            "name": "橿原多目的運動公園（ヤタガラスフィールド）",
+            "name": "橿原多目的運動公園 ヤタガラスフィールド",
             "address": {
               "@type": "PostalAddress",
               "addressRegion": "奈良県",
@@ -316,6 +317,14 @@
             "@type": "Organization",
             "name": "Fantasista Cup 運営事務局",
             "url": "https://fantasista-cup.com/"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": 21800,
+            "priceCurrency": "JPY",
+            "availability": "https://schema.org/InStock",
+            "url": "https://entry.fantasista-cup.com/home",
+            "validFrom": "2026-10-03T00:00:00+09:00"
           }
         }
       ]
