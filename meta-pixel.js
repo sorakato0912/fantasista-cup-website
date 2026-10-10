@@ -1,7 +1,7 @@
 // Meta（Instagram/Facebook広告）の計測ピクセル。全ページの<head>から読み込む。
 // IDが空のあいだは何もしない
 (function () {
-  var PIXEL_ID = '';
+  var PIXEL_ID = '1576719573665724';
   if (!PIXEL_ID || window.fbq) return;
 
   // Meta公式スニペット（fbqのキューを作ってから fbevents.js を読む）
