@@ -561,7 +561,7 @@ const reportHtml = `<!DOCTYPE html>
             <div class="nav-group">
                 <p class="nav-group-title">大会記録</p>
                 <ul class="nav-links">
-                    <li><a href="blog.html" class="current">BLOG<span class="nav-link-sub">大会レポート</span></a></li>
+                    <li><a href="blog.html" class="current">BLOG<span class="nav-link-sub">最新情報</span></a></li>
                 </ul>
             </div>
             <div class="nav-group">
