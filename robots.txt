@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fantasista-cup.netlify.app/sitemap.xml
+Sitemap: https://fantasista-cup.com/sitemap.xml

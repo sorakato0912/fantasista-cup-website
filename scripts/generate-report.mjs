@@ -127,15 +127,18 @@ const reportHtml = `<!DOCTYPE html>
     <!-- ==========================================
        👑 OGP（SNSなどでシェアされた際の表示設定）
        ========================================== -->
+    <link rel="canonical" href="https://fantasista-cup.com/${data.slug}">
+    <meta property="og:url" content="https://fantasista-cup.com/${data.slug}">
     <meta property="og:type" content="article">
     <meta property="og:title" content="${esc(data.pageTitle)}">
     <meta property="og:description" content="${esc(data.metaDescription)}">
-    <meta property="og:image" content="${esc(data.ogImage)}">
+    <meta property="og:image" content="https://fantasista-cup.com/${encodeURIComponent(data.ogImage)}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${esc(data.pageTitle)}">
-    <meta name="twitter:image" content="${esc(data.ogImage)}">
+    <meta name="twitter:image" content="https://fantasista-cup.com/${encodeURIComponent(data.ogImage)}">
 
     <link rel="stylesheet" href="style.css">
+    <script src="meta-pixel.js" defer></script>
     <!-- Google Fontsから明朝体（Noto Serif JP）を読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -698,7 +701,7 @@ const updatedBlogHtml = blogHtml.slice(0, insertPos) + newCard + blogHtml.slice(
 // --- sitemap.xml: 新記事のURLを追加し、/blogのlastmodを更新 ---
 const sitemapPath = path.join(ROOT, 'sitemap.xml');
 let sitemapXml = readFileSync(sitemapPath, 'utf8');
-const siteBase = 'https://fantasista-cup.netlify.app';
+const siteBase = 'https://fantasista-cup.com';
 const newUrlEntry = `    <url>
         <loc>${siteBase}/${data.slug}</loc>
         <lastmod>${data.dateISO}</lastmod>
@@ -708,7 +711,7 @@ const newUrlEntry = `    <url>
 </urlset>`;
 sitemapXml = sitemapXml.replace('</urlset>', newUrlEntry);
 sitemapXml = sitemapXml.replace(
-  /(<loc>https:\/\/fantasista-cup\.netlify\.app\/blog<\/loc>\s*<lastmod>)[^<]+(<\/lastmod>)/,
+  /(<loc>https:\/\/fantasista-cup\.com\/blog<\/loc>\s*<lastmod>)[^<]+(<\/lastmod>)/,
   `$1${data.dateISO}$2`
 );
 
