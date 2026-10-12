@@ -1,1 +1,10 @@
 https://fantasista-cup.netlify.app/*  https://fantasista-cup.com/:splat  301!
+
+# 運用スクリプトのソースは公開しない（存在するファイルより優先させるため「!」を付けている）
+/line-bot.gs            /404.html  404!
+/threads-post.gs        /404.html  404!
+/sponsor-auto-reply.gs  /404.html  404!
+/gas-form-to-sheet.gs   /404.html  404!
+/desktop.ini            /404.html  404!
+/scripts/*              /404.html  404!
+/netlify/*              /404.html  404!
