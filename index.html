@@ -40,9 +40,20 @@
     <!-- Google Fontsから明朝体（Noto Serif JP）を読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 表示速度のため、フォントとアイコン（合計約500KB）はページ本体の表示が終わってから適用する。
+         それまでは端末の明朝体で表示される（初回訪問時はオープニング演出の裏で切り替わる） -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet" media="print" data-defer-css>
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet"></noscript>
     <!-- 各種アイコン表示用に Font Awesomeを読み込み -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" data-defer-css>
+    <script>
+        window.addEventListener('load', function () {
+            document.querySelectorAll('link[data-defer-css]').forEach(function (link) { link.media = 'all'; });
+        });
+    </script>
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <!-- 最初に見える一番大きな画像（Hero動画の静止画）を最優先で読み込む -->
+    <link rel="preload" as="image" href="hero-poster.jpg" fetchpriority="high">
 
     <!-- 💡 タイトルのきらめき ＆ ナビバー ＆ スクロールバー・フォーム ＆ 👑【レイアウト固定】SNSロゴ -->
     <style>
@@ -261,7 +272,7 @@
           "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
           "location": {
             "@type": "Place",
-            "name": "グリンフィールドかつらぎ",
+            "name": "グリーンフィールドかつらぎ",
             "address": {
               "@type": "PostalAddress",
               "addressRegion": "奈良県",
@@ -327,7 +338,7 @@
             "@type": "Offer",
             "price": 21800,
             "priceCurrency": "JPY",
-            "availability": "https://schema.org/InStock",
+            "availability": "https://schema.org/SoldOut",
             "url": "https://entry.fantasista-cup.com/home",
             "validFrom": "2026-10-03T00:00:00+09:00"
           }
@@ -336,6 +347,8 @@
     }
     </script>
     <script src="meta-pixel.js" defer></script>
+    <!-- これから開催する大会の構造化データを、管理画面の大会データで自動更新する -->
+    <script src="tournament-ld.js" defer></script>
 </head>
 <body>
 
@@ -437,7 +450,7 @@
 
     <!-- HERO SECTION -->
     <header id="top" class="hero">
-        <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" poster="Vol.1優勝チーム.jpg">
+        <video id="heroVideo" class="hero-video" muted loop playsinline preload="none" poster="hero-poster.jpg">
             <source src="Hero.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
@@ -469,7 +482,10 @@
                 }
             }
 
-            tryPlay();
+            // 動画（約4MB）は、ページ本体の表示が終わってから読み込み・再生を始める
+            // （初期表示を速くするため。それまではposterの静止画を表示）
+            if (document.readyState === 'complete') tryPlay();
+            else window.addEventListener('load', tryPlay, { once: true });
             video.addEventListener('loadeddata', tryPlay);
             video.addEventListener('canplay', tryPlay);
 
@@ -856,53 +872,66 @@
         <section id="contact" class="section">
             <div class="container">
                 <h2 class="section-title">CONTACT<span class="sr-only">｜お問い合わせ・大会エントリー（奈良県サッカー大会）</span></h2>
-                <div class="luxury-frame">
+                <div class="luxury-frame contact-shell">
                     <div class="sns-flex-container">
                         <a href="https://www.instagram.com/fantasista.cup_nara/" target="_blank" rel="noopener noreferrer" class="sns-emblem"><i class="fab fa-instagram"></i><span class="sns-label">Instagram</span></a>
                         <a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer" class="sns-emblem"><i class="fab fa-line"></i><span class="sns-label" data-i18n="contact.lineLabel">大会公式LINE</span></a>
                     </div>
 
-                    <!-- 👑 大会への申し込みはENTRYへ誘導し、CONTACTは問い合わせ専用であることを明示 -->
-                    <p class="contact-terms-notice" data-i18n="contact.entryRedirectNotice">大会への<strong>お申し込みは「<a href="#entry">ENTRY</a>」</strong>から承っております。こちらのフォームはお問い合わせ専用です。</p>
+                    <div class="contact-entry-route">
+                        <div class="contact-entry-route-copy">
+                            <span class="contact-route-icon" aria-hidden="true"><i class="fas fa-trophy"></i></span>
+                            <div>
+                                <p class="contact-route-eyebrow">TOURNAMENT ENTRY</p>
+                                <p class="contact-terms-notice" data-i18n="contact.entryRedirectNotice">大会への<strong>お申し込みは「<a href="#entry">ENTRY</a>」</strong>から承っております。こちらのフォームはお問い合わせ専用です。</p>
+                            </div>
+                        </div>
+                        <a href="#entry" class="contact-entry-btn" data-i18n="hero.cta">大会に参加する</a>
+                    </div>
 
-                    <!-- Netlify用フォーム：リロードを防ぐためID（contactForm）を付与 -->
-                    <form name="contact" method="POST" data-netlify="true" class="contact-form" id="contactForm">
-                        <input type="hidden" name="form-name" value="contact">
-                        <div class="form-group">
-                            <label for="name" data-i18n="contact.repNameLabel">お名前</label>
-                            <input type="text" id="name" name="name" placeholder="例：山田 太郎" data-i18n-placeholder="contact.repNamePh" required>
+                    <div class="contact-form-panel">
+                        <div class="contact-form-heading">
+                            <p>GENERAL INQUIRIES</p>
                         </div>
-                        <div class="form-group">
-                            <label data-i18n="contact.emailLabel">メールアドレス</label>
-                            <input type="email" id="email" name="email" placeholder="例：example@email.com" data-i18n-placeholder="contact.emailPh" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone" data-i18n="contact.phoneLabel">電話番号（任意）</label>
-                            <input type="tel" id="phone" name="phone" placeholder="例：090-1234-5678" data-i18n-placeholder="contact.phonePh">
-                        </div>
-                        <div class="form-group">
-                            <label for="inquiry-type" data-i18n="contact.selectLabel">お問い合わせ内容</label>
-                            <select id="inquiry-type" name="inquiry-type" required>
-                                <option value="" disabled selected data-i18n="contact.selectPlaceholder">選択してください</option>
-                                <option value="大会について（ルール・日程など）" data-i18n="contact.inquiryGeneral">大会について（ルール・日程など）</option>
-                                <option value="参加費・お支払いについて" data-i18n="contact.inquiryPayment">参加費・お支払いについて</option>
-                                <option value="取材・協賛のご相談" data-i18n="contact.inquiryMedia">取材・協賛のご相談</option>
-                                <option value="その他" data-i18n="contact.inquiryOther">その他</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" data-i18n="contact.messageLabel">お問い合わせ詳細</label>
-                            <textarea id="message" name="message" rows="5" placeholder="ご記入ください" data-i18n-placeholder="contact.messagePh" required></textarea>
-                        </div>
-                        <div class="center-btn">
-                            <button type="submit" class="btn-submit" data-i18n="contact.submitBtn">送信する</button>
-                        </div>
-                    </form>
+                        <!-- Netlify用フォーム：リロードを防ぐためID（contactForm）を付与 -->
+                        <form name="contact" method="POST" data-netlify="true" class="contact-form" id="contactForm">
+                            <input type="hidden" name="form-name" value="contact">
+                            <div class="form-group">
+                                <label for="name" data-i18n="contact.repNameLabel">お名前</label>
+                                <input type="text" id="name" name="name" placeholder="例：山田 太郎" data-i18n-placeholder="contact.repNamePh" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" data-i18n="contact.emailLabel">メールアドレス</label>
+                                <input type="email" id="email" name="email" placeholder="例：example@email.com" data-i18n-placeholder="contact.emailPh" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" data-i18n="contact.phoneLabel">電話番号（任意）</label>
+                                <input type="tel" id="phone" name="phone" placeholder="例：090-1234-5678" data-i18n-placeholder="contact.phonePh">
+                            </div>
+                            <div class="form-group">
+                                <label for="inquiry-type" data-i18n="contact.selectLabel">お問い合わせ内容</label>
+                                <select id="inquiry-type" name="inquiry-type" required>
+                                    <option value="" disabled selected data-i18n="contact.selectPlaceholder">選択してください</option>
+                                    <option value="大会について（ルール・日程など）" data-i18n="contact.inquiryGeneral">大会について（ルール・日程など）</option>
+                                    <option value="参加費・お支払いについて" data-i18n="contact.inquiryPayment">参加費・お支払いについて</option>
+                                    <option value="取材・協賛のご相談" data-i18n="contact.inquiryMedia">取材・協賛のご相談</option>
+                                    <option value="その他" data-i18n="contact.inquiryOther">その他</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-group-message">
+                                <label for="message" data-i18n="contact.messageLabel">お問い合わせ詳細</label>
+                                <textarea id="message" name="message" rows="5" placeholder="ご記入ください" data-i18n-placeholder="contact.messagePh" required></textarea>
+                            </div>
+                            <div class="center-btn">
+                                <button type="submit" class="btn-submit" data-i18n="contact.submitBtn">送信する</button>
+                            </div>
+                        </form>
 
-                    <!-- 送信完了メッセージ領域（初期状態は非表示） -->
-                    <div id="successMessage" style="display: none; text-align: center; padding: 50px 20px;">
-                        <h2 id="successTitle" style="color: #aa7c11; font-size: 2rem; margin-bottom: 15px; letter-spacing: 0.05em;" data-i18n="contact.successTitle">送信されました。</h2>
-                        <p id="successBody" style="font-size: 1.1rem; color: var(--text-color); line-height: 1.8;" data-i18n="contact.successBody">お問い合わせありがとうございます。<br>内容を確認し、運営事務局よりご連絡いたします。</p>
+                        <!-- 送信完了メッセージ領域（初期状態は非表示） -->
+                        <div id="successMessage" style="display: none; text-align: center; padding: 50px 20px;">
+                            <h2 id="successTitle" style="color: #aa7c11; font-size: 2rem; margin-bottom: 15px; letter-spacing: 0.05em;" data-i18n="contact.successTitle">送信されました。</h2>
+                            <p id="successBody" style="font-size: 1.1rem; color: var(--text-color); line-height: 1.8;" data-i18n="contact.successBody">お問い合わせありがとうございます。<br>内容を確認し、運営事務局よりご連絡いたします。</p>
+                        </div>
                     </div>
                 </div>
             </div>
