@@ -8,6 +8,7 @@
   "ogImage": "recruit-cover.jpg",
   "ogImageAlt": "Fantasista Cup 参加チーム募集",
   "cardExcerpt": "11月14日（土）18:00〜、橿原のヤタガラスフィールドで第3回大会を開催します。人工芝・ナイター照明のピッチで、最大6チームの11人制。エントリー受付中です。",
+  "event": {"name": "Fantasista Cup Vol.3", "startDate": "2026-11-14T18:00:00+09:00", "endDate": "2026-11-14T21:00:00+09:00", "venue": "橿原多目的運動公園 ヤタガラスフィールド", "region": "奈良県", "locality": "橿原市", "street": "雲梯町323-2", "price": 21800},
   "blocks": [
     {
       "type": "p",

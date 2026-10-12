@@ -8,6 +8,7 @@
   "ogImage": "recruit-cover.jpg",
   "ogImageAlt": "Fantasista Cup 参加チーム募集",
   "cardExcerpt": "優勝賞金10万円をかけたPK大会を、2027年3月14日（日）にグリーンフィールドかつらぎで開催します。1チーム5人、最大32チームのトーナメント。エントリー受付中です。",
+  "event": {"name": "Fantasista PK Championship Vol.1", "startDate": "2027-03-14T17:00:00+09:00", "endDate": "2027-03-14T20:00:00+09:00", "venue": "グリーンフィールドかつらぎ", "region": "奈良県", "locality": "葛城市", "street": "疋田301番〜309番1", "price": 12800},
   "blocks": [
     { "type": "p", "text": "Fantasista Cupから、新たな大会「Fantasista PK Championship Vol.1」の開催が決定しました。種目はPK。5人で挑む一本勝負の舞台で、優勝チームには賞金10万円を贈呈します。サッカー経験者はもちろん、仲間内で腕に覚えのある5人組まで、本気の勝負をお待ちしています。" },
 

@@ -1,0 +1,14 @@
+# 公式HPの本番を毎朝チェックする（SEOタグ・リンク切れ・死活）。失敗するとGitHubからメールが届く。
+name: site-check
+on:
+  schedule:
+    - cron: "0 22 * * *" # 毎日 07:00 JST
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/site-check.py

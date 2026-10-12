@@ -98,16 +98,59 @@ function renderBlocks(blocks) {
 
 const articleBodyHtml = renderBlocks(data.blocks);
 
-const jsonLd = JSON.stringify({
+const ORGANIZER = { '@type': 'Organization', name: 'Fantasista Cup 運営事務局', url: 'https://fantasista-cup.com/' };
+const absImage = `https://fantasista-cup.com/${encodeURIComponent(data.ogImage)}`;
+
+const ldItems = [{
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: data.pageTitle,
   datePublished: data.dateISO,
   author: { '@type': 'Organization', name: 'Fantasista Cup 運営事務局' },
   publisher: { '@type': 'Organization', name: 'Fantasista Cup 運営事務局' },
-  image: data.ogImage,
+  image: absImage,
   description: data.metaDescription,
-}, null, 2).replace(/\n/g, '\n    ');
+}];
+
+// 募集記事など、data JSONに "event" がある場合はイベントの構造化データも出力する
+// （Google検索のイベント表示向け。書式は TEMPLATE-entry.json を参照）
+if (data.event) {
+  const ev = data.event;
+  ldItems.push({
+    '@context': 'https://schema.org',
+    '@type': 'SportsEvent',
+    name: ev.name,
+    sport: 'サッカー',
+    startDate: ev.startDate,
+    endDate: ev.endDate,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: {
+      '@type': 'Place',
+      name: ev.venue,
+      address: {
+        '@type': 'PostalAddress',
+        addressRegion: ev.region,
+        addressLocality: ev.locality,
+        streetAddress: ev.street,
+        addressCountry: 'JP',
+      },
+    },
+    image: absImage,
+    description: data.metaDescription,
+    organizer: ORGANIZER,
+    offers: {
+      '@type': 'Offer',
+      price: ev.price,
+      priceCurrency: 'JPY',
+      url: 'https://entry.fantasista-cup.com/home',
+    },
+  });
+}
+
+const jsonLd = ldItems
+  .map((item) => JSON.stringify(item, null, 2).replace(/\n/g, '\n    '))
+  .join('\n    </script>\n    <script type="application/ld+json">\n    ');
 
 const reportHtml = `<!DOCTYPE html>
 <html lang="ja">
