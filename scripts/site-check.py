@@ -5,6 +5,7 @@
 GitHub Actions（.github/workflows/site-check.yml）から毎朝実行され、失敗するとGitHubからメールが届く。
 """
 import json
+import pathlib
 import re
 import sys
 import urllib.error
@@ -105,6 +106,14 @@ def main():
     pages = re.findall(r"<loc>([^<]+)</loc>", sitemap.decode("utf-8", "replace"))
     if code != 200 or not pages:
         errors.append(f"sitemap.xml: 取得できない、またはURLが0件（ステータス {code}）")
+
+    # リポジトリ側の sitemap.xml にあるページが本番に無い＝古い作業フォルダからのデプロイで
+    # 記事が巻き戻された可能性がある（自動公開された記事を取り込まずにデプロイした場合など）
+    repo_sitemap = pathlib.Path(__file__).resolve().parent.parent / "sitemap.xml"
+    if repo_sitemap.exists():
+        for url in re.findall(r"<loc>([^<]+)</loc>", repo_sitemap.read_text(encoding="utf-8")):
+            if url not in pages:
+                errors.append(f"{url}: リポジトリにはあるが本番のsitemap.xmlに無い（デプロイの巻き戻りの疑い）")
 
     for page_url in pages:
         code, body = fetch(page_url)

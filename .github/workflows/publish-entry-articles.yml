@@ -1,0 +1,44 @@
+# 大会が「募集中」になったら、参加チーム募集記事を自動で作って公開する。
+# 30分おきに管理画面の大会データを確認し、記事のない募集中の大会があれば
+# 記事を生成 → 本番にデプロイ → 生成したファイルをコミット、の順で行う（scripts/publish-entry-articles.mjs）。
+# 対象がなければ何もしない。デプロイにはリポジトリのシークレット NETLIFY_AUTH_TOKEN が必要。
+name: publish-entry-articles
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+concurrency:
+  group: publish-entry-articles
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Generate articles
+        id: generate
+        run: |
+          node scripts/publish-entry-articles.mjs
+          if [ -n "$(git status --porcelain)" ]; then echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+      # 先にデプロイし、成功してからコミットする（デプロイに失敗したら次回やり直せるように）
+      - name: Deploy
+        if: steps.generate.outputs.changed == 'true'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ]; then echo "::error::NETLIFY_AUTH_TOKEN が未設定のため公開できません"; exit 1; fi
+          npx --yes netlify-cli@latest deploy --prod --dir . --site 47487177-5e39-4430-83b4-33f8ed55a7f5 --message "募集記事の自動公開"
+      - name: Commit
+        if: steps.generate.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "募集記事を自動公開"
+          git push
