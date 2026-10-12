@@ -76,14 +76,20 @@ body {
     transform: scale(1);
 }
 
+/* 消えるとき：先にロゴだけを黒い背景の上で消し切り、そのあとで黒い背景を消す。
+   以前はロゴ（1.3秒）のほうが背景（1秒）より遅く消えていたため、背景が透けてページが見え始めても
+   ぼかされて四角い塊になったロゴが残り、「四角い画像が載っている」ように見えていた。
+   ・ロゴ：0.45秒で消える。ぼかしは強めない（にじんで四角い塊に広がるのを防ぐ）
+   ・背景：0.3秒待ってから0.7秒で消える（合計1秒。各ページのスクリプトが1秒後に非表示にするのに合わせている） */
 .intro-overlay.intro-out {
     opacity: 0;
+    transition: opacity 0.7s ease 0.3s;
 }
 
 .intro-overlay.intro-out .intro-logo {
-    filter: blur(24px) drop-shadow(0 0 35px rgba(212, 175, 55, 0.6));
     opacity: 0;
-    transform: scale(1.08);
+    transform: scale(1.04);
+    transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
 .intro-overlay.intro-done {
@@ -100,6 +106,16 @@ body {
 .intro-overlay.intro-quick,
 .intro-overlay.intro-quick .intro-logo {
     transition-duration: 0.45s !important;
+}
+
+/* 短縮版の消え方も通常版と同じ順番（ロゴが先、背景があと）。全体で0.5秒に収める */
+.intro-overlay.intro-quick.intro-out {
+    transition-duration: 0.28s !important;
+    transition-delay: 0.2s !important;
+}
+
+.intro-overlay.intro-quick.intro-out .intro-logo {
+    transition-duration: 0.2s !important;
 }
 
 /* 共通コンテナ */
