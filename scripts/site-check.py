@@ -15,6 +15,7 @@ from html.parser import HTMLParser
 BASE = "https://fantasista-cup.com"
 # 公式HP以外で、落ちていたら困るURL（期待するステータス）
 UPTIME = {
+    "https://www.fantasista-cup.com/": 200,  # fantasista-cup.com へ転送される
     "https://entry.fantasista-cup.com/home": 200,
     "https://admin.fantasista-cup.com/login": 200,
 }
