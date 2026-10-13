@@ -7,6 +7,11 @@ on:
   schedule:
     - cron: "7,37 * * * *"
   workflow_dispatch:
+    inputs:
+      force_deploy:
+        description: "新しい記事がなくても、GitHubの内容で本番をデプロイし直す（動作確認用）"
+        type: boolean
+        default: false
 concurrency:
   group: publish-entry-articles
   cancel-in-progress: false
@@ -28,7 +33,7 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then echo "changed=true" >> "$GITHUB_OUTPUT"; fi
       # 先にデプロイし、成功してからコミットする（デプロイに失敗したら次回やり直せるように）
       - name: Deploy
-        if: steps.generate.outputs.changed == 'true'
+        if: steps.generate.outputs.changed == 'true' || inputs.force_deploy
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
