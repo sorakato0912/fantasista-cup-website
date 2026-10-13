@@ -8,3 +8,4 @@ https://fantasista-cup.netlify.app/*  https://fantasista-cup.com/:splat  301!
 /desktop.ini            /404.html  404!
 /scripts/*              /404.html  404!
 /netlify/*              /404.html  404!
+/CLAUDE.md              /404.html  404!
