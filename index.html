@@ -1163,29 +1163,35 @@
                 return md;
             }
 
+            // エントリーサイト（/home）の大会カードと同じ形式：カード全体が申込ページへのリンク、
+            // 左に競技・日時／大会名／会場、右に残り枠。参加費は表示しない（コンパクトさ優先）
             function renderCard(tournament, remaining) {
                 const isFull = remaining !== null && remaining <= 0;
                 const remainingHtml = remaining === null
                     ? ""
-                    : '<p class="entry-card-remaining"><span class="num' + (isFull ? " full" : "") + '">' + t("entry.remainingPrefix", "残り") + ' ' + remaining + '</span><span class="unit"> / ' + tournament.capacity + ' ' + t("entry.teamsUnit", "チーム") + '</span></p>';
+                    : '<div class="entry-card-remaining"><span class="num' + (isFull ? " full" : "") + '">' + t("entry.remainingPrefix", "残り") + ' ' + remaining + '</span><span class="unit">/ ' + tournament.capacity + ' ' + t("entry.teamsUnit", "チーム") + '</span></div>';
 
-                const wrap = document.createElement("div");
+                const wrap = document.createElement("a");
                 wrap.className = "entry-card";
+                wrap.href = ENTRY_APP_BASE + "/apply/" + tournament.id;
+                wrap.target = "_blank";
+                wrap.rel = "noopener noreferrer";
                 wrap.innerHTML =
                     '<div class="entry-card-info">' +
-                        '<p class="entry-card-date"></p>' +
+                        '<p class="entry-card-date"><span class="entry-card-sport"></span><span class="entry-card-datetext"></span></p>' +
                         '<h3 class="entry-card-title"></h3>' +
                         '<p class="entry-card-venue"></p>' +
                     '</div>' +
-                    '<div class="entry-card-actions">' +
-                        remainingHtml +
-                        '<a href="' + ENTRY_APP_BASE + '/apply/' + tournament.id + '" target="_blank" rel="noopener noreferrer" class="btn-action">' + (isFull ? t("entry.waitlistBtn", "キャンセル待ちに申し込む") : t("entry.applyBtn", "この大会に申し込む")) + '</a>' +
-                    '</div>';
+                    remainingHtml;
 
                 // 大会名・会場名はユーザー入力値のため、XSS対策としてtextContentで安全に挿入する
-                wrap.querySelector(".entry-card-date").textContent = formatDateTime(tournament.event_date, tournament.event_start_time, tournament.event_end_time);
+                const sportEl = wrap.querySelector(".entry-card-sport");
+                if (tournament.sport_category) sportEl.textContent = tournament.sport_category;
+                else sportEl.remove();
+                wrap.querySelector(".entry-card-datetext").textContent = formatDateTime(tournament.event_date, tournament.event_start_time, tournament.event_end_time);
                 wrap.querySelector(".entry-card-title").textContent = tournament.name;
                 wrap.querySelector(".entry-card-venue").textContent = tournament.venue || t("entry.venueTBD", "会場未定");
+                wrap.setAttribute("aria-label", tournament.name + "（" + (isFull ? t("entry.waitlistBtn", "キャンセル待ちに申し込む") : t("entry.applyBtn", "この大会に申し込む")) + "）");
 
                 return wrap;
             }

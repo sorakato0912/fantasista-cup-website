@@ -1508,65 +1508,96 @@ body {
 }
 
 /* ==========================================================================
-   👑 ENTRY セクション：募集中の大会カード（横長・レスポンシブ対応）
+   👑 ENTRY セクション：募集中の大会カード
+   エントリーサイト（/home）と同じ形式：カード全体がリンク、左に情報・右に残り枠
    ========================================================================== */
 .entry-card {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    border: 1px solid rgba(10, 17, 40, 0.15);
-    border-radius: 0;
-    padding: 18px 24px;
-    margin-bottom: 16px;
-    background: var(--ivory);
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 14px 16px;
+    border: 1px solid rgba(10, 17, 40, 0.14);
+    border-left: 3px solid var(--gold-dark);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(10, 17, 40, 0.04);
+    color: inherit;
     text-align: left;
+    text-decoration: none;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.entry-card:hover {
+    border-color: var(--gold-bright);
+    box-shadow: 0 8px 20px rgba(10, 17, 40, 0.08);
+}
+
+.entry-card:focus-visible {
+    outline: 3px solid rgba(212, 175, 55, 0.55);
+    outline-offset: 3px;
 }
 
 .entry-card-info {
-    flex: 1 1 260px;
+    flex: 1;
     min-width: 0;
 }
 
 .entry-card-date {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
     margin: 0;
     color: var(--gold-dark);
+    font-size: 0.78rem;
     font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.03em;
+}
+
+.entry-card-sport {
+    padding: 1px 8px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 999px;
+    background: rgba(212, 175, 55, 0.1);
+    font-size: 0.65rem;
+    white-space: nowrap;
 }
 
 .entry-card-title {
     margin: 4px 0 0;
     color: var(--navy-dark);
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 700;
+    line-height: 1.4;
 }
 
 .entry-card-venue {
-    margin: 4px 0 0;
+    margin: 2px 0 0;
+    overflow: hidden;
     color: var(--text-muted);
-    font-size: 1rem;
-}
-
-.entry-card-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    flex-shrink: 0;
+    font-size: 0.85rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .entry-card-remaining {
-    margin: 0;
-    text-align: right;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 10px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 6px;
+    background: #fff;
+    line-height: 1.2;
+    white-space: nowrap;
 }
 
 .entry-card-remaining .num {
-    font-size: 1.6rem;
-    font-weight: 900;
     color: var(--gold-dark);
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 .entry-card-remaining .num.full {
@@ -1574,34 +1605,9 @@ body {
 }
 
 .entry-card-remaining .unit {
-    font-size: 0.85rem;
-    font-weight: 400;
+    margin-top: 2px;
     color: var(--text-faint);
-}
-
-.entry-card-actions .btn-action {
-    white-space: nowrap;
-}
-
-@media (max-width: 600px) {
-    .entry-card {
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: flex-start;
-        padding: 16px;
-    }
-    .entry-card-info {
-        /* flex-basis は横並び時の幅の基準値。縦積みになると高さの基準として
-           扱われてしまい無駄な余白ができるため、縦積み時はリセットする */
-        flex: none;
-    }
-    .entry-card-actions {
-        align-items: center;
-        width: 100%;
-    }
-    .entry-card-remaining {
-        text-align: center;
-    }
+    font-size: 0.72rem;
 }
 
 /* ==========================================================================
