@@ -72,8 +72,12 @@ function isSalesMail(message) {
 
 function classify(message) {
   // 送信元が no-reply でも電子契約の通知などは自動返信ではないので、送信元アドレスでは判定しない
+  const body = message.getPlainBody();
   const autoHeader = /auto-replied/i.test(message.getHeader('Auto-Submitted'));
-  return autoHeader || AUTO_MARKS.test(ownText(message.getPlainBody())) ? 'auto' : 'human';
+  if (!autoHeader && !AUTO_MARKS.test(ownText(body))) return 'human';
+  // 会員登録・決済などのサービス通知にもこちらのメールアドレスは載るので、
+  // 営業文（協賛のお願い）が控えとして載っているものだけを「営業の自動返信」とする
+  return /協賛|スポンサー|盛り上げ/.test(body) ? 'auto' : null;
 }
 
 // 引用より上（先方が書いた部分）だけを返す
