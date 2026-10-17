@@ -23,14 +23,14 @@ const LABEL_AUTO = '営業/🤖自動返信';
 const LABEL_HUMAN = '営業/👤担当者返信';
 const ME = 'fantasista.cup.soccer@gmail.com';
 
-// 営業とは関係ない送信元（Google・自社サイト・自分のアカウント・送信エラー）は仕分けない
-const IGNORE_FROM = /google\.com|fantasista-cup\.com|sorakato0912@|footballforest\.kato@|mailer-daemon|postmaster/i;
+// 営業とは関係ない送信元（Google・GMOサイン・自社サイト・自分のアカウント・送信エラー）は仕分けない
+const IGNORE_FROM = /google\.com|gmosign\.com|fantasista-cup\.com|sorakato0912@|footballforest\.kato@|mailer-daemon|postmaster/i;
 
 // 自動返信に出てくる定型文・こちらがフォームに入力した値
 const AUTO_MARKS = /自動送信|自動返信|自動配信|自動で(送|返|配)|自動的に|配信専用|送信専用|返信不要|受け?付け?(いた|致)?しました|受付ました|承りました|以下の(内容|通り)|下記の?(内容|通り)|入力内容|送信内容|内容の(ご)?確認|080-?2548-?1959|fantasista\.cup\.soccer@gmail\.com|かとう\s*そら|カトウ\s*ソラ/i;
 
 // 引用の始まり（ここから下は先方が書いた文ではない）
-const QUOTE_START = /^\s*(>|&gt;)|(wrote|より|のメッセージ|書きました)\s*[:：]\s*$|^-+\s*(Original Message|元のメッセージ)|^(From|差出人|送信者)\s*[:：]|<fantasista\.cup\.soccer@gmail\.com>/i;
+const QUOTE_START = /^\s*(>|&gt;)|(wrote|より|のメッセージ|書きました)\s*[:：]\s*$|^-+\s*(Original Message|元のメッセージ)|^(From|差出人|送信者)\s*[:：]|\d{1,2}:\d{2}.*<[^>\s]+@[^>\s]+>.*[:：]\s*$|<fantasista\.cup\.soccer@gmail\.com>/i;
 
 function setup() {
   ScriptApp.getProjectTriggers().forEach((t) => ScriptApp.deleteTrigger(t));
@@ -71,7 +71,8 @@ function isSalesMail(message) {
 }
 
 function classify(message) {
-  const autoHeader = /auto-replied|auto-generated/i.test(message.getHeader('Auto-Submitted')) || /no-?reply|wordpress@/i.test(message.getFrom());
+  // 送信元が no-reply でも電子契約の通知などは自動返信ではないので、送信元アドレスでは判定しない
+  const autoHeader = /auto-replied/i.test(message.getHeader('Auto-Submitted'));
   return autoHeader || AUTO_MARKS.test(ownText(message.getPlainBody())) ? 'auto' : 'human';
 }
 
