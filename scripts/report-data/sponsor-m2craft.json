@@ -1,0 +1,42 @@
+{
+  "volume": "SPONSOR",
+  "slug": "blog-sponsor-m2craft",
+  "dateISO": "2026-10-20",
+  "dateDisplay": "2026.10.20",
+  "pageTitle": "【協賛のお知らせ】m2craft様がFantasista Cupのフレンドパートナーに｜奈良のサッカー大会",
+  "metaDescription": "奈良県葛城市でオリジナルTシャツや卒業記念品を製作・販売するm2craft様に、奈良のサッカー大会「Fantasista Cup」のフレンドパートナーとしてご協賛いただくことになりました。協賛の内容とm2craft様の事業をご紹介します。",
+  "ogImage": "sponsor-m2craft-cover.jpg",
+  "ogImageAlt": "m2craft ロゴ",
+  "cardExcerpt": "奈良県葛城市のm2craft様に、フレンドパートナーとしてご協賛いただくことになりました。物品のご提供というかたちで大会を支えていただきます。",
+  "blocks": [
+    { "type": "p", "text": "このたび、奈良県葛城市のm2craft様に、Fantasista Cupのフレンドパートナーとしてご協賛いただくことになりました。" },
+    { "type": "photo", "src": "sponsor-m2craft-cover.jpg", "alt": "m2craft ロゴ", "caption": "📷 m2craft 様" },
+
+    { "type": "h2", "text": "🤝 協賛プラン：FRIEND PARTNER" },
+    { "type": "p", "text": "m2craft様には、協賛プランのうち「フレンドパートナー」としてご契約いただきました。フレンドパートナーは、商品・サービスのご提供を通じて大会を支えていただくプランです。" },
+
+    { "type": "h2", "text": "🎁 協賛の内容" },
+    { "type": "p", "text": "m2craft様には、物品のご提供というかたちでご協賛いただきます。ご提供いただいた物品は大会で大切に活用させていただきます。" },
+    { "type": "p", "text": "あわせて、Fantasista Cupでは以下のかたちでm2craft様をご紹介していきます。" },
+    { "type": "list", "items": [
+      { "html": "公式サイトの<a href=\"sponsor.html\" class=\"sns-tag\">スポンサーページ</a>に企業名・ロゴを掲載" },
+      { "text": "大会公式Instagramの投稿（大会レポート等）でのご紹介" },
+      { "text": "大会当日の会場でのご紹介" }
+    ] },
+
+    { "type": "h2", "text": "🐈 m2craft様について" },
+    { "type": "p", "html": "<a href=\"https://www.instagram.com/m2craft.nara/\" target=\"_blank\" rel=\"noopener\" class=\"sns-tag\">m2craft</a>様は、奈良県葛城市で「世界にひとつだけの記念に残る商品」を製作・販売されています。主な事業は次のとおりです。" },
+    { "type": "list", "items": [
+      { "text": "DTFプリンターを使ったオリジナルTシャツの製作" },
+      { "text": "卒業記念品など、記念に残る商品の製作・販売" },
+      { "text": "イラスト制作" }
+    ] },
+    { "type": "p", "html": "チームのユニフォームや記念Tシャツ、大会の思い出に残るグッズづくりなどを検討中の方は、ぜひ<a href=\"https://www.instagram.com/m2craft.nara/\" target=\"_blank\" rel=\"noopener\" class=\"sns-tag\">m2craft様のInstagram</a>をご覧ください。ご注文・ご相談はInstagramのDMから受け付けています。" },
+
+    { "type": "h2", "text": "🙏 感謝を込めて" },
+    { "type": "p", "text": "まだフットボール文化が盛んとは言えない奈良の地で、大会の想いに共感し、協賛を決めてくださったm2craft様に心より感謝申し上げます。地元・奈良の事業者様に支えていただけることは、私たちにとって大きな励みです。" },
+    { "type": "p", "text": "いただいたご支援に応えられるよう、参加される皆さまにとって「競技性」と「楽しさ」が両立する大会をこれからもつくってまいります。m2craft様、今後ともどうぞよろしくお願いいたします。" },
+
+    { "type": "cta", "label": "Fantasista Cupでは協賛企業様を募集しています", "text": "スポンサープランを見る", "href": "sponsor.html" }
+  ]
+}
