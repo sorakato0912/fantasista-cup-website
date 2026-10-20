@@ -1736,11 +1736,13 @@ body {
 .plan-card-bronze {
     --tier-color: #b08d57;
     --tier-color-dark: #8a6d40;
+    background: linear-gradient(160deg, var(--ivory) 0%, #ecd9bb 150%);
 }
 
 .plan-card-silver {
     --tier-color: #9aa5b1;
     --tier-color-dark: #707a86;
+    background: linear-gradient(160deg, var(--ivory) 0%, #dce2e9 150%);
 }
 
 .plan-card-gold {
