@@ -32,39 +32,50 @@
     box-shadow: 0 22px 48px rgba(10, 17, 40, 0.07);
 }
 
+/* ENTRY 検索欄：ネイビーの帯をやめ、カードと同じ明るい地に下線だけの入力欄を並べる。
+   プルダウンはネイティブのselectを隠し、index.htmlのスクリプトで作る .fc-select に置き換える
+   （選択肢パネルは薄いグレー＋影、選択中の項目に✓）。 */
 #entry .entry-filter-bar {
-    align-items: stretch;
-    gap: 14px;
-    margin: 0 0 28px;
-    padding: 18px 20px;
-    background: var(--navy-dark);
-    border-left: 3px solid var(--gold-bright);
+    align-items: flex-end;
+    gap: 24px;
+    margin: 0 0 32px;
+    padding: 0 0 4px;
+    background: transparent;
 }
 
 #entry .entry-filter-field {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 #entry .entry-filter-field label {
-    color: rgba(255, 255, 255, 0.72);
+    color: var(--gold-dark);
     font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
 }
 
 #entry .entry-filter-field input,
-#entry .entry-filter-field select {
+#entry .entry-filter-field select,
+#entry .fc-select-trigger {
     min-height: 42px;
-    border-color: rgba(255, 255, 255, 0.16);
-    background-color: rgba(255, 255, 255, 0.98);
+    padding: 8px 2px;
+    border: none;
+    border-bottom: 1px solid rgba(10, 17, 40, 0.35);
+    border-radius: 0;
+    background: transparent;
     box-shadow: none;
 }
 
 #entry .entry-filter-field input:focus,
-#entry .entry-filter-field select:focus {
-    border-color: var(--gold-bright);
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.22);
+#entry .entry-filter-field select:focus,
+#entry .fc-select-trigger:focus-visible,
+#entry .fc-select.is-open .fc-select-trigger {
+    outline: none;
+    border-bottom-color: var(--navy-dark);
+    box-shadow: inset 0 -1px 0 var(--navy-dark);
 }
 
 #entry .entry-filter-toggle:focus-visible {
@@ -72,16 +83,134 @@
     outline-offset: 3px;
 }
 
+/* カスタムプルダウン */
+.fc-select {
+    position: relative;
+    width: 100%;
+}
+
+.fc-select-native {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.fc-select-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-align: left;
+    cursor: pointer;
+}
+
+.fc-select-trigger::after {
+    content: '';
+    flex-shrink: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #b5b5b5;
+    transition: transform 0.25s ease;
+}
+
+.fc-select.is-open .fc-select-trigger::after {
+    transform: rotate(180deg);
+}
+
+.fc-select-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+    background: #f5f5f5;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.fc-select.is-open .fc-select-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.fc-select-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.fc-select-option:hover,
+.fc-select-option:focus-visible {
+    outline: none;
+    background: #ebebeb;
+}
+
+.fc-select-option[aria-selected="true"]::after {
+    content: '✓';
+    font-weight: 700;
+    color: var(--navy-dark);
+}
+
+.fc-select-option:disabled {
+    color: #c4c4c4;
+    cursor: default;
+    background: none;
+}
+
 @media (max-width: 700px) {
     #entry .luxury-frame {
         padding: 22px 16px;
     }
 
+    #entry .entry-filter-bar {
+        gap: 26px;
+        margin: 0;
+        padding: 80px 24px 30px;
+        background: var(--white);
+    }
+
+    /* #entry は isolation: isolate で重なり順が閉じており、中の全画面パネルがヘッダーや
+       ヒーローの下に潜ってしまう。開いている間だけ解除して最前面に出し、背面のスクロールも止める */
+    body.is-entry-filter-open {
+        overflow: hidden;
+    }
+
+    body.is-entry-filter-open #entry {
+        isolation: auto;
+    }
+
     #entry .entry-filter-toggle {
         margin-bottom: 18px;
-        border-left: 3px solid var(--gold-bright);
-        background: var(--navy-dark);
-        color: var(--white);
+        border: none;
+        border-bottom: 1px solid rgba(10, 17, 40, 0.35);
+        background: transparent;
+        padding: 12px 2px;
+        color: var(--text-color);
     }
 }
 

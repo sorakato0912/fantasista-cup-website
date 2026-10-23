@@ -1109,11 +1109,111 @@
                 }
             }
 
+            // 絞り込みのプルダウンを、見た目を自由に作れるボタン＋選択肢パネルに置き換える。
+            // 元の<select>は隠して残し、選ばれたら値を書き込んで input イベントを出すので、
+            // 絞り込み処理（getEntryFilters など）はそのまま<select>の値を読めばよい。
+            // 選択肢の「選択不可（該当0件）」は開くたびに<select>から読み直す。
+            function enhanceEntrySelect(select) {
+                const wrap = document.createElement("div");
+                wrap.className = "fc-select";
+                const trigger = document.createElement("button");
+                trigger.type = "button";
+                trigger.className = "fc-select-trigger";
+                trigger.setAttribute("aria-haspopup", "listbox");
+                trigger.setAttribute("aria-expanded", "false");
+                const label = document.querySelector('label[for="' + select.id + '"]');
+                if (label) {
+                    label.id = select.id + "Label";
+                    trigger.setAttribute("aria-labelledby", label.id + " " + select.id + "Value");
+                    label.addEventListener("click", function (e) { e.preventDefault(); trigger.focus(); });
+                }
+                const valueText = document.createElement("span");
+                valueText.id = select.id + "Value";
+                trigger.appendChild(valueText);
+                const panel = document.createElement("ul");
+                panel.className = "fc-select-panel";
+                panel.setAttribute("role", "listbox");
+
+                select.parentNode.insertBefore(wrap, select);
+                wrap.appendChild(select);
+                wrap.appendChild(trigger);
+                wrap.appendChild(panel);
+                select.classList.add("fc-select-native");
+                select.tabIndex = -1;
+                select.setAttribute("aria-hidden", "true");
+
+                function syncLabel() {
+                    const opt = select.options[select.selectedIndex];
+                    valueText.textContent = opt ? opt.textContent : "";
+                }
+
+                function close(focusTrigger) {
+                    wrap.classList.remove("is-open");
+                    trigger.setAttribute("aria-expanded", "false");
+                    if (focusTrigger) trigger.focus();
+                }
+
+                function open() {
+                    panel.innerHTML = "";
+                    [].slice.call(select.options).forEach(function (opt) {
+                        const li = document.createElement("li");
+                        const btn = document.createElement("button");
+                        btn.type = "button";
+                        btn.className = "fc-select-option";
+                        btn.setAttribute("role", "option");
+                        btn.setAttribute("aria-selected", opt.value === select.value ? "true" : "false");
+                        btn.textContent = opt.textContent;
+                        btn.disabled = opt.disabled;
+                        btn.addEventListener("click", function () {
+                            select.value = opt.value;
+                            select.dispatchEvent(new Event("input", { bubbles: true }));
+                            select.dispatchEvent(new Event("change", { bubbles: true }));
+                            syncLabel();
+                            close(true);
+                        });
+                        li.appendChild(btn);
+                        panel.appendChild(li);
+                    });
+                    wrap.classList.add("is-open");
+                    trigger.setAttribute("aria-expanded", "true");
+                    const current = panel.querySelector('[aria-selected="true"]') || panel.querySelector("button:not(:disabled)");
+                    if (current) current.focus();
+                }
+
+                trigger.addEventListener("click", function () {
+                    if (wrap.classList.contains("is-open")) close(false); else open();
+                });
+                wrap.addEventListener("keydown", function (e) {
+                    if (e.key === "Escape" && wrap.classList.contains("is-open")) {
+                        e.preventDefault();
+                        close(true);
+                        return;
+                    }
+                    if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+                    e.preventDefault();
+                    if (!wrap.classList.contains("is-open")) { open(); return; }
+                    const items = [].slice.call(panel.querySelectorAll("button:not(:disabled)"));
+                    const i = items.indexOf(document.activeElement);
+                    const next = items[(i + (e.key === "ArrowDown" ? 1 : -1) + items.length) % items.length];
+                    if (next) next.focus();
+                });
+                document.addEventListener("click", function (e) {
+                    if (!wrap.contains(e.target)) close(false);
+                });
+                select.addEventListener("change", syncLabel);
+                syncLabel();
+            }
+
             function setupEntryFilters() {
                 const bar = document.getElementById("entryFilterBar");
                 const toggle = document.getElementById("entryFilterToggle");
                 const closeBtn = document.getElementById("entryFilterClose");
                 if (!bar || !toggle || !closeBtn) return;
+
+                ["entryFilterSport", "entryFilterArea"].forEach(function (id) {
+                    const el = document.getElementById(id);
+                    if (el) enhanceEntrySelect(el);
+                });
 
                 ["entryFilterKeyword", "entryFilterSport", "entryFilterArea", "entryFilterDateFrom", "entryFilterDateTo"].forEach(function (id) {
                     const el = document.getElementById(id);
@@ -1127,9 +1227,11 @@
 
                 toggle.addEventListener("click", function () {
                     bar.classList.add("is-open");
+                    document.body.classList.add("is-entry-filter-open");
                 });
                 closeBtn.addEventListener("click", function () {
                     bar.classList.remove("is-open");
+                    document.body.classList.remove("is-entry-filter-open");
                 });
             }
 
