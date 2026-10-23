@@ -492,3 +492,117 @@
         width: 100%;
     }
 }
+
+/* ===========================================================================
+   サイト全体のグラデーション
+   セクションごとに背景色が切り替わる境目を見せないよう、明るい地はページ全体で
+   1枚の縦グラデーションにし、暗いセクション（ヒーロー・競技カルーセル・フッター）は
+   上下の端を透明にして前後の明るい地へ溶け込ませる。
+   =========================================================================== */
+body {
+    background: linear-gradient(180deg, #fffdf6 0%, #f7f0e1 20%, #fffdf6 40%, #f6efe0 68%, #fffdf6 88%);
+}
+
+#entry,
+#contact {
+    background: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 160px;
+    background: linear-gradient(180deg, rgba(255, 253, 246, 0) 0%, #fffdf6 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.sport-carousel-section {
+    background: linear-gradient(180deg, rgba(10, 17, 40, 0) 0, var(--navy-dark) 120px, #050813 calc(100% - 120px), rgba(5, 8, 19, 0) 100%);
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.sport-carousel-section::before {
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
+}
+
+.footer {
+    background: linear-gradient(180deg, rgba(10, 17, 40, 0) 0, var(--navy-dark) 110px, #050813 100%);
+    padding-top: 140px;
+}
+
+/* ===========================================================================
+   スクロール演出（scroll-reveal.js がアニメーション低減設定でないときだけ html に
+   .fc-motion を付ける。付かなければ何も動かず、すべて最初から表示される）
+   =========================================================================== */
+
+/* ENTRY：大会カードを上から順に少しずつ時間差で表示（絞り込みで一覧が変わるたびにも再生） */
+@keyframes fc-rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: none; }
+}
+
+.fc-motion #entryTournamentList:not(.is-inview) .entry-card {
+    opacity: 0;
+}
+
+.fc-motion #entryTournamentList.is-inview .entry-card {
+    animation: fc-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.fc-motion #entryTournamentList.is-inview .entry-card:nth-child(2) { animation-delay: 0.09s; }
+.fc-motion #entryTournamentList.is-inview .entry-card:nth-child(3) { animation-delay: 0.18s; }
+.fc-motion #entryTournamentList.is-inview .entry-card:nth-child(4) { animation-delay: 0.27s; }
+.fc-motion #entryTournamentList.is-inview .entry-card:nth-child(5) { animation-delay: 0.36s; }
+.fc-motion #entryTournamentList.is-inview .entry-card:nth-child(n+6) { animation-delay: 0.45s; }
+
+/* 大会参加までの流れ：スクロールに合わせて金のラインが伸び、通過したステップが点灯する */
+.steps-timeline::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 28px;
+    width: 2px;
+    height: calc((100% - 56px) * var(--fc-progress, 0));
+    background: linear-gradient(180deg, var(--gold-bright), var(--gold-dark));
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.step-marker {
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s ease;
+}
+
+.step-marker i,
+.step-num {
+    transition: color 0.5s ease;
+}
+
+.step-item.is-reached .step-marker {
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold-dark));
+    box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.16);
+    transform: scale(1.06);
+}
+
+.step-item.is-reached .step-marker i,
+.step-item.is-reached .step-num {
+    color: var(--white);
+}
+
+@media screen and (max-width: 700px) {
+    .steps-timeline::after {
+        left: 27px;
+        transform: none;
+    }
+
+    .sport-carousel-section {
+        padding-top: 120px;
+        padding-bottom: 120px;
+    }
+}
