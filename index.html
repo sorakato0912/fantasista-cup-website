@@ -988,7 +988,7 @@
 
             async function fetchOpenTournaments() {
                 const res = await fetch(
-                    SUPABASE_URL + "/rest/v1/tournaments?select=*&status=eq." + encodeURIComponent("募集中") + "&order=event_date.asc.nullslast",
+                    SUPABASE_URL + "/rest/v1/tournaments?select=*&status=eq." + encodeURIComponent("募集中") + "&order=event_date.asc.nullslast,event_start_time.asc.nullslast",
                     { headers: { apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + SUPABASE_ANON_KEY } }
                 );
                 if (!res.ok) throw new Error("failed to fetch tournaments");
@@ -1279,7 +1279,8 @@
                     return;
                 }
                 listEl.innerHTML = "";
-                filtered.forEach(({ tournament, remaining }) => {
+                // 開催日の近い順に3大会まで
+                filtered.slice(0, 3).forEach(({ tournament, remaining }) => {
                     listEl.appendChild(renderCard(tournament, remaining));
                 });
             }
