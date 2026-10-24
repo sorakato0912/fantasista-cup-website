@@ -397,11 +397,12 @@
     background: var(--gold-bright);
 }
 
+/* 入力欄は横に並べず、お名前・メール・電話・お問い合わせ内容を縦1列に並べる */
 #contact .contact-form {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     max-width: none;
-    gap: 20px 18px;
+    gap: 20px;
 }
 
 #contact .form-group {
