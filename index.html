@@ -546,7 +546,7 @@
                 <ul class="nav-links">
                     <li><a href="#concept">CONCEPT<span class="nav-link-sub">大会コンセプト</span></a></li>
                     <li><a href="#entry">ENTRY<span class="nav-link-sub">大会エントリー</span></a></li>
-                    <li><a href="#terms">TERMS<span class="nav-link-sub">利用規約・参加規定</span></a></li>
+                    <li><a href="terms.html">TERMS<span class="nav-link-sub">利用規約・参加規定</span></a></li>
                     <li><a href="#sport-tabs">DISCIPLINES<span class="nav-link-sub">競技別ラインナップ</span></a></li>
                 </ul>
             </div>
@@ -752,7 +752,7 @@
                     <div style="text-align: center; border-top: 1px dashed rgba(10, 17, 40, 0.15); padding-top: 24px;">
                         <p style="color: #666; font-size: 0.95rem; line-height: 1.8;" data-i18n="entry.description">
                             Googleアカウントでログインすると、マイページで申し込み状況の確認もできます。<br class="br-sp">
-                            お申し込みの前に、参加費・キャンセル規定など大会の詳細を必ず<a href="#terms">「TERMS」</a>にてご確認ください。
+                            お申し込みの前に、参加費・キャンセル規定など大会の詳細を必ず<a href="terms.html">「TERMS」</a>にてご確認ください。
                         </p>
                         <div class="center-btn" style="margin-top: 18px;">
                             <a href="https://entry.fantasista-cup.com/home" target="_blank" rel="noopener noreferrer" class="btn-action-secondary" data-i18n="entry.openSiteBtn">
@@ -768,36 +768,15 @@
         <section id="terms" class="section">
             <div class="container">
                 <h2 class="section-title">TERMS<span class="sr-only">｜利用規約・参加規定</span></h2>
-                <div class="luxury-frame">
-                    <div class="terms-container">
-                        <div class="terms-item">
-                            <h3 data-i18n="terms.1.title">1. 競技ルールおよび審判について</h3>
-                            <p data-i18n="terms.1.body">本大会は協会制定のサッカー、フットサル、ソサイチ競技規則に準じますが、大会独自のローカルルールを優先します。</p>
-                        </div>
-                        <div class="terms-item">
-                            <h3 data-i18n="terms.2.title">2. 事故・怪我の責任について</h3>
-                            <p data-i18n="terms.2.body">大会中の怪我、事故、盗難等の責任は負いかねます。</p>
-                        </div>
-                        <div class="terms-item">
-                            <h3 data-i18n="terms.3.title">3. 施設利用上の注意</h3>
-                            <p data-i18n="terms.3.body">施設規則を遵守してください。</p>
-                        </div>
-                        <div class="terms-item">
-                            <h3 data-i18n="terms.4.title">4. 写真・動画の使用について</h3>
-                            <p data-i18n="terms.4.body">大会中の写真・動画は、弊社の広報活動（SNS）に使用いたします。</p>
-                        </div>
-                        <div class="terms-item">
-                            <h3 data-i18n="terms.5.title">5. 自己責任について</h3>
-                            <p data-i18n="terms.5.body">プレー中に起きた事故、怪我、熱中症、死亡事故等に関しては全て自己責任となります。Fantasista Cupは一切の責任を負いかねます。</p>
-                        </div>
-                        <div class="terms-item">
-                            <h3 data-i18n="terms.6.title">6. キャンセル規定</h3>
-                            <p data-i18n="terms.6.body">・無料期間： 大会開催日「22日前12:00（昼）」まで。
-・料金全額（100%）発生： 上記の期限を過ぎた場合。
-※理由の如何（メンバー不足、怪我等）に関わらず、参加費全額を指定口座へのお振り込みにてお支払いいただきます。
-
-無断キャンセルが発生した場合、違約金（参加費全額）の即時請求を行います。</p>
-                        </div>
+                <div class="luxury-frame terms-summary">
+                    <p class="terms-summary-lead" data-i18n="terms.summary.lead">お申し込みの前に、以下の要点をご確認ください。</p>
+                    <ul class="terms-summary-list">
+                        <li data-i18n="terms.summary.cancel">キャンセルは、大会開催日の22日前12:00（昼）まで無料です。それ以降は参加費全額をお支払いいただきます。</li>
+                        <li data-i18n="terms.summary.rules">競技は協会の競技規則に準じますが、大会独自のローカルルールを優先します。</li>
+                        <li data-i18n="terms.summary.risk">プレー中の怪我・事故は自己責任となります。写真・動画は大会の広報（SNS）に使用します。</li>
+                    </ul>
+                    <div class="center-btn">
+                        <a href="terms.html" class="btn-action" data-i18n="terms.summary.link">利用規約の全文を見る</a>
                     </div>
                 </div>
             </div>
@@ -955,7 +934,7 @@
             <li><a href="#concept">CONCEPT</a></li>
             <li><a href="#entry">ENTRY</a></li>
             <li><a href="blog.html">BLOG</a></li>
-            <li><a href="#terms">TERMS</a></li>
+            <li><a href="terms.html">TERMS</a></li>
             <li><a href="#sport-tabs">DISCIPLINES</a></li>
             <li><a href="staff.html">RECRUIT</a></li>
             <li><a href="sponsor.html">SPONSOR</a></li>
@@ -1445,7 +1424,7 @@
                 { id: "pk", label: "PK", type: "entry-list", sportCategory: "PK大会", ruleCategories: PK_RULE_CATEGORIES }
             ];
 
-            var SPORT_TAB_AUTO_MS = 3000;   // 各タブの自動停止時間
+            var SPORT_TAB_AUTO_MS = 4000;   // 各タブの自動停止時間
             var SPORT_TAB_RESUME_MS = 6000; // 手動操作後、自動再生を再開するまでの待機時間
 
             function renderSportPanelList(tabId, sportCategory) {
@@ -1475,7 +1454,7 @@
                 header.className = "accordion-header";
                 header.innerHTML =
                     '<span class="vol-title">' + vol.vol + '</span>' +
-                    '<span class="badge ' + vol.status + '">' + (vol.status === "completed" ? "Result" : "Failed") + '</span>';
+                    '<span class="badge ' + vol.status + '">' + (vol.status === "completed" ? "Result" : "開催見送り") + '</span>';
                 item.appendChild(header);
 
                 const content = document.createElement("div");
@@ -1486,12 +1465,12 @@
                 if (vol.status === "completed") {
                     contentInner.innerHTML =
                         '<div class="sport-archive-highlight">' +
-                            '<h4 class="sport-archive-highlight-title">👑 CHAMPION</h4>' +
+                            '<h4 class="sport-archive-highlight-title">優勝</h4>' +
                             '<p class="sport-archive-champion-name">' + vol.championName + '</p>' +
-                            '<h4 class="sport-archive-highlight-title">🎁 AWARDS</h4>' +
+                            '<h4 class="sport-archive-highlight-title">賞品</h4>' +
                             '<p class="sport-archive-awards-desc">' + vol.awardsText + '</p>' +
                         '</div>' +
-                        '<p class="sport-archive-photo-label">📷 TEAM PHOTO</p>' +
+                        '<p class="sport-archive-photo-label">集合写真</p>' +
                         '<div class="sport-archive-photo-frame"><img src="' + vol.photoSrc + '" alt="' + vol.photoAlt + '" loading="lazy"></div>';
                 } else {
                     contentInner.innerHTML = '<p class="sport-archive-failed-msg">' + vol.failedMessage + '</p>';
@@ -1911,20 +1890,8 @@
                     'rules.warning3': 'Fixed (metal) studs are allowed',
                     'rules.warning4': 'Up to 5 substitutions per match',
                     'rules.warning5': 'Match duration may change<br class="br-sp"> depending on the number of participating teams',
-                    'terms.1.title': '1. Competition Rules and Officiating',
-                    'terms.1.body': 'This tournament follows the rules of the game established by the JFA (Japan Football Association), but the tournament\'s own local rules take priority.',
-                    'terms.2.title': '2. Liability for Accidents and Injuries',
-                    'terms.2.body': 'We are not liable for any injuries, accidents, theft, or other incidents occurring during the tournament.',
-                    'terms.3.title': '3. Facility Usage Guidelines',
-                    'terms.3.body': 'Please comply with the facility\'s rules.',
-                    'terms.4.title': '4. Use of Photos and Videos',
-                    'terms.4.body': 'Photos and videos taken during the tournament will be used for our promotional activities (social media).',
-                    'terms.5.title': '5. Personal Responsibility',
-                    'terms.5.body': 'Any accidents, injuries, heatstroke, or fatal incidents that occur during play are entirely the participant\'s own responsibility. Fantasista Cup accepts no liability whatsoever.',
-                    'terms.6.title': '6. Cancellation Policy',
-                    'terms.6.body': '・Free cancellation period: Until 12:00 (noon) 22 days before the tournament date.\n・Full charge (100%): If cancelled after the above deadline.\n※Regardless of the reason (lack of members, injury, etc.), the full participation fee must be paid via bank transfer to the designated account.\n\nIn the case of a no-show cancellation, we will immediately charge a penalty fee (the full participation fee).',
                     'entry.loadingText': 'Loading...',
-                    'entry.description': 'Log in with your Google account to check your entry status on My Page.<br class="br-sp"> Before applying, please be sure to check the entry fee, cancellation policy, and other tournament details under <a href="#terms">"TERMS"</a>.',
+                    'entry.description': 'Log in with your Google account to check your entry status on My Page.<br class="br-sp"> Before applying, please be sure to check the entry fee, cancellation policy, and other tournament details under <a href="terms.html">"TERMS"</a>.',
                     'entry.openSiteBtn': 'Open Entry Site (Tournaments &amp; My Page)',
                     'entry.dateTBD': 'Date TBD',
                     'entry.venueTBD': 'Venue TBD',
@@ -1941,10 +1908,15 @@
                     'entry.steps.s3.title': 'Add Our Official LINE',
                     'entry.steps.s3.desc': "Tournament details and day-of updates are sent via our official LINE.",
                     'entry.steps.lineBtn': 'Add Official LINE',
+                    'terms.summary.lead': 'Please check the key points below before applying.',
+                    'terms.summary.cancel': 'Cancellation is free until 12:00 noon, 22 days before the tournament date. After that, the full entry fee is charged.',
+                    'terms.summary.rules': "Matches follow the association rules, but the tournament's own local rules take precedence.",
+                    'terms.summary.risk': 'Injuries and accidents during play are at your own risk. Photos and videos are used for tournament publicity (SNS).',
+                    'terms.summary.link': 'Read the full terms',
                     'entry.steps.s6.title': "Tournament Day",
                     'entry.steps.s6.desc': "Tell the reception staff your team name. See you on the pitch.",
                     'contact.lineLabel': 'Official LINE',
-                    'contact.termsNotice': 'Before submitting, please make sure to check the tournament fees, cancellation policy, and other details under <a href="#terms">"TERMS"</a>.',
+                    'contact.termsNotice': 'Before submitting, please make sure to check the tournament fees, cancellation policy, and other details under <a href="terms.html">"TERMS"</a>.',
                     'contact.entryRedirectNotice': 'To <strong>apply for a tournament, please use "<a href="#entry">ENTRY</a>"</strong>. This form is for general inquiries only.',
                     'contact.teamNameLabel': 'Team Name',
                     'contact.teamNamePh': 'e.g. Fantasista FC',
@@ -2020,20 +1992,8 @@
                     'rules.warning3': 'Sono ammessi tacchetti fissi',
                     'rules.warning4': 'Massimo 5 sostituzioni per partita',
                     'rules.warning5': 'La durata delle partite può variare<br class="br-sp"> in base al numero di squadre partecipanti',
-                    'terms.1.title': '1. Regole di Gioco e Arbitraggio',
-                    'terms.1.body': 'Questo torneo segue le regole del gioco stabilite dalla JFA (Japan Football Association), ma le regole locali specifiche del torneo hanno la priorità.',
-                    'terms.2.title': '2. Responsabilità per Incidenti e Infortuni',
-                    'terms.2.body': 'Non siamo responsabili per infortuni, incidenti, furti o altri eventi che si verifichino durante il torneo.',
-                    'terms.3.title': '3. Norme per l\'Uso della Struttura',
-                    'terms.3.body': 'Si prega di rispettare il regolamento della struttura.',
-                    'terms.4.title': '4. Utilizzo di Foto e Video',
-                    'terms.4.body': 'Le foto e i video scattati durante il torneo saranno utilizzati per le nostre attività promozionali (social media).',
-                    'terms.5.title': '5. Responsabilità Personale',
-                    'terms.5.body': 'Qualsiasi incidente, infortunio, colpo di calore o incidente mortale che si verifichi durante il gioco è interamente responsabilità del partecipante. Fantasista Cup non si assume alcuna responsabilità.',
-                    'terms.6.title': '6. Politica di Cancellazione',
-                    'terms.6.body': '・Periodo di cancellazione gratuita: fino alle 12:00 (mezzogiorno) di 22 giorni prima della data del torneo.\n・Addebito completo (100%): in caso di cancellazione dopo la scadenza sopra indicata.\n※Indipendentemente dal motivo (mancanza di membri, infortunio, ecc.), la quota di partecipazione dovrà essere versata per intero tramite bonifico bancario sul conto indicato.\n\nIn caso di cancellazione senza preavviso, verrà addebitata immediatamente una penale (l\'intera quota di partecipazione).',
                     'entry.loadingText': 'Caricamento...',
-                    'entry.description': 'Accedi con il tuo account Google per controllare lo stato delle tue iscrizioni nella My Page.<br class="br-sp"> Prima di iscriverti, verifica sempre la quota di partecipazione, la politica di cancellazione e gli altri dettagli nella sezione <a href="#terms">"TERMS"</a>.',
+                    'entry.description': 'Accedi con il tuo account Google per controllare lo stato delle tue iscrizioni nella My Page.<br class="br-sp"> Prima di iscriverti, verifica sempre la quota di partecipazione, la politica di cancellazione e gli altri dettagli nella sezione <a href="terms.html">"TERMS"</a>.',
                     'entry.openSiteBtn': 'Apri il sito di iscrizione (tornei e My Page)',
                     'entry.dateTBD': 'Data da definire',
                     'entry.venueTBD': 'Sede da definire',
@@ -2050,10 +2010,15 @@
                     'entry.steps.s3.title': 'Aggiungi il nostro LINE ufficiale',
                     'entry.steps.s3.desc': "I dettagli del torneo e le comunicazioni del giorno dell'evento vengono inviati tramite il nostro LINE ufficiale.",
                     'entry.steps.lineBtn': 'Aggiungi LINE ufficiale',
+                    'terms.summary.lead': 'Prima di iscriverti, verifica i punti principali qui sotto.',
+                    'terms.summary.cancel': "La cancellazione è gratuita fino alle 12:00 di 22 giorni prima della data del torneo. Dopo, viene addebitata l'intera quota.",
+                    'terms.summary.rules': 'Le partite seguono le regole della federazione, ma le regole locali del torneo hanno la precedenza.',
+                    'terms.summary.risk': 'Infortuni e incidenti durante il gioco sono a tuo rischio. Foto e video sono usati per la promozione del torneo (SNS).',
+                    'terms.summary.link': 'Leggi il regolamento completo',
                     'entry.steps.s6.title': "Il giorno del torneo",
                     'entry.steps.s6.desc': "Comunica il nome della squadra all'accoglienza. Ci vediamo in campo.",
                     'contact.lineLabel': 'LINE Ufficiale',
-                    'contact.termsNotice': 'Prima di inviare, ti preghiamo di verificare la quota di partecipazione, la politica di cancellazione e gli altri dettagli nella sezione <a href="#terms">"TERMS"</a>.',
+                    'contact.termsNotice': 'Prima di inviare, ti preghiamo di verificare la quota di partecipazione, la politica di cancellazione e gli altri dettagli nella sezione <a href="terms.html">"TERMS"</a>.',
                     'contact.entryRedirectNotice': 'Per <strong>iscriverti a un torneo, usa la sezione "<a href="#entry">ENTRY</a>"</strong>. Questo modulo è riservato alle richieste generali.',
                     'contact.teamNameLabel': 'Nome della Squadra',
                     'contact.teamNamePh': 'es. Fantasista FC',
@@ -2129,20 +2094,8 @@
                     'rules.warning3': 'Se permiten tacos fijos',
                     'rules.warning4': 'Máximo 5 sustituciones por partido',
                     'rules.warning5': 'La duración del partido puede cambiar<br class="br-sp"> según el número de equipos participantes',
-                    'terms.1.title': '1. Reglas de Competición y Arbitraje',
-                    'terms.1.body': 'Este torneo sigue las reglas del juego establecidas por la JFA (Asociación Japonesa de Fútbol), pero las reglas locales propias del torneo tienen prioridad.',
-                    'terms.2.title': '2. Responsabilidad por Accidentes y Lesiones',
-                    'terms.2.body': 'No nos hacemos responsables de lesiones, accidentes, robos u otros incidentes ocurridos durante el torneo.',
-                    'terms.3.title': '3. Normas de Uso de las Instalaciones',
-                    'terms.3.body': 'Por favor, respete el reglamento de las instalaciones.',
-                    'terms.4.title': '4. Uso de Fotos y Vídeos',
-                    'terms.4.body': 'Las fotos y vídeos tomados durante el torneo se utilizarán para nuestras actividades promocionales (redes sociales).',
-                    'terms.5.title': '5. Responsabilidad Personal',
-                    'terms.5.body': 'Cualquier accidente, lesión, golpe de calor o incidente fatal que ocurra durante el juego es responsabilidad exclusiva del participante. Fantasista Cup no asume ninguna responsabilidad.',
-                    'terms.6.title': '6. Política de Cancelación',
-                    'terms.6.body': '・Período de cancelación gratuita: hasta las 12:00 (mediodía) 22 días antes de la fecha del torneo.\n・Cargo completo (100%): si se cancela después del plazo anterior.\n※Independientemente del motivo (falta de miembros, lesiones, etc.), la cuota de participación completa deberá pagarse mediante transferencia bancaria a la cuenta indicada.\n\nEn caso de cancelación sin previo aviso, se cobrará de inmediato una penalización (la cuota de participación completa).',
                     'entry.loadingText': 'Cargando...',
-                    'entry.description': 'Inicia sesión con tu cuenta de Google para consultar el estado de tus inscripciones en My Page.<br class="br-sp"> Antes de inscribirte, revisa siempre la cuota de participación, la política de cancelación y otros detalles en <a href="#terms">"TERMS"</a>.',
+                    'entry.description': 'Inicia sesión con tu cuenta de Google para consultar el estado de tus inscripciones en My Page.<br class="br-sp"> Antes de inscribirte, revisa siempre la cuota de participación, la política de cancelación y otros detalles en <a href="terms.html">"TERMS"</a>.',
                     'entry.openSiteBtn': 'Abrir el sitio de inscripción (torneos y My Page)',
                     'entry.dateTBD': 'Fecha por confirmar',
                     'entry.venueTBD': 'Sede por confirmar',
@@ -2159,10 +2112,15 @@
                     'entry.steps.s3.title': 'Agrega nuestro LINE oficial',
                     'entry.steps.s3.desc': "Los detalles del torneo y los avisos del día se envían por nuestro LINE oficial.",
                     'entry.steps.lineBtn': 'Agregar LINE oficial',
+                    'terms.summary.lead': 'Antes de inscribirte, revisa los puntos clave a continuación.',
+                    'terms.summary.cancel': 'La cancelación es gratuita hasta las 12:00 del mediodía, 22 días antes de la fecha del torneo. Después se cobra la cuota completa.',
+                    'terms.summary.rules': 'Los partidos siguen las reglas de la federación, pero las reglas locales del torneo tienen prioridad.',
+                    'terms.summary.risk': 'Las lesiones y accidentes durante el juego son bajo tu propia responsabilidad. Las fotos y vídeos se usan para la promoción del torneo (SNS).',
+                    'terms.summary.link': 'Ver el reglamento completo',
                     'entry.steps.s6.title': "El día del torneo",
                     'entry.steps.s6.desc': "Indica el nombre de tu equipo en la recepción. Te esperamos en la cancha.",
                     'contact.lineLabel': 'LINE Oficial',
-                    'contact.termsNotice': 'Antes de enviar, asegúrese de revisar la cuota de participación, la política de cancelación y otros detalles en <a href="#terms">"TERMS"</a>.',
+                    'contact.termsNotice': 'Antes de enviar, asegúrese de revisar la cuota de participación, la política de cancelación y otros detalles en <a href="terms.html">"TERMS"</a>.',
                     'contact.entryRedirectNotice': 'Para <strong>inscribirte en un torneo, utiliza "<a href="#entry">ENTRY</a>"</strong>. Este formulario es solo para consultas generales.',
                     'contact.teamNameLabel': 'Nombre del Equipo',
                     'contact.teamNamePh': 'ej. Fantasista FC',
@@ -2238,20 +2196,8 @@
                     'rules.warning3': '고정식 스터드(스파이크) 착용 가능',
                     'rules.warning4': '교체 인원은 1경기당 5명까지',
                     'rules.warning5': '경기 시간은 참가 팀 수에<br class="br-sp"> 따라 변경될 수 있습니다',
-                    'terms.1.title': '1. 경기 규칙 및 심판에 대하여',
-                    'terms.1.body': '본 대회는 JFA(일본축구협회) 제정 축구 경기 규칙에 준하되, 대회 자체 로컬 룰을 우선합니다.',
-                    'terms.2.title': '2. 사고·부상의 책임에 대하여',
-                    'terms.2.body': '대회 중 발생하는 부상, 사고, 도난 등에 대한 책임은 지지 않습니다.',
-                    'terms.3.title': '3. 시설 이용 시 주의사항',
-                    'terms.3.body': '시설 규칙을 준수해 주시기 바랍니다.',
-                    'terms.4.title': '4. 사진·영상 사용에 대하여',
-                    'terms.4.body': '대회 중 촬영된 사진·영상은 저희 홍보 활동(SNS)에 사용됩니다.',
-                    'terms.5.title': '5. 자기 책임에 대하여',
-                    'terms.5.body': '플레이 중 발생한 사고, 부상, 열사병, 사망 사고 등은 모두 본인 책임입니다. Fantasista Cup는 일체의 책임을 지지 않습니다.',
-                    'terms.6.title': '6. 취소 규정',
-                    'terms.6.body': '・무료 취소 기간: 대회 개최일 「22일 전 낮 12:00」까지.\n・참가비 전액(100%) 발생: 위 기한을 넘긴 경우.\n※사유(멤버 부족, 부상 등)를 불문하고, 참가비 전액을 지정 계좌로 입금하여 지불하셔야 합니다.\n\n무단 취소가 발생한 경우, 위약금(참가비 전액)을 즉시 청구합니다.',
                     'entry.loadingText': '불러오는 중...',
-                    'entry.description': 'Google 계정으로 로그인하면 마이페이지에서 신청 현황을 확인할 수 있습니다.<br class="br-sp"> 신청 전에 참가비, 취소 규정 등 대회 상세 내용을 반드시 <a href="#terms">「TERMS」</a>에서 확인해 주세요.',
+                    'entry.description': 'Google 계정으로 로그인하면 마이페이지에서 신청 현황을 확인할 수 있습니다.<br class="br-sp"> 신청 전에 참가비, 취소 규정 등 대회 상세 내용을 반드시 <a href="terms.html">「TERMS」</a>에서 확인해 주세요.',
                     'entry.openSiteBtn': '엔트리 사이트（대회 목록・마이페이지）열기',
                     'entry.dateTBD': '일정 미정',
                     'entry.venueTBD': '장소 미정',
@@ -2268,10 +2214,15 @@
                     'entry.steps.s3.title': '공식 LINE 추가하기',
                     'entry.steps.s3.desc': "대회 상세 안내와 당일 연락은 공식 LINE으로 보내드립니다.",
                     'entry.steps.lineBtn': '공식 LINE 추가하기',
+                    'terms.summary.lead': '신청 전에 아래 요점을 확인해 주세요.',
+                    'terms.summary.cancel': '취소는 대회 개최일 22일 전 12:00(정오)까지 무료입니다. 이후에는 참가비 전액을 지불해야 합니다.',
+                    'terms.summary.rules': '경기는 협회 경기 규칙을 따르되, 대회 자체의 로컬 룰을 우선합니다.',
+                    'terms.summary.risk': '경기 중 부상·사고는 본인 책임입니다. 사진·영상은 대회 홍보(SNS)에 사용됩니다.',
+                    'terms.summary.link': '이용약관 전문 보기',
                     'entry.steps.s6.title': "대회 당일",
                     'entry.steps.s6.desc': "접수처에서 팀 이름을 알려 주세요. 피치에서 기다리겠습니다.",
                     'contact.lineLabel': '대회 공식 LINE',
-                    'contact.termsNotice': '신청 전에 참가비, 취소 규정 등 대회 상세 내용을 반드시 <a href="#terms">「TERMS」</a>에서 확인해 주시기 바랍니다.',
+                    'contact.termsNotice': '신청 전에 참가비, 취소 규정 등 대회 상세 내용을 반드시 <a href="terms.html">「TERMS」</a>에서 확인해 주시기 바랍니다.',
                     'contact.entryRedirectNotice': '대회 <strong>신청은 「<a href="#entry">ENTRY</a>」</strong>에서 받고 있습니다. 이 양식은 문의 전용입니다.',
                     'contact.teamNameLabel': '팀명',
                     'contact.teamNamePh': '예: Fantasista FC',
@@ -2347,20 +2298,8 @@
                     'rules.warning3': '允许穿着固定钉鞋',
                     'rules.warning4': '每场比赛最多可换人5名',
                     'rules.warning5': '比赛时间可能会<br class="br-sp"> 根据参赛队伍数量而变动',
-                    'terms.1.title': '1. 关于比赛规则与裁判',
-                    'terms.1.body': '本赛事参照日本足球协会（JFA）制定的比赛规则，但赛事自定的本地规则优先适用。',
-                    'terms.2.title': '2. 关于事故与伤害责任',
-                    'terms.2.body': '对于赛事期间发生的受伤、事故、失窃等情况，主办方概不负责。',
-                    'terms.3.title': '3. 场地使用注意事项',
-                    'terms.3.body': '请遵守场地相关规定。',
-                    'terms.4.title': '4. 关于照片与视频的使用',
-                    'terms.4.body': '赛事期间拍摄的照片与视频将用于本公司的宣传活动（社交媒体）。',
-                    'terms.5.title': '5. 关于自我责任',
-                    'terms.5.body': '比赛过程中发生的事故、受伤、中暑、死亡事故等，一律由参与者自行负责。Fantasista Cup 概不承担任何责任。',
-                    'terms.6.title': '6. 取消规定',
-                    'terms.6.body': '・免费取消期限：赛事举办日「前22天中午12:00」之前。\n・全额收费（100%）：超过上述期限取消的情况。\n※无论理由为何（人数不足、受伤等），均须将参赛费全额汇入指定账户。\n\n如发生无故取消（未告知缺席），将立即收取违约金（参赛费全额）。',
                     'entry.loadingText': '加载中...',
-                    'entry.description': '使用Google账号登录后，可在个人中心查看报名状态。<br class="br-sp"> 报名前，请务必在<a href="#terms">「TERMS」</a>中确认参赛费用、取消规定等赛事详情。',
+                    'entry.description': '使用Google账号登录后，可在个人中心查看报名状态。<br class="br-sp"> 报名前，请务必在<a href="terms.html">「TERMS」</a>中确认参赛费用、取消规定等赛事详情。',
                     'entry.openSiteBtn': '打开报名网站（赛事列表・个人中心）',
                     'entry.dateTBD': '日期待定',
                     'entry.venueTBD': '场地待定',
@@ -2377,10 +2316,15 @@
                     'entry.steps.s3.title': '添加官方LINE',
                     'entry.steps.s3.desc': "赛事详情及比赛当天的联络将通过官方LINE发送。",
                     'entry.steps.lineBtn': '添加官方LINE',
+                    'terms.summary.lead': '报名前，请确认以下要点。',
+                    'terms.summary.cancel': '赛事举办日22天前的12:00（中午）之前可免费取消。之后需支付全额参赛费。',
+                    'terms.summary.rules': '比赛遵循协会竞赛规则，但以赛事自定的本地规则为优先。',
+                    'terms.summary.risk': '比赛中的受伤、事故由参赛者自行负责。照片、视频将用于赛事宣传（SNS）。',
+                    'terms.summary.link': '查看完整条款',
                     'entry.steps.s6.title': "比赛当天",
                     'entry.steps.s6.desc': "请在接待处告知球队名称。我们在球场等您。",
                     'contact.lineLabel': '赛事官方LINE',
-                    'contact.termsNotice': '提交前，请务必在<a href="#terms">「TERMS」</a>中确认参赛费用、取消规定等赛事详情。',
+                    'contact.termsNotice': '提交前，请务必在<a href="terms.html">「TERMS」</a>中确认参赛费用、取消规定等赛事详情。',
                     'contact.entryRedirectNotice': '赛事<strong>报名请通过「<a href="#entry">ENTRY</a>」</strong>办理。此表单仅用于一般咨询。',
                     'contact.teamNameLabel': '队伍名称',
                     'contact.teamNamePh': '例：Fantasista FC',
