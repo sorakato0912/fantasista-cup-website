@@ -137,7 +137,9 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(-4px);
-    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    /* 閉じるときはフェードが終わってから非表示に。開くときは即時に表示（下の .is-open）。
+       visibility まで遅らせると、開いた直後に選択中の項目へフォーカスできないため */
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
     max-height: 320px;
     overflow-y: auto;
 }
@@ -146,6 +148,7 @@
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    transition-delay: 0s;
 }
 
 .fc-select-option {
