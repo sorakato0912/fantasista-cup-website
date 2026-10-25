@@ -1610,21 +1610,25 @@ body {
     font-size: 0.72rem;
 }
 
-/* 個人参加の残り人数（チーム＋個人／個人のみの大会） */
-.entry-card-remaining .individual {
-    color: var(--gold-dark);
-    font-size: 0.78rem;
-    font-weight: 700;
-}
-
-.entry-card-remaining .unit + .individual {
-    margin-top: 4px;
-    padding-top: 4px;
+/* チーム＋個人の大会で、チームの残りと個人の残りを区切る線 */
+.entry-card-remaining .unit-sep {
+    align-self: stretch;
+    margin: 4px 0;
     border-top: 1px solid rgba(212, 175, 55, 0.25);
 }
 
-.entry-card-remaining .individual.full {
-    color: #c0392b;
+/* 個人参加の大会：スポーツ名の横の「個人参加」ラベル */
+.entry-card-individual {
+    display: inline-block;
+    margin-right: 6px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: var(--navy-dark);
+    color: #f3e5ab;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    vertical-align: middle;
 }
 
 /* ==========================================================================

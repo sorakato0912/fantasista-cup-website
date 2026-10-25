@@ -1266,9 +1266,12 @@
                 const teamHtml = !acceptsTeams || remaining === null
                     ? ""
                     : '<span class="num' + (remaining <= 0 ? " full" : "") + '">' + t("entry.remainingPrefix", "残り") + ' ' + remaining + '</span><span class="unit">/ ' + teamCapacityOf(tournament) + ' ' + t("entry.teamsUnit", "チーム") + '</span>';
+                // 個人参加の残りは、チームと同じく「残り ○ / ○ 人」の形で表示する（単位は必ず人）
                 const individualHtml = !individualOpen
                     ? ""
-                    : '<span class="individual' + (individual.remaining <= 0 ? " full" : "") + '">' + t("entry.individualPrefix", "個人 残り") + ' ' + individual.remaining + t("entry.peopleUnit", "人") + '</span>';
+                    : (teamHtml ? '<span class="unit-sep"></span>' : "") +
+                      '<span class="num' + (individual.remaining <= 0 ? " full" : "") + '">' + t("entry.remainingPrefix", "残り") + ' ' + individual.remaining + '</span>' +
+                      '<span class="unit">/ ' + (individual.individual_capacity || 0) + ' ' + t("entry.peopleUnit", "人") + '</span>';
                 const remainingHtml = teamHtml || individualHtml
                     ? '<div class="entry-card-remaining">' + teamHtml + individualHtml + '</div>'
                     : "";
@@ -1280,7 +1283,9 @@
                 wrap.rel = "noopener noreferrer";
                 wrap.innerHTML =
                     '<div class="entry-card-info">' +
-                        '<p class="entry-card-date"><span class="entry-card-sport"></span><span class="entry-card-datetext"></span></p>' +
+                        '<p class="entry-card-date"><span class="entry-card-sport"></span>' +
+                        (tournament.entry_mode && tournament.entry_mode !== "team" ? '<span class="entry-card-individual">' + t("entry.individualLabel", "個人参加") + '</span>' : "") +
+                        '<span class="entry-card-datetext"></span></p>' +
                         '<h3 class="entry-card-title"></h3>' +
                         '<p class="entry-card-venue"></p>' +
                     '</div>' +
@@ -1939,7 +1944,8 @@
                     'entry.remainingPrefix': 'Only',
                     'entry.teamsUnit': 'spots left',
                     'entry.individualPrefix': "Individual: ",
-                    'entry.peopleUnit': " left",
+                    'entry.peopleUnit': "people",
+                    'entry.individualLabel': "Individual",
                     'entry.applyBtn': 'Apply for This Tournament',
                     'entry.waitlistBtn': 'Join the Waitlist',
                     'entry.empty': 'There are no tournaments open for entry right now.',
@@ -2043,7 +2049,8 @@
                     'entry.remainingPrefix': 'Solo',
                     'entry.teamsUnit': 'posti rimasti',
                     'entry.individualPrefix': "Individuali: ",
-                    'entry.peopleUnit': " posti",
+                    'entry.peopleUnit': "persone",
+                    'entry.individualLabel': "Individuale",
                     'entry.applyBtn': 'Iscriviti a questo torneo',
                     'entry.waitlistBtn': 'Iscriviti alla lista d\'attesa',
                     'entry.empty': 'Al momento non ci sono tornei aperti alle iscrizioni.',
@@ -2147,7 +2154,8 @@
                     'entry.remainingPrefix': 'Solo',
                     'entry.teamsUnit': 'plazas restantes',
                     'entry.individualPrefix': "Individual: ",
-                    'entry.peopleUnit': " plazas",
+                    'entry.peopleUnit': "personas",
+                    'entry.individualLabel': "Individual",
                     'entry.applyBtn': 'Inscribirse en este torneo',
                     'entry.waitlistBtn': 'Unirse a la lista de espera',
                     'entry.empty': 'Actualmente no hay torneos abiertos para inscripción.',
@@ -2252,6 +2260,7 @@
                     'entry.teamsUnit': '팀',
                     'entry.individualPrefix': "개인 남은 ",
                     'entry.peopleUnit': "명",
+                    'entry.individualLabel': "개인 참가",
                     'entry.applyBtn': '이 대회에 신청하기',
                     'entry.waitlistBtn': '대기 명단에 등록하기',
                     'entry.empty': '현재 모집 중인 대회가 없습니다.',
@@ -2356,6 +2365,7 @@
                     'entry.teamsUnit': '队',
                     'entry.individualPrefix': "个人 剩余",
                     'entry.peopleUnit': "人",
+                    'entry.individualLabel': "个人参赛",
                     'entry.applyBtn': '报名参加本赛事',
                     'entry.waitlistBtn': '登记候补名单',
                     'entry.empty': '目前没有正在招募的赛事。',
