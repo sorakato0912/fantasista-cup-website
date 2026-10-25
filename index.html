@@ -1214,6 +1214,31 @@
                 return res.json();
             }
 
+            // 個人参加を受け付けている大会の集計（定員・確定人数・残り人数。個人情報は含まない）
+            async function fetchIndividualSummary(tournamentId) {
+                const res = await fetch(SUPABASE_URL + "/rest/v1/rpc/tournament_individual_summary", {
+                    method: "POST",
+                    headers: {
+                        apikey: SUPABASE_ANON_KEY,
+                        Authorization: "Bearer " + SUPABASE_ANON_KEY,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ p_tournament_id: tournamentId })
+                });
+                if (!res.ok) return null;
+                const rows = await res.json();
+                return rows && rows[0] ? rows[0] : null;
+            }
+
+            // チームとして申し込める枠数（チーム＋個人の大会は1枠を個人参加チーム用に確保。不成立なら戻す）
+            function teamCapacityOf(tournament) {
+                if (tournament.entry_mode === "individual") return 0;
+                if (tournament.entry_mode === "team_and_individual" && tournament.individual_status !== "不成立") {
+                    return Math.max(tournament.capacity - 1, 0);
+                }
+                return tournament.capacity;
+            }
+
             // 現在の言語辞書から文言を取得（日本語の場合はfcDictがnullなのでfallbackを使う）
             function t(key, fallback) {
                 return (window.fcDict && window.fcDict[key]) || fallback;
@@ -1232,11 +1257,21 @@
 
             // エントリーサイト（/home）の大会カードと同じ形式：カード全体が申込ページへのリンク、
             // 左に競技・日時／大会名／会場、右に残り枠。参加費は表示しない（コンパクトさ優先）
-            function renderCard(tournament, remaining) {
-                const isFull = remaining !== null && remaining <= 0;
-                const remainingHtml = remaining === null
+            function renderCard(tournament, remaining, individual) {
+                const acceptsTeams = tournament.entry_mode !== "individual";
+                const individualOpen = individual && individual.individual_status !== "不成立";
+                const isFull = acceptsTeams
+                    ? remaining !== null && remaining <= 0
+                    : !individualOpen || individual.remaining <= 0;
+                const teamHtml = !acceptsTeams || remaining === null
                     ? ""
-                    : '<div class="entry-card-remaining"><span class="num' + (isFull ? " full" : "") + '">' + t("entry.remainingPrefix", "残り") + ' ' + remaining + '</span><span class="unit">/ ' + tournament.capacity + ' ' + t("entry.teamsUnit", "チーム") + '</span></div>';
+                    : '<span class="num' + (remaining <= 0 ? " full" : "") + '">' + t("entry.remainingPrefix", "残り") + ' ' + remaining + '</span><span class="unit">/ ' + teamCapacityOf(tournament) + ' ' + t("entry.teamsUnit", "チーム") + '</span>';
+                const individualHtml = !individualOpen
+                    ? ""
+                    : '<span class="individual' + (individual.remaining <= 0 ? " full" : "") + '">' + t("entry.individualPrefix", "個人 残り") + ' ' + individual.remaining + t("entry.peopleUnit", "人") + '</span>';
+                const remainingHtml = teamHtml || individualHtml
+                    ? '<div class="entry-card-remaining">' + teamHtml + individualHtml + '</div>'
+                    : "";
 
                 const wrap = document.createElement("a");
                 wrap.className = "entry-card";
@@ -1280,8 +1315,8 @@
                 }
                 listEl.innerHTML = "";
                 // 開催日の近い順に3大会まで
-                filtered.slice(0, 3).forEach(({ tournament, remaining }) => {
-                    listEl.appendChild(renderCard(tournament, remaining));
+                filtered.slice(0, 3).forEach(({ tournament, remaining, individual }) => {
+                    listEl.appendChild(renderCard(tournament, remaining, individual));
                 });
             }
 
@@ -1292,8 +1327,13 @@
                     const tournaments = await fetchOpenTournaments();
                     const results = [];
                     for (const tournament of tournaments) {
-                        const remaining = await fetchRemaining(tournament.id);
-                        results.push({ tournament, remaining });
+                        const [remaining, individual] = await Promise.all([
+                            fetchRemaining(tournament.id),
+                            tournament.entry_mode && tournament.entry_mode !== "team"
+                                ? fetchIndividualSummary(tournament.id)
+                                : Promise.resolve(null)
+                        ]);
+                        results.push({ tournament, remaining, individual });
                     }
                     cachedTournaments = results;
                     updateEntryFilterOptionAvailability();
@@ -1440,7 +1480,7 @@
                 }
                 listEl.innerHTML = "";
                 filtered.forEach(function (item) {
-                    listEl.appendChild(renderCard(item.tournament, item.remaining));
+                    listEl.appendChild(renderCard(item.tournament, item.remaining, item.individual));
                 });
             }
 
@@ -1898,6 +1938,8 @@
                     'entry.venueTBD': 'Venue TBD',
                     'entry.remainingPrefix': 'Only',
                     'entry.teamsUnit': 'spots left',
+                    'entry.individualPrefix': "Individual: ",
+                    'entry.peopleUnit': " left",
                     'entry.applyBtn': 'Apply for This Tournament',
                     'entry.waitlistBtn': 'Join the Waitlist',
                     'entry.empty': 'There are no tournaments open for entry right now.',
@@ -2000,6 +2042,8 @@
                     'entry.venueTBD': 'Sede da definire',
                     'entry.remainingPrefix': 'Solo',
                     'entry.teamsUnit': 'posti rimasti',
+                    'entry.individualPrefix': "Individuali: ",
+                    'entry.peopleUnit': " posti",
                     'entry.applyBtn': 'Iscriviti a questo torneo',
                     'entry.waitlistBtn': 'Iscriviti alla lista d\'attesa',
                     'entry.empty': 'Al momento non ci sono tornei aperti alle iscrizioni.',
@@ -2102,6 +2146,8 @@
                     'entry.venueTBD': 'Sede por confirmar',
                     'entry.remainingPrefix': 'Solo',
                     'entry.teamsUnit': 'plazas restantes',
+                    'entry.individualPrefix': "Individual: ",
+                    'entry.peopleUnit': " plazas",
                     'entry.applyBtn': 'Inscribirse en este torneo',
                     'entry.waitlistBtn': 'Unirse a la lista de espera',
                     'entry.empty': 'Actualmente no hay torneos abiertos para inscripción.',
@@ -2204,6 +2250,8 @@
                     'entry.venueTBD': '장소 미정',
                     'entry.remainingPrefix': '남은',
                     'entry.teamsUnit': '팀',
+                    'entry.individualPrefix': "개인 남은 ",
+                    'entry.peopleUnit': "명",
                     'entry.applyBtn': '이 대회에 신청하기',
                     'entry.waitlistBtn': '대기 명단에 등록하기',
                     'entry.empty': '현재 모집 중인 대회가 없습니다.',
@@ -2306,6 +2354,8 @@
                     'entry.venueTBD': '场地待定',
                     'entry.remainingPrefix': '剩余',
                     'entry.teamsUnit': '队',
+                    'entry.individualPrefix': "个人 剩余",
+                    'entry.peopleUnit': "人",
                     'entry.applyBtn': '报名参加本赛事',
                     'entry.waitlistBtn': '登记候补名单',
                     'entry.empty': '目前没有正在招募的赛事。',

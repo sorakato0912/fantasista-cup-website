@@ -1610,6 +1610,23 @@ body {
     font-size: 0.72rem;
 }
 
+/* 個人参加の残り人数（チーム＋個人／個人のみの大会） */
+.entry-card-remaining .individual {
+    color: var(--gold-dark);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.entry-card-remaining .unit + .individual {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.entry-card-remaining .individual.full {
+    color: #c0392b;
+}
+
 /* ==========================================================================
    👑 STAFF / SPONSOR ページ共通：見出し・項目にアイコンを添える汎用クラス
    ========================================================================== */
