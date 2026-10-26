@@ -1498,9 +1498,33 @@
                 }
             ];
 
+            // FUTSALタブのRULE（SOCCERのRULEをフットサル競技規則に合わせて置き換えたもの）
+            var FUTSAL_RULE_CATEGORIES = [
+                {
+                    title: "競技ルール",
+                    items: [
+                        "本大会は基本的に公式フットサルルール（日本サッカー協会のフットサル競技規則）を適用します。",
+                        "交代は自由な交代（試合中いつでも、回数の制限なく交代できる）とします。",
+                        "大会独自のルールとして、通常の試合よりファウルの基準を厳しく適用します。",
+                        "大会中にレッドカードが提示された選手は、当該大会での以降の出場を禁止します。",
+                        "試合時間は参加チーム数により変動する場合があります。",
+                        "規定時間内に決着がつかない場合は、PK戦にて勝敗を決定します。"
+                    ]
+                },
+                {
+                    title: "勝ち点システム",
+                    items: [
+                        "規定時間での勝利：3点",
+                        "PK戦での勝利：2点",
+                        "PK戦での敗戦：1点",
+                        "規定時間での敗戦：0点"
+                    ]
+                }
+            ];
+
             var SPORT_TABS = [
                 { id: "soccer", label: "SOCCER", type: "entry-list", sportCategory: "サッカー", archive: SOCCER_ARCHIVE_VOLUMES, ruleCategories: SOCCER_RULE_CATEGORIES },
-                { id: "futsal", label: "FUTSAL", type: "coming-soon" },
+                { id: "futsal", label: "FUTSAL", type: "entry-list", sportCategory: "フットサル", ruleCategories: FUTSAL_RULE_CATEGORIES },
                 { id: "society", label: "SOCIETY", type: "coming-soon" },
                 { id: "pk", label: "PK", type: "entry-list", sportCategory: "PK大会", ruleCategories: PK_RULE_CATEGORIES }
             ];
