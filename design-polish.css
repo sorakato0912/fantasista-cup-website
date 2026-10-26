@@ -614,34 +614,45 @@ body {
 
 /* ==========================================================================
    👑 フローティングCTA（右下の「大会に参加する」）
-   Heroの .btn-gold と同じ、紺地＋細いゴールドの二重線。ホバーでゴールドに反転
+   画面の右端から生えてくるタブ型。紺地＋ゴールドの二重線（Heroの .btn-gold と同じ質感）で、
+   右側の線は画面外へ抜けている。ホバーで少し伸び、ゴールドに反転
    ========================================================================== */
 .floating-cta {
+    --cta-tuck: 14px; /* 画面外に隠しておく幅（伸び縮みしても右端に隙間が出ないように） */
     position: fixed;
-    right: max(24px, env(safe-area-inset-right));
-    bottom: max(24px, env(safe-area-inset-bottom));
+    right: calc(var(--cta-tuck) * -1);
+    bottom: max(32px, env(safe-area-inset-bottom));
     z-index: 90; /* ナビバー（100）・メニュー（400〜）より下 */
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 15px 26px 15px 30px;
-    background: rgba(10, 17, 40, 0.9);
+    padding: 16px calc(26px + var(--cta-tuck) + env(safe-area-inset-right)) 16px 28px;
+    background: rgba(10, 17, 40, 0.92);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid var(--gold-bright);
-    outline: 1px solid rgba(212, 175, 55, 0.25);
-    outline-offset: -6px;
+    border-right: none;
     color: var(--white);
     font-weight: bold;
     font-size: 0.9rem;
     letter-spacing: 0.16em;
     text-decoration: none;
-    box-shadow: 0 10px 28px rgba(10, 17, 40, 0.28);
-    opacity: 0;
+    box-shadow: -8px 10px 28px rgba(10, 17, 40, 0.28);
     visibility: hidden;
-    transform: translateY(16px);
-    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s linear 0.4s,
+    transform: translateX(105%);
+    transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1), visibility 0s linear 0.55s,
         background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 内側の細い線（右側は画面外へ抜ける） */
+.floating-cta::before {
+    content: '';
+    position: absolute;
+    inset: 5px 0 5px 5px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-right: none;
+    pointer-events: none;
+    transition: border-color 0.3s ease;
 }
 
 .floating-cta::after {
@@ -655,18 +666,27 @@ body {
 }
 
 .floating-cta.is-visible {
-    opacity: 1;
     visibility: visible;
-    transform: translateY(0);
-    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s,
+    transform: translateX(0);
+    transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1), visibility 0s,
         background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-cta.is-visible:hover,
+.floating-cta.is-visible:focus-visible {
+    transform: translateX(calc(var(--cta-tuck) * -0.6));
 }
 
 .floating-cta:hover,
 .floating-cta:focus-visible {
     background: var(--gold-bright);
     color: var(--navy-dark);
-    box-shadow: 0 10px 28px rgba(212, 175, 55, 0.45);
+    box-shadow: -8px 10px 28px rgba(212, 175, 55, 0.45);
+}
+
+.floating-cta:hover::before,
+.floating-cta:focus-visible::before {
+    border-color: rgba(10, 17, 40, 0.35);
 }
 
 .floating-cta:hover::after,
@@ -677,14 +697,13 @@ body {
 
 .floating-cta:focus-visible {
     outline: 2px solid var(--navy-dark);
-    outline-offset: -6px;
+    outline-offset: -8px;
 }
 
 @media screen and (max-width: 768px) {
     .floating-cta {
-        right: max(16px, env(safe-area-inset-right));
-        bottom: max(16px, env(safe-area-inset-bottom));
-        padding: 13px 20px 13px 22px;
+        bottom: max(20px, env(safe-area-inset-bottom));
+        padding: 13px calc(18px + var(--cta-tuck) + env(safe-area-inset-right)) 13px 20px;
         font-size: 0.82rem;
         letter-spacing: 0.1em;
     }
@@ -692,11 +711,17 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
     .floating-cta,
-    .floating-cta.is-visible {
+    .floating-cta.is-visible,
+    .floating-cta.is-visible:hover,
+    .floating-cta.is-visible:focus-visible {
         transform: none;
+    }
+    .floating-cta {
+        opacity: 0;
         transition: opacity 0.2s ease, visibility 0s linear 0.2s;
     }
     .floating-cta.is-visible {
+        opacity: 1;
         transition: opacity 0.2s ease, visibility 0s;
     }
 }
