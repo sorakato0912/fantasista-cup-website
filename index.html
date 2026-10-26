@@ -950,6 +950,20 @@
         <p class="footer-legal-link"><a href="privacy.html">プライバシーポリシー</a> ｜ <a href="tokushoho.html">特定商取引法に基づく表記</a></p>
     </footer>
 
+    <!-- 👑 フローティングCTA：Heroを過ぎてから右下に常に出す大会参加ボタン -->
+    <a href="#entry" class="floating-cta" id="floatingCta"><span data-i18n="hero.cta">大会に参加する</span></a>
+    <script>
+        (function () {
+            const cta = document.getElementById('floatingCta');
+            const hero = document.getElementById('top');
+            if (!cta || !hero || !('IntersectionObserver' in window)) return;
+            // 上部の固定ナビバーに隠れている部分はHeroが見えていない扱いにする
+            new IntersectionObserver(function (entries) {
+                cta.classList.toggle('is-visible', !entries[0].isIntersecting);
+            }, { rootMargin: '-90px 0px 0px 0px' }).observe(hero);
+        })();
+    </script>
+
     <!-- 全スクリプト制御 -->
     <script>
         // アコーディオン（DISCIPLINESセクション内のARCHIVEなど、後からJSで動的追加される

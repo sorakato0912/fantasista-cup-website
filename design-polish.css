@@ -650,3 +650,92 @@ body {
     background: var(--gold-bright);
     transform: rotate(45deg);
 }
+
+/* ==========================================================================
+   👑 フローティングCTA（右下の「大会に参加する」）
+   Heroの .btn-gold と同じ、紺地＋細いゴールドの二重線。ホバーでゴールドに反転
+   ========================================================================== */
+.floating-cta {
+    position: fixed;
+    right: max(24px, env(safe-area-inset-right));
+    bottom: max(24px, env(safe-area-inset-bottom));
+    z-index: 90; /* ナビバー（100）・メニュー（400〜）より下 */
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 26px 15px 30px;
+    background: rgba(10, 17, 40, 0.9);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--gold-bright);
+    outline: 1px solid rgba(212, 175, 55, 0.25);
+    outline-offset: -6px;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 0.16em;
+    text-decoration: none;
+    box-shadow: 0 10px 28px rgba(10, 17, 40, 0.28);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(16px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s linear 0.4s,
+        background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-cta::after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-top: 1.5px solid var(--gold-bright);
+    border-right: 1.5px solid var(--gold-bright);
+    transform: rotate(45deg);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.floating-cta.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s,
+        background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-cta:hover,
+.floating-cta:focus-visible {
+    background: var(--gold-bright);
+    color: var(--navy-dark);
+    box-shadow: 0 10px 28px rgba(212, 175, 55, 0.45);
+}
+
+.floating-cta:hover::after,
+.floating-cta:focus-visible::after {
+    border-color: var(--navy-dark);
+    transform: translateX(3px) rotate(45deg);
+}
+
+.floating-cta:focus-visible {
+    outline: 2px solid var(--navy-dark);
+    outline-offset: -6px;
+}
+
+@media screen and (max-width: 768px) {
+    .floating-cta {
+        right: max(16px, env(safe-area-inset-right));
+        bottom: max(16px, env(safe-area-inset-bottom));
+        padding: 13px 20px 13px 22px;
+        font-size: 0.82rem;
+        letter-spacing: 0.1em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .floating-cta,
+    .floating-cta.is-visible {
+        transform: none;
+        transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+    }
+    .floating-cta.is-visible {
+        transition: opacity 0.2s ease, visibility 0s;
+    }
+}
