@@ -9,7 +9,7 @@
 
     async function fetchOpenTournaments() {
         const res = await fetch(
-            SUPABASE_URL + "/rest/v1/tournaments?select=*&status=eq." + encodeURIComponent("募集中") + "&order=event_date.asc.nullslast,event_start_time.asc.nullslast",
+            SUPABASE_URL + "/rest/v1/tournaments?select=*&status=in." + encodeURIComponent("(募集中,開催決定,残りわずか)") + "&order=event_date.asc.nullslast,event_start_time.asc.nullslast",
             { headers: { apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + SUPABASE_ANON_KEY } }
         );
         if (!res.ok) throw new Error("failed to fetch tournaments");
@@ -313,6 +313,7 @@
             '<div class="entry-card-info">' +
                 '<p class="entry-card-date"><span class="entry-card-sport"></span>' +
                 (tournament.entry_mode && tournament.entry_mode !== "team" ? '<span class="entry-card-individual">' + t("entry.individualLabel", "個人参加") + '</span>' : "") +
+                (tournament.status === "開催決定" || tournament.status === "残りわずか" ? '<span class="entry-card-status is-' + (tournament.status === "開催決定" ? "confirmed" : "few") + '">' + tournament.status + '</span>' : "") +
                 '<span class="entry-card-datetext"></span></p>' +
                 '<h3 class="entry-card-title"></h3>' +
                 '<p class="entry-card-venue"></p>' +

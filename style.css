@@ -2583,3 +2583,18 @@ body {
         transition: none;
     }
 }
+
+/* 大会ステータス（開催決定=安心感の緑、残りわずか=緊急性の赤） */
+.entry-card-status {
+    display: inline-block;
+    margin-right: 6px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    vertical-align: middle;
+}
+.entry-card-status.is-confirmed { background: #15803d; }
+.entry-card-status.is-few { background: #dc2626; }
