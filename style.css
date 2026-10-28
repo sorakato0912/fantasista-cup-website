@@ -1973,6 +1973,7 @@ body {
 
 .step-marker {
     grid-column: 2;
+    grid-row: 1;
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -2002,6 +2003,7 @@ body {
 
 .step-content {
     grid-column: 3;
+    grid-row: 1; /* 左側に置く偶数番目（02・04）も、丸の真横（同じ行）に並べる */
     text-align: left;
     padding-top: 4px;
 }
@@ -2491,5 +2493,93 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .page-glow {
         display: none;
+    }
+}
+/* ==========================================================================
+   👑 ボタン共通：サイト内のボタンはすべて同じ形・同じ金色にそろえる
+   金のグラデーション＋内側の細い二重線＋右向きの矢印、文字は紺。
+   各ページの<style>やdesign-polish.cssの個別指定より優先されるよう :root を付けている
+   ========================================================================== */
+:root :is(.btn-gold, .btn-action, .btn-action-secondary, .btn-action-white, .btn-submit, .faq-line-cta, .contact-entry-btn, .floating-cta-tab) {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px 34px;
+    background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-dark) 100%);
+    border: 1px solid var(--gold-bright);
+    border-radius: 0;
+    outline: none;
+    color: var(--navy-dark) !important;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    line-height: 1.4;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(170, 124, 17, 0.25);
+    animation: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+/* 内側の細い線 */
+:root :is(.btn-gold, .btn-action, .btn-action-secondary, .btn-action-white, .btn-submit, .faq-line-cta, .contact-entry-btn, .floating-cta-tab)::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+}
+
+/* 右向きの矢印 */
+:root :is(.btn-gold, .btn-action, .btn-action-secondary, .btn-action-white, .btn-submit, .faq-line-cta, .contact-entry-btn, .floating-cta-tab)::after {
+    content: '';
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    margin: 0;
+    border-top: 1.5px solid var(--navy-dark);
+    border-right: 1.5px solid var(--navy-dark);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+:root :is(.btn-gold, .btn-action, .btn-action-secondary, .btn-action-white, .btn-submit, .faq-line-cta, .contact-entry-btn, .floating-cta-tab):hover,
+:root :is(.btn-gold, .btn-action, .btn-action-secondary, .btn-action-white, .btn-submit, .faq-line-cta, .contact-entry-btn, .floating-cta-tab):focus-visible {
+    background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-dark) 100%);
+    color: var(--navy-dark) !important;
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+    box-shadow: 0 10px 26px rgba(212, 175, 55, 0.45);
+}
+
+:root :is(.btn-gold, .btn-action, .btn-action-secondary, .btn-action-white, .btn-submit, .faq-line-cta, .contact-entry-btn, .floating-cta-tab):hover::after {
+    transform: translateX(3px) rotate(45deg);
+}
+
+:root :is(.btn-gold, .btn-action, .btn-action-secondary, .btn-action-white, .btn-submit, .faq-line-cta, .contact-entry-btn, .floating-cta-tab):focus-visible {
+    outline: 2px solid var(--navy-dark);
+    outline-offset: -8px;
+}
+
+:root .btn-submit:disabled {
+    opacity: 0.6;
+    cursor: default;
+    transform: none;
+}
+
+@media screen and (max-width: 768px) {
+    :root :is(.btn-gold, .btn-action, .btn-action-secondary, .btn-action-white, .btn-submit, .faq-line-cta, .contact-entry-btn, .floating-cta-tab) {
+        padding: 13px 24px;
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root :is(.btn-gold, .btn-action, .btn-action-secondary, .btn-action-white, .btn-submit, .faq-line-cta, .contact-entry-btn, .floating-cta-tab),
+    :root :is(.btn-gold, .btn-action, .btn-action-secondary, .btn-action-white, .btn-submit, .faq-line-cta, .contact-entry-btn, .floating-cta-tab):hover {
+        transform: none;
+        transition: none;
     }
 }

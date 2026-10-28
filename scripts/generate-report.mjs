@@ -80,7 +80,7 @@ function renderBlocks(blocks) {
       html += '                    <div class="article-cta">\n';
       html += `                        <p>${esc(block.label)}</p>\n`;
       html += '                        <div class="article-cta-buttons">\n';
-      html += '                            <a href="https://entry.fantasista-cup.com/home" target="_blank" rel="noopener noreferrer" class="btn-action-white">大会一覧を見る</a>\n';
+      html += '                            <a href="tournaments.html" class="btn-action-white">大会一覧を見る</a>\n';
       html += `                            <a href="${esc(block.href)}" class="btn-action-white">${esc(block.text)}</a>\n`;
       html += '                        </div>\n';
       html += '                        <div style="margin-top: 18px;">\n';
@@ -577,6 +577,7 @@ const reportHtml = `<!DOCTYPE html>
                 <ul class="nav-quick">
                     <li><a href="tournaments.html">ENTRY</a></li>
                     <li><a href="staff.html">RECRUIT</a></li>
+                    <li><a href="sponsor.html">SPONSOR</a></li>
                     <li><a href="index.html#contact">CONTACT</a></li>
                 </ul>
                 <a href="https://www.instagram.com/fantasista.cup_nara/" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="Instagram">

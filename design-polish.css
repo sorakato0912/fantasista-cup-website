@@ -355,26 +355,10 @@
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    min-height: 46px;
-    padding: 0 20px;
-    background: var(--navy-dark);
-    color: var(--white);
     font-size: 0.86rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-decoration: none;
-    transition: background-color 180ms ease, color 180ms ease;
-}
-
-#contact .contact-entry-btn::after {
-    content: '→';
-    margin-left: 10px;
-    color: var(--gold-bright);
-}
-
-#contact .contact-entry-btn:hover {
-    background: var(--gold-dark);
-    color: var(--white);
 }
 
 #contact .contact-form-panel {
@@ -451,9 +435,6 @@
 
 #contact .btn-submit {
     min-width: 220px;
-    padding: 14px 28px;
-    background: linear-gradient(135deg, var(--gold-bright), var(--gold-dark));
-    box-shadow: 0 8px 20px rgba(170, 124, 17, 0.20);
 }
 
 @media (max-width: 700px) {
