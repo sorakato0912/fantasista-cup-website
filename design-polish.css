@@ -613,19 +613,168 @@ body {
 }
 
 /* ==========================================================================
-   👑 フローティングCTA（右下の「大会に参加する」）
-   画面の右端から生えてくるタブ型。紺地＋ゴールドの二重線（Heroの .btn-gold と同じ質感）で、
-   右側の線は画面外へ抜けている。ホバーで少し伸び、ゴールドに反転
+   👑 フローティングCTA（右下）
+   画面の右端から生えてくる。次の大会のカード（紺地＋ゴールドの細枠、下にゴールドの帯）を出し、
+   ×で閉じると小さな「大会に参加する」タブになる。右側の枠線は画面外へ抜けている
    ========================================================================== */
 .floating-cta {
-    --cta-tuck: 14px; /* 画面外に隠しておく幅（伸び縮みしても右端に隙間が出ないように） */
+    --cta-tuck: 14px; /* 画面外に隠しておく幅（はね返る動きでも右端に隙間が出ないように） */
     position: fixed;
     right: calc(var(--cta-tuck) * -1);
     bottom: max(32px, env(safe-area-inset-bottom));
     z-index: 90; /* ナビバー（100）・メニュー（400〜）より下 */
+    visibility: hidden;
+    transform: translateX(105%);
+    transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1), visibility 0s linear 0.55s;
+}
+
+.floating-cta.is-visible {
+    visibility: visible;
+    transform: translateX(0);
+    transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1), visibility 0s;
+}
+
+.floating-cta-card[hidden],
+.floating-cta-tab[hidden] {
+    display: none;
+}
+
+/* --- 次の大会カード --- */
+.floating-cta-card {
+    position: relative;
+    width: calc(300px + var(--cta-tuck));
+    background: rgba(10, 17, 40, 0.94);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--gold-bright);
+    border-right: none;
+    box-shadow: -8px 12px 32px rgba(10, 17, 40, 0.32);
+}
+
+.floating-cta-card-link {
+    display: flex;
+    flex-direction: column;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.floating-cta-eyebrow {
+    padding: 20px calc(22px + var(--cta-tuck)) 0 22px;
+    color: var(--gold-bright);
+    font-size: 0.66rem;
+    font-weight: bold;
+    letter-spacing: 0.22em;
+}
+
+.floating-cta-meta {
+    padding: 8px calc(22px + var(--cta-tuck)) 0 22px;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+}
+
+.floating-cta-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding: 4px calc(22px + var(--cta-tuck)) 0 22px;
+    font-size: 0.98rem;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.floating-cta-remaining {
+    padding: 8px calc(22px + var(--cta-tuck)) 18px 22px;
+    color: var(--gold-bright);
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+}
+
+.floating-cta-remaining:empty {
+    padding-top: 0;
+}
+
+.floating-cta-go {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px calc(22px + var(--cta-tuck)) 14px 22px;
+    background: var(--gold-bright);
+    color: var(--navy-dark);
+    font-size: 0.88rem;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    transition: background-color 0.3s ease;
+}
+
+.floating-cta-go::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-top: 1.5px solid var(--navy-dark);
+    border-right: 1.5px solid var(--navy-dark);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.floating-cta-card-link:hover .floating-cta-go,
+.floating-cta-card-link:focus-visible .floating-cta-go {
+    background: #e2c158;
+}
+
+.floating-cta-card-link:hover .floating-cta-go::after,
+.floating-cta-card-link:focus-visible .floating-cta-go::after {
+    transform: translateX(4px) rotate(45deg);
+}
+
+.floating-cta-card-link:focus-visible {
+    outline: 2px solid var(--gold-bright);
+    outline-offset: -4px;
+}
+
+/* 左上の×（丸い紺地にゴールドの細枠） */
+.floating-cta-close {
+    position: absolute;
+    top: -13px;
+    left: -13px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-bright);
+    background: var(--navy-dark);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.floating-cta-close::before,
+.floating-cta-close::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 11px;
+    height: 1.5px;
+    background: var(--white);
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.floating-cta-close::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.floating-cta-close:hover,
+.floating-cta-close:focus-visible {
+    background: #1c2541;
+}
+
+/* --- 閉じたあとの小さなタブ --- */
+.floating-cta-tab {
     display: inline-flex;
     align-items: center;
     gap: 12px;
+    position: relative;
     padding: 16px calc(26px + var(--cta-tuck) + env(safe-area-inset-right)) 16px 28px;
     background: rgba(10, 17, 40, 0.92);
     -webkit-backdrop-filter: blur(10px);
@@ -638,14 +787,11 @@ body {
     letter-spacing: 0.16em;
     text-decoration: none;
     box-shadow: -8px 10px 28px rgba(10, 17, 40, 0.28);
-    visibility: hidden;
-    transform: translateX(105%);
-    transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1), visibility 0s linear 0.55s,
-        background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* 内側の細い線（右側は画面外へ抜ける） */
-.floating-cta::before {
+.floating-cta-tab::before {
     content: '';
     position: absolute;
     inset: 5px 0 5px 5px;
@@ -655,7 +801,7 @@ body {
     transition: border-color 0.3s ease;
 }
 
-.floating-cta::after {
+.floating-cta-tab::after {
     content: '';
     width: 7px;
     height: 7px;
@@ -665,37 +811,26 @@ body {
     transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
-.floating-cta.is-visible {
-    visibility: visible;
-    transform: translateX(0);
-    transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1), visibility 0s,
-        background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.floating-cta.is-visible:hover,
-.floating-cta.is-visible:focus-visible {
+.floating-cta-tab:hover,
+.floating-cta-tab:focus-visible {
     transform: translateX(calc(var(--cta-tuck) * -0.6));
-}
-
-.floating-cta:hover,
-.floating-cta:focus-visible {
     background: var(--gold-bright);
     color: var(--navy-dark);
     box-shadow: -8px 10px 28px rgba(212, 175, 55, 0.45);
 }
 
-.floating-cta:hover::before,
-.floating-cta:focus-visible::before {
+.floating-cta-tab:hover::before,
+.floating-cta-tab:focus-visible::before {
     border-color: rgba(10, 17, 40, 0.35);
 }
 
-.floating-cta:hover::after,
-.floating-cta:focus-visible::after {
+.floating-cta-tab:hover::after,
+.floating-cta-tab:focus-visible::after {
     border-color: var(--navy-dark);
     transform: translateX(3px) rotate(45deg);
 }
 
-.floating-cta:focus-visible {
+.floating-cta-tab:focus-visible {
     outline: 2px solid var(--navy-dark);
     outline-offset: -8px;
 }
@@ -703,6 +838,16 @@ body {
 @media screen and (max-width: 768px) {
     .floating-cta {
         bottom: max(20px, env(safe-area-inset-bottom));
+    }
+    .floating-cta-card {
+        width: calc(250px + var(--cta-tuck));
+    }
+    .floating-cta-eyebrow { padding-top: 16px; padding-left: 18px; }
+    .floating-cta-meta { padding-left: 18px; font-size: 0.7rem; }
+    .floating-cta-title { padding-left: 18px; font-size: 0.88rem; }
+    .floating-cta-remaining { padding-left: 18px; padding-bottom: 14px; font-size: 0.74rem; }
+    .floating-cta-go { padding: 12px calc(18px + var(--cta-tuck)) 12px 18px; font-size: 0.8rem; }
+    .floating-cta-tab {
         padding: 13px calc(18px + var(--cta-tuck) + env(safe-area-inset-right)) 13px 20px;
         font-size: 0.82rem;
         letter-spacing: 0.1em;
@@ -712,8 +857,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .floating-cta,
     .floating-cta.is-visible,
-    .floating-cta.is-visible:hover,
-    .floating-cta.is-visible:focus-visible {
+    .floating-cta-tab:hover,
+    .floating-cta-tab:focus-visible {
         transform: none;
     }
     .floating-cta {

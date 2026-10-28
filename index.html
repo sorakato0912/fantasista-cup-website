@@ -980,17 +980,52 @@
         <p class="footer-legal-link"><a href="privacy.html">プライバシーポリシー</a> ｜ <a href="tokushoho.html">特定商取引法に基づく表記</a></p>
     </footer>
 
-    <!-- 👑 フローティングCTA：Heroを過ぎてから右下に常に出す大会参加ボタン -->
-    <a href="#entry" class="floating-cta" id="floatingCta"><span data-i18n="hero.cta">大会に参加する</span></a>
+    <!-- 👑 フローティングCTA：Heroを過ぎてから右下に常に出す。次の大会のカードを出し、
+         ×で閉じると小さな「大会に参加する」タブになる（大会データが取れないときもタブ） -->
+    <div class="floating-cta" id="floatingCta">
+        <div class="floating-cta-card" id="floatingCtaCard" hidden>
+            <button type="button" class="floating-cta-close" id="floatingCtaClose" aria-label="閉じる"></button>
+            <a href="#entry" class="floating-cta-card-link">
+                <span class="floating-cta-eyebrow">NEXT TOURNAMENT</span>
+                <span class="floating-cta-meta" id="floatingCtaMeta"></span>
+                <span class="floating-cta-title" id="floatingCtaTitle"></span>
+                <span class="floating-cta-remaining" id="floatingCtaRemaining"></span>
+                <span class="floating-cta-go">大会詳細はこちら</span>
+            </a>
+        </div>
+        <a href="#entry" class="floating-cta-tab" id="floatingCtaTab"><span data-i18n="hero.cta">大会に参加する</span></a>
+    </div>
     <script>
         (function () {
             const cta = document.getElementById('floatingCta');
             const hero = document.getElementById('top');
+            const card = document.getElementById('floatingCtaCard');
+            const tab = document.getElementById('floatingCtaTab');
             if (!cta || !hero || !('IntersectionObserver' in window)) return;
             // 上部の固定ナビバーに隠れている部分はHeroが見えていない扱いにする
             new IntersectionObserver(function (entries) {
                 cta.classList.toggle('is-visible', !entries[0].isIntersecting);
             }, { rootMargin: '-90px 0px 0px 0px' }).observe(hero);
+
+            let closed = false;
+            try { closed = sessionStorage.getItem('fc_cta_closed') === '1'; } catch (err) {}
+
+            // ENTRYの大会データを読み込んだあとに呼ばれる（next が null ならタブのまま）
+            window.fcShowNextTournament = function (next) {
+                if (!next || closed) return;
+                document.getElementById('floatingCtaMeta').textContent = next.meta;
+                document.getElementById('floatingCtaTitle').textContent = next.title;
+                document.getElementById('floatingCtaRemaining').textContent = next.remaining;
+                card.hidden = false;
+                tab.hidden = true;
+            };
+
+            document.getElementById('floatingCtaClose').addEventListener('click', function () {
+                closed = true;
+                try { sessionStorage.setItem('fc_cta_closed', '1'); } catch (err) {}
+                card.hidden = true;
+                tab.hidden = false;
+            });
         })();
     </script>
 
@@ -1401,6 +1436,28 @@
                 listEl.appendChild(more);
             }
 
+            // 右下のカードに出す「次の大会」：開催日が近い順に見て、まだ枠が残っている最初の大会
+            function showNextTournament() {
+                if (typeof window.fcShowNextTournament !== "function" || !cachedTournaments.length) return;
+                const remainingText = function (item) {
+                    const tour = item.tournament;
+                    if (tour.entry_mode !== "individual" && item.remaining !== null) {
+                        return { left: item.remaining, text: t("entry.remainingPrefix", "残り") + " " + Math.max(item.remaining, 0) + " / " + teamCapacityOf(tour) + " " + t("entry.teamsUnit", "チーム") };
+                    }
+                    if (item.individual && item.individual.individual_status !== "不成立") {
+                        return { left: item.individual.remaining, text: t("entry.remainingPrefix", "残り") + " " + Math.max(item.individual.remaining, 0) + " / " + (item.individual.individual_capacity || 0) + " " + t("entry.peopleUnit", "人") };
+                    }
+                    return { left: 0, text: "" };
+                };
+                const item = cachedTournaments.find(function (i) { return remainingText(i).left > 0; }) || cachedTournaments[0];
+                const tour = item.tournament;
+                window.fcShowNextTournament({
+                    meta: [tour.sport_category, formatDateTime(tour.event_date, tour.event_start_time, tour.event_end_time)].filter(Boolean).join("・"),
+                    title: tour.name,
+                    remaining: remainingText(item).text
+                });
+            }
+
             async function loadEntryTournaments() {
                 const listEl = document.getElementById("entryTournamentList");
                 if (!listEl) return;
@@ -1419,6 +1476,7 @@
                     cachedTournaments = results;
                     updateEntryFilterOptionAvailability();
                     renderEntryList();
+                    showNextTournament();
                     if (typeof window.refreshSportTabPanels === "function") window.refreshSportTabPanels();
                 } catch (err) {
                     // 取得に失敗しても、下にある「エントリーサイトを開く」ボタンは常に表示されているため、
