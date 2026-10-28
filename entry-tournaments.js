@@ -23,7 +23,6 @@
             keyword: ((byId("entryFilterKeyword") || {}).value || "").trim().toLowerCase(),
             type: (byId("entryFilterType") || {}).value || "",
             sport: (byId("entryFilterSport") || {}).value || "",
-            area: (byId("entryFilterArea") || {}).value || "",
             dateFrom: (byId("entryFilterDateFrom") || {}).value || "",
             dateTo: (byId("entryFilterDateTo") || {}).value || ""
         };
@@ -42,7 +41,6 @@
     function matchesEntryFiltersExcept(tournament, f, skip) {
         if (skip !== "type" && f.type && !matchesEntryType(tournament, f.type)) return false;
         if (skip !== "sport" && f.sport && tournament.sport_category !== f.sport) return false;
-        if (skip !== "area" && f.area && (tournament.venue_address || "").indexOf(f.area) === -1) return false;
         if (skip !== "keyword" && f.keyword) {
             const haystack = ((tournament.name || "") + " " + (tournament.venue || "")).toLowerCase();
             if (haystack.indexOf(f.keyword) === -1) return false;
@@ -63,7 +61,7 @@
     // 絞り込みボタンに、条件が設定されている数をバッジ表示する
     function updateEntryFilterCount() {
         const f = getEntryFilters();
-        const count = [f.keyword, f.type, f.sport, f.area, (f.dateFrom || f.dateTo)].filter(Boolean).length;
+        const count = [f.keyword, f.type, f.sport, (f.dateFrom || f.dateTo)].filter(Boolean).length;
         const badge = document.getElementById("entryFilterCount");
         if (!badge) return;
         if (count > 0) {
@@ -100,17 +98,6 @@
             [].slice.call(sportSelect.options).forEach(function (opt) {
                 if (!opt.value) return; // 「すべてのスポーツ」は常に選択可
                 opt.disabled = !availableSports[opt.value];
-            });
-        }
-
-        const areaSelect = document.getElementById("entryFilterArea");
-        if (areaSelect) {
-            const venueAddresses = cachedTournaments
-                .filter(function (item) { return matchesEntryFiltersExcept(item.tournament, f, "area"); })
-                .map(function (item) { return item.tournament.venue_address || ""; });
-            [].slice.call(areaSelect.options).forEach(function (opt) {
-                if (!opt.value) return; // 「すべてのエリア」は常に選択可
-                opt.disabled = !venueAddresses.some(function (v) { return v.indexOf(opt.value) !== -1; });
             });
         }
     }
@@ -216,12 +203,12 @@
         const closeBtn = document.getElementById("entryFilterClose");
         if (!bar || !toggle || !closeBtn) return;
 
-        ["entryFilterType", "entryFilterSport", "entryFilterArea"].forEach(function (id) {
+        ["entryFilterType", "entryFilterSport"].forEach(function (id) {
             const el = document.getElementById(id);
             if (el) enhanceEntrySelect(el);
         });
 
-        ["entryFilterKeyword", "entryFilterType", "entryFilterSport", "entryFilterArea", "entryFilterDateFrom", "entryFilterDateTo"].forEach(function (id) {
+        ["entryFilterKeyword", "entryFilterType", "entryFilterSport", "entryFilterDateFrom", "entryFilterDateTo"].forEach(function (id) {
             const el = document.getElementById(id);
             if (!el) return;
             el.addEventListener("input", function () {
