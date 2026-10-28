@@ -509,6 +509,7 @@
                 </a>
             </div>
             <div class="nav-actions">
+                <a href="https://entry.fantasista-cup.com/home" target="_blank" rel="noopener noreferrer" class="nav-entry-btn">ENTRY<span class="nav-entry-sub">大会一覧</span></a>
                 <a href="https://www.instagram.com/fantasista.cup_nara/" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
@@ -1387,6 +1388,18 @@
                 filtered.slice(0, 3).forEach(({ tournament, remaining, individual }) => {
                     listEl.appendChild(renderCard(tournament, remaining, individual));
                 });
+                // 残りの大会はエントリーサイトの一覧へ（参加方法の絞り込みはURLで引き継ぐ）
+                const f = getEntryFilters();
+                const more = document.createElement("div");
+                more.className = "entry-view-all";
+                const link = document.createElement("a");
+                link.href = ENTRY_APP_BASE + "/home" + (f.type ? "?type=" + f.type : "");
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+                link.className = "entry-view-all-btn";
+                link.textContent = t("entry.viewAll", "募集中の大会をすべて見る") + "（" + filtered.length + t("entry.viewAllUnit", "大会") + "）";
+                more.appendChild(link);
+                listEl.appendChild(more);
             }
 
             async function loadEntryTournaments() {
