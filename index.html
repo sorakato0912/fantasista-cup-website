@@ -1418,22 +1418,10 @@
                     return;
                 }
                 listEl.innerHTML = "";
-                // 開催日の近い順に3大会まで
-                filtered.slice(0, 3).forEach(({ tournament, remaining, individual }) => {
+                // 募集中の大会をすべて、開催日の近い順に
+                filtered.forEach(({ tournament, remaining, individual }) => {
                     listEl.appendChild(renderCard(tournament, remaining, individual));
                 });
-                // 残りの大会はエントリーサイトの一覧へ（参加方法の絞り込みはURLで引き継ぐ）
-                const f = getEntryFilters();
-                const more = document.createElement("div");
-                more.className = "entry-view-all";
-                const link = document.createElement("a");
-                link.href = ENTRY_APP_BASE + "/home" + (f.type ? "?type=" + f.type : "");
-                link.target = "_blank";
-                link.rel = "noopener noreferrer";
-                link.className = "entry-view-all-btn";
-                link.textContent = t("entry.viewAll", "募集中の大会をすべて見る") + "（" + filtered.length + t("entry.viewAllUnit", "大会") + "）";
-                more.appendChild(link);
-                listEl.appendChild(more);
             }
 
             // 右下のカードに出す「次の大会」：開催日が近い順に見て、まだ枠が残っている最初の大会

@@ -614,24 +614,25 @@ body {
 
 /* ==========================================================================
    👑 フローティングCTA（右下）
-   画面の右端から生えてくる。次の大会のカード（紺地＋ゴールドの細枠、下にゴールドの帯）を出し、
-   ×で閉じると小さな「大会に参加する」タブになる。右側の枠線は画面外へ抜けている
+   画面右下に浮かぶ。次の大会のカード（紺地＋ゴールドの細枠、下にゴールドの帯）を出し、
+   ×で閉じると小さな「大会に参加する」ボタンになる
    ========================================================================== */
 .floating-cta {
-    --cta-tuck: 14px; /* 画面外に隠しておく幅（はね返る動きでも右端に隙間が出ないように） */
     position: fixed;
-    right: calc(var(--cta-tuck) * -1);
-    bottom: max(32px, env(safe-area-inset-bottom));
+    right: max(28px, env(safe-area-inset-right));
+    bottom: max(28px, env(safe-area-inset-bottom));
     z-index: 90; /* ナビバー（100）・メニュー（400〜）より下 */
+    opacity: 0;
     visibility: hidden;
-    transform: translateX(105%);
-    transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1), visibility 0s linear 0.55s;
+    transform: translateY(20px);
+    transition: opacity 0.45s ease, transform 0.45s ease, visibility 0s linear 0.45s;
 }
 
 .floating-cta.is-visible {
+    opacity: 1;
     visibility: visible;
-    transform: translateX(0);
-    transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1), visibility 0s;
+    transform: translateY(0);
+    transition: opacity 0.45s ease, transform 0.45s ease, visibility 0s;
 }
 
 .floating-cta-card[hidden],
@@ -642,13 +643,12 @@ body {
 /* --- 次の大会カード --- */
 .floating-cta-card {
     position: relative;
-    width: calc(300px + var(--cta-tuck));
+    width: 300px;
     background: rgba(10, 17, 40, 0.94);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid var(--gold-bright);
-    border-right: none;
-    box-shadow: -8px 12px 32px rgba(10, 17, 40, 0.32);
+    box-shadow: 0 14px 36px rgba(10, 17, 40, 0.35);
 }
 
 .floating-cta-card-link {
@@ -659,7 +659,7 @@ body {
 }
 
 .floating-cta-eyebrow {
-    padding: 20px calc(22px + var(--cta-tuck)) 0 22px;
+    padding: 20px 22px 0 22px;
     color: var(--gold-bright);
     font-size: 0.66rem;
     font-weight: bold;
@@ -667,7 +667,7 @@ body {
 }
 
 .floating-cta-meta {
-    padding: 8px calc(22px + var(--cta-tuck)) 0 22px;
+    padding: 8px 22px 0 22px;
     color: rgba(255, 255, 255, 0.65);
     font-size: 0.75rem;
     letter-spacing: 0.04em;
@@ -678,14 +678,14 @@ body {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    padding: 4px calc(22px + var(--cta-tuck)) 0 22px;
+    padding: 4px 22px 0 22px;
     font-size: 0.98rem;
     font-weight: bold;
     line-height: 1.5;
 }
 
 .floating-cta-remaining {
-    padding: 8px calc(22px + var(--cta-tuck)) 18px 22px;
+    padding: 8px 22px 18px 22px;
     color: var(--gold-bright);
     font-size: 0.8rem;
     font-weight: bold;
@@ -700,7 +700,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px calc(22px + var(--cta-tuck)) 14px 22px;
+    padding: 14px 22px 14px 22px;
     background: var(--gold-bright);
     color: var(--navy-dark);
     font-size: 0.88rem;
@@ -734,11 +734,12 @@ body {
     outline-offset: -4px;
 }
 
-/* 左上の×（丸い紺地にゴールドの細枠） */
+/* 右上の×（丸い紺地にゴールドの細枠） */
 .floating-cta-close {
     position: absolute;
     top: -13px;
-    left: -13px;
+    right: -13px;
+    z-index: 1;
     width: 28px;
     height: 28px;
     border-radius: 50%;
@@ -769,34 +770,32 @@ body {
     background: #1c2541;
 }
 
-/* --- 閉じたあとの小さなタブ --- */
+/* --- 閉じたあとの小さなボタン --- */
 .floating-cta-tab {
     display: inline-flex;
     align-items: center;
     gap: 12px;
     position: relative;
-    padding: 16px calc(26px + var(--cta-tuck) + env(safe-area-inset-right)) 16px 28px;
+    padding: 16px 26px 16px 30px;
     background: rgba(10, 17, 40, 0.92);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid var(--gold-bright);
-    border-right: none;
     color: var(--white);
     font-weight: bold;
     font-size: 0.9rem;
     letter-spacing: 0.16em;
     text-decoration: none;
-    box-shadow: -8px 10px 28px rgba(10, 17, 40, 0.28);
+    box-shadow: 0 10px 28px rgba(10, 17, 40, 0.28);
     transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 内側の細い線（右側は画面外へ抜ける） */
+/* 内側の細い線（Heroの .btn-gold と同じ二重線） */
 .floating-cta-tab::before {
     content: '';
     position: absolute;
-    inset: 5px 0 5px 5px;
+    inset: 5px;
     border: 1px solid rgba(212, 175, 55, 0.3);
-    border-right: none;
     pointer-events: none;
     transition: border-color 0.3s ease;
 }
@@ -813,10 +812,10 @@ body {
 
 .floating-cta-tab:hover,
 .floating-cta-tab:focus-visible {
-    transform: translateX(calc(var(--cta-tuck) * -0.6));
+    transform: translateY(-2px);
     background: var(--gold-bright);
     color: var(--navy-dark);
-    box-shadow: -8px 10px 28px rgba(212, 175, 55, 0.45);
+    box-shadow: 0 10px 28px rgba(212, 175, 55, 0.45);
 }
 
 .floating-cta-tab:hover::before,
@@ -837,18 +836,19 @@ body {
 
 @media screen and (max-width: 768px) {
     .floating-cta {
+        right: max(16px, env(safe-area-inset-right));
         bottom: max(20px, env(safe-area-inset-bottom));
     }
     .floating-cta-card {
-        width: calc(250px + var(--cta-tuck));
+        width: 260px;
     }
     .floating-cta-eyebrow { padding-top: 16px; padding-left: 18px; }
     .floating-cta-meta { padding-left: 18px; font-size: 0.7rem; }
     .floating-cta-title { padding-left: 18px; font-size: 0.88rem; }
     .floating-cta-remaining { padding-left: 18px; padding-bottom: 14px; font-size: 0.74rem; }
-    .floating-cta-go { padding: 12px calc(18px + var(--cta-tuck)) 12px 18px; font-size: 0.8rem; }
+    .floating-cta-go { padding: 12px 18px 12px 18px; font-size: 0.8rem; }
     .floating-cta-tab {
-        padding: 13px calc(18px + var(--cta-tuck) + env(safe-area-inset-right)) 13px 20px;
+        padding: 13px 20px 13px 22px;
         font-size: 0.82rem;
         letter-spacing: 0.1em;
     }
@@ -869,51 +869,4 @@ body {
         opacity: 1;
         transition: opacity 0.2s ease, visibility 0s;
     }
-}
-
-/* ==========================================================================
-   👑 エントリーサイト（大会一覧・申し込み）への導線
-   ========================================================================== */
-/* ENTRY一覧の下：残りの大会はエントリーサイトの一覧で */
-.entry-view-all {
-    margin-top: 18px;
-    text-align: center;
-}
-
-.entry-view-all-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 13px 30px;
-    background: var(--navy-dark);
-    border: 1px solid var(--navy-dark);
-    color: var(--white);
-    font-weight: bold;
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-.entry-view-all-btn::after {
-    content: '';
-    width: 7px;
-    height: 7px;
-    border-top: 1.5px solid var(--gold-bright);
-    border-right: 1.5px solid var(--gold-bright);
-    transform: rotate(45deg);
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.entry-view-all-btn:hover,
-.entry-view-all-btn:focus-visible {
-    background: var(--gold-bright);
-    border-color: var(--gold-bright);
-    color: var(--navy-dark);
-}
-
-.entry-view-all-btn:hover::after,
-.entry-view-all-btn:focus-visible::after {
-    border-color: var(--navy-dark);
-    transform: translateX(3px) rotate(45deg);
 }
