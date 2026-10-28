@@ -23,6 +23,6 @@ GitHub上で自動的にファイルが増えるようになったため、こ�
 
 ## そのほか
 
-- トップページの大会一覧と構造化データは、管理画面の大会データから自動で表示されます（`index.html` 内のスクリプトと `tournament-ld.js`）。大会情報をHTMLに手書きする必要はありません。
+- 大会一覧ページ（`tournaments.html`）・トップのDISCIPLINESの大会カード・右下の「次の大会」カードと、トップの構造化データは、管理画面の大会データから自動で表示されます（共用の `entry-tournaments.js` と `tournament-ld.js`）。大会情報をHTMLに手書きする必要はありません。
 - 記事は `scripts/generate-report.mjs` に `scripts/report-data/*.json` を渡して作ります。募集記事のJSONには `tournamentId` を入れてください（自動公開との二重作成を防ぐため）。
 - ルート直下に置いたファイルはそのまま公開されます。公開したくないファイルは `_redirects` に404の行を足してください（`.gs`・`scripts/`・このファイルは設定済み）。

@@ -459,7 +459,7 @@
             <h1 class="hero-title" data-i18n="hero.title">大人が純粋に<br class="br-sp">熱狂できる舞台を</h1>
             <span class="sr-only">奈良県で開催する11人制エンジョイサッカー大会 Fantasista Cup</span>
             <div class="gold-line"></div>
-            <a href="#entry" class="btn-gold" data-i18n="hero.cta">大会に参加する</a>
+            <a href="tournaments.html" class="btn-gold" data-i18n="hero.cta">大会に参加する</a>
         </div>
     </header>
     <script>
@@ -545,7 +545,7 @@
                 <p class="nav-group-title">大会について</p>
                 <ul class="nav-links">
                     <li><a href="#concept">CONCEPT<span class="nav-link-sub">大会コンセプト</span></a></li>
-                    <li><a href="#entry">ENTRY<span class="nav-link-sub">大会エントリー</span></a></li>
+                    <li><a href="tournaments.html">ENTRY<span class="nav-link-sub">大会一覧・エントリー</span></a></li>
                     <li><a href="#terms">TERMS<span class="nav-link-sub">利用規約・参加規定</span></a></li>
                     <li><a href="#sport-tabs">DISCIPLINES<span class="nav-link-sub">競技別ラインナップ</span></a></li>
                 </ul>
@@ -662,63 +662,10 @@
                 <h2 class="section-title">ENTRY<span class="sr-only">｜大会エントリー・お申し込み（奈良県サッカー大会）</span></h2>
 
                 <div class="luxury-frame">
-                    <!-- 👑 大会一覧の検索・絞り込み（PCは横一列、スマホは「大会を検索・絞り込む」ボタン→全画面オーバーレイ） -->
-                    <div class="entry-filter-bar" id="entryFilterBar">
-                        <button type="button" id="entryFilterClose" class="entry-filter-close" aria-label="閉じる">
-                            <i class="fas fa-xmark"></i>
-                        </button>
-                        <div class="entry-filter-field is-keyword">
-                            <label for="entryFilterKeyword">キーワード検索</label>
-                            <input type="text" id="entryFilterKeyword" placeholder="大会名・会場名">
-                        </div>
-                        <!-- 参加方法（お客様画面のエントリーサイトと同じ選択肢・判定） -->
-                        <div class="entry-filter-field is-type">
-                            <label for="entryFilterType">参加方法で絞り込む</label>
-                            <select id="entryFilterType">
-                                <option value="">すべて</option>
-                                <option value="team">大会</option>
-                                <option value="individual">個人参加</option>
-                            </select>
-                        </div>
-                        <div class="entry-filter-field">
-                            <label for="entryFilterSport">スポーツで絞り込む</label>
-                            <select id="entryFilterSport">
-                                <option value="">すべてのスポーツ</option>
-                                <option value="サッカー">サッカー</option>
-                                <option value="フットサル">フットサル</option>
-                                <option value="ソサイチ">ソサイチ</option>
-                                <option value="PK大会">PK大会</option>
-                            </select>
-                        </div>
-                        <div class="entry-filter-field">
-                            <label for="entryFilterArea">エリアで絞り込む</label>
-                            <select id="entryFilterArea">
-                                <option value="">すべてのエリア</option>
-                                <option value="大阪府">大阪府</option>
-                                <option value="京都府">京都府</option>
-                                <option value="兵庫県">兵庫県</option>
-                                <option value="奈良県">奈良県</option>
-                                <option value="滋賀県">滋賀県</option>
-                                <option value="和歌山県">和歌山県</option>
-                            </select>
-                        </div>
-                        <div class="entry-filter-field entry-filter-date">
-                            <label>開催日で絞り込む</label>
-                            <div class="entry-filter-date-row">
-                                <input type="date" id="entryFilterDateFrom">
-                                <span>〜</span>
-                                <input type="date" id="entryFilterDateTo">
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" id="entryFilterToggle" class="entry-filter-toggle">
-                        <span><i class="fas fa-magnifying-glass"></i> 大会を検索・絞り込む</span>
-                        <span id="entryFilterCount" class="entry-filter-count" style="display:none;"></span>
-                    </button>
-
-                    <!-- 👑 募集中の大会一覧をSupabaseから直接取得して表示（エントリーサイトと同じデータ） -->
-                    <div id="entryTournamentList" style="margin-bottom: 24px;">
-                        <p style="text-align: center; color: var(--text-faint);" data-i18n="entry.loadingText">読み込み中...</p>
+                    <!-- 募集中の大会はすべて大会一覧ページ（tournaments.html）に載せる -->
+                    <div class="entry-list-link">
+                        <p class="entry-list-link-lead" data-i18n="entry.listLead">募集中の大会は、大会一覧ページですべてご覧いただけます。</p>
+                        <a href="tournaments.html" class="btn-action entry-list-link-btn" data-i18n="entry.listBtn">大会一覧を見る</a>
                     </div>
 
                     <!-- 大会参加までの流れ（ステップタイムライン） -->
@@ -730,7 +677,7 @@
                                 <div class="step-marker"><i class="far fa-calendar"></i><span class="step-num">01</span></div>
                                 <div class="step-content">
                                     <h4 class="step-title" data-i18n="entry.steps.s1.title">大会を選ぶ</h4>
-                                    <p class="step-desc" data-i18n="entry.steps.s1.desc">上の一覧から、参加したい大会を選んでください。</p>
+                                    <p class="step-desc" data-i18n="entry.steps.s1.desc">大会一覧ページから、参加したい大会を選んでください。</p>
                                 </div>
                             </div>
                             <div class="step-item">
@@ -878,10 +825,10 @@
                             <span class="contact-route-icon" aria-hidden="true"><i class="fas fa-trophy"></i></span>
                             <div>
                                 <p class="contact-route-eyebrow">TOURNAMENT ENTRY</p>
-                                <p class="contact-terms-notice" data-i18n="contact.entryRedirectNotice">大会への<strong>お申し込みは「<a href="#entry">ENTRY</a>」</strong>から承っております。こちらのフォームはお問い合わせ専用です。</p>
+                                <p class="contact-terms-notice" data-i18n="contact.entryRedirectNotice">大会への<strong>お申し込みは「<a href="tournaments.html">ENTRY</a>」</strong>から承っております。こちらのフォームはお問い合わせ専用です。</p>
                             </div>
                         </div>
-                        <a href="#entry" class="contact-entry-btn" data-i18n="hero.cta">大会に参加する</a>
+                        <a href="tournaments.html" class="contact-entry-btn" data-i18n="hero.cta">大会に参加する</a>
                     </div>
 
                     <div class="contact-form-panel">
@@ -962,7 +909,7 @@
     <footer class="footer">
         <ul class="footer-links">
             <li><a href="#concept">CONCEPT</a></li>
-            <li><a href="#entry">ENTRY</a></li>
+            <li><a href="tournaments.html">ENTRY</a></li>
             <li><a href="blog.html">BLOG</a></li>
             <li><a href="#terms">TERMS</a></li>
             <li><a href="#sport-tabs">DISCIPLINES</a></li>
@@ -985,7 +932,7 @@
     <div class="floating-cta" id="floatingCta">
         <div class="floating-cta-card" id="floatingCtaCard" hidden>
             <button type="button" class="floating-cta-close" id="floatingCtaClose" aria-label="閉じる"></button>
-            <a href="#entry" class="floating-cta-card-link">
+            <a href="tournaments.html" class="floating-cta-card-link">
                 <span class="floating-cta-eyebrow">NEXT TOURNAMENT</span>
                 <span class="floating-cta-meta" id="floatingCtaMeta"></span>
                 <span class="floating-cta-title" id="floatingCtaTitle"></span>
@@ -993,7 +940,7 @@
                 <span class="floating-cta-go">大会詳細はこちら</span>
             </a>
         </div>
-        <a href="#entry" class="floating-cta-tab" id="floatingCtaTab"><span data-i18n="hero.cta">大会に参加する</span></a>
+        <a href="tournaments.html" class="floating-cta-tab" id="floatingCtaTab"><span data-i18n="hero.cta">大会に参加する</span></a>
     </div>
     <script>
         (function () {
@@ -1058,919 +1005,10 @@
         window.fcSetupAccordions = setupAccordions;
         setupAccordions();
 
-        // 👑 ENTRYセクション：募集中の大会一覧をSupabaseから直接取得して表示
-        // （エントリーサイト https://entry.fantasista-cup.com と同じデータソース）
-        (function () {
-            const SUPABASE_URL = "https://hpxirfvkcspwrktjlraz.supabase.co";
-            const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhweGlyZnZrY3Nwd3JrdGpscmF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY5NzkxNjksImV4cCI6MjEwMjU1NTE2OX0.d_nA76uzMrrlTcVr9ZeiERHb8MNf7tij6rHRuuOVn7M";
-            const ENTRY_APP_BASE = "https://entry.fantasista-cup.com";
-
-            async function fetchOpenTournaments() {
-                const res = await fetch(
-                    SUPABASE_URL + "/rest/v1/tournaments?select=*&status=eq." + encodeURIComponent("募集中") + "&order=event_date.asc.nullslast,event_start_time.asc.nullslast",
-                    { headers: { apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + SUPABASE_ANON_KEY } }
-                );
-                if (!res.ok) throw new Error("failed to fetch tournaments");
-                return res.json();
-            }
-
-            // 大会一覧の検索・絞り込み条件を読み取る
-            function getEntryFilters() {
-                const byId = (id) => document.getElementById(id);
-                return {
-                    keyword: ((byId("entryFilterKeyword") || {}).value || "").trim().toLowerCase(),
-                    type: (byId("entryFilterType") || {}).value || "",
-                    sport: (byId("entryFilterSport") || {}).value || "",
-                    area: (byId("entryFilterArea") || {}).value || "",
-                    dateFrom: (byId("entryFilterDateFrom") || {}).value || "",
-                    dateTo: (byId("entryFilterDateTo") || {}).value || ""
-                };
-            }
-
-            // 参加方法：「大会」はチームで申し込める大会、「個人参加」は個人で申し込める大会
-            function matchesEntryType(tournament, type) {
-                const mode = tournament.entry_mode || "team";
-                if (type === "team") return mode !== "individual";
-                if (type === "individual") return mode === "individual" || mode === "team_and_individual";
-                return true;
-            }
-
-            // 指定した1軸（skip）以外の条件だけで一致するかを判定する
-            // （他の絞り込み条件のもとで、そのプルダウンの各選択肢が該当0件になるかを調べるために使う）
-            function matchesEntryFiltersExcept(tournament, f, skip) {
-                if (skip !== "type" && f.type && !matchesEntryType(tournament, f.type)) return false;
-                if (skip !== "sport" && f.sport && tournament.sport_category !== f.sport) return false;
-                if (skip !== "area" && f.area && (tournament.venue_address || "").indexOf(f.area) === -1) return false;
-                if (skip !== "keyword" && f.keyword) {
-                    const haystack = ((tournament.name || "") + " " + (tournament.venue || "")).toLowerCase();
-                    if (haystack.indexOf(f.keyword) === -1) return false;
-                }
-                if (skip !== "date" && (f.dateFrom || f.dateTo)) {
-                    if (!tournament.event_date) return false;
-                    if (f.dateFrom && tournament.event_date < f.dateFrom) return false;
-                    if (f.dateTo && tournament.event_date > f.dateTo) return false;
-                }
-                return true;
-            }
-
-            function applyEntryFilters(list) {
-                const f = getEntryFilters();
-                return list.filter(({ tournament }) => matchesEntryFiltersExcept(tournament, f, null));
-            }
-
-            // 絞り込みボタンに、条件が設定されている数をバッジ表示する
-            function updateEntryFilterCount() {
-                const f = getEntryFilters();
-                const count = [f.keyword, f.type, f.sport, f.area, (f.dateFrom || f.dateTo)].filter(Boolean).length;
-                const badge = document.getElementById("entryFilterCount");
-                if (!badge) return;
-                if (count > 0) {
-                    badge.textContent = String(count);
-                    badge.style.display = "inline-flex";
-                } else {
-                    badge.style.display = "none";
-                }
-            }
-
-            // 他の条件のもとで該当0件になるプルダウンの選択肢を選択不可にする
-            function updateEntryFilterOptionAvailability() {
-                if (cachedTournaments === null) return;
-                const f = getEntryFilters();
-
-                const typeSelect = document.getElementById("entryFilterType");
-                if (typeSelect) {
-                    [].slice.call(typeSelect.options).forEach(function (opt) {
-                        if (!opt.value) return; // 「すべて」は常に選択可
-                        opt.disabled = !cachedTournaments.some(function (item) {
-                            return matchesEntryFiltersExcept(item.tournament, f, "type") && matchesEntryType(item.tournament, opt.value);
-                        });
-                    });
-                }
-
-                const sportSelect = document.getElementById("entryFilterSport");
-                if (sportSelect) {
-                    const availableSports = {};
-                    cachedTournaments.forEach(function (item) {
-                        if (matchesEntryFiltersExcept(item.tournament, f, "sport")) {
-                            availableSports[item.tournament.sport_category] = true;
-                        }
-                    });
-                    [].slice.call(sportSelect.options).forEach(function (opt) {
-                        if (!opt.value) return; // 「すべてのスポーツ」は常に選択可
-                        opt.disabled = !availableSports[opt.value];
-                    });
-                }
-
-                const areaSelect = document.getElementById("entryFilterArea");
-                if (areaSelect) {
-                    const venueAddresses = cachedTournaments
-                        .filter(function (item) { return matchesEntryFiltersExcept(item.tournament, f, "area"); })
-                        .map(function (item) { return item.tournament.venue_address || ""; });
-                    [].slice.call(areaSelect.options).forEach(function (opt) {
-                        if (!opt.value) return; // 「すべてのエリア」は常に選択可
-                        opt.disabled = !venueAddresses.some(function (v) { return v.indexOf(opt.value) !== -1; });
-                    });
-                }
-            }
-
-            // 絞り込みのプルダウンを、見た目を自由に作れるボタン＋選択肢パネルに置き換える。
-            // 元の<select>は隠して残し、選ばれたら値を書き込んで input イベントを出すので、
-            // 絞り込み処理（getEntryFilters など）はそのまま<select>の値を読めばよい。
-            // 選択肢の「選択不可（該当0件）」は開くたびに<select>から読み直す。
-            function enhanceEntrySelect(select) {
-                const wrap = document.createElement("div");
-                wrap.className = "fc-select";
-                const trigger = document.createElement("button");
-                trigger.type = "button";
-                trigger.className = "fc-select-trigger";
-                trigger.setAttribute("aria-haspopup", "listbox");
-                trigger.setAttribute("aria-expanded", "false");
-                const label = document.querySelector('label[for="' + select.id + '"]');
-                if (label) {
-                    label.id = select.id + "Label";
-                    trigger.setAttribute("aria-labelledby", label.id + " " + select.id + "Value");
-                    label.addEventListener("click", function (e) { e.preventDefault(); trigger.focus(); });
-                }
-                const valueText = document.createElement("span");
-                valueText.id = select.id + "Value";
-                trigger.appendChild(valueText);
-                const panel = document.createElement("ul");
-                panel.className = "fc-select-panel";
-                panel.setAttribute("role", "listbox");
-
-                select.parentNode.insertBefore(wrap, select);
-                wrap.appendChild(select);
-                wrap.appendChild(trigger);
-                wrap.appendChild(panel);
-                select.classList.add("fc-select-native");
-                select.tabIndex = -1;
-                select.setAttribute("aria-hidden", "true");
-
-                function syncLabel() {
-                    const opt = select.options[select.selectedIndex];
-                    valueText.textContent = opt ? opt.textContent : "";
-                }
-
-                function close(focusTrigger) {
-                    wrap.classList.remove("is-open");
-                    trigger.setAttribute("aria-expanded", "false");
-                    if (focusTrigger) trigger.focus();
-                }
-
-                function open() {
-                    panel.innerHTML = "";
-                    [].slice.call(select.options).forEach(function (opt) {
-                        const li = document.createElement("li");
-                        const btn = document.createElement("button");
-                        btn.type = "button";
-                        btn.className = "fc-select-option";
-                        btn.setAttribute("role", "option");
-                        btn.setAttribute("aria-selected", opt.value === select.value ? "true" : "false");
-                        btn.textContent = opt.textContent;
-                        btn.disabled = opt.disabled;
-                        btn.addEventListener("click", function () {
-                            select.value = opt.value;
-                            select.dispatchEvent(new Event("input", { bubbles: true }));
-                            select.dispatchEvent(new Event("change", { bubbles: true }));
-                            syncLabel();
-                            close(true);
-                        });
-                        li.appendChild(btn);
-                        panel.appendChild(li);
-                    });
-                    wrap.classList.add("is-open");
-                    trigger.setAttribute("aria-expanded", "true");
-                    const current = panel.querySelector('[aria-selected="true"]') || panel.querySelector("button:not(:disabled)");
-                    if (current) current.focus();
-                }
-
-                trigger.addEventListener("click", function () {
-                    if (wrap.classList.contains("is-open")) close(false); else open();
-                });
-                wrap.addEventListener("keydown", function (e) {
-                    if (e.key === "Escape" && wrap.classList.contains("is-open")) {
-                        e.preventDefault();
-                        close(true);
-                        return;
-                    }
-                    if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
-                    e.preventDefault();
-                    if (!wrap.classList.contains("is-open")) { open(); return; }
-                    const items = [].slice.call(panel.querySelectorAll("button:not(:disabled)"));
-                    const i = items.indexOf(document.activeElement);
-                    const next = items[(i + (e.key === "ArrowDown" ? 1 : -1) + items.length) % items.length];
-                    if (next) next.focus();
-                });
-                document.addEventListener("click", function (e) {
-                    if (!wrap.contains(e.target)) close(false);
-                });
-                select.addEventListener("change", syncLabel);
-                syncLabel();
-            }
-
-            function setupEntryFilters() {
-                const bar = document.getElementById("entryFilterBar");
-                const toggle = document.getElementById("entryFilterToggle");
-                const closeBtn = document.getElementById("entryFilterClose");
-                if (!bar || !toggle || !closeBtn) return;
-
-                ["entryFilterType", "entryFilterSport", "entryFilterArea"].forEach(function (id) {
-                    const el = document.getElementById(id);
-                    if (el) enhanceEntrySelect(el);
-                });
-
-                ["entryFilterKeyword", "entryFilterType", "entryFilterSport", "entryFilterArea", "entryFilterDateFrom", "entryFilterDateTo"].forEach(function (id) {
-                    const el = document.getElementById(id);
-                    if (!el) return;
-                    el.addEventListener("input", function () {
-                        updateEntryFilterCount();
-                        updateEntryFilterOptionAvailability();
-                        renderEntryList();
-                    });
-                });
-
-                toggle.addEventListener("click", function () {
-                    bar.classList.add("is-open");
-                    document.body.classList.add("is-entry-filter-open");
-                });
-                closeBtn.addEventListener("click", function () {
-                    bar.classList.remove("is-open");
-                    document.body.classList.remove("is-entry-filter-open");
-                });
-            }
-
-            async function fetchRemaining(tournamentId) {
-                const res = await fetch(SUPABASE_URL + "/rest/v1/rpc/tournament_remaining_slots", {
-                    method: "POST",
-                    headers: {
-                        apikey: SUPABASE_ANON_KEY,
-                        Authorization: "Bearer " + SUPABASE_ANON_KEY,
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ p_tournament_id: tournamentId })
-                });
-                if (!res.ok) return null;
-                return res.json();
-            }
-
-            // 個人参加を受け付けている大会の集計（定員・確定人数・残り人数。個人情報は含まない）
-            async function fetchIndividualSummary(tournamentId) {
-                const res = await fetch(SUPABASE_URL + "/rest/v1/rpc/tournament_individual_summary", {
-                    method: "POST",
-                    headers: {
-                        apikey: SUPABASE_ANON_KEY,
-                        Authorization: "Bearer " + SUPABASE_ANON_KEY,
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ p_tournament_id: tournamentId })
-                });
-                if (!res.ok) return null;
-                const rows = await res.json();
-                return rows && rows[0] ? rows[0] : null;
-            }
-
-            // チームとして申し込める枠数（チーム＋個人の大会は1枠を個人参加チーム用に確保。不成立なら戻す）
-            function teamCapacityOf(tournament) {
-                if (tournament.entry_mode === "individual") return 0;
-                if (tournament.entry_mode === "team_and_individual" && tournament.individual_status !== "不成立") {
-                    return Math.max(tournament.capacity - 1, 0);
-                }
-                return tournament.capacity;
-            }
-
-            // 現在の言語辞書から文言を取得（日本語の場合はfcDictがnullなのでfallbackを使う）
-            function t(key, fallback) {
-                return (window.fcDict && window.fcDict[key]) || fallback;
-            }
-
-            // 「5/23 17:00-21:00」のような表示形式。開始・終了時刻が未設定の場合は日付のみ表示する
-            function formatDateTime(dateStr, startTime, endTime) {
-                if (!dateStr) return t("entry.dateTBD", "開催日未定");
-                const parts = dateStr.split("-");
-                const md = parseInt(parts[1], 10) + "/" + parseInt(parts[2], 10);
-                if (startTime && endTime) {
-                    return md + " " + startTime.slice(0, 5) + "-" + endTime.slice(0, 5);
-                }
-                return md;
-            }
-
-            // エントリーサイト（/home）の大会カードと同じ形式：カード全体が申込ページへのリンク、
-            // 左に競技・日時／大会名／会場、右に残り枠。参加費は表示しない（コンパクトさ優先）
-            function renderCard(tournament, remaining, individual) {
-                const acceptsTeams = tournament.entry_mode !== "individual";
-                const individualOpen = individual && individual.individual_status !== "不成立";
-                const isFull = acceptsTeams
-                    ? remaining !== null && remaining <= 0
-                    : !individualOpen || individual.remaining <= 0;
-                const teamHtml = !acceptsTeams || remaining === null
-                    ? ""
-                    : '<span class="num' + (remaining <= 0 ? " full" : "") + '">' + t("entry.remainingPrefix", "残り") + ' ' + remaining + '</span><span class="unit">/ ' + teamCapacityOf(tournament) + ' ' + t("entry.teamsUnit", "チーム") + '</span>';
-                // 個人参加の残りは、チームと同じく「残り ○ / ○ 人」の形で表示する（単位は必ず人）
-                const individualHtml = !individualOpen
-                    ? ""
-                    : (teamHtml ? '<span class="unit-sep"></span>' : "") +
-                      '<span class="num' + (individual.remaining <= 0 ? " full" : "") + '">' + t("entry.remainingPrefix", "残り") + ' ' + individual.remaining + '</span>' +
-                      '<span class="unit">/ ' + (individual.individual_capacity || 0) + ' ' + t("entry.peopleUnit", "人") + '</span>';
-                const remainingHtml = teamHtml || individualHtml
-                    ? '<div class="entry-card-remaining">' + teamHtml + individualHtml + '</div>'
-                    : "";
-
-                const wrap = document.createElement("a");
-                wrap.className = "entry-card";
-                wrap.href = ENTRY_APP_BASE + "/apply/" + tournament.id;
-                wrap.target = "_blank";
-                wrap.rel = "noopener noreferrer";
-                wrap.innerHTML =
-                    '<div class="entry-card-info">' +
-                        '<p class="entry-card-date"><span class="entry-card-sport"></span>' +
-                        (tournament.entry_mode && tournament.entry_mode !== "team" ? '<span class="entry-card-individual">' + t("entry.individualLabel", "個人参加") + '</span>' : "") +
-                        '<span class="entry-card-datetext"></span></p>' +
-                        '<h3 class="entry-card-title"></h3>' +
-                        '<p class="entry-card-venue"></p>' +
-                    '</div>' +
-                    remainingHtml;
-
-                // 大会名・会場名はユーザー入力値のため、XSS対策としてtextContentで安全に挿入する
-                const sportEl = wrap.querySelector(".entry-card-sport");
-                if (tournament.sport_category) sportEl.textContent = tournament.sport_category;
-                else sportEl.remove();
-                wrap.querySelector(".entry-card-datetext").textContent = formatDateTime(tournament.event_date, tournament.event_start_time, tournament.event_end_time);
-                wrap.querySelector(".entry-card-title").textContent = tournament.name;
-                wrap.querySelector(".entry-card-venue").textContent = tournament.venue || t("entry.venueTBD", "会場未定");
-                wrap.setAttribute("aria-label", tournament.name + "（" + (isFull ? t("entry.waitlistBtn", "キャンセル待ちに申し込む") : t("entry.applyBtn", "この大会に申し込む")) + "）");
-
-                return wrap;
-            }
-
-            // 取得済みの大会データをキャッシュしておき、言語切り替え時は再取得せず再描画するだけにする
-            let cachedTournaments = null;
-
-            function renderEntryList() {
-                const listEl = document.getElementById("entryTournamentList");
-                if (!listEl || cachedTournaments === null) return;
-                if (cachedTournaments.length === 0) {
-                    listEl.innerHTML = '<p style="text-align:center; color:var(--text-faint);">' + t("entry.empty", "現在募集中の大会はありません。") + '</p>';
-                    return;
-                }
-                const filtered = applyEntryFilters(cachedTournaments);
-                if (filtered.length === 0) {
-                    listEl.innerHTML = '<p style="text-align:center; color:var(--text-faint);">条件に一致する大会が見つかりませんでした。</p>';
-                    return;
-                }
-                listEl.innerHTML = "";
-                // 募集中の大会をすべて、開催日の近い順に
-                filtered.forEach(({ tournament, remaining, individual }) => {
-                    listEl.appendChild(renderCard(tournament, remaining, individual));
-                });
-            }
-
-            // 右下のカードに出す「次の大会」：開催日が近い順に見て、まだ枠が残っている最初の大会
-            function showNextTournament() {
-                if (typeof window.fcShowNextTournament !== "function" || !cachedTournaments.length) return;
-                const remainingText = function (item) {
-                    const tour = item.tournament;
-                    if (tour.entry_mode !== "individual" && item.remaining !== null) {
-                        return { left: item.remaining, text: t("entry.remainingPrefix", "残り") + " " + Math.max(item.remaining, 0) + " / " + teamCapacityOf(tour) + " " + t("entry.teamsUnit", "チーム") };
-                    }
-                    if (item.individual && item.individual.individual_status !== "不成立") {
-                        return { left: item.individual.remaining, text: t("entry.remainingPrefix", "残り") + " " + Math.max(item.individual.remaining, 0) + " / " + (item.individual.individual_capacity || 0) + " " + t("entry.peopleUnit", "人") };
-                    }
-                    return { left: 0, text: "" };
-                };
-                const item = cachedTournaments.find(function (i) { return remainingText(i).left > 0; }) || cachedTournaments[0];
-                const tour = item.tournament;
-                window.fcShowNextTournament({
-                    meta: [tour.sport_category, formatDateTime(tour.event_date, tour.event_start_time, tour.event_end_time)].filter(Boolean).join("・"),
-                    title: tour.name,
-                    remaining: remainingText(item).text
-                });
-            }
-
-            async function loadEntryTournaments() {
-                const listEl = document.getElementById("entryTournamentList");
-                if (!listEl) return;
-                try {
-                    const tournaments = await fetchOpenTournaments();
-                    const results = [];
-                    for (const tournament of tournaments) {
-                        const [remaining, individual] = await Promise.all([
-                            fetchRemaining(tournament.id),
-                            tournament.entry_mode && tournament.entry_mode !== "team"
-                                ? fetchIndividualSummary(tournament.id)
-                                : Promise.resolve(null)
-                        ]);
-                        results.push({ tournament, remaining, individual });
-                    }
-                    cachedTournaments = results;
-                    updateEntryFilterOptionAvailability();
-                    renderEntryList();
-                    showNextTournament();
-                    if (typeof window.refreshSportTabPanels === "function") window.refreshSportTabPanels();
-                } catch (err) {
-                    // 取得に失敗しても、下にある「エントリーサイトを開く」ボタンは常に表示されているため、
-                    // ここでは読み込み中表示を静かに消すだけに留める
-                    cachedTournaments = [];
-                    listEl.innerHTML = "";
-                    if (typeof window.refreshSportTabPanels === "function") window.refreshSportTabPanels();
-                }
-            }
-
-            // ==========================================================================
-            // 👑 競技別（SOCCER/FUTSAL/SOCIETY/PK）カルーセル
-            // タブの定義は下のSPORT_TABS配列で一元管理しており、将来の競技追加時は
-            // この配列に1件追加するだけで済む（HTML側は空のコンテナのみで、中身は
-            // すべてこの配列からJSで組み立てる）。
-            // 大会カード自体はENTRY一覧と同じ cachedTournaments / renderCard() を
-            // そのまま再利用し、検索・絞り込みUIは表示せずスポーツ種別だけで固定絞り込みする。
-            // ==========================================================================
-            // PK大会のRULEカテゴリ（カテゴリ名・項目・順序は指定文言のまま）。
-            // 他競技のルールが確定した際も、同じ形の配列をtabに追加するだけで済む。
-            // SOCCERタブのARCHIVE（旧ARCHIVEセクションのVol.1／Vol.2をそのまま移設）。
-            // status: "completed" は優勝チーム・景品・写真を、"failed" は中止メッセージを表示する。
-            var SOCCER_ARCHIVE_VOLUMES = [
-                {
-                    vol: "Vol.1",
-                    status: "completed",
-                    championName: "El Mago City",
-                    awardsText: "3種から選べる「大和牛1.2kgセット」",
-                    photoSrc: "Vol.1優勝チーム.jpg",
-                    photoAlt: "Vol.1 優勝チーム El Mago City"
-                },
-                {
-                    vol: "Vol.2",
-                    status: "failed",
-                    failedMessage: "大会は中止・開催見送りとなりました。"
-                }
-            ];
-
-            var PK_RULE_CATEGORIES = [
-                {
-                    title: "エントリー・登録について",
-                    items: [
-                        "登録は1チーム5名となります。途中のメンバー変更はできません。",
-                        "競技中、審判よりメンバーの確認をさせていただく場合がございますので、メンバーの方は身分証明書（顔写真付き）を持参してください。",
-                        "同一の方が2チーム以上に参加することは禁止とさせていただきます。",
-                        "6名以上でエントリー頂いたチームも、試合ごとに5名を選出していただきます。サドンデスに突入した場合でも、選出した5名でその試合は続けていただきます。ゴールキーパーは必ず5名の中に含めていただきます。"
-                    ]
-                },
-                {
-                    title: "トーナメント・シードについて",
-                    items: [
-                        "参加チーム数によってトーナメントにシード枠を設けます。シード枠は申し込みが早い順に決定いたします。"
-                    ]
-                },
-                {
-                    title: "使用用具",
-                    items: [
-                        "少年用サッカーゴールを使用します。",
-                        "ボールは5号球を使用します。"
-                    ]
-                },
-                {
-                    title: "キック・判定ルール",
-                    items: [
-                        "本大会のPK戦は1本目からサドンデス方式で実施します。",
-                        "ゴールキーパーもキッカーを務めます。",
-                        "審判の合図から10秒以内にボールを蹴らなければPK失敗とします。",
-                        "ペナルティマーク上で静止していないボールを蹴った場合、PK失敗とします。",
-                        "キッカーは特定されなければなりません。",
-                        "キッカーはボールに2回以上触れた場合、失敗となります。",
-                        "延長戦（サドンデス継続）になった場合も、同じ順番で蹴らなければなりません。"
-                    ]
-                },
-                {
-                    title: "ゴールキーパーの反則",
-                    items: [
-                        "ゴールキーパーはキッカーが蹴るまで、どちらか片足がゴールラインを踏んでいなければ反則となります。",
-                        "ゴールキーパーに反則があった場合、またはゴールに入らなかった場合は、キッカーの蹴り直しとなります。"
-                    ]
-                },
-                {
-                    title: "出場人数について",
-                    items: [
-                        "試合予定時刻が早まるなど時間が変更となった場合でも、その時点で3名以上のメンバーが揃っていないと失格となります。",
-                        "1チーム3人以上いれば出場可能ですが、3人の場合は0-2、4人の場合は0-1の、負けている状態からのスタートとなります。"
-                    ]
-                },
-                {
-                    title: "試合終了について",
-                    items: [
-                        "勝敗が決まった時点で試合終了となります。",
-                        "ただし1回戦目に限り、勝敗が決していても5名全員が蹴り終えるまで続行します。"
-                    ]
-                }
-            ];
-
-            // SOCCERタブのRULE
-            var SOCCER_RULE_CATEGORIES = [
-                {
-                    title: "競技ルール",
-                    items: [
-                        "本大会は基本的に公式サッカールール（日本サッカー協会の競技規則）を適用します。",
-                        "交代枠は1試合につき5人までとします。",
-                        "大会独自のルールとして、通常の試合よりファウルの基準を厳しく適用します。",
-                        "大会中にレッドカードが提示された選手は、当該大会での以降の出場を禁止します。",
-                        "試合時間は参加チーム数により変動する場合があります。",
-                        "規定時間内に決着がつかない場合は、PK戦にて勝敗を決定します。"
-                    ]
-                },
-                {
-                    title: "勝ち点システム",
-                    items: [
-                        "規定時間での勝利：3点",
-                        "PK戦での勝利：2点",
-                        "PK戦での敗戦：1点",
-                        "規定時間での敗戦：0点"
-                    ]
-                }
-            ];
-
-            // FUTSALタブのRULE
-            var FUTSAL_RULE_CATEGORIES = [
-                {
-                    title: "競技ルール",
-                    items: [
-                        "5人制（フットサルルールに準ずる）",
-                        "4秒ルール：適用あり",
-                        "バックパスルール：適用あり",
-                        "ボール保持者へのスライディングは禁止",
-                        "レガース着用は任意"
-                    ]
-                }
-            ];
-
-            var SPORT_TABS = [
-                { id: "soccer", label: "SOCCER", type: "entry-list", sportCategory: "サッカー", archive: SOCCER_ARCHIVE_VOLUMES, ruleCategories: SOCCER_RULE_CATEGORIES },
-                { id: "futsal", label: "FUTSAL", type: "entry-list", sportCategory: "フットサル", ruleCategories: FUTSAL_RULE_CATEGORIES },
-                { id: "society", label: "SOCIETY", type: "coming-soon" },
-                { id: "pk", label: "PK", type: "entry-list", sportCategory: "PK大会", ruleCategories: PK_RULE_CATEGORIES }
-            ];
-
-            var SPORT_TAB_AUTO_MS = 4000;   // 各タブの自動停止時間
-            var SPORT_TAB_RESUME_MS = 6000; // 手動操作後、自動再生を再開するまでの待機時間
-
-            function renderSportPanelList(tabId, sportCategory) {
-                const listEl = document.getElementById("sportPanelList-" + tabId);
-                if (!listEl || cachedTournaments === null) return;
-                const filtered = cachedTournaments.filter(function (item) {
-                    return item.tournament.sport_category === sportCategory;
-                });
-                if (filtered.length === 0) {
-                    listEl.innerHTML = '<p class="sport-panel-empty">' + t("entry.empty", "現在募集中の大会はありません。") + '</p>';
-                    return;
-                }
-                listEl.innerHTML = "";
-                filtered.forEach(function (item) {
-                    listEl.appendChild(renderCard(item.tournament, item.remaining, item.individual));
-                });
-            }
-
-            // ARCHIVEの1大会分（Vol.）のアコーディオン項目を組み立てる。
-            // 既存の.accordion-item/.accordion-header等のクラス名をそのまま使うことで、
-            // 開閉挙動（setupAccordions）や基本レイアウトCSSをそのまま再利用している。
-            function buildArchiveAccordionItem(vol) {
-                const item = document.createElement("div");
-                item.className = "accordion-item";
-
-                const header = document.createElement("div");
-                header.className = "accordion-header";
-                header.innerHTML =
-                    '<span class="vol-title">' + vol.vol + '</span>' +
-                    '<span class="badge ' + vol.status + '">' + (vol.status === "completed" ? "Result" : "開催見送り") + '</span>';
-                item.appendChild(header);
-
-                const content = document.createElement("div");
-                content.className = "accordion-content";
-                const contentInner = document.createElement("div");
-                contentInner.className = "accordion-content-inner sport-archive-content-inner";
-
-                if (vol.status === "completed") {
-                    contentInner.innerHTML =
-                        '<div class="sport-archive-highlight">' +
-                            '<h4 class="sport-archive-highlight-title">優勝</h4>' +
-                            '<p class="sport-archive-champion-name">' + vol.championName + '</p>' +
-                            '<h4 class="sport-archive-highlight-title">賞品</h4>' +
-                            '<p class="sport-archive-awards-desc">' + vol.awardsText + '</p>' +
-                        '</div>' +
-                        '<p class="sport-archive-photo-label">集合写真</p>' +
-                        '<div class="sport-archive-photo-frame"><img src="' + vol.photoSrc + '" alt="' + vol.photoAlt + '" loading="lazy"></div>';
-                } else {
-                    contentInner.innerHTML = '<p class="sport-archive-failed-msg">' + vol.failedMessage + '</p>';
-                }
-
-                content.appendChild(contentInner);
-                item.appendChild(content);
-                return item;
-            }
-
-            // ARCHIVEブロックを1つ組み立てる（RULEセクションの直上に配置）。
-            // tab.archiveがあれば実データのアコーディオンを、なければ「Coming Soon…」を表示する。
-            function buildArchiveSection(tab) {
-                const archiveSection = document.createElement("div");
-                archiveSection.className = "sport-archive-section";
-
-                const archiveTitle = document.createElement("h3");
-                archiveTitle.className = "sport-rule-title";
-                archiveTitle.textContent = "ARCHIVE";
-                archiveSection.appendChild(archiveTitle);
-
-                if (tab.archive && tab.archive.length > 0) {
-                    const container = document.createElement("div");
-                    container.className = "accordion-container";
-                    tab.archive.forEach(function (vol) {
-                        container.appendChild(buildArchiveAccordionItem(vol));
-                    });
-                    archiveSection.appendChild(container);
-                } else {
-                    const placeholder = document.createElement("p");
-                    placeholder.className = "sport-rule-placeholder";
-                    placeholder.textContent = "Coming Soon…";
-                    archiveSection.appendChild(placeholder);
-                }
-
-                return archiveSection;
-            }
-
-            function buildSportTabs() {
-                const nav = document.getElementById("sportTabsNav");
-                const panelsRoot = document.getElementById("sportPanels");
-                const indicator = document.getElementById("sportTabIndicator");
-                if (!nav || !panelsRoot || !indicator) return null;
-
-                const buttons = [];
-                const panels = [];
-
-                SPORT_TABS.forEach(function (tab) {
-                    const btn = document.createElement("button");
-                    btn.type = "button";
-                    btn.className = "sport-tab-btn";
-                    btn.textContent = tab.label;
-                    btn.id = "sportTabBtn-" + tab.id;
-                    btn.setAttribute("role", "tab");
-                    btn.setAttribute("aria-selected", "false");
-                    btn.setAttribute("aria-controls", "sportPanel-" + tab.id);
-                    nav.insertBefore(btn, indicator);
-                    buttons.push(btn);
-
-                    const panel = document.createElement("div");
-                    panel.className = "sport-panel";
-                    panel.id = "sportPanel-" + tab.id;
-                    panel.setAttribute("role", "tabpanel");
-                    panel.setAttribute("aria-labelledby", btn.id);
-
-                    const inner = document.createElement("div");
-                    inner.className = "sport-panel-inner";
-
-                    if (tab.type === "entry-list") {
-                        const list = document.createElement("div");
-                        list.className = "sport-panel-list";
-                        list.id = "sportPanelList-" + tab.id;
-                        list.innerHTML = '<p class="sport-panel-loading">' + t("entry.loadingText", "読み込み中...") + '</p>';
-                        inner.appendChild(list);
-                    } else {
-                        const comingSoon = document.createElement("p");
-                        comingSoon.className = "sport-coming-soon";
-                        comingSoon.textContent = "Coming Soon…";
-                        inner.appendChild(comingSoon);
-                    }
-
-                    inner.appendChild(buildArchiveSection(tab));
-
-                    const ruleSection = document.createElement("div");
-                    ruleSection.className = "sport-rule-section";
-
-                    const ruleTitle = document.createElement("h3");
-                    ruleTitle.className = "sport-rule-title";
-                    ruleTitle.textContent = "RULE";
-                    ruleSection.appendChild(ruleTitle);
-
-                    if (tab.ruleCategories && tab.ruleCategories.length > 0) {
-                        // TERMSセクションの「固定高さ＋内部スクロール」枠（.terms-container）と
-                        // 同じ仕組みを踏襲したスクロールボックス（配色のみダーク背景向けに調整）
-                        const scrollBox = document.createElement("div");
-                        scrollBox.className = "sport-rule-scroll";
-                        tab.ruleCategories.forEach(function (category) {
-                            const categoryEl = document.createElement("div");
-                            categoryEl.className = "sport-rule-category";
-
-                            const categoryTitle = document.createElement("h4");
-                            categoryTitle.className = "sport-rule-category-title";
-                            categoryTitle.textContent = category.title;
-                            categoryEl.appendChild(categoryTitle);
-
-                            const list = document.createElement("ul");
-                            list.className = "sport-rule-list";
-                            category.items.forEach(function (itemText) {
-                                const li = document.createElement("li");
-                                const bullet = document.createElement("span");
-                                bullet.className = "sport-rule-bullet";
-                                bullet.textContent = "■";
-                                bullet.setAttribute("aria-hidden", "true");
-                                const text = document.createElement("span");
-                                text.className = "sport-rule-item-text";
-                                text.textContent = itemText;
-                                li.appendChild(bullet);
-                                li.appendChild(text);
-                                list.appendChild(li);
-                            });
-                            categoryEl.appendChild(list);
-                            scrollBox.appendChild(categoryEl);
-                        });
-                        ruleSection.appendChild(scrollBox);
-                    } else {
-                        const placeholder = document.createElement("p");
-                        placeholder.className = "sport-rule-placeholder";
-                        placeholder.textContent = "準備中です。大会ルールが決まり次第、こちらに掲載いたします。";
-                        ruleSection.appendChild(placeholder);
-                    }
-                    inner.appendChild(ruleSection);
-
-                    panel.appendChild(inner);
-                    panelsRoot.appendChild(panel);
-                    panels.push(panel);
-                });
-
-                return { buttons: buttons, panels: panels, indicator: indicator, panelsRoot: panelsRoot };
-            }
-
-            function setupSportCarousel() {
-                const refs = buildSportTabs();
-                if (!refs) return;
-                const buttons = refs.buttons;
-                const panels = refs.panels;
-                const indicator = refs.indicator;
-                const panelsRoot = refs.panelsRoot;
-                if (typeof window.fcSetupAccordions === "function") window.fcSetupAccordions(panelsRoot);
-                const sectionEl = document.getElementById("sport-tabs");
-                const transitionOverlayEl = document.getElementById("sportTransitionOverlay");
-                const reduceMotionMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-                let activeIndex = 0;
-                let autoTimer = null;
-                let resumeTimer = null;
-                let inView = !("IntersectionObserver" in window); // ObserverがなければCSS的には常時表示扱い
-
-                // タブ切り替え時に、画面全体にゴールドのオーバーレイ演出を一瞬走らせる
-                function triggerTransitionOverlay() {
-                    if (!transitionOverlayEl || reduceMotionMQ.matches) return;
-                    transitionOverlayEl.classList.remove("is-active");
-                    void transitionOverlayEl.offsetWidth; // 強制リフローでアニメーションを毎回リトリガーする
-                    transitionOverlayEl.classList.add("is-active");
-                }
-
-                function moveIndicator() {
-                    const btn = buttons[activeIndex];
-                    if (!indicator || !btn) return;
-                    indicator.style.width = btn.offsetWidth + "px";
-                    indicator.style.transform = "translateX(" + btn.offsetLeft + "px)";
-                }
-
-                function updateHeight() {
-                    const active = panels[activeIndex];
-                    if (!active || !panelsRoot) return;
-                    panelsRoot.style.height = active.scrollHeight + "px";
-                }
-
-                function renderPanelIfNeeded(index) {
-                    const tab = SPORT_TABS[index];
-                    if (tab.type !== "entry-list") return;
-                    renderSportPanelList(tab.id, tab.sportCategory);
-                }
-
-                function goToIndex(targetIndexRaw) {
-                    const len = SPORT_TABS.length;
-                    const targetIndex = ((targetIndexRaw % len) + len) % len;
-                    if (targetIndex === activeIndex) return;
-
-                    const diff = (targetIndex - activeIndex + len) % len;
-                    const forward = diff <= len / 2;
-
-                    triggerTransitionOverlay();
-
-                    const outgoing = panels[activeIndex];
-                    const incoming = panels[targetIndex];
-
-                    outgoing.classList.remove("active");
-                    outgoing.classList.add(forward ? "leave-forward" : "leave-back");
-
-                    incoming.classList.remove("leave-forward", "leave-back", "enter-back");
-                    if (!forward) incoming.classList.add("enter-back");
-
-                    // 1フレーム後にactiveへ切り替え、CSSトランジションを確実に発火させる
-                    requestAnimationFrame(function () {
-                        requestAnimationFrame(function () {
-                            incoming.classList.remove("enter-back");
-                            incoming.classList.add("active");
-                        });
-                    });
-
-                    window.setTimeout(function () {
-                        outgoing.classList.remove("leave-forward", "leave-back");
-                    }, 600);
-
-                    buttons[activeIndex].classList.remove("active");
-                    buttons[activeIndex].setAttribute("aria-selected", "false");
-                    buttons[targetIndex].classList.add("active");
-                    buttons[targetIndex].setAttribute("aria-selected", "true");
-
-                    activeIndex = targetIndex;
-                    moveIndicator();
-                    renderPanelIfNeeded(activeIndex);
-                    requestAnimationFrame(updateHeight);
-                }
-
-                function maybeStartAutoplay() {
-                    if (autoTimer) return;
-                    if (reduceMotionMQ.matches) return;
-                    if (!inView || document.hidden) return;
-                    autoTimer = window.setInterval(function () {
-                        goToIndex(activeIndex + 1);
-                    }, SPORT_TAB_AUTO_MS);
-                }
-
-                function stopAutoplay() {
-                    if (autoTimer) {
-                        window.clearInterval(autoTimer);
-                        autoTimer = null;
-                    }
-                }
-
-                function registerManualInteraction() {
-                    stopAutoplay();
-                    if (resumeTimer) window.clearTimeout(resumeTimer);
-                    resumeTimer = window.setTimeout(maybeStartAutoplay, SPORT_TAB_RESUME_MS);
-                }
-
-                buttons.forEach(function (btn, i) {
-                    btn.addEventListener("click", function () {
-                        registerManualInteraction();
-                        goToIndex(i);
-                    });
-                });
-
-                // スワイプ操作（タッチ）
-                let touchStartX = null;
-                panelsRoot.addEventListener("touchstart", function (e) {
-                    touchStartX = e.touches[0].clientX;
-                }, { passive: true });
-                panelsRoot.addEventListener("touchend", function (e) {
-                    if (touchStartX === null) return;
-                    const dx = e.changedTouches[0].clientX - touchStartX;
-                    touchStartX = null;
-                    if (Math.abs(dx) < 40) return;
-                    registerManualInteraction();
-                    goToIndex(activeIndex + (dx < 0 ? 1 : -1));
-                }, { passive: true });
-
-                window.addEventListener("resize", function () {
-                    moveIndicator();
-                    updateHeight();
-                });
-
-                if ("IntersectionObserver" in window && sectionEl) {
-                    const io = new IntersectionObserver(function (entries) {
-                        entries.forEach(function (entry) {
-                            inView = entry.isIntersecting;
-                            if (inView) maybeStartAutoplay(); else stopAutoplay();
-                        });
-                    }, { threshold: 0.2 });
-                    io.observe(sectionEl);
-                }
-
-                document.addEventListener("visibilitychange", function () {
-                    if (document.hidden) stopAutoplay(); else maybeStartAutoplay();
-                });
-
-                // 初期表示（トランジションなしで即時表示）
-                panels[0].classList.add("active");
-                buttons[0].classList.add("active");
-                buttons[0].setAttribute("aria-selected", "true");
-                moveIndicator();
-                renderPanelIfNeeded(0);
-                requestAnimationFrame(updateHeight);
-                maybeStartAutoplay();
-
-                // データ取得完了・言語切り替え時に再描画できるよう公開
-                window.refreshSportTabPanels = function () {
-                    SPORT_TABS.forEach(function (tab) {
-                        if (tab.type === "entry-list") renderSportPanelList(tab.id, tab.sportCategory);
-                    });
-                    requestAnimationFrame(updateHeight);
-                };
-            }
-
-            // 言語切り替え時に再描画できるよう、グローバルに公開しておく
-            window.refreshEntryTournamentList = function () {
-                renderEntryList();
-                if (typeof window.refreshSportTabPanels === "function") window.refreshSportTabPanels();
-            };
-
-            window.addEventListener("DOMContentLoaded", function () {
-                setupEntryFilters();
-                setupSportCarousel();
-                loadEntryTournaments();
-            });
-        })();
+    </script>
+    <!-- 👑 募集中の大会データの取得・表示（tournaments.html と共用） -->
+    <script src="entry-tournaments.js"></script>
+    <script>
 
         // 👑【最重要修正】リロードと自動トップスクロールを完全に封じ込める送信プログラム
         document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -2087,7 +1125,9 @@
                     'entry.empty': 'There are no tournaments open for entry right now.',
                     'entry.steps.heading': 'Steps to Enter the Tournament',
                     'entry.steps.s1.title': "Choose a Tournament",
-                    'entry.steps.s1.desc': "Pick the tournament you want to join from the list above.",
+                    'entry.steps.s1.desc': "Pick the tournament you want to join from the tournament list page.",
+                    'entry.listLead': 'All open tournaments are listed on the tournament list page.',
+                    'entry.listBtn': 'View Tournaments',
                     'entry.steps.s2.title': "Apply",
                     'entry.steps.s2.desc': "Enter your team details on the entry site, then confirm your entry on My Page.",
                     'entry.steps.s3.title': 'Add Our Official LINE',
@@ -2109,7 +1149,7 @@
                     'entry.steps.s6.desc': "Tell the reception staff your team name. See you on the pitch.",
                     'contact.lineLabel': 'Official LINE',
                     'contact.termsNotice': 'Before submitting, please make sure to check the tournament fees, cancellation policy, and other details under <a href="#terms">"TERMS"</a>.',
-                    'contact.entryRedirectNotice': 'To <strong>apply for a tournament, please use "<a href="#entry">ENTRY</a>"</strong>. This form is for general inquiries only.',
+                    'contact.entryRedirectNotice': 'To <strong>apply for a tournament, please use "<a href="tournaments.html">ENTRY</a>"</strong>. This form is for general inquiries only.',
                     'contact.teamNameLabel': 'Team Name',
                     'contact.teamNamePh': 'e.g. Fantasista FC',
                     'contact.repNameLabel': 'Name',
@@ -2199,7 +1239,9 @@
                     'entry.empty': 'Al momento non ci sono tornei aperti alle iscrizioni.',
                     'entry.steps.heading': 'Come partecipare al torneo',
                     'entry.steps.s1.title': "Scegli un torneo",
-                    'entry.steps.s1.desc': "Scegli il torneo a cui vuoi partecipare dall'elenco qui sopra.",
+                    'entry.steps.s1.desc': "Scegli il torneo a cui vuoi partecipare dalla pagina dei tornei.",
+                    'entry.listLead': 'Tutti i tornei aperti sono elencati nella pagina dei tornei.',
+                    'entry.listBtn': 'Vedi i tornei',
                     'entry.steps.s2.title': "Iscriviti",
                     'entry.steps.s2.desc': "Inserisci i dati della squadra sul sito di iscrizione e conferma l'iscrizione nella tua pagina personale.",
                     'entry.steps.s3.title': 'Aggiungi il nostro LINE ufficiale',
@@ -2221,7 +1263,7 @@
                     'entry.steps.s6.desc': "Comunica il nome della squadra all'accoglienza. Ci vediamo in campo.",
                     'contact.lineLabel': 'LINE Ufficiale',
                     'contact.termsNotice': 'Prima di inviare, ti preghiamo di verificare la quota di partecipazione, la politica di cancellazione e gli altri dettagli nella sezione <a href="#terms">"TERMS"</a>.',
-                    'contact.entryRedirectNotice': 'Per <strong>iscriverti a un torneo, usa la sezione "<a href="#entry">ENTRY</a>"</strong>. Questo modulo è riservato alle richieste generali.',
+                    'contact.entryRedirectNotice': 'Per <strong>iscriverti a un torneo, usa la sezione "<a href="tournaments.html">ENTRY</a>"</strong>. Questo modulo è riservato alle richieste generali.',
                     'contact.teamNameLabel': 'Nome della Squadra',
                     'contact.teamNamePh': 'es. Fantasista FC',
                     'contact.repNameLabel': 'Nome',
@@ -2311,7 +1353,9 @@
                     'entry.empty': 'Actualmente no hay torneos abiertos para inscripción.',
                     'entry.steps.heading': 'Cómo inscribirte en el torneo',
                     'entry.steps.s1.title': "Elige un torneo",
-                    'entry.steps.s1.desc': "Elige el torneo en el que quieres participar en la lista de arriba.",
+                    'entry.steps.s1.desc': "Elige el torneo en el que quieres participar en la página de torneos.",
+                    'entry.listLead': 'Todos los torneos abiertos aparecen en la página de torneos.',
+                    'entry.listBtn': 'Ver torneos',
                     'entry.steps.s2.title': "Inscríbete",
                     'entry.steps.s2.desc': "Introduce los datos de tu equipo en el sitio de inscripción y confirma la inscripción en Mi página.",
                     'entry.steps.s3.title': 'Agrega nuestro LINE oficial',
@@ -2333,7 +1377,7 @@
                     'entry.steps.s6.desc': "Indica el nombre de tu equipo en la recepción. Te esperamos en la cancha.",
                     'contact.lineLabel': 'LINE Oficial',
                     'contact.termsNotice': 'Antes de enviar, asegúrese de revisar la cuota de participación, la política de cancelación y otros detalles en <a href="#terms">"TERMS"</a>.',
-                    'contact.entryRedirectNotice': 'Para <strong>inscribirte en un torneo, utiliza "<a href="#entry">ENTRY</a>"</strong>. Este formulario es solo para consultas generales.',
+                    'contact.entryRedirectNotice': 'Para <strong>inscribirte en un torneo, utiliza "<a href="tournaments.html">ENTRY</a>"</strong>. Este formulario es solo para consultas generales.',
                     'contact.teamNameLabel': 'Nombre del Equipo',
                     'contact.teamNamePh': 'ej. Fantasista FC',
                     'contact.repNameLabel': 'Nombre',
@@ -2423,7 +1467,9 @@
                     'entry.empty': '현재 모집 중인 대회가 없습니다.',
                     'entry.steps.heading': '대회 참가 절차',
                     'entry.steps.s1.title': "대회 선택",
-                    'entry.steps.s1.desc': "위 목록에서 참가하고 싶은 대회를 선택해 주세요.",
+                    'entry.steps.s1.desc': "대회 목록 페이지에서 참가하고 싶은 대회를 선택해 주세요.",
+                    'entry.listLead': '모집 중인 대회는 대회 목록 페이지에서 모두 보실 수 있습니다.',
+                    'entry.listBtn': '대회 목록 보기',
                     'entry.steps.s2.title': "신청하기",
                     'entry.steps.s2.desc': "엔트리 사이트에서 팀 정보를 입력하고, 마이페이지에서 본 신청을 확정해 주세요.",
                     'entry.steps.s3.title': '공식 LINE 추가하기',
@@ -2445,7 +1491,7 @@
                     'entry.steps.s6.desc': "접수처에서 팀 이름을 알려 주세요. 피치에서 기다리겠습니다.",
                     'contact.lineLabel': '대회 공식 LINE',
                     'contact.termsNotice': '신청 전에 참가비, 취소 규정 등 대회 상세 내용을 반드시 <a href="#terms">「TERMS」</a>에서 확인해 주시기 바랍니다.',
-                    'contact.entryRedirectNotice': '대회 <strong>신청은 「<a href="#entry">ENTRY</a>」</strong>에서 받고 있습니다. 이 양식은 문의 전용입니다.',
+                    'contact.entryRedirectNotice': '대회 <strong>신청은 「<a href="tournaments.html">ENTRY</a>」</strong>에서 받고 있습니다. 이 양식은 문의 전용입니다.',
                     'contact.teamNameLabel': '팀명',
                     'contact.teamNamePh': '예: Fantasista FC',
                     'contact.repNameLabel': '성함',
@@ -2535,7 +1581,9 @@
                     'entry.empty': '目前没有正在招募的赛事。',
                     'entry.steps.heading': '参赛流程',
                     'entry.steps.s1.title': "选择赛事",
-                    'entry.steps.s1.desc': "请从上方列表中选择想参加的赛事。",
+                    'entry.steps.s1.desc': "请在赛事列表页面中选择想参加的赛事。",
+                    'entry.listLead': '所有正在招募的赛事都可以在赛事列表页面查看。',
+                    'entry.listBtn': '查看赛事列表',
                     'entry.steps.s2.title': "报名",
                     'entry.steps.s2.desc': "请在报名网站填写球队信息，并在个人页面确认正式报名。",
                     'entry.steps.s3.title': '添加官方LINE',
@@ -2557,7 +1605,7 @@
                     'entry.steps.s6.desc': "请在接待处告知球队名称。我们在球场等您。",
                     'contact.lineLabel': '赛事官方LINE',
                     'contact.termsNotice': '提交前，请务必在<a href="#terms">「TERMS」</a>中确认参赛费用、取消规定等赛事详情。',
-                    'contact.entryRedirectNotice': '赛事<strong>报名请通过「<a href="#entry">ENTRY</a>」</strong>办理。此表单仅用于一般咨询。',
+                    'contact.entryRedirectNotice': '赛事<strong>报名请通过「<a href="tournaments.html">ENTRY</a>」</strong>办理。此表单仅用于一般咨询。',
                     'contact.teamNameLabel': '队伍名称',
                     'contact.teamNamePh': '例：Fantasista FC',
                     'contact.repNameLabel': '姓名',

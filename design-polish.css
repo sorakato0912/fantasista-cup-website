@@ -870,3 +870,23 @@ body {
         transition: opacity 0.2s ease, visibility 0s;
     }
 }
+
+/* ==========================================================================
+   👑 トップのENTRY：大会一覧ページ（tournaments.html）への案内
+   ========================================================================== */
+.entry-list-link {
+    margin: 4px 0 36px;
+    text-align: center;
+}
+
+.entry-list-link-lead {
+    margin-bottom: 18px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.entry-list-link-btn {
+    padding: 15px 48px;
+    font-size: 1rem;
+}

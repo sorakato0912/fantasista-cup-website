@@ -1504,6 +1504,7 @@ body {
     }
     .entry-filter-field,
     .entry-filter-field.is-keyword,
+    .entry-filter-field.is-type,
     .entry-filter-field.entry-filter-date {
         flex: none;
         min-width: 0;

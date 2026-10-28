@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 👑 SEO対策：title / meta description -->
+    <title>大会一覧・エントリー｜奈良のサッカー・フットサル大会 Fantasista Cup</title>
+    <meta name="description" content="奈良県で開催するFantasista Cupの、参加者募集中の大会一覧です。サッカー・フットサル・PK大会を、参加方法（チーム・個人参加）・競技・エリア・開催日で絞り込んで探せます。">
+
+    <!-- ==========================================
+       👑 ファビコン・アイコン限界最大化設定
+       ========================================== -->
+    <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
+    <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- ==========================================
+       👑 OGP（SNSなどでシェアされた際の表示設定）
+       ========================================== -->
+    <link rel="canonical" href="https://fantasista-cup.com/tournaments">
+    <meta property="og:url" content="https://fantasista-cup.com/tournaments">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="大会一覧・エントリー｜奈良のサッカー・フットサル大会 Fantasista Cup">
+    <meta property="og:description" content="奈良県で開催するFantasista Cupの、参加者募集中の大会一覧です。サッカー・フットサル・PK大会を、参加方法（チーム・個人参加）・競技・エリア・開催日で絞り込んで探せます。">
+    <meta property="og:image" content="https://fantasista-cup.com/rogo2.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="大会一覧・エントリー｜奈良のサッカー・フットサル大会 Fantasista Cup">
+    <meta name="twitter:image" content="https://fantasista-cup.com/rogo2.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="design-polish.css">
+    <!-- Google Fontsから明朝体（Noto Serif JP）を読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 各種アイコン表示用に Font Awesomeを読み込み -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- 💡 ナビバー演出（index.html・faq.html・tokushoho.html・blog.htmlと共通） -->
+    <style>
+        /* ナビバーの半透明化＋ぼかしは style.css の .navbar に統一済み */
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a.active,
+        .nav-links a.current {
+            color: #ffffff !important;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+        }
+        .nav-links a:hover {
+            color: #ffffff !important;
+        }
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 115%;
+            height: 140%;
+            transform: translate(-50%, -50%) scaleX(0);
+            background: linear-gradient(90deg,
+                rgba(212, 175, 55, 0) 0%,
+                rgba(255, 223, 128, 0.7) 25%,
+                rgba(170, 124, 17, 0.8) 50%,
+                rgba(255, 223, 128, 0.7) 75%,
+                rgba(212, 175, 55, 0) 100%
+            );
+            background-size: 200% auto;
+            z-index: -1;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+        }
+        .nav-links a.current::before {
+            transform: translate(-50%, -50%) scaleX(1);
+            opacity: 1;
+            animation: goldShine 2s linear infinite;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold-bright), var(--gold-dark));
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--gold-bright);
+        }
+        .nav-links a.current::after {
+            width: 100%;
+        }
+        @keyframes goldShine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* 👑 スクリーンリーダー／クローラーのみに読ませる視覚的に隠すテキスト */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ページ上部の見出しエリア（Heroの代わり） */
+        .page-header {
+            background-color: var(--navy-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 70px 20px 55px;
+        }
+        .page-header .section-title {
+            color: var(--white);
+        }
+        .page-header p {
+            max-width: 560px;
+            margin: 18px auto 0;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.8;
+        }
+
+        /* プライバシーポリシー本文 */
+        .article-body {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .article-body > p {
+            font-size: 1rem;
+            line-height: 2;
+            color: var(--text-color);
+            margin-bottom: 28px;
+        }
+        .article-body h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.15rem;
+            color: var(--navy-dark);
+            border-bottom: 2px solid var(--gold-bright);
+            padding-bottom: 12px;
+            margin: 44px 0 20px;
+        }
+        .article-body h2:first-child {
+            margin-top: 0;
+        }
+        .article-body .article-section p {
+            font-size: 0.95rem;
+            line-height: 2;
+            color: var(--text-color);
+            margin-bottom: 16px;
+        }
+        .article-body .article-section ul {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+        .article-body .article-section ul li {
+            position: relative;
+            padding-left: 22px;
+            line-height: 2;
+            color: var(--text-color);
+        }
+        .article-body .article-section ul li::before {
+            content: '\25A0';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--gold-bright);
+            font-size: 0.7em;
+            line-height: 2.4;
+        }
+        .article-body .updated-date {
+            text-align: right;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 40px;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .page-header {
+                padding: 50px 18px 40px;
+            }
+            .article-body h2 {
+                font-size: 1.05rem;
+            }
+        }
+    </style>
+    <script src="meta-pixel.js" defer></script>
+</head>
+<body>
+
+    <!-- 👑 オープニング演出：他ページと共通のrogo.png演出 -->
+    <div id="introOverlay" class="intro-overlay">
+        <div class="intro-inner">
+            <img src="rogo.png" alt="Fantasista Cup ロゴ" class="intro-logo">
+        </div>
+    </div>
+    <script>
+        (function () {
+            var overlay = document.getElementById('introOverlay');
+            if (!overlay) return;
+            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (reduceMotion) {
+                overlay.classList.add('intro-done');
+            } else {
+                var isTransition = false;
+                try { isTransition = sessionStorage.getItem('fcPageTransition') === '1'; } catch (err) {}
+                try { sessionStorage.removeItem('fcPageTransition'); } catch (err) {}
+
+                document.documentElement.style.overflow = 'hidden';
+
+                if (isTransition) {
+                    var logo = overlay.querySelector('.intro-logo');
+                    overlay.classList.add('intro-quick');
+                    overlay.style.transition = 'none';
+                    if (logo) logo.style.transition = 'none';
+                    overlay.classList.add('intro-in');
+                    void overlay.offsetWidth;
+                    overlay.style.transition = '';
+                    if (logo) logo.style.transition = '';
+                    setTimeout(function () {
+                        overlay.classList.add('intro-out');
+                    }, 200);
+                    setTimeout(function () {
+                        overlay.classList.add('intro-done');
+                        document.documentElement.style.overflow = '';
+                    }, 700);
+                } else {
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(function () {
+                            overlay.classList.add('intro-in');
+                        });
+                    });
+                    setTimeout(function () {
+                        overlay.classList.add('intro-out');
+                    }, 1700);
+                    setTimeout(function () {
+                        overlay.classList.add('intro-done');
+                        document.documentElement.style.overflow = '';
+                    }, 2700);
+                }
+            }
+
+            document.addEventListener('click', function (e) {
+                var link = e.target.closest('a[href]');
+                if (!link || link.target === '_blank') return;
+                var url;
+                try {
+                    url = new URL(link.href, window.location.href);
+                } catch (err) {
+                    return;
+                }
+                if (url.origin !== window.location.origin) return;
+                if (url.pathname === window.location.pathname) return;
+                if (!/\.html$/i.test(url.pathname)) return;
+                if (reduceMotion) return;
+
+                e.preventDefault();
+                try { sessionStorage.setItem('fcPageTransition', '1'); } catch (err) {}
+                var targetHref = link.href;
+                overlay.classList.add('intro-quick');
+                overlay.classList.remove('intro-in', 'intro-out', 'intro-done');
+                void overlay.offsetWidth;
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        overlay.classList.add('intro-in');
+                    });
+                });
+                setTimeout(function () {
+                    window.location.href = targetHref;
+                }, 500);
+            });
+        })();
+    </script>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container" style="padding: 8px 24px; max-width: 1400px; gap: 20px;">
+            <div class="nav-brand">
+                <a href="index.html" class="nav-logo" style="display: flex; align-items: center; gap: 14px; flex-shrink: 0;">
+                    <img src="rogo.png" alt="Fantasista Cup ロゴ" style="height: 64px; width: auto; object-fit: contain; display: block; flex-shrink: 0;">
+                    <span style="font-size: 1.4rem; letter-spacing: 0.08em; white-space: nowrap;">Fantasista Cup<span class="sr-only">（奈良県橿原市のサッカー大会）</span></span>
+                </a>
+            </div>
+            <div class="nav-actions">
+                <a href="https://www.instagram.com/fantasista.cup_nara/" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://lin.ee/rGbe5tV" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="大会公式LINE">
+                    <i class="fab fa-line"></i>
+                </a>
+                <button type="button" id="hamburgerBtn" class="hamburger-btn" aria-haspopup="true" aria-expanded="false" aria-controls="navOverlay" aria-label="メニューを開く">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 👑 ハンバーガーメニュー：全画面オーバーレイ -->
+    <div id="navOverlay" class="nav-overlay">
+        <button type="button" id="navOverlayClose" class="nav-overlay-close" aria-label="メニューを閉じる">
+            <i class="fas fa-xmark"></i>
+        </button>
+        <div class="nav-overlay-inner">
+            <div class="nav-group">
+                <p class="nav-group-title">大会について</p>
+                <ul class="nav-links">
+                    <li><a href="index.html#concept">CONCEPT<span class="nav-link-sub">大会コンセプト</span></a></li>
+                    <li><a href="tournaments.html" class="current">ENTRY<span class="nav-link-sub">大会一覧・エントリー</span></a></li>
+                    <li><a href="terms.html">TERMS<span class="nav-link-sub">利用規約・参加規定</span></a></li>
+                    <li><a href="index.html#sport-tabs">DISCIPLINES<span class="nav-link-sub">競技別ラインナップ</span></a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">大会記録</p>
+                <ul class="nav-links">
+                    <li><a href="blog.html">BLOG<span class="nav-link-sub">最新情報</span></a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">採用・協賛</p>
+                <ul class="nav-links">
+                    <li><a href="staff.html">RECRUIT<span class="nav-link-sub">スタッフ募集</span></a></li>
+                    <li><a href="sponsor.html">SPONSOR<span class="nav-link-sub">スポンサー募集</span></a></li>
+                </ul>
+            </div>
+            <div class="nav-group">
+                <p class="nav-group-title">サポート</p>
+                <ul class="nav-links">
+                    <li><a href="faq.html">Q&amp;A<span class="nav-link-sub">よくある質問</span></a></li>
+                    <li><a href="index.html#contact">CONTACT<span class="nav-link-sub">お問い合わせ</span></a></li>
+                    <li><a href="index.html#info">INFORMATION<span class="nav-link-sub">運営者情報</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 👑 ハンバーガーメニュー：開閉・スクロールロック・背景クリックとEscで閉じる
+        (function () {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const overlay = document.getElementById('navOverlay');
+            const closeBtn = document.getElementById('navOverlayClose');
+            if (!hamburgerBtn || !overlay) return;
+
+            function openNavOverlay() {
+                overlay.classList.add('open');
+                hamburgerBtn.classList.add('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'true');
+                document.documentElement.classList.add('nav-overlay-lock');
+                document.body.classList.add('nav-overlay-lock');
+            }
+            function closeNavOverlay() {
+                overlay.classList.remove('open');
+                hamburgerBtn.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                document.documentElement.classList.remove('nav-overlay-lock');
+                document.body.classList.remove('nav-overlay-lock');
+            }
+            window.closeNavOverlay = closeNavOverlay;
+
+            hamburgerBtn.addEventListener('click', () => {
+                if (overlay.classList.contains('open')) closeNavOverlay(); else openNavOverlay();
+            });
+            if (closeBtn) closeBtn.addEventListener('click', closeNavOverlay);
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeNavOverlay();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeNavOverlay();
+            });
+            overlay.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', closeNavOverlay);
+            });
+        })();
+    </script>
+
+    <main>
+        <!-- PAGE HEADER -->
+        <div class="page-header">
+            <h1 class="section-title">大会一覧</h1>
+            <p>参加者を募集中の大会です。参加方法・競技・エリア・開催日で絞り込めます。大会を選ぶと、エントリーサイトの申し込みページが開きます。</p>
+        </div>
+
+        <!-- ENTRY：募集中の大会をすべて表示（トップページと同じデータ・同じカード） -->
+        <section id="entry" class="section">
+            <div class="container">
+                <div class="luxury-frame">
+                    <!-- 👑 大会一覧の検索・絞り込み（PCは横一列、スマホは「大会を検索・絞り込む」ボタン→全画面オーバーレイ） -->
+                    <div class="entry-filter-bar" id="entryFilterBar">
+                        <button type="button" id="entryFilterClose" class="entry-filter-close" aria-label="閉じる">
+                            <i class="fas fa-xmark"></i>
+                        </button>
+                        <div class="entry-filter-field is-keyword">
+                            <label for="entryFilterKeyword">キーワード検索</label>
+                            <input type="text" id="entryFilterKeyword" placeholder="大会名・会場名">
+                        </div>
+                        <!-- 参加方法（お客様画面のエントリーサイトと同じ選択肢・判定） -->
+                        <div class="entry-filter-field is-type">
+                            <label for="entryFilterType">参加方法で絞り込む</label>
+                            <select id="entryFilterType">
+                                <option value="">すべて</option>
+                                <option value="team">大会</option>
+                                <option value="individual">個人参加</option>
+                            </select>
+                        </div>
+                        <div class="entry-filter-field">
+                            <label for="entryFilterSport">スポーツで絞り込む</label>
+                            <select id="entryFilterSport">
+                                <option value="">すべてのスポーツ</option>
+                                <option value="サッカー">サッカー</option>
+                                <option value="フットサル">フットサル</option>
+                                <option value="ソサイチ">ソサイチ</option>
+                                <option value="PK大会">PK大会</option>
+                            </select>
+                        </div>
+                        <div class="entry-filter-field">
+                            <label for="entryFilterArea">エリアで絞り込む</label>
+                            <select id="entryFilterArea">
+                                <option value="">すべてのエリア</option>
+                                <option value="大阪府">大阪府</option>
+                                <option value="京都府">京都府</option>
+                                <option value="兵庫県">兵庫県</option>
+                                <option value="奈良県">奈良県</option>
+                                <option value="滋賀県">滋賀県</option>
+                                <option value="和歌山県">和歌山県</option>
+                            </select>
+                        </div>
+                        <div class="entry-filter-field entry-filter-date">
+                            <label>開催日で絞り込む</label>
+                            <div class="entry-filter-date-row">
+                                <input type="date" id="entryFilterDateFrom">
+                                <span>〜</span>
+                                <input type="date" id="entryFilterDateTo">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" id="entryFilterToggle" class="entry-filter-toggle">
+                        <span><i class="fas fa-magnifying-glass"></i> 大会を検索・絞り込む</span>
+                        <span id="entryFilterCount" class="entry-filter-count" style="display:none;"></span>
+                    </button>
+
+                    <!-- 👑 募集中の大会一覧をSupabaseから直接取得して表示（エントリーサイトと同じデータ） -->
+                    <div id="entryTournamentList" style="margin-bottom: 24px;">
+                        <p style="text-align: center; color: var(--text-faint);" data-i18n="entry.loadingText">読み込み中...</p>
+                    </div>
+
+                    <div style="text-align: center; border-top: 1px dashed rgba(10, 17, 40, 0.15); padding-top: 24px;">
+                        <p style="color: #666; font-size: 0.95rem; line-height: 1.8;">
+                            Googleアカウントでログインすると、マイページで申し込み状況の確認もできます。<br class="br-sp">
+                            お申し込みの前に、参加費・キャンセル規定など大会の詳細を必ず<a href="terms.html">「TERMS」</a>にてご確認ください。
+                        </p>
+                        <div class="center-btn" style="margin-top: 18px;">
+                            <a href="tournaments.html" class="btn-action-secondary">大会参加までの流れを見る</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <ul class="footer-links">
+            <li><a href="index.html#concept">CONCEPT</a></li>
+            <li><a href="tournaments.html">ENTRY</a></li>
+            <li><a href="blog.html">BLOG</a></li>
+            <li><a href="terms.html">TERMS</a></li>
+            <li><a href="index.html#sport-tabs">DISCIPLINES</a></li>
+            <li><a href="staff.html">RECRUIT</a></li>
+            <li><a href="sponsor.html">SPONSOR</a></li>
+            <li><a href="index.html#contact">CONTACT</a></li>
+            <li><a href="index.html#info">INFORMATION</a></li>
+            <li><a href="faq.html">Q&amp;A</a></li>
+        </ul>
+        <div class="footer-brand">
+            <img src="rogo.png" alt="Fantasista Cup ロゴ" class="footer-logo" loading="lazy">
+            <p class="footer-org">Fantasista Cup<span class="sr-only">運営事務局（奈良県橿原市のサッカー大会）</span></p>
+        </div>
+        <p>&copy; 2026 Fantasista Cup All Rights Reserved.</p>
+        <p class="footer-legal-link"><a href="privacy.html">プライバシーポリシー</a> ｜ <a href="tokushoho.html">特定商取引法に基づく表記</a></p>
+    </footer>
+
+    <!-- 👑 募集中の大会データの取得・表示（トップページと共用） -->
+    <script src="entry-tournaments.js"></script>
+</body>
+</html>
