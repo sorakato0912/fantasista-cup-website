@@ -354,6 +354,67 @@ body {
     flex-shrink: 0;
 }
 
+/* PC表示：ロゴの右に薄い縦線を引いて区切り、右側に主要ページへのリンク（ENTRY / RECRUIT / CONTACT）を置く */
+.nav-brand::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    margin-left: 14px;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.nav-quick {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    margin: 0 14px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-quick a {
+    position: relative;
+    display: inline-block;
+    padding: 6px 0;
+    color: var(--white);
+    font-size: 0.86rem;
+    font-weight: bold;
+    letter-spacing: 0.16em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* ホバー・表示中のページはゴールドの下線 */
+.nav-quick a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--gold-bright);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.nav-quick a:hover,
+.nav-quick a[aria-current="page"] {
+    color: var(--gold-bright);
+}
+
+.nav-quick a:hover::after,
+.nav-quick a[aria-current="page"]::after {
+    transform: scaleX(1);
+}
+
+@media screen and (max-width: 900px) {
+    .nav-brand::after,
+    .nav-quick {
+        display: none;
+    }
+}
+
 /* 枠なし・素のアイコンとして表示するSNSリンク（公式LINE / Instagram） */
 .nav-icon-btn {
     display: inline-flex;

@@ -566,6 +566,12 @@ body {
 .fc-motion #entryTournamentList.is-inview .entry-card:nth-child(5) { animation-delay: 0.36s; }
 .fc-motion #entryTournamentList.is-inview .entry-card:nth-child(n+6) { animation-delay: 0.45s; }
 
+/* 大会参加までの流れ：ラインは最後のステップ（04 大会当日）の丸で止める（長さは scroll-reveal.js が測る） */
+.steps-timeline::before {
+    bottom: auto;
+    height: var(--fc-line-span, calc(100% - 56px));
+}
+
 /* 大会参加までの流れ：スクロールに合わせて金のラインが伸び、通過したステップが点灯する */
 .steps-timeline::after {
     content: '';
@@ -573,7 +579,7 @@ body {
     left: 50%;
     top: 28px;
     width: 2px;
-    height: calc((100% - 56px) * var(--fc-progress, 0));
+    height: calc(var(--fc-line-span, calc(100% - 56px)) * var(--fc-progress, 0));
     background: linear-gradient(180deg, var(--gold-bright), var(--gold-dark));
     box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
     transform: translateX(-50%);

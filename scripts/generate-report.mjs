@@ -573,6 +573,12 @@ const reportHtml = `<!DOCTYPE html>
                 </a>
             </div>
             <div class="nav-actions">
+                <!-- PC表示のみ：主要ページへのリンク（スマホはハンバーガーメニューから） -->
+                <ul class="nav-quick">
+                    <li><a href="tournaments.html">ENTRY</a></li>
+                    <li><a href="staff.html">RECRUIT</a></li>
+                    <li><a href="index.html#contact">CONTACT</a></li>
+                </ul>
                 <a href="https://www.instagram.com/fantasista.cup_nara/" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>

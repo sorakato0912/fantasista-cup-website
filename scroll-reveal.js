@@ -7,6 +7,24 @@
 // prefers-reduced-motion（アニメーション低減設定）の場合は何も動かさない
 // （html に .fc-motion を付けないので、CSS側の演出もすべて無効のまま最初から表示される）。
 (function () {
+    // 大会参加までの流れのラインは、最後のステップ（04 大会当日）の丸の中心で止める。
+    // 最初の丸の中心（上から28px）から最後の丸の中心までの長さを --fc-line-span に入れ、
+    // CSS側の薄いライン（::before）と金のライン（::after）の長さに使う。演出を切っていても測る
+    const timelineEl = document.querySelector('.steps-timeline');
+    const timelineMarkers = timelineEl ? timelineEl.querySelectorAll('.step-marker') : [];
+    function measureTimelineSpan() {
+        if (!timelineEl || !timelineMarkers.length) return 0;
+        const last = timelineMarkers[timelineMarkers.length - 1];
+        const top = timelineEl.getBoundingClientRect().top;
+        const r = last.getBoundingClientRect();
+        const span = Math.max(1, r.top + r.height / 2 - top - 28);
+        timelineEl.style.setProperty('--fc-line-span', span + 'px');
+        return span;
+    }
+    measureTimelineSpan();
+    window.addEventListener('resize', measureTimelineSpan);
+    window.addEventListener('load', measureTimelineSpan);
+
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) return;
 
@@ -70,7 +88,7 @@
             // 画面の上から60%の位置を「読んでいる位置」とみなし、そこまでラインを伸ばす
             const line = vh * 0.6;
             const rect = timeline.getBoundingClientRect();
-            const progress = Math.min(1, Math.max(0, (line - rect.top - 28) / (rect.height - 56)));
+            const progress = Math.min(1, Math.max(0, (line - rect.top - 28) / measureTimelineSpan()));
             timeline.style.setProperty('--fc-progress', progress.toFixed(4));
             steps.forEach(function (step) {
                 const marker = step.querySelector('.step-marker');
