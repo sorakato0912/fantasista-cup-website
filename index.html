@@ -671,6 +671,15 @@
                             <label for="entryFilterKeyword">キーワード検索</label>
                             <input type="text" id="entryFilterKeyword" placeholder="大会名・会場名">
                         </div>
+                        <!-- 参加方法（お客様画面のエントリーサイトと同じ選択肢・判定） -->
+                        <div class="entry-filter-field is-type">
+                            <label for="entryFilterType">参加方法で絞り込む</label>
+                            <select id="entryFilterType">
+                                <option value="">すべて</option>
+                                <option value="team">大会</option>
+                                <option value="individual">個人参加</option>
+                            </select>
+                        </div>
                         <div class="entry-filter-field">
                             <label for="entryFilterSport">スポーツで絞り込む</label>
                             <select id="entryFilterSport">
@@ -784,7 +793,7 @@
                         </div>
                         <div class="terms-item">
                             <h3 data-i18n="terms.4.title">4. 写真・動画の使用について</h3>
-                            <p data-i18n="terms.4.body">大会中の写真・動画は、弊社の広報活動（SNS）に使用いたします。</p>
+                            <p data-i18n="terms.4.body">大会中の写真・動画は、Fantasista Cupの広報活動（SNS）に使用いたします。</p>
                         </div>
                         <div class="terms-item">
                             <h3 data-i18n="terms.5.title">5. 自己責任について</h3>
@@ -1035,6 +1044,7 @@
                 const byId = (id) => document.getElementById(id);
                 return {
                     keyword: ((byId("entryFilterKeyword") || {}).value || "").trim().toLowerCase(),
+                    type: (byId("entryFilterType") || {}).value || "",
                     sport: (byId("entryFilterSport") || {}).value || "",
                     area: (byId("entryFilterArea") || {}).value || "",
                     dateFrom: (byId("entryFilterDateFrom") || {}).value || "",
@@ -1042,9 +1052,18 @@
                 };
             }
 
+            // 参加方法：「大会」はチームで申し込める大会、「個人参加」は個人で申し込める大会
+            function matchesEntryType(tournament, type) {
+                const mode = tournament.entry_mode || "team";
+                if (type === "team") return mode !== "individual";
+                if (type === "individual") return mode === "individual" || mode === "team_and_individual";
+                return true;
+            }
+
             // 指定した1軸（skip）以外の条件だけで一致するかを判定する
             // （他の絞り込み条件のもとで、そのプルダウンの各選択肢が該当0件になるかを調べるために使う）
             function matchesEntryFiltersExcept(tournament, f, skip) {
+                if (skip !== "type" && f.type && !matchesEntryType(tournament, f.type)) return false;
                 if (skip !== "sport" && f.sport && tournament.sport_category !== f.sport) return false;
                 if (skip !== "area" && f.area && (tournament.venue_address || "").indexOf(f.area) === -1) return false;
                 if (skip !== "keyword" && f.keyword) {
@@ -1067,7 +1086,7 @@
             // 絞り込みボタンに、条件が設定されている数をバッジ表示する
             function updateEntryFilterCount() {
                 const f = getEntryFilters();
-                const count = [f.keyword, f.sport, f.area, (f.dateFrom || f.dateTo)].filter(Boolean).length;
+                const count = [f.keyword, f.type, f.sport, f.area, (f.dateFrom || f.dateTo)].filter(Boolean).length;
                 const badge = document.getElementById("entryFilterCount");
                 if (!badge) return;
                 if (count > 0) {
@@ -1082,6 +1101,16 @@
             function updateEntryFilterOptionAvailability() {
                 if (cachedTournaments === null) return;
                 const f = getEntryFilters();
+
+                const typeSelect = document.getElementById("entryFilterType");
+                if (typeSelect) {
+                    [].slice.call(typeSelect.options).forEach(function (opt) {
+                        if (!opt.value) return; // 「すべて」は常に選択可
+                        opt.disabled = !cachedTournaments.some(function (item) {
+                            return matchesEntryFiltersExcept(item.tournament, f, "type") && matchesEntryType(item.tournament, opt.value);
+                        });
+                    });
+                }
 
                 const sportSelect = document.getElementById("entryFilterSport");
                 if (sportSelect) {
@@ -1210,12 +1239,12 @@
                 const closeBtn = document.getElementById("entryFilterClose");
                 if (!bar || !toggle || !closeBtn) return;
 
-                ["entryFilterSport", "entryFilterArea"].forEach(function (id) {
+                ["entryFilterType", "entryFilterSport", "entryFilterArea"].forEach(function (id) {
                     const el = document.getElementById(id);
                     if (el) enhanceEntrySelect(el);
                 });
 
-                ["entryFilterKeyword", "entryFilterSport", "entryFilterArea", "entryFilterDateFrom", "entryFilterDateTo"].forEach(function (id) {
+                ["entryFilterKeyword", "entryFilterType", "entryFilterSport", "entryFilterArea", "entryFilterDateFrom", "entryFilterDateTo"].forEach(function (id) {
                     const el = document.getElementById(id);
                     if (!el) return;
                     el.addEventListener("input", function () {

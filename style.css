@@ -1379,6 +1379,10 @@ body {
     flex: 1.4 1 0;
 }
 
+.entry-filter-field.is-type {
+    flex: 0.8 1 0;
+}
+
 .entry-filter-field.entry-filter-date {
     flex: 1.6 1 0;
 }
