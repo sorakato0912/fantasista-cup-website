@@ -1786,6 +1786,13 @@ body {
     height: auto;
 }
 
+/* 横長ロゴ（奈良醸造など）：正方形ロゴ（max 180px）と枠の高さをそろえ、縦横比を保ったまま中央に収める */
+.sponsor-logos img.sponsor-logo-wide {
+    max-width: 220px;
+    aspect-ratio: 220 / 180;
+    object-fit: contain;
+}
+
 .sponsor-desc {
     margin: 12px 0 0;
     font-size: 0.85rem;
