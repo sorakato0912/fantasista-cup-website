@@ -10,7 +10,7 @@
   "cardExcerpt": "奈良県葛城市のm2craft様に、フレンドパートナーとしてご協賛いただくことになりました。物品のご提供というかたちで大会を支えていただきます。",
   "blocks": [
     { "type": "p", "text": "このたび、奈良県葛城市のm2craft様に、Fantasista Cupのフレンドパートナーとしてご協賛いただくことになりました。" },
-    { "type": "photo", "src": "sponsor-m2craft-cover.jpg", "alt": "m2craft ロゴ", "caption": "📷 m2craft 様" },
+    { "type": "photo", "src": "sponsor-m2craft-cover.jpg", "alt": "m2craft ロゴ", "caption": "m2craft 様" },
 
     { "type": "h2", "text": "協賛プラン：FRIEND PARTNER" },
     { "type": "p", "text": "m2craft様には、協賛プランのうち「フレンドパートナー」としてご契約いただきました。フレンドパートナーは、商品・サービスのご提供を通じて大会を支えていただくプランです。" },

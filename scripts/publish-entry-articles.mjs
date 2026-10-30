@@ -59,7 +59,7 @@ export function buildArticle(t, plans, today) {
 
   const blocks = [
     { type: 'p', text: `「${t.name}」の参加チーム募集を開始しました。${dateText}${hm(t.event_start_time)}〜、${place}の${t.venue}で開催します。本気で楽しめる舞台を用意して、みなさんのエントリーをお待ちしています。` },
-    { type: 'h2', text: '📅 大会概要' },
+    { type: 'h2', text: '大会概要' },
     { type: 'list', items: [
       { text: `日時：${dateText}${timeText}` },
       { text: `会場：${t.venue}（${place}）` },
@@ -68,14 +68,14 @@ export function buildArticle(t, plans, today) {
       ...priceItems,
     ] },
     ...(t.announcement_text ? [{ type: 'p', text: t.announcement_text }] : []),
-    { type: 'h2', text: '📍 会場・アクセス' },
+    { type: 'h2', text: '会場・アクセス' },
     { type: 'list', items: [
       { text: `住所：${address}` },
       ...(t.venue_map_url ? [{ html: `地図：<a href="${t.venue_map_url.replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" target="_blank" rel="noopener noreferrer">Googleマップで見る</a>` }] : []),
     ] },
-    { type: 'h2', text: '🔥 Fantasista Cupについて' },
+    { type: 'h2', text: 'Fantasista Cupについて' },
     { type: 'p', text: '「競技の質とエンジョイの精神が融合する、新たなサッカー大会」をコンセプトに、大人が本気で楽しめる舞台を奈良でつくっています。社会人チーム、草サッカーチーム、学生時代の仲間で組んだチームなど、本気で楽しみたいチームのご参加をお待ちしています。' },
-    { type: 'h2', text: '📝 エントリー方法' },
+    { type: 'h2', text: 'エントリー方法' },
     { type: 'p', text: `エントリーは「大会一覧を見る」からエントリーサイトにアクセスし、「${t.name}」を選んでお申し込みください。${t.capacity ? `定員の${t.capacity}チームに達し次第、受付を締め切ります。` : ''}お振込先や当日のご案内は大会公式LINEでお送りします。` },
     { type: 'cta', label: 'お問い合わせ', text: 'お問い合わせはこちら', href: 'index.html#contact' },
   ];

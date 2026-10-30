@@ -1,0 +1,41 @@
+{
+  "volume": "SPONSOR",
+  "slug": "blog-sponsor-nara-brewing",
+  "dateISO": "2026-10-30",
+  "dateDisplay": "2026.10.30",
+  "pageTitle": "【協賛のお知らせ】奈良醸造様がFantasista Cupのフレンドパートナーに｜奈良のサッカー大会",
+  "metaDescription": "奈良市でクラフトビールを醸造する奈良醸造様に、奈良のサッカー大会「Fantasista Cup」のフレンドパートナーとしてご協賛いただくことになりました。協賛の内容と奈良醸造様の事業をご紹介します。",
+  "ogImage": "sponsor-nara-brewing-cover.jpg",
+  "ogImageAlt": "奈良醸造株式会社 Nara Brewing Co. ロゴ",
+  "cardExcerpt": "奈良市でクラフトビールを醸造する奈良醸造様に、フレンドパートナーとしてご協賛いただくことになりました。",
+  "blocks": [
+    { "type": "p", "text": "このたび、奈良市の奈良醸造株式会社（Nara Brewing Co.）様に、Fantasista Cupのフレンドパートナーとしてご協賛いただくことになりました。" },
+    { "type": "photo", "src": "sponsor-nara-brewing-cover.jpg", "alt": "奈良醸造株式会社 Nara Brewing Co. ロゴ", "caption": "奈良醸造 様" },
+
+    { "type": "h2", "text": "協賛プラン：FRIEND PARTNER" },
+    { "type": "p", "text": "奈良醸造様には、協賛プランのうち「フレンドパートナー」としてご契約いただきました。フレンドパートナーは、商品・サービスのご提供を通じて大会を支えていただくプランです。" },
+
+    { "type": "h2", "text": "協賛の内容" },
+    { "type": "p", "text": "Fantasista Cupでは、以下のかたちで奈良醸造様をご紹介していきます。" },
+    { "type": "list", "items": [
+      { "html": "公式サイトの<a href=\"sponsor.html\" class=\"sns-tag\">スポンサーページ</a>に企業名・ロゴを掲載" },
+      { "text": "大会公式Instagramの投稿（大会レポート等）でのご紹介" },
+      { "text": "大会当日の会場でのご紹介" }
+    ] },
+
+    { "type": "h2", "text": "奈良醸造様について" },
+    { "type": "p", "html": "<a href=\"https://narabrewing.com/\" target=\"_blank\" rel=\"noopener\" class=\"sns-tag\">奈良醸造</a>様は、奈良市でクラフトビールを醸造されています。ベルギーとアメリカのビールの「いいとこどり」をコンセプトに、さまざまなスタイルのビールをつくられています。" },
+    { "type": "list", "items": [
+      { "text": "フラッグシップ「FUNCTION」（American-Belgo-Style Ale）：World Beer Cup 金賞" },
+      { "text": "フラッグシップ「LIGHTHOUSE」（Micro Porter）：アルコール度数3.0%でも飲みごたえのあるポーター。World Beer Cup 金賞" },
+      { "text": "ほかにもSession IPAやケルシュなど、季節ごとに多彩なビールを醸造" }
+    ] },
+    { "type": "p", "html": "奈良醸造様のビールは、<a href=\"https://narabrewing.com/\" target=\"_blank\" rel=\"noopener\" class=\"sns-tag\">公式サイト</a>のオンラインショップから購入できるほか、取扱店でも楽しむことができます。大会のあとの一杯に、ぜひ奈良のクラフトビールを味わってみてください。" },
+
+    { "type": "h2", "text": "感謝を込めて" },
+    { "type": "p", "text": "まだフットボール文化が盛んとは言えない奈良の地で、大会の想いに共感し、協賛を決めてくださった奈良醸造様に心より感謝申し上げます。奈良の魅力を発信されている事業者様に支えていただけることは、私たちにとって大きな励みです。" },
+    { "type": "p", "text": "いただいたご支援に応えられるよう、参加される皆さまにとって「競技性」と「楽しさ」が両立する大会をこれからもつくってまいります。奈良醸造様、今後ともどうぞよろしくお願いいたします。" },
+
+    { "type": "cta", "label": "Fantasista Cupでは協賛企業様を募集しています", "text": "スポンサープランを見る", "href": "sponsor.html" }
+  ]
+}
