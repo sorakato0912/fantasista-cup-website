@@ -1733,14 +1733,6 @@ body {
     border-left: 3px solid var(--gold-bright);
 }
 
-.icon-list li i {
-    color: var(--gold-dark);
-    font-size: 1.3em;
-    flex-shrink: 0;
-    width: 1.3em;
-    text-align: center;
-}
-
 .icon-list li span {
     font-weight: bold;
     color: var(--navy-dark);
@@ -1917,13 +1909,10 @@ body {
     line-height: 1.7;
 }
 
-.plan-list li i {
-    flex-shrink: 0;
-    width: 1.1em;
-    font-size: 1em;
-    text-align: center;
-    color: var(--tier-color-dark, var(--gold-dark));
-    margin-top: 0.35em;
+/* アイコンをなくしたので、複数行に折り返しても項目の区切りが分かるよう細い線で分ける */
+.plan-list li + li {
+    border-top: 1px solid rgba(10, 17, 40, 0.08);
+    padding-top: 14px;
 }
 
 .plan-list li span {
