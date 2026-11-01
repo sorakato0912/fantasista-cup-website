@@ -1930,6 +1930,21 @@ body {
     color: var(--navy-dark);
 }
 
+.plan-note {
+    margin-top: 14px;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+/* どのプランにも属さない追加案内（プラン一覧の下に控えめに添える） */
+.sponsor-addon {
+    margin-top: 24px;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
 /* ENTRYセクション：大会参加までの流れ（白背景×ゴールド文字のステップタイムライン） */
 .entry-steps {
     background-color: transparent;
